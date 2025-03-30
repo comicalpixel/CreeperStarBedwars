@@ -601,10 +601,10 @@ language:
   # 伤害标题
   damageholo-damage-title: '§r '
   damageholo-damage-subtitle: '§e伤害 - {damage}'
-  damageholo-damage-chat: null
+  damageholo-damage-chat: "§e你对 §f{player} §e造成了 §f{damage} §e伤害!"
   damageholo-bow-title: '§r '
-  damageholo-bow-subtitle: '§r '
-  damageholo-bow-chat: null
+  damageholo-bow-subtitle: '§e伤害 - {damage}'
+  damageholo-bow-chat: "§e你对 §f{player} §e造成了 §f{damage} §e伤害!"
   # 游戏开始提示
   game-start-chat:
     - '§a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
@@ -665,7 +665,7 @@ language:
   bed-destroy-ismyteam-chat: "§c色盲还是脑袋被门夹了!? 这是自家床!"
   bed-destroy-chat: "§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n§f \n §f§l床已被摧毁 > {bed_color}{bed_team} §a的床被 {player_color}{player_name} 挖爆\n \n§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
   bed-destroy-team-title: '§c床已被摧毁!'
-  bed-destroy-team-subtitle: '§7'
+  bed-destroy-team-subtitle: '§f死亡后将无法重生!'
   bed-destroy-me-title: '{bed_color}{bed_team} 床已被摧毁!'
   bed-destroy-me-subtitle: '§f你现在可以淘汰该队伍玩家了!'
   bed-destroy-all-title: '{bed_color}{bed_team} 床已被摧毁!'

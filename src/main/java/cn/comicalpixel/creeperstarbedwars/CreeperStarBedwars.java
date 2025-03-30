@@ -7,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+// git push -u origin main
+
 public final class CreeperStarBedwars extends JavaPlugin {
 
     public static CreeperStarBedwars Instance;
@@ -278,7 +280,39 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         // 语言部分!!
         ConfigData.language_date = ConfigUtils.getString(config, "language.date");
-        // ConfigData
+
+        ConfigData.language_joingame_chat = ConfigUtils.getString(config, "language.joingame-chat");
+        ConfigData.language_leavegame_chat = ConfigUtils.getString(config, "language.leavegame-chat");
+
+        ConfigData.language_rejoin_chat = ConfigUtils.getString(config, "language.rejoin-chat");
+
+        ConfigData.damageholo_damage_title = ConfigUtils.getString(config, "language.damageholo-damage-title");
+        ConfigData.damageholo_damage_subtitle = ConfigUtils.getString(config, "language.damageholo-damage-subtitle");
+        ConfigData.damageholo_damage_chat = ConfigUtils.getString(config, "language.damageholo-damage-chat");
+        ConfigData.damageholo_bow_title = ConfigUtils.getString(config, "language.damageholo-bow-title");
+        ConfigData.damageholo_bow_subtitle = ConfigUtils.getString(config, "language.damageholo-bow-subtitle");
+        ConfigData.damageholo_bow_chat = ConfigUtils.getString(config, "language.damageholo-bow-chat");
+
+        ConfigData.language_game_start_chat = ConfigUtils.getStringList(config, "language.game-start-chat");
+
+        ConfigData.language_game_end_chat = ConfigUtils.getStringList(config, "language.game-end-chat");
+
+        ConfigData.language_generatorholo_diamond_list = ConfigUtils.getStringList(config, "language.generatorholo-diamond-list");
+        ConfigData.language_generatorholo_emerald_list = ConfigUtils.getStringList(config, "language.generatorholo-emerald-list");
+        ConfigData.language_generatorholo_team_list = ConfigUtils.getStringList(config, "language.generatorholo-team-list");
+        ConfigData.language_generatorholo_ywz_all = ConfigUtils.getStringList(config, "language.generatorholo-ywz");
+
+        ConfigData.language_bed_destroy_ismyteam_chat = ConfigUtils.getString(config, "language.bed-destroy-ismyteam-chat");
+        ConfigData.language_bed_destroy_chat = ConfigUtils.getString(config, "language.bed-destroy-chat");
+        ConfigData.language_bed_destroy_team_title = ConfigUtils.getString(config, "language.bed-destroy-team-title");
+        ConfigData.language_bed_destroy_team_subtitle = ConfigUtils.getString(config, "language.bed-destroy-team-subtitle");
+        ConfigData.language_bed_destroy_me_title = ConfigUtils.getString(config, "language.bed-destroy-me-title");
+        ConfigData.language_bed_destroy_me_subtitle = ConfigUtils.getString(config, "language.bed-destroy-me-subtitle");
+        ConfigData.language_bed_destroy_all_title = ConfigUtils.getString(config, "language.bed-destroy-all-title");
+        ConfigData.language_bed_destroy_all_subtitle = ConfigUtils.getString(config, "language.bed-destroy-all-subtitle");
+
+
+
 
 
     }
