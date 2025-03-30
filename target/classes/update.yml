@@ -1,0 +1,972 @@
+# CreeperStarBedwars by Xiaol789zxc. https://comicalpixel.github.io
+# ComicalPixel Network 2023-2025
+# LanternMC Network 2021-2025
+#
+# update.yml TeamShop
+
+# GUI Settings
+GUI:
+  Gui-title: '§7队伍升级'
+
+  Sharp-Enchantment:
+    # 最高等级: 2
+    # 默认等级
+    def-level: 0
+    icon:
+      level-0:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 '
+              lore:
+                - '§7升级你队伍所有人的武器获得锋利附魔 '
+                - ' '
+                - ' §f§l锋利I: §b4钻石'
+                - ' §f§l锋利II: §b8钻石'
+                - ' '
+                - ' §f§l花费: §3§l4钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 '
+              lore:
+                - '§7升级你队伍所有人的武器获得锋利附魔 '
+                - ' '
+                - ' §f§l锋利I: §b400级'
+                - ' §f§l锋利II: §b800级'
+                - ' '
+                - ' §f§l花费: §3§l400级'
+                - ' '
+      level-1:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §fI'
+              lore:
+                - '§7升级你队伍所有人的武器获得锋利附魔 '
+                - ' '
+                - ' §f§l锋利I: §b4钻石'
+                - ' §f§l锋利II: §b8钻石'
+                - ' '
+                - ' §f§l花费: §3§l8钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §fI'
+              lore:
+                - '§7升级你队伍所有人的武器获得锋利附魔 '
+                - ' '
+                - ' §f§l锋利I: §b400级'
+                - ' §f§l锋利II: §b800级'
+                - ' '
+                - ' §f§l花费: §3§l800级'
+                - ' '
+      level-2:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §fII'
+              lore:
+                - '§7升级你队伍所有人的武器获得锋利附魔 '
+                - ' '
+                - ' §f§l锋利I: §b4钻石'
+                - ' §f§l锋利II: §b8钻石'
+                - ' '
+                - ' §f§l花费: §3§l8钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §fII'
+              lore:
+                - '§7升级你队伍所有人的武器获得锋利附魔 '
+                - ' '
+                - ' §f§l锋利I: §b400级'
+                - ' §f§l锋利II: §b800级'
+                - ' '
+                - ' §f§l花费: §3§l800级'
+                - ' '
+
+  Armor-Enchantment:
+    # 最高等级: 4
+    # 默认等级
+    def-level: 0
+    icon:
+      level-0:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 '
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b8钻石'
+                - ' §f§l锋利IV: §b12钻石'
+                - ' '
+                - ' §f§l花费: §3§l4钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 '
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b800级'
+                - ' §f§l锋利IV: §b1200级'
+                - ' '
+                - ' §f§l花费: §3§l400级'
+                - ' '
+      level-1:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 §fI'
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b8钻石'
+                - ' §f§l锋利IV: §b12钻石'
+                - ' '
+                - ' §f§l花费: §3§l4钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 §fI'
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b800级'
+                - ' §f§l锋利IV: §b1200级'
+                - ' '
+                - ' §f§l花费: §3§l400级'
+                - ' '
+      level-2:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 §fII'
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b8钻石'
+                - ' §f§l锋利IV: §b12钻石'
+                - ' '
+                - ' §f§l花费: §3§l8钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 §fII'
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b800级'
+                - ' §f§l锋利IV: §b1200级'
+                - ' '
+                - ' §f§l花费: §3§l800级'
+                - ' '
+      level-3:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 §fIII'
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b8钻石'
+                - ' §f§l锋利IV: §b12钻石'
+                - ' '
+                - ' §f§l花费: §3§l12钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 §fIII'
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b800级'
+                - ' §f§l锋利IV: §b1200级'
+                - ' '
+                - ' §f§l花费: §3§l1200级'
+                - ' '
+      level-4:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 §fIV'
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b8钻石'
+                - ' §f§l锋利IV: §b12钻石'
+                - ' '
+                - ' §f§l花费: §3§l12钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精制护甲 §fIV'
+              lore:
+                - '§7升级你队伍所有人的护甲获得永久的保护附魔 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b800级'
+                - ' §f§l锋利IV: §b1200级'
+                - ' '
+                - ' §f§l花费: §3§l1200级'
+                - ' '
+
+  Crazy-Miner-Effect:
+    # 最高等级: 2
+    # 默认等级
+    def-level: 0
+    icon:
+      level-0:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 '
+              lore:
+                - '§7让你队伍所有人获得永久的急迫效果 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' '
+                - ' §f§l花费: §3§l2钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 '
+              lore:
+                - '§7让你队伍所有人获得永久的急迫效果 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' '
+                - ' §f§l花费: §3§l200级'
+                - ' '
+      level-1:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §fI'
+              lore:
+                - '§7让你队伍所有人获得永久的急迫效果 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' '
+                - ' §f§l花费: §3§l2钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §fI'
+              lore:
+                - '§7让你队伍所有人获得永久的急迫效果 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' '
+                - ' §f§l花费: §3§l200级'
+                - ' '
+      level-2:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §fII'
+              lore:
+                - '§7让你队伍所有人获得永久的急迫效果 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' '
+                - ' §f§l花费: §3§l4钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §fII'
+              lore:
+                - '§7让你队伍所有人获得永久的急迫效果 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' '
+                - ' §f§l花费: §3§l400级'
+                - ' '
+
+  Forge-furnace:
+    # 最高等级: 4
+    # 默认等级
+    def-level: 0
+    icon:
+      level-0:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 '
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b6钻石'
+                - ' §f§l锋利IV: §b8钻石'
+                - ' '
+                - ' §f§l花费: §3§l2钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 '
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b600级'
+                - ' §f§l锋利IV: §b800级'
+                - ' '
+                - ' §f§l花费: §3§l200级'
+                - ' '
+      level-1:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fI'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b6钻石'
+                - ' §f§l锋利IV: §b8钻石'
+                - ' '
+                - ' §f§l花费: §3§l4钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fI'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b600级'
+                - ' §f§l锋利IV: §b800级'
+                - ' '
+                - ' §f§l花费: §3§l400级'
+                - ' '
+      level-2:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fII'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b6钻石'
+                - ' §f§l锋利IV: §b8钻石'
+                - ' '
+                - ' §f§l花费: §3§l6钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fII'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b600级'
+                - ' §f§l锋利IV: §b800级'
+                - ' '
+                - ' §f§l花费: §3§l600级'
+                - ' '
+      level-3:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fIII'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b6钻石'
+                - ' §f§l锋利IV: §b8钻石'
+                - ' '
+                - ' §f§l花费: §3§l8钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fIII'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b600级'
+                - ' §f§l锋利IV: §b800级'
+                - ' '
+                - ' §f§l花费: §3§l800级'
+                - ' '
+      level-4:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fIV'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b2钻石'
+                - ' §f§l锋利II: §b4钻石'
+                - ' §f§l锋利III: §b6钻石'
+                - ' §f§l锋利IV: §b8钻石'
+                - ' '
+                - ' §f§l花费: §3§l8钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fIV'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b200级'
+                - ' §f§l锋利II: §b400级'
+                - ' §f§l锋利III: §b600级'
+                - ' §f§l锋利IV: §b800级'
+                - ' '
+                - ' §f§l花费: §3§l800级'
+                - ' '
+
+  Healthpool:
+    # 最高等级: 1
+    # 默认等级
+    def-level: 0
+    icon:
+      level-0:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: BEACON
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a治愈池 '
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b1钻石'
+                - ' '
+                - ' §f§l花费: §3§l1钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: BEACON
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a治愈池 '
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b1钻石'
+                - ' '
+                - ' §f§l花费: §3§l1钻石'
+                - ' '
+      level-1:
+        # 普通资源
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: BEACON
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a治愈池 §fI'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b1钻石'
+                - ' '
+                - ' §f§l花费: §3§l1钻石'
+                - ' '
+        # 经验资源
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: BEACON
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a治愈池 §fI'
+              lore:
+                - '§7升级你队伍的资源点, 提升资源刷新效率 '
+                - ' '
+                - ' §f§l锋利I: §b1钻石'
+                - ' '
+                - ' §f§l花费: §3§l1钻石'
+                - ' '
+
+
+  traps:
+    this-is-a-trap:
+      # 普通资源
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: TRIPWIRE_HOOK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a这是一个陷阱! '
+            lore:
+              - '§7造成失明和缓慢效果, 持续8s '
+              - ' '
+              - ' §f§l花费: §b§l1钻石/2钻石/3钻石 '
+              - ' '
+      # 经验资源
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: TRIPWIRE_HOOK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a这是一个陷阱! '
+            lore:
+              - '§7造成失明和缓慢效果, 持续8s '
+              - ' '
+              - ' §f§l花费: §b§l100级/200级/300级 '
+              - ' '
+    counterattack-trap:
+      # 普通资源
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FEATHER
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a反击陷阱 '
+            lore:
+              - '§7给予基地附近的队友速度II和跳跃II效果, 持续15s '
+              - ' '
+              - ' §f§l花费: §b§l1钻石/2钻石/3钻石 '
+              - ' '
+      # 经验资源
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FEATHER
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a反击陷阱 '
+            lore:
+              - '§7给予基地附近的队友速度II和跳跃II效果, 持续15s '
+              - ' '
+              - ' §f§l花费: §b§l100级/200级/300级 '
+              - ' '
+    alarm-trap:
+      # 普通资源
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: REDSTONE_TORCH_ON
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a报警陷阱 '
+            lore:
+              - '§7移除非队友的隐身效果 '
+              - ' '
+              - ' §f§l花费: §b§l1钻石/2钻石/3钻石 '
+              - ' '
+      # 经验资源
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: REDSTONE_TORCH_ON
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a报警陷阱 '
+            lore:
+              - '§7移除非队友的隐身效果 '
+              - ' '
+              - ' §f§l花费: §b§l100级/200级/300级 '
+              - ' '
+    break-fatigue-trap:
+      # 普通资源
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: IRON_PICKAXE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a挖掘疲劳陷阱 '
+            lore:
+              - '§7造成挖掘疲劳效果, 持续10s '
+              - ' '
+              - ' §f§l花费: §b§l1钻石/2钻石/3钻石 '
+              - ' '
+      # 经验资源
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: IRON_PICKAXE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a挖掘疲劳陷阱 '
+            lore:
+              - '§7造成挖掘疲劳效果, 持续10s '
+              - ' '
+              - ' §f§l花费: §b§l100级/200级/300级 '
+              - ' '
+
+  trap-slots:
+    slot-1:
+      - ==: org.bukkit.inventory.ItemStack
+        type: IRON_PICKAXE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§c§l陷阱槽位#1 '
+          lore:
+            - ' '
+            - '§7这是一个空的陷阱槽位 '
+            - '§7会按照槽位的顺序先后触发  '
+            - ' '
+    slot-2:
+      - ==: org.bukkit.inventory.ItemStack
+        type: IRON_PICKAXE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§c§l陷阱槽位#2 '
+          lore:
+            - ' '
+            - '§7这是一个空的陷阱槽位 '
+            - '§7会按照槽位的顺序先后触发  '
+            - ' '
+    slot-3:
+      - ==: org.bukkit.inventory.ItemStack
+        type: IRON_PICKAXE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§c§l陷阱槽位#3 '
+          lore:
+            - ' '
+            - '§7这是一个空的陷阱槽位 '
+            - '§7会按照槽位的顺序先后触发  '
+            - ' '
+
+# 购买项定价
+buy:
+  Sharp-Enchantment:
+    level1:
+      type: DIAMOND
+      amount: 4
+      xp: 400
+    level2:
+      type: DIAMOND
+      amount: 8
+      xp: 800
+  Armor-Enchantment:
+    level1:
+      type: DIAMOND
+      amount: 2
+      xp: 200
+    level2:
+      type: DIAMOND
+      amount: 4
+      xp: 400
+    level3:
+      type: DIAMOND
+      amount: 8
+      xp: 800
+    level4:
+      type: DIAMOND
+      amount: 12
+      xp: 1200
+  Crazy-Miner-Effect:
+    level1:
+      type: DIAMOND
+      amount: 2
+      xp: 200
+    level2:
+      type: DIAMOND
+      amount: 4
+      xp: 400
+  Forge-furnace:
+    level1:
+      type: DIAMOND
+      amount: 2
+      xp: 200
+    level2:
+      type: DIAMOND
+      amount: 4
+      xp: 400
+    level3:
+      type: DIAMOND
+      amount: 6
+      xp: 600
+    level4:
+      type: DIAMOND
+      amount: 8
+      xp: 8
+  Healthpool:
+    level1:
+      type: DIAMOND
+      amount: 1
+      xp: 100

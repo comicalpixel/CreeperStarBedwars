@@ -1,0 +1,1005 @@
+# CreeperStarBedwars by Xiaol789zxc. https://comicalpixel.github.io
+# ComicalPixel Network 2023-2025
+# LanternMC Network 2021-2025
+
+
+author: Xiaol789zxc
+
+# Bungeecord设置
+# lobby-server 大厅服务器子服
+# motd用于匹配，匹配插件可以使用ServerJoiner、CyanJoiner
+bungeecord:
+  lobby-server: BedwarsLobby
+  motd-waiting: '§a等待中...'
+  motd-playing: '§6游戏中...'
+  moyd-end: '§c游戏结束'
+  restart-command: 'minecraft:stop'
+
+# 数据保存设置
+data:
+  # 由于不会数据库只能用配置文件了
+  # 想要数据库的可以自行拿源码改
+
+  # 玩家游玩数据储存路径(目录名称不可以带空格和特殊符号) player_data.yml
+  player-data: './'
+  # 玩家商店数据储存路径(目录名称不可以带空格和特殊符号) shop_data.yml
+  shop-data: './'
+
+# 玩家NameTag的血量显示(玩家头顶上的+tab玩家列表的)
+nametag-health: true
+
+# 玩家名称前后缀设置
+player-nametag:
+  prefix: "{team_color}{team_name} "
+  suffix: " "
+
+# 无缝重生
+# 我们优化了重生逻辑，不会再出现死亡界面
+# 不是市面上的直接 p.spigot.respawn();
+# 写扩展的时候不要监听玩家PlayerRespawnEvent!!因为这无法监听玩家重生事件的
+fast-respawn: true
+
+
+# 定时指令
+# 执行由控制台执行
+# 这玩意写不明白有bug, 如果会的话可以自行修
+timer-command:
+  # 是否启用
+  enable: true
+  # 游戏开始执行的指令
+  game-start:
+    - ''
+  game-end:
+    - ''
+  # 定时任务
+  # 时间单位为's'
+  # 写了game-timer部分别忘了game-timer-bh!!
+  game-timer-bh:
+    - cmd1
+  game-timer:
+    # 格式
+    #    cmd1:
+    #      # 当游戏剩余多少时间时执行命令
+    #      gametime: 3000
+    #      # 执行的命令(不带/)
+    #      commands:
+    #        - ''
+    cmd1:
+      # 当游戏剩余多少时间时执行命令
+      gametime: 3000
+      # 执行的命令(不带/)
+      commands:
+        - ''
+
+
+# 时间指令
+# 执行由控制台执行
+# 这玩意写不明白有bug, 如果会的话可以自行修
+# 玩家变量{player}
+event-command:
+  # 是否启用
+  enable: true
+  # 所有时间
+  game-start:
+    - null
+  game-end:
+    - null
+  player-death:
+    - null
+  player-kill:
+    - null
+  player-win:
+    - null
+  player-lost:
+    - null
+  destroy-bed:
+    - null
+
+
+# 玩家指令白名单
+command-whitelist:
+  - '/bw'
+  - '/lobby'
+  - '/hub'
+
+# 队伍选择器
+# 暂不支持深度自定义(如: GUI布局、是否启用离开队伍物品、物品类型等..)
+# 如果需要深度定制, 可以关闭该菜单然后通过反射来实现
+select_team:
+  # 是否启用
+  enable: true
+  # 队伍选择器语言部分
+  gui-name: '§7队伍选择器'
+  status-select: '§e§l单击加入队伍 '
+  status-inteam: '§e§l单击加入队伍 '
+  status-full: '§e§l单击加入队伍 '
+
+  # 队伍选择物品(羊毛)
+  team-item:
+    # 物品名称
+    name: '{team_color}{team_name}'
+    # 描述
+    lore-head:
+      - ' '
+      - '§f玩家: §e{players}§7/§e{maxplayers}'
+      - ' '
+    lore-foot:
+      - ' '
+    lore-player: '§7 §7- §f{player_name}'
+  # 离开队伍物品(错误方块)
+  leave-item:
+    # 物品名称
+    name: '§c离开队伍'
+    # 描述
+    lore:
+      - '§7如果你选择了队伍 '
+      - '§7你可以通过此选项离开队伍 '
+  # 关闭队伍选择菜单按钮(屏障)
+  close-item:
+    # 物品名称
+    name: '§c关闭菜单'
+    # 描述
+    lore:
+      - '§7单击关闭队伍菜单 '
+
+# 资源模式选择器
+# 暂不支持深度自定义(如: GUI布局)
+# 如果需要深度定制, 可以关闭该菜单然后通过反射来实现
+select-bwim:
+  # 是否启用
+  enable: true
+  # 如果不启用资源模式选择器那么默认的资源模式是...(0:实体资源,1:经验资源)
+  def: 0
+
+  gui-name: '§7资源模式选择器'
+  status-select: '§a §a§l✔ §a已选择 '
+  status-noselect: '§e §e§l▶ §e单击选择 '
+
+  # 物品设置
+  item:
+    i:
+      type: BED_ITEM
+      durability: 0
+      name: '§e实体资源模式'
+      lore:
+        - ' '
+        - ' §7实体资源模式§7(§f铁 §e金 §2绿 §b钻§7) '
+        - ' '
+        - ' §7使用实体资源购买物品和队伍升级 '
+        - ' '
+        - ' §7拾起资源正常加入背包中 '
+        - ' '
+    xp:
+      type: EXP_BOTTLE
+      durability: 0
+      name: '§a经验资源模式'
+      lore:
+        - ' '
+        - ' §7实体资源模式§7(§f铁 §e金 §2绿 §b钻§7) '
+        - ' '
+        - ' §7使用经验等级购买物品和队伍升级 '
+        - ' '
+        - ' §7拾起资源自动转换为经验等级 '
+        - ' '
+
+
+# 伤害全息
+damage-holo:
+  # 常规伤害
+  damage:
+    enable: true
+  # 投掷物(弓箭)伤害
+  bow:
+    enable: true
+
+# 连击修复 (这个问题似乎出自于原版, 它可能会在玩家死亡重生过快所触发)
+# 如果出现玩家打人没有伤害间隔请开启该选项或使用管理玩家战斗的插件
+# 开启该选项将会把伤害间隔模拟成原版差不多的
+combo-fix: true
+
+# 是否锁定玩家饥饿值
+# 反正你怎么设置掉饥饿值的速度都会比原版慢
+lock-foodlevel: false
+
+# 游戏开始标题
+# 动态标题的时间不是用原版mc的tick而是ms
+start-title:
+  # 是否启用
+  enable: true
+  # 主标题(支持动态)
+  title:
+    - "§c§l战              斗              开             始             !"
+    - "§c§l战              斗              开             始             !"
+    - "§c§l战              斗              开             始             !"
+    - "§c§l战             斗             开            始            !"
+    - "§c§l战             斗             开            始            !"
+    - "§c§l战             斗             开            始            !"
+    - "§c§l战            斗            开           始           !"
+    - "§c§l战            斗            开           始           !"
+    - "§c§l战            斗            开           始           !"
+    - "§c§l战           斗           开           始           !"
+    - "§c§l战           斗           开           始           !"
+    - "§c§l战          斗          开          始          !"
+    - "§c§l战          斗          开          始          !"
+    - "§c§l战         斗         开         始         !"
+    - "§c§l战         斗         开         始         !"
+    - "§c§l战        斗        开        始        !"
+    - "§c§l战        斗        开        始        !"
+    - "§c§l战       斗       开       始       !"
+    - "§c§l战       斗       开       始       !"
+    - "§c§l战      斗      开      始      !"
+    - "§c§l战      斗      开      始      !"
+    - "§c§l战     斗     开     始     !"
+    - "§c§l战     斗     开     始     !"
+    - "§c§l战    斗    开    始    !"
+    - "§c§l战   斗   开   始   !"
+    - "§c§l战   斗   开   始   !"
+    - "§c§l战  斗  开  始  !"
+    - "§c§l战  斗  开  始  !"
+    - "§c§l战  斗  开  始  !"
+    - "§c§l战 斗 开 始 !"
+    - "§c§l战斗开始!"
+    - "§c§l战斗开始!"
+    - "§c§l战§e§l斗§c§l开始§c§l!"
+    - "§c§l战§e§l斗§c§l开始§c§l!"
+    - "§c§l战§e§l斗§c§l开始§c§l!"
+    - "§c§l战§e§l斗§c§l开始§c§l!"
+    - "§c§l战斗§e§l开§c§l始§c§l!"
+    - "§c§l战斗§e§l开§c§l始§c§l!"
+    - "§c§l战斗§e§l开§c§l始§c§l!"
+    - "§c§l战斗§e§l开§c§l始§c§l!"
+    - "§c§l战斗开§e§l始§c§l!"
+    - "§c§l战斗开§e§l始§c§l!"
+    - "§c§l战斗开§e§l始§c§l!"
+    - "§c§l战斗开§e§l始§c§l!"
+    - "§c§l战斗开§c§l始§e§l!"
+    - "§c§l战斗开§c§l始§e§l!"
+    - "§c§l战斗开§c§l始§e§l!"
+    - "§c§l战斗开§c§l始§e§l!"
+    - "§c§l战斗开始!"
+    - "§c§l战斗开始!"
+  # 副标题(不支持动态)
+  subtitle: '§7活到最后取得胜利!'
+  # 5s倒计时
+  countdown-title:
+    # 是否启用
+    enable: true
+    # 内容设置
+    s5:
+      title: '§a§l游戏即将开始'
+      subtitle: '§f§l5'
+    s4:
+      title: '§a§l游戏即将开始'
+      subtitle: '§f§l4'
+    s3:
+      title: '§a§l游戏即将开始'
+      subtitle: '§f§l3'
+    s2:
+      title: '§a§l游戏即将开始'
+      subtitle: '§f§l2'
+    s1:
+      title: '§a§l游戏即将开始'
+      subtitle: '§f§l1'
+
+# 经验条倒计时
+countdown-xpbar: true
+
+# 保护范围
+safe-region:
+  map-generators: 3
+  team-generators: 5
+  team-spawn: 7
+
+# 倒计时设置
+countdown-settings:
+  seconds: 60
+  # 触发倒计时的秒数
+  trigger-seconds:
+    - 60
+    - 30
+    - 10
+    - 5
+    - 4
+    - 3
+    - 2
+    - 1
+  # 如果这里没写的默认用other
+  seconds-message:
+    60:
+      title: '§c§l{countdown}'
+      subtitle: '§e§l开始倒计时!'
+    10:
+      title: '§e§l{countdown}'
+      subtitle: '§e§l使用物品栏的纸可选择资源模式!'
+
+
+# 等待大厅物品
+lobby-items:
+  i0:
+    enable: true
+    command: 'bwsel team'
+    permissions: null
+    item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: BED
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a队伍选择 §7(右键单击)'
+          lore:
+            - '§8等待大厅物品'
+  i1:
+    enable: true
+    command: 'bwsel im'
+    permissions: null
+    item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: PAPER
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§b资源模式选择 §7(右键单击)'
+          lore:
+            - '§8等待大厅物品'
+  i2:
+    enable: false
+    command: ''
+    permissions: null
+    item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: STONE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a物品名称'
+          lore:
+            - '§8lore list'
+  i3:
+    enable: true
+    command: 'bw start'
+    permissions: null
+    item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: EMERALD
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a开启游戏 §7(右键单击)'
+          lore:
+            - '§8等待大厅物品'
+  i4:
+    enable: false
+    command: ''
+    permissions: null
+    item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: STONE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a物品名称'
+          lore:
+            - '§8lore list'
+  i5:
+    enable: false
+    command: ''
+    permissions: null
+    item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: STONE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a物品名称'
+          lore:
+            - '§8lore list'
+  i6:
+    enable: false
+    command: ''
+    permissions: null
+    item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: STONE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a物品名称'
+          lore:
+            - '§8lore list'
+  i7:
+    enable: true
+    command: 'bw debug start'
+    permissions: 'bedwars.admin'
+    item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: DIAMOND
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§b强开游戏debug §7(右键单击)'
+          lore:
+            - '§8等待大厅物品'
+  i8:
+    enable: true
+    command: 'bw leave'
+    permissions: null
+    item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: SLIME_BALL
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§c离开游戏 §7(右键单击)'
+          lore:
+            - '§8等待大厅物品'
+
+
+# 道具设置
+# 如果没有自己想要的道具可以给作者提交请求呀
+items:
+  # 回春床
+  respawn-bed:
+    # 是否启用
+    enable: true
+    # 游戏开始多少秒前可以使用
+    started: 600
+    # 语言部分
+    expires-chat: "§c该道具仅允许在开局§e10分钟§c内使用"
+    spawnloc-toofar: "§c请靠近出生点使用! "
+    used: "§c你们队伍已经使用过回春床了! "
+    bed-exist: "§c床还在, 回啥春? "
+  # 火焰弹FIREBALL
+  fireball:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 1
+    # 范围
+    radius: 3
+    # 伤害
+    damage: 4
+    # 击退
+    vlocity-multiply: 5
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+  # TNT
+  tnt:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 0
+    # 范围
+    radius: 5
+    # 伤害
+    damage: 7
+    # 击退
+    vlocity-multiply: 5
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+  # 追踪指南针
+  Compass:
+    # 是否启用
+    enable: true
+  # 梦幻守卫 DreamGuard
+  dreamguard:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 5
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+  # 蠹虫(雪球)
+  silverfish:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 1
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+  # 搭桥蛋
+  bridgeegg:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 1
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+  # 紧凑型防御塔
+  safetower:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 1
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+  # 回城卷轴
+  warp-powder:
+    # 是否启用
+    enable: true
+    # 传送时间
+    tp-timer: 5
+    # 语言部分
+    tpcountdown-chat: "§e将在 §c{countdown} §e秒后传送到你队伍的重生点, 请不要移动! "
+    move-cancel-chat: "§c你移动了, 已取消传送! "
+  # 防护墙
+  safewall:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 10
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+  # 救援平台
+  rescue-platform:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 10
+    # 消失时间s
+    disappear: 10
+    # 方块是否可拆除
+    can-break: true
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+    insufficient-space-chat: "§c空间不足, 方块人脚下不可以有方块 "
+
+  # 烟花(垂直往上飞)
+  firework-sit:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 10
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+    subtitle: '§c哎呀, 好疼!'
+
+# 队友床危险警告
+# 触发方式: 抬头90°且潜行一下
+beddanger-title:
+  # 是否开启
+  enable: true
+  # 提示
+  subtitle: '{team_color}{player} 说: §c注意,我们的床有危险！'
+
+# 床无敌时间
+bed-invincibility:
+  # 是否开启
+  enable: true
+  # 持续时间s
+  timer: 120
+
+
+
+# 语言设置(部分语言不在这里awa)
+language:
+  # 日期格式{date}
+  date: 'MM/dd/yyyy'
+  # 加入游戏
+  joingame-chat: '§7{player}§e加入了游戏§e(§a{players}§f/§c{maxplayers}§e) '
+  # 离开游戏
+  leavegame-chat: '§7{player}§e离开了游戏§e(§a{players}§f/§c{maxplayers}§e) '
+  # 断线重连
+  rejoin-chat: '§e{player} 重新加入了游戏! '
+  # 伤害标题
+  damageholo-damage-title: '§r '
+  damageholo-damage-subtitle: '§e伤害 - {damage}'
+  damageholo-damage-chat: null
+  damageholo-bow-title: '§r '
+  damageholo-bow-subtitle: '§r '
+  damageholo-bow-chat: null
+  # 游戏开始提示
+  game-start-chat:
+    - '§a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+    - ''
+    - '§f                          §l起床战争'
+    - ''
+    - '§e§l                    保护你的床并破坏敌人的床，'
+    - '§e§l                 从资源点收集铁锭、金锭、绿宝石和钻石，'
+    - '§e§l                 来购买强力装备和进行升级来使自己变强！'
+    - ''
+    - '§a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+  # 游戏结束提示(结算)
+  game-end-chat:
+    - '§a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+    - ''
+    - '§f                          §l起床战争'
+    - '§f                    §7胜利队伍: {team_color}{team_name}'
+    - ''
+    - '§f              §e§l击杀第一名 §7- §7{killer_1}  '
+    - '§f              §6§l击杀第二名 §7- §7{killer_2}  '
+    - '§f              §c§l击杀第三名 §7- §7{killer_3}  '
+    - ''
+    - '§a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+  # 资源点
+  generatorholo-diamond-list:
+    - '§e等级 §c{level}'
+    - '§b钻石'
+    - '§e将在§c{timer}§e秒后刷新'
+  generatorholo-emerald-list:
+    - '§e等级 §c{level}'
+    - '§b钻石'
+    - '§e将在§c{timer}§e秒后刷新'
+  generatorholo-team-list:
+    - '§b附近方块人都能吸到捏 §6{rywz}'
+  # 颜文字(仅可用于generatorholo-team-list，变量{rywz})
+  generatorholo-ywz:
+    - "(๑¯ω¯๑)"
+    - "(⌒ω⌒)"
+    - "ʕ•̀ω•́ʔ✧"
+    - "٩(๑òωó๑)۶"
+    - "٩(๑˃̵ᴗ˂̵๑)۶"
+    - "(๑•́ ₃ •̀๑)/"
+    - "(･’ω’･)"
+    - "(｡◕ ∀ ◕｡)"
+    - "(´｡✪ω✪｡｀)"
+    - "(｡╹ω╹｡)"
+    - "(●♡ᴗ♡●)"
+    - "٩( ╹▿╹ )۶"
+    - "(..＞◡＜..)"
+    - "V✪ω✪V"
+    - "໒(＾ᴥ＾)७"
+    - "｡(^▽^)ゞ"
+    - "ฅ(°ω°ฅ)"
+    - "(´ω｀*)"
+    - "(#^.^#)"
+    - "(๑́•∀•๑̀)ฅ"
+  # 床的部分 (拆床/回春床 标题)
+  bed-destroy-ismyteam-chat: "§c色盲还是脑袋被门夹了!? 这是自家床!"
+  bed-destroy-chat: "§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n§f \n §f§l床已被摧毁 > {bed_color}{bed_team} §a的床被 {player_color}{player_name} 挖爆\n \n§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+  bed-destroy-team-title: '§c床已被摧毁!'
+  bed-destroy-team-subtitle: '§7'
+  bed-destroy-me-title: '{bed_color}{bed_team} 床已被摧毁!'
+  bed-destroy-me-subtitle: '§f你现在可以淘汰该队伍玩家了!'
+  bed-destroy-all-title: '{bed_color}{bed_team} 床已被摧毁!'
+  bed-destroy-all-subtitle: '§f你现在可以淘汰该队伍玩家了!'
+  bed-respawn-chat: "§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n \n §f§l回春床 > {TeamChatColor}{TeamName} §f使用了回春床！ \n \n§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+  bed-respawn-team-title: '§a§l床已恢复!'
+  bed-respawn-team-subtitle: '§f现在你们队伍可以重生!'
+  bed-respawn-all-title: '{TeamChatColor}{TeamName} 床已恢复'
+  bed-respawn-all-subtitle: '§f该队伍玩家死亡后将可以重生!'
+  # 队伍团灭提示
+  team-annihilation-chat: "§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n \n §f§l团灭 > {TeamChatColor}{TeamName} §c凉了！ \n \n§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+  # 睡你麻痹起来嗨
+  bed-sleep: "§c睡你麻痹起来嗨! "
+  # 倒计时标题
+  # 自定义倒计时秒数显示的标题
+  # 如果这个没写到x秒提示的标题默认使用other
+  # 想设置指定秒数的提示内容可以到倒计时设置那里设置
+  game-countdown-InsufficientPlayers-title: '§r '
+  game-countdown-InsufficientPlayers-subtitle: '§c玩家不足, 倒计时取消! '
+  game-countdown-InsufficientPlayers-chat: '§c玩家不足, 倒计时取消! '
+  game-countdown-other-title: '§c§l{countdown}'
+  game-countdown-other-subtitle: '§e§l准备战斗吧!'
+  game-countdown-chat: '§e游戏将在§c{countdown}§e秒后开始'
+  # 等待大厅Actionbar(物品栏上方)
+  game-lobby-actionbar: '§a §a地图: §f{map} §a倒计时: §f{countdown} §a'
+  # 资源模式名称
+  game-bwim-i: '普通'
+  game-bwim-xp: '经验'
+  # 计分板
+  sidebarboard:
+    team-ismyteam: ''
+    team-hasbed: '§c❤'
+    team-notbed: '§7❤'
+    team-message: '{team_color}{team_name} {bed} §f| §f{size}{ismyteam}'
+    lobby:
+      waiting:
+        - '§b§l起床战争'
+        - '{date} #CSBW'
+        - '§r'
+        - '§f地图 §b{map}'
+        - '§f建筑师 §b{author}'
+        - '§r§r'
+        - '§f玩家 §b{players}/{maxplayers} '
+        - '§f资源模式 §b{bwim}'
+        - '§r§r§r'
+        - '§e游戏开始 > §b等待中...'
+        - '§r§r§r§r'
+        - '§f模式 §bSolo '
+        - '§f版本 §73.0'
+        - '§r§r§r§r§r'
+        - '§eplay.lanternmc.cn '
+      countdown:
+        - '§b§l起床战争'
+        - '{date} #CSBW'
+        - '§r'
+        - '§f地图 §b{map}'
+        - '§f建筑师 §b{author}'
+        - '§r§r'
+        - '§f玩家 §b{players}/{maxplayers} '
+        - '§f资源模式 §b{bwim}'
+        - '§r§r§r'
+        - '§e游戏开始 > §b{countdown}'
+        - '§r§r§r§r'
+        - '§f模式 §bSolo '
+        - '§f版本 §73.0'
+        - '§r§r§r§r§r'
+        - '§eplay.lanternmc.cn '
+    game:
+      player:
+        - '§b§l起床战争'
+        - '{date} #CSBW'
+        - ' '
+        - '{events_name} §f- §a{events_timer}'
+        - '  '
+        - ' {team_red}  {team_blue} '
+        - ' {team_green}  {team_yellow} '
+        - ' {team_pink}  {team_aqua} '
+        - ' {team_white}  {team_gray} '
+        - '   '
+        - '§f我的队伍: {my_teamchatcolor}{my_team}队 '
+        - '§f击杀:§a{kills}§f/摧床:§a{beds}§f/最击:§a{fkills}'
+        - '     '
+        - '§eplay.lanternmc.cn '
+      spec:
+        - '§b§l起床战争'
+        - '{date} #CSBW'
+        - ' '
+        - '{events_name} §f- §a{events_timer}'
+        - '  '
+        - ' {team_red}  {team_blue} '
+        - ' {team_green}  {team_yellow} '
+        - ' {team_pink}  {team_aqua} '
+        - ' {team_white}  {team_gray} '
+        - '   '
+        - '§d旁观中... '
+        - '     '
+        - '§eplay.lanternmc.cn '
+  # 游戏结束
+  game-end-winner-title: '§6§l获胜!'
+  game-end-winner-subtitle: '§7你获得了最终的胜利!'
+  game-end-loser-title: '§c游戏结束!'
+  game-end-loser-subtitle: '§7你没有获得胜利:('
+  game-end-stalemate-title: '§c§l游戏结束'
+  game-end-Stalemate-subtitle: '§7没有人获得胜利'
+  # 重生部分
+  respawn-respawning-title: '§e{time}'
+  respawn-respawning-subtitle: '§7你死了, 将在稍后重生'
+  respawn-respawning-chat: "§e你将在 §c{time} §e秒后复活!"
+  respawn-respawn-title: '§a已重生！'
+  respawn-respawn-subtitle: '§7因为你的床还在所以你复活了'
+  respawn-eliminated-title: '§c你凉了!'
+  respawn-eliminated-subtitle: '§7你家的床没了qwq'
+  respawn-eliminated-chat: "§c你凉了! §7疑似睡死了"
+  # 击杀提示
+  playerdie-player: '{player} §7被击杀{killer}{final}'
+  playerdie-void: '{player} §7掉进了无尽虚空{killer}{final}'
+  playerdie-out: '{player} §7在战斗时与服务器断开了连接{killer}{final}'
+  playerdie-fall: '{player} §7被推下了悬崖{killer}{final}'
+  playerdie-boom: '{player} §7被炸成了碎片{killer}{final}'
+  playerdie-shoot: '{player} §7被射死了{killer}{final}'
+  playerdie-null: '{player} §7去了异世界? {final}'
+  playerdie-killme: '{player} §7他自杀了 {final}'
+  playerdie-killer: '§7, 击杀者: {player} '
+  playerdie-final: '§b§l最终击杀！ '
+  # 小贴士提示(游戏开始时会在物品栏上方显示几秒)
+  game-start-tips:
+    - '§a§l小贴士: §f§l保护III往往比只有个钻套好'
+    - '§a§l小贴士: §f§l潜行并且抬头90度可以提醒队友我们的床有危险'
+    - '§a§l小贴士: §f§l火焰弹跳起来后击退会更高!'
+    - '§a§l小贴士: §f§l屁眼烟花不仅可以自救, 还可以当自爆炸弹'
+    - '§a§l小贴士: §f§l如果床没了可以使用回春床恢复, 但一把只能使用一次'
+    - '§a§l小贴士: §f§l经验模式玩家优势往往会高于实体资源模式的玩家'
+    - '§a§l小贴士: §f§l尽量别再资源点旁边PVP, 全息可能会挡住你!'
+    - '§a§l小贴士: §f§l陷阱的效果往往比地雷的效果更佳'
+    - '§a§l小贴士: §f§l用3个火球可以实现2段跳呀, 不过有冷却就不行了'
+    - '§a§l小贴士: §f§l开局5-10分钟内买熔炉至III级以上, 可以在后期带来一定的优势!'
+    - '§a§l小贴士: §f§l当你掉落虚空过程中使用了救援平台且位置过低不易上去, 可以使用回城卷轴回去!'
+    - '§a§l小贴士: §f§l追踪指南针可以追踪到距离你最近的其他队伍的玩家!'
+    - '§a§l小贴士: §f§l用1层羊毛守家不是好的选择!'
+  # 队伍追踪(自己队伍的)
+  team-tracking-actionbar: '§f队伍: {team_color}{team_name} §f追踪: {team_color}{tracking}m'
+  # 指南针追踪
+  compass-actionbar: '§f队伍: {team_color}{team_name} §f玩家: {team_color}{player} §f追踪: {team_color}{tracking}m'
+  # 队伍箱子提示
+  team-chast-notismyteam: "§c该队伍未被淘汰, 你不能打开这个队伍的箱子! "
+  # 商店名字
+  shop-item-name: '§e§l物品商店'
+  shop-update-name: '§b§l队伍升级'
+  # 蠹虫/梦幻守卫 NameTag
+  entity-silverfish-nametag: '{team_color}{team_name} 蠹虫 §7- §e{timer_sec}{timer_progress}'
+  entity-dreamguard-nametag: '{team_color}{team_name} 梦幻守卫 §e{timer_sec}{timer_progress}'
+  # 指令部分
+  command-notin-whitelist: "§c在游戏中你不能执行该指令! "
+  command-bwstart-done: "§e你已缩短游戏倒计时, 祝君游戏愉快!"
+  command-bwstart-nopermissions: "§7你没有权限使用该功能, 你可以通过赞助获得权限"
+  command-nopermissions: "§c你没有权限使用这个指令! "
+  # 物品商店部分 物品名称变量:{item}
+  shop-buy-yes: "§a你已购买 §6{item}"
+  shop-buy-no: "§c你没有足够的资源购买该物品!"
+  shop-buy-ed: "§c你已经购买过或者已经有更高级的了"
+  # 队伍升级部分 购买类型{type} 购买玩家名称{player}
+  update-buy-me: "§a{player}购买了 §6{type} "
+  update-buy-team: "§a{player}购买了 §6{type} "
+  update-buy-no: "§c你没有足够的资源购买!"
+  update-buy-max: "§c{item} 已经满级了!"
+  # 地图方块/方块区域保护
+  block-saferegion: "§c你不能在这里放置方块! "
+  block-map: "§c你只能破坏玩家放置的方块! "
+  # 床无敌部分
+  bed-invincibility-start-chat: "§c床无敌时间将持续§e2§c分钟! "
+  bed-invincibility-start-title: "§b§l床无敌时间"
+  bed-invincibility-start-subtitle: "§f保护你队伍的床, §f将会持续2分钟 "
+  bed-invincibility-end-chat: "§c床无敌时间结束,现在你可以摧毁敌人的床了! "
+  bed-invincibility-end-title: "§c§l床无敌结束!"
+  bed-invincibility-end-subtitle: "§f保护你队伍的床, 现在你可以摧毁敌人的床了 "
+
+
+# 音效设置
+sound:
+  # 重生音效
+  # 不支持自定义
+  respawn:
+    enable: true
+  # 加入游戏(自己听到的)
+  join-me:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 加入游戏(其他玩家听到的)
+  join-players:
+    type: LEVEL_UP
+    volume: 0
+    pitch: 1.0
+  # 物品商店部分
+  shop-open:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  shop-switch:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  shop-buy-yes:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  shop-buy-no:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 队伍升级部分
+  update-open:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  update-buy-no:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  update-buy-me:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  update-buy-team:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 倒计时部分
+  game-countdown:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 游戏开始
+  game-countdown-start:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 游戏即将开始部分(如果开启了即将开始倒计时标题，倒计时完毕会先播放game-countdown-start再播放game-start-ts0音效)
+  game-start-ts5:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  game-start-ts4:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  game-start-ts3:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  game-start-ts2:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  game-start-ts1:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  game-start-ts0:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 拆床音效
+  bed-destroy-team:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  bed-destroy-all:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  bed-destroy-me:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 回春床部分
+  respawnbed-me:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  respawnbed-team:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  respawnbed-all:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 队伍淘汰
+  team-annihilation:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 队伍选择部分(关闭了选择可以忽略)
+  teamsel-open:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  teamsel-set:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  teamsel-clear:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 资源模式选择(关闭了选择可以忽略)
+  bwim-open:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  bwim-set:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 资源拾起部分(0为实体资源, 1为经验资源)
+  resitem-pickup-bwim0:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  resitem-pickup-bwim1:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 击杀音效
+  killer-sound:
+    - ORB_PICKUP, 10, 1.0
+  # 游戏结束
+  game-end:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0
+  # 队友床危险声音
+  bed-danger-title:
+    type: LEVEL_UP
+    volume: 10
+    pitch: 1.0

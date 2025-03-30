@@ -1,0 +1,12 @@
+name: CreeperStarBedwars
+version: '1.0'
+main: cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars
+load: STARTUP
+author: Xiaol789zxc
+
+softdepend: [ProtocolLib, My_Worlds, NameTagEdit, PlaceholderAPI]
+folia-supported: false
+
+commands:
+  bw:
+    description: CreeperStarBedwars Plugin Command.

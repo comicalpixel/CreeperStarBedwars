@@ -1,0 +1,212 @@
+# CreeperStarBedwars by Xiaol789zxc. https://comicalpixel.github.io
+# ComicalPixel Network 2023-2025
+# LanternMC Network 2021-2025
+#
+# Shop.yml ItemShop
+
+GUI:
+  # 快捷购买
+  gui-quickshop:
+    title: '§7物品商店 - 快捷购买'
+    icon:
+      - ==: org.bukkit.inventory.ItemStack
+        type: NETHER_STAR
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a快捷购买'
+          lore:
+            - '§e单击打开'
+    # 默认的物品
+    def-items:
+      - null
+  gui-1:
+    title: '§7物品商店 - 方块商店'
+    icon:
+      - ==: org.bukkit.inventory.ItemStack
+        type: STAINED_CLAY
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a方块商店'
+          lore:
+            - '§e单击打开'
+    # 该分区的所有物品
+    items:
+      - null
+  gui-2:
+    title: '§7物品商店 - 近战武器'
+    icon:
+      - ==: org.bukkit.inventory.ItemStack
+        type: GOLD_SWORD
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a近战武器'
+          lore:
+            - '§e单击打开'
+    # 该分区的所有物品
+    items:
+      - null
+  gui-3:
+    title: '§7物品商店 - 护甲商店'
+    icon:
+      - ==: org.bukkit.inventory.ItemStack
+        type: IRON_BOOTS
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a护甲商店'
+          lore:
+            - '§e单击打开'
+    # 该分区的所有物品
+    items:
+      - null
+  gui-4:
+    title: '§7物品商店 - 工具商店'
+    icon:
+      - ==: org.bukkit.inventory.ItemStack
+        type: STONE_PICKAXE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a工具商店'
+          lore:
+            - '§e单击打开'
+    # 该分区的所有物品
+    items:
+      - null
+  gui-5:
+    title: '§7物品商店 - 远程武器'
+    icon:
+      - ==: org.bukkit.inventory.ItemStack
+        type: BOW
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a远程武器'
+          lore:
+            - '§e单击打开'
+    # 该分区的所有物品
+    items:
+      - null
+  gui-6:
+    title: '§7物品商店 - 药水商店'
+    icon:
+      - ==: org.bukkit.inventory.ItemStack
+        type: BREWING_STAND_ITEM
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a药水商店'
+          lore:
+            - '§e单击打开'
+    # 该分区的所有物品
+    items:
+      - null
+  gui-7:
+    title: '§7物品商店 - 食物商店'
+    icon:
+      - ==: org.bukkit.inventory.ItemStack
+        type: COOKED_BEEF
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a食物商店'
+          lore:
+            - '§e单击打开'
+    # 该分区的所有物品
+    items:
+      - null
+  gui-8:
+    title: '§7物品商店 - 道具商店'
+    icon:
+      - ==: org.bukkit.inventory.ItemStack
+        type: TNT
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a道具商店'
+          lore:
+            - '§e单击打开'
+    # 该分区的所有物品
+    items:
+      - null
+
+
+# 所有物品
+# 添加到菜单中仅需要将物品编号写到gui的items中即可
+Items:
+   # 示例
+   # 物品编号
+#    test:
+#      # 商店菜单显示的
+#      gui-item:
+#        # 普通资源模式显示的
+#        i:
+#          - ==: org.bukkit.inventory.ItemStack
+#            type: WOOL
+#            damage: 0
+#            amount: 16
+#            meta:
+#              ==: ItemMeta
+#              meta-type: UNSPECIFIC
+#              display-name: '§3羊毛'
+#              lore:
+#                - '§7物品:'
+#                - '§8● 羊毛'
+#                - ' '
+#                - '§7花费:§3 4铁'
+#        # 经验资源模式显示的
+#        xp:
+#          - ==: org.bukkit.inventory.ItemStack
+#            type: WOOL
+#            damage: 0
+#            amount: 16
+#            meta:
+#              ==: ItemMeta
+#              meta-type: UNSPECIFIC
+#              display-name: '§3羊毛'
+#              lore:
+#                - '§7物品:'
+#                - '§8● 羊毛'
+#                - ' '
+#                - '§7花费:§3 4级'
+#      # 花费
+#      cost:
+#        # 普通模式
+#        type: IRON
+#        amount: 4
+#        # 经验模式
+#        xp: 4
+#      # 购买后得到的物品
+#      buy-item:
+#        - ==: org.bukkit.inventory.ItemStack
+#          type: WOOL
+#          damage: 0
+#          amount: 16
+#          meta:
+#            ==: ItemMeta
+#            meta-type: UNSPECIFIC
+#            display-name: '§a羊毛'
+#            lore:
+#              - '§e单击打开'
+

@@ -1,0 +1,11 @@
+cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars.class
+cn\comicalpixel\creeperstarbedwars\Arena\Stats\GameStats.class
+cn\comicalpixel\creeperstarbedwars\Config\Data\ConfigData_sounds.class
+cn\comicalpixel\creeperstarbedwars\Config\Data\ConfigData_shop.class
+cn\comicalpixel\creeperstarbedwars\Listener\JoinPluginCheck.class
+cn\comicalpixel\creeperstarbedwars\Config\Data\ConfigData_update.class
+cn\comicalpixel\creeperstarbedwars\Arena\Arena.class
+cn\comicalpixel\creeperstarbedwars\Utils\ConfigUtils.class
+cn\comicalpixel\creeperstarbedwars\Config\ConfigData.class
+cn\comicalpixel\creeperstarbedwars\Config\ShopConfig.class
+cn\comicalpixel\creeperstarbedwars\Config\GameConfig.class

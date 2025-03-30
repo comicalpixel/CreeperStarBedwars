@@ -1,0 +1,65 @@
+setup: true
+map-name: MapName
+map-author: Public
+minplayers: 2
+maxplayers: 8
+lobby: null
+spec: null
+map-center: null
+map-radius: 300
+teamchest-radius: 15
+teams:
+  - RED
+  - BLUE
+  - GREEN
+  - YELLOW
+  - PINK
+  - AQUA
+  - GRAY
+  - WHITE
+generator:
+  emerald:
+    - null
+  diamond:
+    - null
+team-red:
+  spawn: null
+  generator: null
+  bed-f: null
+  bed-b: null
+team-blue:
+  spawn: null
+  generator: null
+  bed-f: null
+  bed-b: null
+team-green:
+  spawn: null
+  generator: null
+  bed-f: null
+  bed-b: null
+team-yellow:
+  spawn: null
+  generator: null
+  bed-f: null
+  bed-b: null
+team-pink:
+  spawn: null
+  generator: null
+  bed-f: null
+  bed-b: null
+team-aqua:
+  spawn: null
+  generator: null
+  bed-f: null
+  bed-b: null
+team-gray:
+  spawn: null
+  generator: null
+  bed-f: null
+  bed-b: null
+team-white:
+  spawn: null
+  generator: null
+  bed-f: null
+  bed-b: null
+
