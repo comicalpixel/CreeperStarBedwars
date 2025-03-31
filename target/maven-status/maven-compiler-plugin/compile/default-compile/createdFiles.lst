@@ -7,5 +7,6 @@ cn\comicalpixel\creeperstarbedwars\Config\Data\ConfigData_update.class
 cn\comicalpixel\creeperstarbedwars\Arena\Arena.class
 cn\comicalpixel\creeperstarbedwars\Utils\ConfigUtils.class
 cn\comicalpixel\creeperstarbedwars\Config\ConfigData.class
+cn\comicalpixel\creeperstarbedwars\Command\MainCommand.class
 cn\comicalpixel\creeperstarbedwars\Config\ShopConfig.class
 cn\comicalpixel\creeperstarbedwars\Config\GameConfig.class

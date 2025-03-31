@@ -833,11 +833,11 @@ language:
   update-buy-max: "§c{item} 已经满级了!"
   # 地图方块/方块区域保护
   block-saferegion: "§c你不能在这里放置方块! "
-  block-map: "§c你只能破坏玩家放置的方块! "
+  block-map-break: "§c你只能破坏玩家放置的方块! "
   # 床无敌部分
   bed-invincibility-start-chat: "§c床无敌时间将持续§e2§c分钟! "
   bed-invincibility-start-title: "§b§l床无敌时间"
-  bed-invincibility-start-subtitle: "§f保护你队伍的床, §f将会持续2分钟 "
+  bed-invincibility-start-subtitle: "§f该模式将会持续2分钟 "
   bed-invincibility-end-chat: "§c床无敌时间结束,现在你可以摧毁敌人的床了! "
   bed-invincibility-end-title: "§c§l床无敌结束!"
   bed-invincibility-end-subtitle: "§f保护你队伍的床, 现在你可以摧毁敌人的床了 "
