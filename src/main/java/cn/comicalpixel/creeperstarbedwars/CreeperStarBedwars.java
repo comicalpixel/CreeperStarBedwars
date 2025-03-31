@@ -1,5 +1,6 @@
 package cn.comicalpixel.creeperstarbedwars;
 
+import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Listener.JoinPluginCheck;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
@@ -34,10 +35,12 @@ public final class CreeperStarBedwars extends JavaPlugin {
                 "\n " +
                 "Minecraft Version: " + Bukkit.getVersion() + "\n " +
                 "\n " );
+        // 检查是否非folia
         if (Bukkit.getVersion().contains("folia")) {
             Bukkit.getLogger().warning("CreeperStarBedwars does not support folia, please use version 1.8.8 of CraftBukkit or Spigot or Paper server kernel!");
             this.getPluginLoader().disablePlugin(this);
         }
+
 //        Bukkit.getLogger().info(" ");
 //        Bukkit.getLogger().info("CreeperStarBedwars Plugin.");
 //        Bukkit.getLogger().info("Author: Xiaol789zxc");
@@ -46,11 +49,28 @@ public final class CreeperStarBedwars extends JavaPlugin {
 //        Bukkit.getLogger().info("Minecraft Version: " + Bukkit.getVersion());
 //        Bukkit.getLogger().info("");
 
+        // 指令部分
+        getCommand("bw").setExecutor(new MainCommand());
+        getCommand("csbw").setExecutor(new MainCommand());
+        getCommand("cbw").setExecutor(new MainCommand());
+        getCommand("creeperstarbedwars").setExecutor(new MainCommand());
 
         // 检查必要的前置是否齐全
         // 不齐全会阻止加入且提示缺失哪些必要前置(仅op提示插件详情)
         JoinPluginCheck.check();
         getServer().getPluginManager().registerEvents(new JoinPluginCheck(), this);
+
+
+
+        /**/
+
+
+
+
+
+
+
+
 
         // 加载配置文件
         saveDefaultConfig();
@@ -311,9 +331,104 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.language_bed_destroy_all_title = ConfigUtils.getString(config, "language.bed-destroy-all-title");
         ConfigData.language_bed_destroy_all_subtitle = ConfigUtils.getString(config, "language.bed-destroy-all-subtitle");
 
+        ConfigData.language_bed_respawn_chat = ConfigUtils.getString(config, "language.bed-respawn-chat");
+        ConfigData.language_bed_respawn_team_title = ConfigUtils.getString(config, "language.bed-respawn-team-title");
+        ConfigData.language_bed_respawn_team_subtitle = ConfigUtils.getString(config, "language.bed-respawn-team-subtitle");
+        ConfigData.language_bed_respawn_all_title = ConfigUtils.getString(config, "language.bed-respawn-all-title");
+        ConfigData.language_bed_respawn_all_subtitle = ConfigUtils.getString(config, "language.bed-respawn-all-subtitle");
+
+        ConfigData.language_team_annihilation_chat = ConfigUtils.getString(config, "language.team-annihilation-chat");
+
+        ConfigData.language_bed_sleep_chat = ConfigUtils.getString(config, "language.bed-sleep");
+
+        ConfigData.language_game_countdown_InsufficientPlayers_title = ConfigUtils.getString(config, "language.game-countdown-InsufficientPlayers-title");
+        ConfigData.language_game_countdown_InsufficientPlayers_subtitle = ConfigUtils.getString(config, "language.game-countdown-InsufficientPlayers-subtitle");
+        ConfigData.language_game_countdown_InsufficientPlayers_chat = ConfigUtils.getString(config, "language.game-countdown-InsufficientPlayers-chat");
+        ConfigData.language_game_countdown_other_title = ConfigUtils.getString(config, "language.game-countdown-other-title");
+        ConfigData.language_game_countdown_other_subtitle = ConfigUtils.getString(config, "language.game-countdown-other-subtitle");
+        ConfigData.language_game_countdown_chat = ConfigUtils.getString(config, "language.game-countdown-chat");
+
+        ConfigData.language_game_lobby_actionbar = ConfigUtils.getString(config, "language.game-lobby-actionbar");
+
+        ConfigData.language_bwim_i_name = ConfigUtils.getString(config, "language.game-bwim-i");
+        ConfigData.language_bwim_xp_name = ConfigUtils.getString(config, "language.game-bwim-xp");
+
+        ConfigData.language_sidebarboard_team_ismyteam = ConfigUtils.getString(config, "language.sidebarboard.team-ismyteam");
+        ConfigData.language_sidebarboard_team_hasbed = ConfigUtils.getString(config, "language.sidebarboard.team-hasbed");
+        ConfigData.language_sidebarboard_team_notbed = ConfigUtils.getString(config, "language.sidebarboard.team-notbed");
+        ConfigData.language_sidebarboard_team_message = ConfigUtils.getString(config, "language.sidebarboard.team-message");
+
+        ConfigData.language_sidebarboard_list_lobby_waiting = ConfigUtils.getStringList(config, "language.sidebarboard.lobby.waiting");
+        ConfigData.language_sidebarboard_list_lobby_countdown = ConfigUtils.getStringList(config, "language.sidebarboard.lobby.countdown");
+        ConfigData.language_sidebarboard_list_playing_player = ConfigUtils.getStringList(config, "language.sidebarboard.game.player");
+        ConfigData.language_sidebarboard_list_playing_spec = ConfigUtils.getStringList(config, "language.sidebarboard.game.spec");
+
+        ConfigData.language_game_end_winner_title = ConfigUtils.getString(config, "language.game-end-winner-title");
+        ConfigData.language_game_end_winner_subtitle = ConfigUtils.getString(config, "language.game-end-winner-subtitle");
+        ConfigData.language_game_end_loser_title = ConfigUtils.getString(config, "language.game-end-loser-title");
+        ConfigData.language_game_end_loser_subtitle = ConfigUtils.getString(config, "language.game-end-loser-subtitle");
+        ConfigData.language_game_end_stalemate_title = ConfigUtils.getString(config, "language.game-end-stalemate-title");
+        ConfigData.language_game_end_stalemate_subtitle = ConfigUtils.getString(config, "language.game-end-stalemate-subtitle");
+
+        ConfigData.language_respawn_respawning_title = ConfigUtils.getString(config, "language.respawn-respawning-title");
+        ConfigData.language_respawn_respawning_subtitle = ConfigUtils.getString(config, "language.respawn-respawning-subtitle");
+        ConfigData.language_respawn_respawning_chat = ConfigUtils.getString(config, "language.respawn-respawning-chat");
+        ConfigData.language_respawn_respawn_title = ConfigUtils.getString(config, "language.respawn-respawn-title");
+        ConfigData.language_respawn_respawn_subtitle = ConfigUtils.getString(config, "language.respawn-respawn-subtitle");
+        ConfigData.language_respawn_eliminated_title = ConfigUtils.getString(config, "language.respawn-eliminated-title");
+        ConfigData.language_respawn_eliminated_subtitle = ConfigUtils.getString(config, "language.respawn-eliminated-subtitle");
+        ConfigData.language_respawn_eliminated_chat = ConfigUtils.getString(config, "language.respawn-eliminated-chat");
+
+        ConfigData.language_playerdie_byplayer = ConfigUtils.getString(config, "language.playerdie-player");
+        ConfigData.language_playerdie_void = ConfigUtils.getString(config, "language.playerdie-void");
+        ConfigData.language_playerdie_out = ConfigUtils.getString(config, "language.playerdie-out");
+        ConfigData.language_playerdie_fall = ConfigUtils.getString(config, "language.playerdie-fall");
+        ConfigData.language_playerdie_boom = ConfigUtils.getString(config, "language.playerdie-boom");
+        ConfigData.language_playerdie_shoot = ConfigUtils.getString(config, "language.playerdie-shoot");
+        ConfigData.language_playerdie_none = ConfigUtils.getString(config, "language.playerdie-null");
+        ConfigData.language_playerdie_killme = ConfigUtils.getString(config, "language.playerdie-killme");
+        ConfigData.language_playerdie_killer_ = ConfigUtils.getString(config, "language.playerdie-killer");
+        ConfigData.language_playerdie_final_ = ConfigUtils.getString(config, "language.playerdie-final");
+
+        ConfigData.language_game_start_tips_actionbar = ConfigUtils.getStringList(config, "language.game-start-tips");
+
+        ConfigData.language_team_tracking_actionbar = ConfigUtils.getString(config, "language.team-tracking-actionbar");
+
+        ConfigData.language_compass_tracking_actionbar = ConfigUtils.getString(config, "language.compass-actionbar");
+
+        ConfigData.language_teamchest_notismyteam = ConfigUtils.getString(config, "language.team-chast-notismyteam");
+
+        ConfigData.language_shopgui_item_name = ConfigUtils.getString(config, "language.shop-item-name");
+        ConfigData.language_shopgui_update_name = ConfigUtils.getString(config, "language.shop-update-name");
+
+        ConfigData.language_entity_silverfish_nametag = ConfigUtils.getString(config, "language.entity-silverfish-nametag");
+        ConfigData.language_entity_dreamguard_nametag = ConfigUtils.getString(config, "language.entity-dreamguard-nametag");
+
+        ConfigData.language_command_notin_whitelist = ConfigUtils.getString(config, "language.command-notin-whitelist");
+        ConfigData.language_command_bwstart_done = ConfigUtils.getString(config, "language.command-bwstart-done");
+        ConfigData.language_command_bwstart_nopermissions = ConfigUtils.getString(config, "language.command-bwstart-nopermissions");
+        ConfigData.language_command_nopermissions = ConfigUtils.getString(config, "language.command-nopermissions");
+
+        ConfigData.language_shop_buy_yes = ConfigUtils.getString(config, "language.shop-buy-yes");
+        ConfigData.language_shop_buy_no = ConfigUtils.getString(config, "language.shop-buy-no");
+        ConfigData.language_shop_buy_ed = ConfigUtils.getString(config, "language.shop-buy-ed");
+
+        ConfigData.language_update_buy_me = ConfigUtils.getString(config, "language.update-buy-me");
+        ConfigData.language_update_buy_team = ConfigUtils.getString(config, "language.update-buy-team");
+        ConfigData.language_update_buy_no = ConfigUtils.getString(config, "language.update-buy-no");
+        ConfigData.language_update_buy_max = ConfigUtils.getString(config, "language.update-buy-max");
 
 
+        ConfigData.language_block_saferegion = ConfigUtils.getString(config, "language.block-saferegion");
+        ConfigData.language_block_map_break = ConfigUtils.getString(config, "language.block-map-break");
 
+
+        ConfigData.language_bed_invincibility_start_title = ConfigUtils.getString(config, "language.bed-invincibility-start-title");
+        ConfigData.language_bed_invincibility_start_subtitle = ConfigUtils.getString(config, "language.bed-invincibility-start-subtitle");
+        ConfigData.language_bed_invincibility_start_chat = ConfigUtils.getString(config, "language.bed-invincibility-start-chat");
+        ConfigData.language_bed_invincibility_end_title = ConfigUtils.getString(config, "language.bed-invincibility-end-title");
+        ConfigData.language_bed_invincibility_end_subtitle = ConfigUtils.getString(config, "language.bed-invincibility-end-subtitle");
+        ConfigData.language_bed_invincibility_end_chat = ConfigUtils.getString(config, "language.bed-invincibility-end-chat");
 
     }
 

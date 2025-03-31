@@ -9,4 +9,12 @@ folia-supported: false
 
 commands:
   bw:
-    description: CreeperStarBedwars Plugin Command.
+    description: CreeperStarBedwars Main Command.
+  csbw:
+    description: CreeperStarBedwars Main Command.
+  cbw:
+    description: CreeperStarBedwars Main Command.
+  creeperstarbedwars:
+    description: CreeperStarBedwars Main Command.
+  setup:
+    description: CreeperStarBedwars game setup command.
