@@ -63,7 +63,10 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
 
         /**/
+<<<<<<< HEAD
         new CBW_KT_Main();
+=======
+>>>>>>> f9a8065148934559c1e2409bebad79c2ef25068a
 
 
 
