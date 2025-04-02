@@ -1,8 +1,11 @@
 package cn.comicalpixel.creeperstarbedwars;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
+import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
 import cn.comicalpixel.creeperstarbedwars.Listener.JoinPluginCheck;
+import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,6 +16,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class CreeperStarBedwars extends JavaPlugin {
 
     public static CreeperStarBedwars Instance;
+    public static CreeperStarBedwars getInstance() {return Instance;}
+    public static CreeperStarBedwars getPlugin() {return Instance;}
+
+    private GameConfig gameConfig;
+    public GameConfig getGameConfig() {return gameConfig;}
 
     @Override
     public void onEnable() {
@@ -61,10 +69,20 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinPluginCheck(), this);
 
 
+        // 加载配置文件
+        saveDefaultConfig();
+        CreeperStarBedwars.Instance.load_config();
+
+        // 加载游戏配置文件
+        gameConfig = new GameConfig(this,"game.yml");
+        loadGameConfig();
+
 
         /**/
         new CBW_KT_Main();
 
+        // 游戏倒计时
+        new Game_Countdown_Task();
 
 
 
@@ -74,9 +92,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
 
 
-        // 加载配置文件
-        saveDefaultConfig();
-        CreeperStarBedwars.Instance.load_config();
+
+
 
     }
 
@@ -432,6 +449,15 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.language_bed_invincibility_end_subtitle = ConfigUtils.getString(config, "language.bed-invincibility-end-subtitle");
         ConfigData.language_bed_invincibility_end_chat = ConfigUtils.getString(config, "language.bed-invincibility-end-chat");
 
+    }
+    public void loadGameConfig() {
+        // 检查是否为setup模式
+        if (gameConfig.getBoolean("setup")) {
+            GameStats.set(0);
+            return;
+        } else {
+            GameStats.set(1);
+        }
     }
 
 }

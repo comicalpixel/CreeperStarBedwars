@@ -9,7 +9,7 @@ import org.bukkit.Bukkit
 class CBW_KT_Main {
     fun CBW_KT_Main() {
 
-        Bukkit.getServer().pluginManager.registerEvents(null, CreeperStarBedwars.Instance)
+        // kkit.getServer().pluginManager.registerEvents(null, CreeperStarBedwars.Instance)
 
     }
 }
