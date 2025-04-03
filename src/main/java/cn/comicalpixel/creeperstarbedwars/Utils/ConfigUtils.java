@@ -1,8 +1,6 @@
 package cn.comicalpixel.creeperstarbedwars.Utils;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -132,6 +130,35 @@ public class ConfigUtils {
         List<Double> NL = new ArrayList<>();
         NL.add(null);
         return NL;
+    }
+
+    // 获取Bukkit的Location, 格式: world, x, y, z, yaw, pitch
+    public static Location getLocation(FileConfiguration config, String path) {
+        if (config.getString(path) != null) {
+            String locationString = config.getString(path);
+            World world = Bukkit.getWorld(locationString.split(",")[0]);
+            double x = Double.parseDouble(locationString.split(",")[1]);
+            double y = Double.parseDouble(locationString.split(",")[2]);
+            double z = Double.parseDouble(locationString.split(",")[3]);
+            double yaw = Double.parseDouble(locationString.split(",")[4]);
+            double pitch = Double.parseDouble(locationString.split(",")[5]);
+            return new Location(world, x, y, z, (float) yaw, (float) pitch);
+        }
+        return null;
+    }
+
+    // 获取Block的Location, 没有方向
+    // 给xy轴添加0.5实现出现原版的位置偏差(不加0.5就是方块的边缘的角落, 加了0.5就是在方块的中心)
+    public static Location getBlockLocation(FileConfiguration config, String path) {
+        if (config.getString(path) != null) {
+            String locationString = config.getString(path);
+            World world = Bukkit.getWorld(locationString.split(",")[0]);
+            int x = Integer.parseInt(locationString.split(",")[1]);
+            int y = Integer.parseInt(locationString.split(",")[2]);
+            int z = Integer.parseInt(locationString.split(",")[3]);
+            return new Location(world, x +0.5, y, z +0.5); /**/
+        }
+        return null;
     }
 
 

@@ -8,6 +8,11 @@ spec: null
 map-center: null
 map-radius: 300
 teamchest-radius: 15
+generator:
+  emerald:
+    - null
+  diamond:
+    - null
 teams:
   - RED
   - BLUE
@@ -17,11 +22,6 @@ teams:
   - AQUA
   - GRAY
   - WHITE
-generator:
-  emerald:
-    - null
-  diamond:
-    - null
 team-players: 1
 team-red:
   name: '红'

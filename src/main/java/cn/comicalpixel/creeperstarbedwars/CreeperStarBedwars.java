@@ -1,5 +1,6 @@
 package cn.comicalpixel.creeperstarbedwars;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
@@ -451,13 +452,112 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
     }
     public void loadGameConfig() {
+
         // 检查是否为setup模式
         if (gameConfig.getBoolean("setup")) {
             GameStats.set(0);
+            Bukkit.getLogger().info("The current mode is detected as SETUP; only administrators can join and edit the game. ");
+            Bukkit.getLogger().info("If you need to disable setup mode, please set the \"setup\" option in game.yml to \"false.\"");
             return;
         } else {
             GameStats.set(1);
         }
+
+        GameData_cfg.map_name = gameConfig.getString("map-name");
+        GameData_cfg.map_author = gameConfig.getString("map-author");
+        GameData_cfg.minPlayers = gameConfig.getInt("minplayers");
+        GameData_cfg.maxPlayers = gameConfig.getInt("maxplayers");
+        GameData_cfg.lobby_loc = ConfigUtils.getLocation(gameConfig, "lobby");
+        GameData_cfg.spec_loc = ConfigUtils.getLocation(gameConfig, "spec");
+        GameData_cfg.mapCenter_loc = ConfigUtils.getBlockLocation(gameConfig, "map-center");
+        GameData_cfg.mapCenter_radius = gameConfig.getInt("map-radius");
+        GameData_cfg.teamChest_radius = gameConfig.getInt("teamchest-radius");
+        if (gameConfig.getStringList("generator.diamond") != null) {
+            for (String s : ConfigUtils.getStringList(gameConfig, "generator.diamond")) {
+                GameData_cfg.gameGenerator_diamond_locs.add(ConfigUtils.getBlockLocation(gameConfig, s));
+            }
+        } else {
+            Bukkit.getLogger().warning("GameConfig game.yml, generator.diamond == null !!");
+        }
+        if (gameConfig.getStringList("generator.emerald") != null) {
+            for (String s : ConfigUtils.getStringList(gameConfig, "generator.emerald")) {
+                GameData_cfg.gameGenerator_emerald_locs.add(ConfigUtils.getBlockLocation(gameConfig, s));
+            }
+        } else {
+            Bukkit.getLogger().warning("GameConfig game.yml, generator.emerald == null !!");
+        }
+        if (gameConfig.getStringList("teams") != null) {
+            for (String s : ConfigUtils.getStringList(gameConfig, "teams")) {
+                GameData_cfg.teams_list.add(s);
+            }
+        } else {
+            Bukkit.getLogger().warning("GameConfig game.yml, teams == null !! NoneTeams!");
+        }
+        if (gameConfig.getStringList("teams").contains("RED")) {
+            GameData_cfg.team_red_name = ConfigUtils.getString(gameConfig, "team-red.name");
+            GameData_cfg.team_red_chatcolor = ConfigUtils.getString(gameConfig, "team-red.color");
+            GameData_cfg.team_red_spawn = ConfigUtils.getLocation(gameConfig, "team-red.spawn");
+            GameData_cfg.team_red_generator = ConfigUtils.getBlockLocation(gameConfig, "team-red.generator");
+            GameData_cfg.team_red_bed_f = ConfigUtils.getBlockLocation(gameConfig, "team-red.bed-f");
+            GameData_cfg.team_red_bed_b = ConfigUtils.getBlockLocation(gameConfig, "team-red.bed-b");
+        }
+        if (gameConfig.getStringList("teams").contains("BLUE")) {
+            GameData_cfg.team_blue_name = ConfigUtils.getString(gameConfig, "team-blue.name");
+            GameData_cfg.team_blue_chatcolor = ConfigUtils.getString(gameConfig, "team-blue.color");
+            GameData_cfg.team_blue_spawn = ConfigUtils.getLocation(gameConfig, "team-blue.spawn");
+            GameData_cfg.team_blue_generator = ConfigUtils.getBlockLocation(gameConfig, "team-blue.generator");
+            GameData_cfg.team_blue_bed_f = ConfigUtils.getBlockLocation(gameConfig, "team-blue.bed-f");
+            GameData_cfg.team_blue_bed_b = ConfigUtils.getBlockLocation(gameConfig, "team-blue.bed-b");
+        }
+        if (gameConfig.getStringList("teams").contains("GREEN")) {
+            GameData_cfg.team_green_name = ConfigUtils.getString(gameConfig, "team-green.name");
+            GameData_cfg.team_green_chatcolor = ConfigUtils.getString(gameConfig, "team-green.color");
+            GameData_cfg.team_green_spawn = ConfigUtils.getLocation(gameConfig, "team-green.spawn");
+            GameData_cfg.team_green_generator = ConfigUtils.getBlockLocation(gameConfig, "team-green.generator");
+            GameData_cfg.team_green_bed_f = ConfigUtils.getBlockLocation(gameConfig, "team-green.bed-f");
+            GameData_cfg.team_green_bed_b = ConfigUtils.getBlockLocation(gameConfig, "team-green.bed-b");
+        }
+        if (gameConfig.getStringList("teams").contains("YELLOW")) {
+            GameData_cfg.team_yellow_name = ConfigUtils.getString(gameConfig, "team-yellow.name");
+            GameData_cfg.team_yellow_chatcolor = ConfigUtils.getString(gameConfig, "team-yellow.color");
+            GameData_cfg.team_yellow_spawn = ConfigUtils.getLocation(gameConfig, "team-yellow.spawn");
+            GameData_cfg.team_yellow_generator = ConfigUtils.getBlockLocation(gameConfig, "team-yellow.generator");
+            GameData_cfg.team_yellow_bed_f = ConfigUtils.getBlockLocation(gameConfig, "team-yellow.bed-f");
+            GameData_cfg.team_yellow_bed_b = ConfigUtils.getBlockLocation(gameConfig, "team-yellow.bed-b");
+        }
+        if (gameConfig.getStringList("teams").contains("PINK")) {
+            GameData_cfg.team_pink_name = ConfigUtils.getString(gameConfig, "team-pink.name");
+            GameData_cfg.team_pink_chatcolor = ConfigUtils.getString(gameConfig, "team-pink.color");
+            GameData_cfg.team_pink_spawn = ConfigUtils.getLocation(gameConfig, "team-pink.spawn");
+            GameData_cfg.team_pink_generator = ConfigUtils.getBlockLocation(gameConfig, "team-pink.generator");
+            GameData_cfg.team_pink_bed_f = ConfigUtils.getBlockLocation(gameConfig, "team-pink.bed-f");
+            GameData_cfg.team_pink_bed_b = ConfigUtils.getBlockLocation(gameConfig, "team-pink.bed-b");
+        }
+        if (gameConfig.getStringList("teams").contains("AQUA")) {
+            GameData_cfg.team_aqua_name = ConfigUtils.getString(gameConfig, "team-aqua.name");
+            GameData_cfg.team_aqua_chatcolor = ConfigUtils.getString(gameConfig, "team-aqua.color");
+            GameData_cfg.team_aqua_spawn = ConfigUtils.getLocation(gameConfig, "team-aqua.spawn");
+            GameData_cfg.team_aqua_generator = ConfigUtils.getBlockLocation(gameConfig, "team-aqua.generator");
+            GameData_cfg.team_aqua_bed_f = ConfigUtils.getBlockLocation(gameConfig, "team-aqua.bed-f");
+            GameData_cfg.team_aqua_bed_b = ConfigUtils.getBlockLocation(gameConfig, "team-aqua.bed-b");
+        }
+        if (gameConfig.getStringList("teams").contains("GRAY")) {
+            GameData_cfg.team_gray_name = ConfigUtils.getString(gameConfig, "team-gray.name");
+            GameData_cfg.team_gray_chatcolor = ConfigUtils.getString(gameConfig, "team-gray.color");
+            GameData_cfg.team_gray_spawn = ConfigUtils.getLocation(gameConfig, "team-gray.spawn");
+            GameData_cfg.team_gray_generator = ConfigUtils.getBlockLocation(gameConfig, "team-gray.generator");
+            GameData_cfg.team_gray_bed_f = ConfigUtils.getBlockLocation(gameConfig, "team-gray.bed-f");
+            GameData_cfg.team_gray_bed_b = ConfigUtils.getBlockLocation(gameConfig, "team-gray.bed-b");
+        }
+        if (gameConfig.getStringList("teams").contains("WHITE")) {
+            GameData_cfg.team_white_name = ConfigUtils.getString(gameConfig, "team-white.name");
+            GameData_cfg.team_white_chatcolor = ConfigUtils.getString(gameConfig, "team-white.color");
+            GameData_cfg.team_white_spawn = ConfigUtils.getLocation(gameConfig, "team-white.spawn");
+            GameData_cfg.team_white_generator = ConfigUtils.getBlockLocation(gameConfig, "team-white.generator");
+            GameData_cfg.team_white_bed_f = ConfigUtils.getBlockLocation(gameConfig, "team-white.bed-f");
+            GameData_cfg.team_white_bed_b = ConfigUtils.getBlockLocation(gameConfig, "team-white.bed-b");
+        }
+
     }
 
 }
