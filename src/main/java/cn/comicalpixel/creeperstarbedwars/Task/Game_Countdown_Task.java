@@ -39,6 +39,7 @@ public class Game_Countdown_Task {
                 }
                 if (ConfigData.xpbar_countdown) {
                     for (Player p : GamePlayers.players) {
+                        p.setLevel(countdown);
                         p.setExp(1.0F - ((1.0F/ConfigData.countdown_settings_seconds) * (ConfigData.countdown_settings_seconds - countdown)));
                     }
                 }
