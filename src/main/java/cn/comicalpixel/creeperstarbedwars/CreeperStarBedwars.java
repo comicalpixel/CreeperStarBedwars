@@ -6,6 +6,8 @@ import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
 import cn.comicalpixel.creeperstarbedwars.Listener.JoinPluginCheck;
+import cn.comicalpixel.creeperstarbedwars.Listener.PlayerJoinLeave;
+import cn.comicalpixel.creeperstarbedwars.Listener.ServerMotdListener;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
@@ -80,14 +82,16 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
 
         /**/
-        new CBW_KT_Main();
+        /*kt*/
 
         // 游戏倒计时
         new Game_Countdown_Task();
 
 
+        // motd
+        getServer().getPluginManager().registerEvents(new ServerMotdListener(), this);
 
-
+        getServer().getPluginManager().registerEvents(new PlayerJoinLeave(), this);
 
 
 

@@ -102,7 +102,7 @@ public class ConfigData {
     public static int saferegion_team_generators;
     public static int saferegion_team_spawn;
     // 倒计时设置
-    public static int countdown_settings_seconds;
+    public static int countdown_settings_seconds = 120;
     public static List<Integer> countdown_settings_trigger_seconds = new ArrayList<>();
     //    public static List<String>  countdown_seconds_message_paths;
     public static HashMap<Integer, String> countdown_seconds_message_title = new HashMap<>();
