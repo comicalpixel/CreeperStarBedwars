@@ -5,6 +5,9 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
+import cn.comicalpixel.creeperstarbedwars.Fix.ComboFix;
+import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
+import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Listener.JoinPluginCheck;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerJoinLeave;
 import cn.comicalpixel.creeperstarbedwars.Listener.ServerMotdListener;
@@ -85,8 +88,15 @@ public final class CreeperStarBedwars extends JavaPlugin {
         /**/
         /*kt*/
 
+        getServer().getPluginManager().registerEvents(new SetupListener(), this);
+
+
         // 游戏倒计时
         new Game_Countdown_Task();
+
+        // 修复
+        getServer().getPluginManager().registerEvents(new ComboFix(), this);
+        getServer().getPluginManager().registerEvents(new LadderFix(), this);
 
 
         // motd
@@ -181,9 +191,11 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.damageholo_damage_enabled = ConfigUtils.getBoolean(config, "damage-holo.damage.enable");
         ConfigData.damageholo_bow_enabled = ConfigUtils.getBoolean(config, "damage-holo.bow.enable");
 
-        ConfigData.combo_fix_enabled = ConfigUtils.getBoolean(config, "combo-fix.enable");
+        ConfigData.combo_fix_enabled = ConfigUtils.getBoolean(config, "combo-fix");
 
-        ConfigData.lock_foodlevel_enabled = ConfigUtils.getBoolean(config, "lock-foodlevel.enable");
+        ConfigData.ladder_fix_enabled = ConfigUtils.getBoolean(config, "ladder-fix");
+
+        ConfigData.lock_foodlevel_enabled = ConfigUtils.getBoolean(config, "lock-foodlevel");
 
         ConfigData.gamestart_title_enabled = ConfigUtils.getBoolean(config, "start-title.enable");
         ConfigData.gamestart_title_title = ConfigUtils.getStringList(config, "start-title.title");

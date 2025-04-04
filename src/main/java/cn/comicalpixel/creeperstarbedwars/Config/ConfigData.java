@@ -77,6 +77,8 @@ public class ConfigData {
     public static String damageholo_bow_chat;
     // 连击修复
     public static boolean combo_fix_enabled = true;
+    // 梯子修复
+    public static boolean ladder_fix_enabled = false;
     // 锁定饱食度
     public static boolean lock_foodlevel_enabled = false;
     // 游戏开始标题

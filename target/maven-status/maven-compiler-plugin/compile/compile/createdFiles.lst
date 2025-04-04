@@ -1,5 +1,7 @@
+cn\comicalpixel\creeperstarbedwars\Fix\ComboFix.class
 cn\comicalpixel\creeperstarbedwars\Arena\GamePlayers.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$2.class
+cn\comicalpixel\creeperstarbedwars\GameSetup\SetupListener.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Title.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Player.class
@@ -7,6 +9,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Utils\MessageVariableUtils.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task.class
 cn\comicalpixel\creeperstarbedwars\Utils\NoAIUtils.class
+cn\comicalpixel\creeperstarbedwars\Fix\LadderFix.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameData_cfg.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$3.class

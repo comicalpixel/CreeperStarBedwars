@@ -197,6 +197,10 @@ damage-holo:
 # 开启该选项将会把伤害间隔模拟成原版差不多的
 combo-fix: true
 
+# 梯子修复 (这对爱玩bug的玩家不友好)
+# 开启后将可以修复原版的梯子穿墙bug
+ladder-fix: true
+
 # 是否锁定玩家饥饿值
 # 反正你怎么设置掉饥饿值的速度都会比原版慢
 lock-foodlevel: false
@@ -851,53 +855,53 @@ sound:
     enable: true
   # 加入游戏(自己听到的)
   join-me:
-    type: LEVEL_UP
+    type: ITEM_PICKUP
     volume: 10
-    pitch: 1.0
+    pitch: 1
   # 加入游戏(其他玩家听到的)
   join-players:
-    type: LEVEL_UP
+    type: ITEM_PICKUP
     volume: 0
     pitch: 1.0
   # 物品商店部分
   shop-open:
-    type: LEVEL_UP
-    volume: 10
-    pitch: 1.0
+    type: NOTE_BASS
+    volume: 100
+    pitch: 1
   shop-switch:
-    type: LEVEL_UP
-    volume: 10
+    type: CHICKEN_EGG_POP
+    volume: 2
     pitch: 1.0
   shop-buy-yes:
-    type: LEVEL_UP
+    type: NOTE_PLING
     volume: 10
-    pitch: 1.0
+    pitch: 2
   shop-buy-no:
-    type: LEVEL_UP
+    type: ENDERMAN_TELEPORT
     volume: 10
     pitch: 1.0
   # 队伍升级部分
   update-open:
-    type: LEVEL_UP
-    volume: 10
-    pitch: 1.0
+    type: NOTE_BASS
+    volume: 100
+    pitch: 1
   update-buy-no:
-    type: LEVEL_UP
+    type: ENDERMAN_TELEPORT
     volume: 10
     pitch: 1.0
   update-buy-me:
-    type: LEVEL_UP
+    type: NOTE_PLING
     volume: 10
-    pitch: 1.0
+    pitch: 2
   update-buy-team:
-    type: LEVEL_UP
+    type: NOTE_PLING
     volume: 10
-    pitch: 1.0
+    pitch: 1
   # 倒计时部分
   game-countdown:
     type: LEVEL_UP
     volume: 10
-    pitch: 1.0
+    pitch: 10
   # 游戏开始
   game-countdown-start:
     type: LEVEL_UP
@@ -905,101 +909,101 @@ sound:
     pitch: 1.0
   # 游戏即将开始部分(如果开启了即将开始倒计时标题，倒计时完毕会先播放game-countdown-start再播放game-start-ts0音效)
   game-start-ts5:
-    type: LEVEL_UP
+    type: SUCCESSFUL_HIT
     volume: 10
-    pitch: 1.0
+    pitch: 2.0
   game-start-ts4:
-    type: LEVEL_UP
+    type: SUCCESSFUL_HIT
     volume: 10
-    pitch: 1.0
+    pitch: 1.9
   game-start-ts3:
-    type: LEVEL_UP
+    type: SUCCESSFUL_HIT
     volume: 10
-    pitch: 1.0
+    pitch: 1.8
   game-start-ts2:
-    type: LEVEL_UP
+    type: SUCCESSFUL_HIT
     volume: 10
-    pitch: 1.0
+    pitch: 1.7
   game-start-ts1:
-    type: LEVEL_UP
+    type: SUCCESSFUL_HIT
     volume: 10
-    pitch: 1.0
+    pitch: 1.6
   game-start-ts0:
-    type: LEVEL_UP
+    type: ENDERDRAGON_GROWL
     volume: 10
-    pitch: 1.0
+    pitch: 1
   # 拆床音效
   bed-destroy-team:
-    type: LEVEL_UP
+    type: ENDERDRAGON_GROWL
     volume: 10
-    pitch: 1.0
+    pitch: 2
   bed-destroy-all:
-    type: LEVEL_UP
+    type: ENDERDRAGON_GROWL
     volume: 10
-    pitch: 1.0
+    pitch: 2
   bed-destroy-me:
-    type: LEVEL_UP
+    type: ENDERDRAGON_GROWL
     volume: 10
-    pitch: 1.0
+    pitch: 2
   # 回春床部分
   respawnbed-me:
     type: LEVEL_UP
     volume: 10
-    pitch: 1.0
+    pitch: 2
   respawnbed-team:
     type: LEVEL_UP
     volume: 10
-    pitch: 1.0
+    pitch: 2
   respawnbed-all:
-    type: LEVEL_UP
+    type: ENDERDRAGON_GROWL
     volume: 10
-    pitch: 1.0
+    pitch: 2.0
   # 队伍淘汰
   team-annihilation:
-    type: LEVEL_UP
+    type: ENDERDRAGON_HIT
     volume: 10
-    pitch: 1.0
+    pitch: 1
   # 队伍选择部分(关闭了选择可以忽略)
   teamsel-open:
-    type: LEVEL_UP
+    type: NOTE_PLING
     volume: 10
-    pitch: 1.0
+    pitch: 1
   teamsel-set:
-    type: LEVEL_UP
+    type: NOTE_PLING
     volume: 10
-    pitch: 1.0
+    pitch: 2
   teamsel-clear:
-    type: LEVEL_UP
+    type: NOTE_BASS
     volume: 10
-    pitch: 1.0
+    pitch: 1
   # 资源模式选择(关闭了选择可以忽略)
   bwim-open:
-    type: LEVEL_UP
+    type: NOTE_PLING
     volume: 10
-    pitch: 1.0
+    pitch: 1
   bwim-set:
-    type: LEVEL_UP
+    type: NOTE_PLING
     volume: 10
-    pitch: 1.0
+    pitch: 2
   # 资源拾起部分(0为实体资源, 1为经验资源)
   resitem-pickup-bwim0:
     type: LEVEL_UP
-    volume: 10
-    pitch: 1.0
+    volume: 1
+    pitch: 2
   resitem-pickup-bwim1:
     type: LEVEL_UP
-    volume: 10
-    pitch: 1.0
+    volume: 1
+    pitch: 2
   # 击杀音效
   killer-sound:
     - ORB_PICKUP, 10, 1.0
   # 游戏结束
   game-end:
     type: LEVEL_UP
-    volume: 10
+    volume: 0
     pitch: 1.0
   # 队友床危险声音
   bed-danger-title:
-    type: LEVEL_UP
+    type: NOTE_PLING
     volume: 10
-    pitch: 1.0
+    pitch: 2
