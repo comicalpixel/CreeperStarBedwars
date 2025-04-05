@@ -3,9 +3,9 @@ map-name: MapName
 map-author: Public
 minplayers: 2
 maxplayers: 8
-lobby: null
-spec: null
-map-center: null
+lobby: 'world, 0, 0, 0, 0, 0'
+spec: 'world, 0, 0, 0, 0, 0'
+map-center: 'world, 0, 0, 0, 0, 0'
 map-radius: 300
 teamchest-radius: 15
 generator:
@@ -26,57 +26,57 @@ team-players: 1
 team-red:
   name: '红'
   color: '§c'
-  spawn: null
-  generator: null
-  bed-f: null
-  bed-b: null
+  spawn: 'world, 0, 0, 0, 0, 0'
+  generator: 'world, 0, 0, 0, 0, 0'
+  bed-f: 'world, 0, 0, 0, 0, 0'
+  bed-b: 'world, 0, 0, 0, 0, 0'
 team-blue:
   name: '蓝'
   color: '§9'
-  spawn: null
-  generator: null
-  bed-f: null
-  bed-b: null
+  spawn: 'world, 0, 0, 0, 0, 0'
+  generator: 'world, 0, 0, 0, 0, 0'
+  bed-f: 'world, 0, 0, 0, 0, 0'
+  bed-b: 'world, 0, 0, 0, 0, 0'
 team-green:
   name: '绿'
   color: '§a'
-  spawn: null
-  generator: null
-  bed-f: null
-  bed-b: null
+  spawn: 'world, 0, 0, 0, 0, 0'
+  generator: 'world, 0, 0, 0, 0, 0'
+  bed-f: 'world, 0, 0, 0, 0, 0'
+  bed-b: 'world, 0, 0, 0, 0, 0'
 team-yellow:
   name: '黄'
   color: '§e'
-  spawn: null
-  generator: null
-  bed-f: null
-  bed-b: null
+  spawn: 'world, 0, 0, 0, 0, 0'
+  generator: 'world, 0, 0, 0, 0, 0'
+  bed-f: 'world, 0, 0, 0, 0, 0'
+  bed-b: 'world, 0, 0, 0, 0, 0'
 team-pink:
   name: '粉'
   color: '§d'
-  spawn: null
-  generator: null
-  bed-f: null
-  bed-b: null
+  spawn: 'world, 0, 0, 0, 0, 0'
+  generator: 'world, 0, 0, 0, 0, 0'
+  bed-f: 'world, 0, 0, 0, 0, 0'
+  bed-b: 'world, 0, 0, 0, 0, 0'
 team-aqua:
   name: '青'
   color: '§3'
-  spawn: null
-  generator: null
-  bed-f: null
-  bed-b: null
+  spawn: 'world, 0, 0, 0, 0, 0'
+  generator: 'world, 0, 0, 0, 0, 0'
+  bed-f: 'world, 0, 0, 0, 0, 0'
+  bed-b: 'world, 0, 0, 0, 0, 0'
 team-gray:
   name: '灰'
   color: '§8'
-  spawn: null
-  generator: null
-  bed-f: null
-  bed-b: null
+  spawn: 'world, 0, 0, 0, 0, 0'
+  generator: 'world, 0, 0, 0, 0, 0'
+  bed-f: 'world, 0, 0, 0, 0, 0'
+  bed-b: 'world, 0, 0, 0, 0, 0'
 team-white:
   name: '白'
   color: '§f'
-  spawn: null
-  generator: null
-  bed-f: null
-  bed-b: null
+  spawn: 'world, 0, 0, 0, 0, 0'
+  generator: 'world, 0, 0, 0, 0, 0'
+  bed-f: 'world, 0, 0, 0, 0, 0'
+  bed-b: 'world, 0, 0, 0, 0, 0'
 
