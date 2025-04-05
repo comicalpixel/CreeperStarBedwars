@@ -2,6 +2,7 @@ package cn.comicalpixel.creeperstarbedwars.Task;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
+import cn.comicalpixel.creeperstarbedwars.Arena.GameStart;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
@@ -33,7 +34,7 @@ public class Game_Countdown_Task {
                     countdown_running = false;
                     cancel();
                     /*游戏开始的代码*/
-                    GameStats.set(2);
+                    GameStart.start();
                     /**/
                     return;
                 }

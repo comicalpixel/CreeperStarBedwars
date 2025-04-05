@@ -455,6 +455,37 @@ lobby-items:
           lore:
             - '§8等待大厅物品'
 
+# 资源点设置
+# 不支持自定义等级
+# 时间单位为tick 1s=20tick
+generator-level:
+  team-0:
+    iron: 15
+    gold: 40
+    emerald: -1
+  team-1:
+    iron: 17
+    gold: 32
+    emerald: -1
+  team-2:
+    iron: 17
+    gold: 28
+    emerald: -1
+  team-3:
+    iron: 14
+    gold: 24
+    emerald: 15
+  team-4:
+    iron: 10
+    gold: 20
+    emerald: 10
+  diamond-1: 600
+  diamond-2: 400
+  diamond-3: 300
+  emerald-1: 1400
+  emerald-2: 1000
+  emerald-3: 600
+
 
 # 道具设置
 # 如果没有自己想要的道具可以给作者提交请求呀

@@ -5,6 +5,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
+import cn.comicalpixel.creeperstarbedwars.Entity.AntiMobs;
 import cn.comicalpixel.creeperstarbedwars.Fix.ComboFix;
 import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
@@ -12,10 +13,10 @@ import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Listener.JoinPluginCheck;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerJoinLeave;
 import cn.comicalpixel.creeperstarbedwars.Listener.ServerMotdListener;
+import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -97,6 +98,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // 游戏倒计时
         new Game_Countdown_Task();
 
+        // Actionbar
+        new Game_Actionbar_Task();
+
         // 修复
         getServer().getPluginManager().registerEvents(new ComboFix(), this);
         getServer().getPluginManager().registerEvents(new LadderFix(), this);
@@ -107,7 +111,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerJoinLeave(), this);
 
-
+        getServer().getPluginManager().registerEvents(new AntiMobs(), this);
+        AntiMobs.clear_task();
 
 
 
@@ -478,9 +483,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
             Bukkit.getLogger().info("The current mode is detected as SETUP; only administrators can join and edit the game. ");
             Bukkit.getLogger().info("If you need to disable setup mode, please set the \"setup\" option in game.yml to \"false.\"");
             return;
-        } else {
-            GameStats.set(1);
-        }
+        } GameStats.set(1);
 
         GameData_cfg.map_name = gameConfig.getString("map-name");
         GameData_cfg.map_author = gameConfig.getString("map-author");

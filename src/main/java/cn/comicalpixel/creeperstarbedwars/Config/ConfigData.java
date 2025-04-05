@@ -154,6 +154,20 @@ public class ConfigData {
     public static String LobbyItems_i8_command;
     public static String LobbyItems_i8_permissions;
     public static ItemStack LobbyItems_i8_item;
+
+    // 资源点生成时间设置
+    public static int generator_team_l0 = -1;
+    public static int generator_team_l1= -1;
+    public static int generator_team_l2 = -1;
+    public static int generator_team_l3 = -1;
+    public static int generator_team_l4 = -1;
+    public static int generator_diamond_l1 = -1;
+    public static int generator_diamond_l2 = -1;
+    public static int generator_diamond_l3 = -1;
+    public static int generator_emerald_l1 = -1;
+    public static int generator_emerald_l2 = -1;
+    public static int generator_emerald_l3 = -1;
+
     // 游戏道具物品设置
     // 回春床
     public static boolean ItemsInGame_respawn_bed_enabled;
