@@ -25,56 +25,56 @@ teams:
 team-players: 1
 team-red:
   name: '红'
-  chat-color: '§c'
+  color: '§c'
   spawn: null
   generator: null
   bed-f: null
   bed-b: null
 team-blue:
   name: '蓝'
-  chat-color: '§9'
+  color: '§9'
   spawn: null
   generator: null
   bed-f: null
   bed-b: null
 team-green:
   name: '绿'
-  chat-color: '§a'
+  color: '§a'
   spawn: null
   generator: null
   bed-f: null
   bed-b: null
 team-yellow:
   name: '黄'
-  chat-color: '§e'
+  color: '§e'
   spawn: null
   generator: null
   bed-f: null
   bed-b: null
 team-pink:
   name: '粉'
-  chat-color: '§d'
+  color: '§d'
   spawn: null
   generator: null
   bed-f: null
   bed-b: null
 team-aqua:
   name: '青'
-  chat-color: '§3'
+  color: '§3'
   spawn: null
   generator: null
   bed-f: null
   bed-b: null
 team-gray:
   name: '灰'
-  chat-color: '§8'
+  color: '§8'
   spawn: null
   generator: null
   bed-f: null
   bed-b: null
 team-white:
   name: '白'
-  chat-color: '§f'
+  color: '§f'
   spawn: null
   generator: null
   bed-f: null

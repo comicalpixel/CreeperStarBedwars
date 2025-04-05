@@ -7,6 +7,7 @@ import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
 import cn.comicalpixel.creeperstarbedwars.Fix.ComboFix;
 import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
+import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Listener.JoinPluginCheck;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerJoinLeave;
@@ -88,7 +89,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         /**/
         /*kt*/
 
+        // SETUP
         getServer().getPluginManager().registerEvents(new SetupListener(), this);
+        getCommand("setup").setExecutor(new SetupCommand());
 
 
         // 游戏倒计时

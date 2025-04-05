@@ -77,7 +77,7 @@ public class SetupListener implements Listener {
                     e.setCancelled(true);
                     block = e.getClickedBlock().getLocation();
                     e.getPlayer().sendMessage("§a[SETUP] 已选择方块Location,§e" + " x:" + block.getBlockX() + " y:" + block.getBlockY() + " z:" + block.getBlockZ());
-                    setBlockRender(e.getPlayer(), block.getBlock());
+                    sendBlockRender(e.getPlayer(), block.getBlock());
                 }
             }
             if (item.getItemMeta().getDisplayName().contains("[SETUP]") && item.getType() == Material.DIAMOND_AXE) {
@@ -85,19 +85,19 @@ public class SetupListener implements Listener {
                     e.setCancelled(true);
                     pos1 = e.getClickedBlock().getLocation();
                     e.getPlayer().sendMessage("§a[SETUP] 已选择第一个点,§e" + " x:" + block.getX() + " y:" + block.getY() + " z:" + block.getZ());
-                    setBlockRender(e.getPlayer(), pos1.getBlock());
+                    sendBlockRender(e.getPlayer(), pos1.getBlock());
                 }
                 if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                     e.setCancelled(true);
                     pos2 = e.getClickedBlock().getLocation();
                     e.getPlayer().sendMessage("§a[SETUP] 已选择第二个点,§e" + " x:" + block.getX() + " y:" + block.getY() + " z:" + block.getZ());
-                    setBlockRender(e.getPlayer(), pos2.getBlock());
+                    sendBlockRender(e.getPlayer(), pos2.getBlock());
                 }
             }
         }
     }
 
-    public void setBlockRender(Player p, Block block) {
+    public void sendBlockRender(Player p, Block block) {
         Material mat = block.getType();
         int i = block.getData();
         Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
