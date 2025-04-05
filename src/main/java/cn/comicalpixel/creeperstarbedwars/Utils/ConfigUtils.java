@@ -30,24 +30,24 @@ public class ConfigUtils {
         player.playSound(player.getLocation(), Sound.valueOf(config.getString(type_path)), volume_path, pitch_path);
     }
     public static void playSound(Player player, FileConfiguration config, String path) {
-        player.playSound(player.getLocation(), Sound.valueOf(config.getString(path+".type")), config.getInt(path+".volume"), config.getFloat(path+".pitch"));
+        player.playSound(player.getLocation(), Sound.valueOf(config.getString(path+".type")), config.getInt(path+".volume"), (float) config.getDouble(path+".pitch"));
     }
     public static void playSound(Player player, String splitstr_sound) {
         String[] sound_split = splitstr_sound.split(", ");
         if (sound_split.length == 3) {
-            player.playSound(player.getLocation(), Sound.valueOf(sound_split[0]), Integer.parseInt(sound_split[1]), Float.parseFloat(sound_split[2]));
+            player.playSound(player.getLocation(), Sound.valueOf(sound_split[0]), Integer.parseInt(sound_split[1]), (float) Double.parseDouble(sound_split[2]));
         }
     }
     public static void playSound(Location loc, FileConfiguration config, String type_path, int volume_path, float pitch_path) {
         loc.getWorld().playSound(loc, Sound.valueOf(config.getString(type_path)), volume_path, pitch_path);
     }
     public static void playSound(Location loc, FileConfiguration config, String path) {
-        loc.getWorld().playSound(loc, Sound.valueOf(config.getString(path+".type")), config.getInt(path+".volume"), config.getFloat(path+".pitch"));
+        loc.getWorld().playSound(loc, Sound.valueOf(config.getString(path+".type")), config.getInt(path+".volume"), (float) config.getDouble(path+".pitch"));
     }
     public static void playSound(Location loc, String splitstr_sound) {
         String[] sound_split = splitstr_sound.split(", ");
         if (sound_split.length == 3) {
-            loc.getWorld().playSound(loc, Sound.valueOf(sound_split[0]), Integer.parseInt(sound_split[1]), Float.parseFloat(sound_split[2]));
+            loc.getWorld().playSound(loc, Sound.valueOf(sound_split[0]), Integer.parseInt(sound_split[1]), (float) Double.parseDouble(sound_split[2]));
         }
     }
 
@@ -153,9 +153,9 @@ public class ConfigUtils {
         if (config.getString(path) != null) {
             String locationString = config.getString(path);
             World world = Bukkit.getWorld(locationString.split(",")[0]);
-            int x = Integer.parseInt(locationString.split(",")[1]);
-            int y = Integer.parseInt(locationString.split(",")[2]);
-            int z = Integer.parseInt(locationString.split(",")[3]);
+            int x = (int) Double.parseDouble(locationString.split(",")[1]);
+            int y = (int) Double.parseDouble(locationString.split(",")[2]);
+            int z = (int) Double.parseDouble(locationString.split(",")[3]);
             return new Location(world, x +0.5, y, z +0.5); /**/
         }
         return null;

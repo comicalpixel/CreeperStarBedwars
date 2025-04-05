@@ -61,9 +61,9 @@ public class SetupListener implements Listener {
 
     }
 
-    public static Location pos1;
-    public static Location pos2;
-    public static Location block;
+    public static Location pos1 = null;
+    public static Location pos2 = null;
+    public static Location block = null;
 
     @EventHandler
     public void onPlayerClick(PlayerInteractEvent e) {

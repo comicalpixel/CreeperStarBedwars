@@ -3,6 +3,7 @@ package cn.comicalpixel.creeperstarbedwars.GameSetup;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -136,48 +137,22 @@ public class SetupCommand implements CommandExecutor {
                                 at_teams = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("teams");
                                 if (args.length == 2) {
                                     String arg2 = args[1];
-                                    if (    arg2.equalsIgnoreCase("RED") ||
-                                            arg2.equalsIgnoreCase("BLUE")||
-                                            arg2.equalsIgnoreCase("GREEN")||
-                                            arg2.equalsIgnoreCase("YELLOW")||
-                                            arg2.equalsIgnoreCase("PINK")||
-                                            arg2.equalsIgnoreCase("AQUA")||
-                                            arg2.equalsIgnoreCase("GRAY")||
-                                            arg2.equalsIgnoreCase("WHITE")) {
+                                    if (    arg2.equals("RED") ||
+                                            arg2.equals("BLUE")||
+                                            arg2.equals("GREEN")||
+                                            arg2.equals("YELLOW")||
+                                            arg2.equals("PINK")||
+                                            arg2.equals("AQUA")||
+                                            arg2.equals("GRAY")||
+                                            arg2.equals("WHITE")) {
 
                                         if (!at_teams.contains(arg2)) {
-                                            switch (arg2) {
-                                                case "red":
-                                                    arg2 = "RED";
-                                                    break;
-                                                case "blue":
-                                                    arg2 = "BLUE";
-                                                    break;
-                                                case "green":
-                                                    arg2 = "GREEN";
-                                                    break;
-                                                case "yellow":
-                                                    arg2 = "YELLOW";
-                                                    break;
-                                                case "pink":
-                                                    arg2 = "PINK";
-                                                    break;
-                                                case "aqua":
-                                                    arg2 = "AQUA";
-                                                    break;
-                                                case "gray":
-                                                    arg2 = "GRAY";
-                                                    break;
-                                                case "white":
-                                                    arg2 = "WHITE";
-                                                    break;
-                                            }
                                             at_teams.add(arg2);
                                             CreeperStarBedwars.getPlugin().getGameConfig().set("teams", at_teams);
                                             CreeperStarBedwars.getPlugin().getGameConfig().save();
                                             p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
-                                            NMSTitleUntils.Title.send(p, "§r ", "§a已添加队伍颜色§e"+arg2, 5, 40, 5);
-                                            p.sendMessage("§a已添加队伍颜色 §e"+CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2+".color")+arg2);
+                                            NMSTitleUntils.Title.send(p, "§r ", "§a已添加队伍颜色 "+CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color")+arg2, 5, 40, 5);
+                                            p.sendMessage("§a已添加队伍颜色 "+CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color")+arg2);
                                         } else {
                                             p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
                                             p.sendMessage("§c这个队伍颜色已经创建过了( -  - )");
@@ -192,7 +167,268 @@ public class SetupCommand implements CommandExecutor {
                                     p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM)");
                                 }
                                 break;
+                            case "delteam":
+                                List<String> del_teams = new ArrayList<>();
+                                del_teams = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("teams");
+                                if (args.length == 2) {
+                                    String arg2 = args[1];
+                                    if (    arg2.equals("RED") ||
+                                            arg2.equals("BLUE")||
+                                            arg2.equals("GREEN")||
+                                            arg2.equals("YELLOW")||
+                                            arg2.equals("PINK")||
+                                            arg2.equals("AQUA")||
+                                            arg2.equals("GRAY")||
+                                            arg2.equals("WHITE")) {
 
+                                        if (del_teams.contains(arg2)) {
+                                            del_teams.remove(arg2);
+                                            CreeperStarBedwars.getPlugin().getGameConfig().set("teams", del_teams);
+                                            CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                            p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                            NMSTitleUntils.Title.send(p, "§r ", "§a已移除队伍颜色 "+CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color")+arg2, 5, 40, 5);
+                                            p.sendMessage("§a已移除队伍颜色 "+CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color")+arg2);
+                                        } else {
+                                            p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                            p.sendMessage("§c这个队伍颜色不存在( -  - )");
+                                        }
+
+                                    } else {
+                                        p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                        p.sendMessage("§c无效的队伍颜色");
+                                    }
+                                } else {
+                                    p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                    p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM)");
+                                }
+                                break;
+                            case "teamName":
+                                if (args.length == 3) {
+                                    String arg2 = args[1];
+                                    String arg3 = args[2];
+                                    List<String> sn_teams = new ArrayList<>();
+                                    sn_teams = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("teams");
+                                    if (    arg2.equals("RED") ||
+                                            arg2.equals("BLUE")||
+                                            arg2.equals("GREEN")||
+                                            arg2.equals("YELLOW")||
+                                            arg2.equals("PINK")||
+                                            arg2.equals("AQUA")||
+                                            arg2.equals("GRAY")||
+                                            arg2.equals("WHITE")) {
+
+                                        if (sn_teams.contains(arg2)) {
+                                            CreeperStarBedwars.getPlugin().getGameConfig().set("team-"+arg2.toLowerCase()+".name", arg3);
+                                            CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                            p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                            NMSTitleUntils.Title.send(p, "§r ", "§a已将队伍 "+CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color")+arg2 + " §a名称设置为 " + arg3, 5, 40, 5);
+                                            p.sendMessage("§a已将队伍 "+CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color")+arg2 + " §a名称设置为 " + arg3);
+                                        } else {
+                                            p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                            p.sendMessage("§c这个队伍颜色不存在( -  - )");
+                                        }
+
+                                    } else {
+                                        p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                        p.sendMessage("§c无效的队伍颜色");
+                                    }
+                                } else {
+                                    p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                    p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM), arg3:String(TeamName)");
+                                }
+                                break;
+                            case "teams":
+                                sender.sendMessage("§a已创建的队伍: ");
+                                for (String s : CreeperStarBedwars.getPlugin().getGameConfig().getStringList("teams")) {
+                                    sender.sendMessage("§7▎ " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+s.toLowerCase()+".color") + s + " §7-§7 " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+s.toLowerCase()+".color") + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+s.toLowerCase()+".name"));                                }
+                                break;
+                            case "setBed":
+                                if (args.length == 2) {
+                                    String arg2 = args[1];
+                                    List<String> setbed_teams = new ArrayList<>();
+                                    setbed_teams = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("teams");
+                                    if (    arg2.equals("RED") ||
+                                            arg2.equals("BLUE")||
+                                            arg2.equals("GREEN")||
+                                            arg2.equals("YELLOW")||
+                                            arg2.equals("PINK")||
+                                            arg2.equals("AQUA")||
+                                            arg2.equals("GRAY")||
+                                            arg2.equals("WHITE")) {
+
+                                        if (setbed_teams.contains(arg2)) {
+
+                                            if ((SetupListener.pos1 != null && SetupListener.pos2 != null) && (SetupListener.pos1.distance(SetupListener.pos2) <= 1.2)) {
+                                                String bed_h = SetupListener.pos1.getWorld().getName() + ", " + SetupListener.pos1.getBlockX() + ", " + SetupListener.pos1.getBlockY() + ", " + SetupListener.pos1.getBlockZ();
+                                                String bed_b = SetupListener.pos2.getWorld().getName() + ", " + SetupListener.pos2.getBlockX() + ", " + SetupListener.pos2.getBlockY() + ", " + SetupListener.pos2.getBlockZ();
+                                                CreeperStarBedwars.getPlugin().getGameConfig().set("team-"+arg2.toLowerCase() + ".bed-f", bed_h);
+                                                CreeperStarBedwars.getPlugin().getGameConfig().set("team-"+arg2.toLowerCase() + ".bed-b", bed_b);
+                                                CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                                p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                                // CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color")
+                                                NMSTitleUntils.Title.send(p, "§f ", "§a已设置队伍 " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color") + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".name") + " §a的床!", 7, 40, 7);
+                                                p.sendMessage("§a已设置队伍 " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color") + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".name") + " §a的床, 床方块已刷新请检查设置是否有误");
+                                                BedBlockUtils.send(SetupListener.pos1, SetupListener.pos2);
+                                            } else {
+                                                sender.sendMessage("§c请先正确地使用斧头选择床的床头和床尾");
+                                            }
+
+                                        } else {
+                                            p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                            p.sendMessage("§c这个队伍颜色不存在( -  - )");
+                                        }
+
+                                    } else {
+                                        p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                        p.sendMessage("§c无效的队伍颜色");
+                                    }
+                                } else {
+                                    p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                    p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM)");
+                                }
+                                break;
+                            case "setspawn":
+                                if (args.length == 2) {
+                                    String arg2 = args[1];
+                                    List<String> setspawn_teams = new ArrayList<>();
+                                    setspawn_teams = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("teams");
+                                    if (    arg2.equals("RED") ||
+                                            arg2.equals("BLUE")||
+                                            arg2.equals("GREEN")||
+                                            arg2.equals("YELLOW")||
+                                            arg2.equals("PINK")||
+                                            arg2.equals("AQUA")||
+                                            arg2.equals("GRAY")||
+                                            arg2.equals("WHITE")) {
+
+                                        if (setspawn_teams.contains(arg2)) {
+
+                                            CreeperStarBedwars.getPlugin().getGameConfig().set("team-"+arg2.toLowerCase()+".spawn", loc_player_str_xyzyp);
+                                            CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                            p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                            NMSTitleUntils.Title.send(p, "§f ", "§a已设置队伍 " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color") + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".name") + " §a的出生点", 7, 40, 7);
+                                            p.sendMessage("§a已设置队伍 " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color") + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".name") + " §a的出生点");
+
+                                        } else {
+                                            p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                            p.sendMessage("§c这个队伍颜色不存在( -  - )");
+                                        }
+
+                                    } else {
+                                        p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                        p.sendMessage("§c无效的队伍颜色");
+                                    }
+                                } else {
+                                    p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                    p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM)");
+                                }
+                                break;
+                            case "setGenerator":
+                                if (args.length == 2) {
+                                    String arg2 = args[1];
+                                    List<String> setspawn_teams = new ArrayList<>();
+                                    setspawn_teams = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("teams");
+                                    if (    arg2.equals("RED") ||
+                                            arg2.equals("BLUE")||
+                                            arg2.equals("GREEN")||
+                                            arg2.equals("YELLOW")||
+                                            arg2.equals("PINK")||
+                                            arg2.equals("AQUA")||
+                                            arg2.equals("GRAY")||
+                                            arg2.equals("WHITE")) {
+
+                                        if (setspawn_teams.contains(arg2)) {
+
+                                            if (SetupListener.block != null) {
+
+                                                String loc_str = SetupListener.block.getWorld().getName() + ", " + SetupListener.block.getX() + ", " + SetupListener.block.getY() + ", " + SetupListener.block.getZ();
+                                                CreeperStarBedwars.getPlugin().getGameConfig().set("team-"+arg2.toLowerCase()+".generator", loc_str);
+                                                CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                                p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                                NMSTitleUntils.Title.send(p, "§f ", "§a已设置队伍 " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color") + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".name") + " §a的资源点", 7, 40, 7);
+                                                p.sendMessage("§a已设置队伍 " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".color") + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+arg2.toLowerCase()+".name") + " §a的资源点");
+
+                                            } else {
+                                                sender.sendMessage("§c请先使用稿子选择方块位置");
+                                            }
+                                        } else {
+                                            p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                            p.sendMessage("§c这个队伍颜色不存在( -  - )");
+                                        }
+
+                                    } else {
+                                        p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                        p.sendMessage("§c无效的队伍颜色");
+                                    }
+                                } else {
+                                    p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                    p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM)");
+                                }
+                                break;
+                            case "addShop":
+                                if (args.length == 2) {
+                                    String arg2 = args[1];
+                                    if (arg2.equalsIgnoreCase("item")) {
+                                        List<String> shops = new ArrayList<>();
+                                        shops = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("shop.item");
+                                        shops.add(loc_player_str_xyzyp);
+                                        CreeperStarBedwars.getPlugin().getGameConfig().set("shop.item", shops);
+                                        CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                        p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                        NMSTitleUntils.Title.send(p, "§f ", "§a已添加§e物品商店§a生成点", 7, 40, 7);
+                                        p.sendMessage("§a已添加§e物品商店§a生成点");
+                                    } else if (arg2.equalsIgnoreCase("team")) {
+                                        List<String> shops = new ArrayList<>();
+                                        shops = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("shop.team");
+                                        shops.add(loc_player_str_xyzyp);
+                                        CreeperStarBedwars.getPlugin().getGameConfig().set("shop.team", shops);
+                                        CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                        p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                        NMSTitleUntils.Title.send(p, "§f ", "§a已添加§e队伍升级§a生成点", 7, 40, 7);
+                                        p.sendMessage("§a已添加§e队伍升级§a生成点");
+                                    } else {
+                                        p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                        sender.sendMessage("§c未知的商店类型!");
+                                    }
+                                } else {
+                                    p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                    sender.sendMessage("§c缺少了参数, arg2:String(type;item/team)");
+                                }
+                                break;
+                            case "addGenerator":
+                                if (args.length == 2) {
+                                    String arg2 = args[1];
+                                    if (SetupListener.block != null) {
+                                        if (arg2.equalsIgnoreCase("diamond")) {
+                                            List<String> generators = new ArrayList<>();
+                                            generators = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("generator.diamond");
+                                            generators.add(SetupListener.block.getWorld().getName() + ", " + SetupListener.block.getX() + ", " + SetupListener.block.getY() + ", " + SetupListener.block.getZ());
+                                            CreeperStarBedwars.getPlugin().getGameConfig().set("generator.diamond", generators);
+                                            CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                            p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                            NMSTitleUntils.Title.send(p, "§f ", "§a已添加§b钻石§a资源点", 7, 40, 7);
+                                            p.sendMessage("§a已添加§b钻石§a资源点!");
+                                        } else if (arg2.equalsIgnoreCase("emerald")) {
+                                            List<String> generators = new ArrayList<>();
+                                            generators = CreeperStarBedwars.getPlugin().getGameConfig().getStringList("generator.emerald");
+                                            generators.add(SetupListener.block.getWorld().getName() + ", " + SetupListener.block.getX() + ", " + SetupListener.block.getY() + ", " + SetupListener.block.getZ());
+                                            CreeperStarBedwars.getPlugin().getGameConfig().set("generator.emerald", generators);
+                                            CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                            p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                            NMSTitleUntils.Title.send(p, "§f ", "§a已添加§2绿宝石§a资源点", 7, 40, 7);
+                                            p.sendMessage("§a已添加§2绿宝石§a资源点!");
+                                        } else {
+                                            p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                            sender.sendMessage("§c未知的游戏资源点类型!");
+                                        }
+                                    } else {
+                                        sender.sendMessage("§c请先使用稿子选择方块!");
+                                    }
+                                } else {
+                                    p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                    sender.sendMessage("§c缺少了参数, arg2:String(type;diamond/emerald)");
+                                }
+                                break;
 
 
 

@@ -13,6 +13,11 @@ generator:
     - null
   diamond:
     - null
+shop:
+  item:
+    - null
+  team:
+    - null
 teams:
   - RED
   - BLUE

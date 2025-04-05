@@ -15,5 +15,6 @@ cn\comicalpixel\creeperstarbedwars\Arena\GameData_cfg.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$3.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils.class
 cn\comicalpixel\creeperstarbedwars\Utils\ActionBarUtils.class
+cn\comicalpixel\creeperstarbedwars\Utils\BedBlockUtils.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$1.class
