@@ -85,7 +85,7 @@ public void PlaceLadder(BlockPlaceEvent e) {
         Location loc = e.getBlock().getLocation();
         loc = loc.add(0.5, 0, 0.5);
 
-        // 优化
+        // 添加高一格的梯子检测
         if (p.getLocation().getBlock().getLocation().getY() < e.getBlock().getLocation().getY()) {
             p_loc = p_loc.clone().add(0,1,0);
         }
