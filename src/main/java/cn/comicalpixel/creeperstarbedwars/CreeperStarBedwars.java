@@ -2,6 +2,7 @@ package cn.comicalpixel.creeperstarbedwars;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.GUI.TeamSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
@@ -114,7 +115,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new AntiMobs(), this);
         AntiMobs.clear_task();
 
-
+        getServer().getPluginManager().registerEvents(new TeamSel_GUI(), this);
 
 
 
@@ -419,6 +420,10 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.language_game_countdown_chat = ConfigUtils.getString(config, "language.game-countdown-chat");
 
         ConfigData.language_game_lobby_actionbar = ConfigUtils.getString(config, "language.game-lobby-actionbar");
+
+        ConfigData.language_teamsel_join_full = ConfigUtils.getString(config, "language.teamsel-join-full");
+        ConfigData.language_teamsel_join_done = ConfigUtils.getString(config, "language.teamsel-join-done");
+        ConfigData.language_teamsel_leave = ConfigUtils.getString(config, "language.teamsel-leave");
 
         ConfigData.language_bwim_i_name = ConfigUtils.getString(config, "language.game-bwim-i");
         ConfigData.language_bwim_xp_name = ConfigUtils.getString(config, "language.game-bwim-xp");

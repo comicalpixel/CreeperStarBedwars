@@ -30,7 +30,7 @@ public class ConfigUtils {
         player.playSound(player.getLocation(), Sound.valueOf(config.getString(type_path)), volume_path, pitch_path);
     }
     public static void playSound(Player player, FileConfiguration config, String path) {
-        player.playSound(player.getLocation(), Sound.valueOf(config.getString(path+".type")), config.getInt(path+".volume"), (float) config.getDouble(path+".pitch"));
+        player.playSound(player.getLocation(), Sound.valueOf(config.getString(path + ".type")), config.getInt(path + ".volume"), (float) config.getDouble(path + ".pitch"));
     }
     public static void playSound(Player player, String splitstr_sound) {
         String[] sound_split = splitstr_sound.split(", ");

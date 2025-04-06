@@ -1,5 +1,6 @@
 cn\comicalpixel\creeperstarbedwars\Fix\ComboFix.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task$1.class
+cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamManager.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Title.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task.class
 cn\comicalpixel\creeperstarbedwars\Utils\NoAIUtils.class
@@ -18,6 +19,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$2.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupListener.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task$1.class
+cn\comicalpixel\creeperstarbedwars\Arena\Teams\GUI\TeamSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Player.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Utils\MessageVariableUtils.class

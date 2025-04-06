@@ -300,6 +300,10 @@ public class ConfigData {
 
     public static String language_game_lobby_actionbar;
 
+    public static String language_teamsel_join_full;
+    public static String language_teamsel_join_done;
+    public static String language_teamsel_leave;
+
     public static String language_bwim_i_name = "普通";
     public static String language_bwim_xp_name = "经验";
 

@@ -18,4 +18,44 @@ public class MessageVariableUtils {
                 ;
     }
 
+    public static String teamNameColor_p_s(String s, String team) {
+        String color = null;
+        String name = null;
+        switch (team) {
+            case "RED":
+                color = GameData_cfg.team_red_chatcolor;
+                name = GameData_cfg.team_red_name;
+                break;
+            case "BLUE":
+                color = GameData_cfg.team_blue_chatcolor;
+                name = GameData_cfg.team_blue_name;
+                break;
+            case "GREEN":
+                color = GameData_cfg.team_green_chatcolor;
+                name = GameData_cfg.team_green_name;
+                break;
+            case "YELLOW":
+                color = GameData_cfg.team_yellow_chatcolor;
+                name = GameData_cfg.team_yellow_name;
+                break;
+            case "PINK":
+                color = GameData_cfg.team_pink_chatcolor;
+                name = GameData_cfg.team_pink_name;
+                break;
+            case "AQUA":
+                color = GameData_cfg.team_aqua_chatcolor;
+                name = GameData_cfg.team_aqua_name;
+                break;
+            case "GRAY":
+                color = GameData_cfg.team_gray_chatcolor;
+                name = GameData_cfg.team_gray_name;
+                break;
+            case "WHITE":
+                color = GameData_cfg.team_white_chatcolor;
+                name = GameData_cfg.team_white_name;
+                break;
+        }
+        return s.replace("{team_color}", color).replace("{team_name}", name);
+    }
+
 }

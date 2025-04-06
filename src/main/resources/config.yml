@@ -117,11 +117,11 @@ select_team:
   # 队伍选择物品(羊毛)
   team-item:
     # 物品名称
-    name: '{team_color}{team_name}'
+    name: '{team_color}§l{team_name}'
     # 描述
     lore-head:
       - ' '
-      - '§f玩家: §e{players}§7/§e{maxplayers}'
+      - '§f玩家: §f(§a{players}§7/§c{maxplayers}§f)'
       - ' '
     lore-foot:
       - ' '
@@ -726,6 +726,10 @@ language:
   game-countdown-chat: '§e游戏将在§c{countdown}§e秒后开始'
   # 等待大厅Actionbar(物品栏上方)
   game-lobby-actionbar: '§a §a地图: §f{map} §a倒计时: §f{countdown} §a'
+  # 队伍选择器
+  teamsel-join-full: "{team_color}{team_name} §c已经满人了!"
+  teamsel-join-done: '§a你已加入 {team_color}{team_name}'
+  teamsel-leave: '§c你已离开你的队伍! '
   # 资源模式名称
   game-bwim-i: '普通'
   game-bwim-xp: '经验'
@@ -1003,6 +1007,10 @@ sound:
     type: NOTE_PLING
     volume: 10
     pitch: 2
+  teamsel-full:
+    type: ENDERMAN_TELEPORT
+    volume: 10
+    pitch: 1
   teamsel-clear:
     type: NOTE_BASS
     volume: 10

@@ -117,11 +117,11 @@ select_team:
   # 队伍选择物品(羊毛)
   team-item:
     # 物品名称
-    name: '{team_color}{team_name}'
+    name: '{team_color}§l{team_name}'
     # 描述
     lore-head:
       - ' '
-      - '§f玩家: §e{players}§7/§e{maxplayers}'
+      - '§f玩家: §f(§a{players}§7/§c{maxplayers}§f)'
       - ' '
     lore-foot:
       - ' '
@@ -457,34 +457,34 @@ lobby-items:
 
 # 资源点设置
 # 不支持自定义等级
-# 时间单位为tick 1s=20tick
+# 时间单位为s
 generator-level:
   team-0:
-    iron: 15
-    gold: 40
+    iron: 0.7
+    gold: 1.8
     emerald: -1
   team-1:
-    iron: 17
-    gold: 32
+    iron: 0.7
+    gold: 1.5
     emerald: -1
   team-2:
-    iron: 17
-    gold: 28
+    iron: 0.7
+    gold: 1.2
     emerald: -1
   team-3:
-    iron: 14
-    gold: 24
+    iron: 0.7
+    gold: 1.2
     emerald: 15
   team-4:
-    iron: 10
-    gold: 20
+    iron: 0.5
+    gold: 1.1
     emerald: 10
-  diamond-1: 600
-  diamond-2: 400
-  diamond-3: 300
-  emerald-1: 1400
-  emerald-2: 1000
-  emerald-3: 600
+  diamond-1: 30
+  diamond-2: 20
+  diamond-3: 15
+  emerald-1: 70
+  emerald-2: 50
+  emerald-3: 30
 
 
 # 道具设置
@@ -726,6 +726,10 @@ language:
   game-countdown-chat: '§e游戏将在§c{countdown}§e秒后开始'
   # 等待大厅Actionbar(物品栏上方)
   game-lobby-actionbar: '§a §a地图: §f{map} §a倒计时: §f{countdown} §a'
+  # 队伍选择器
+  teamsel-join-full: "{team_color}{team_name} §c已经满人了!"
+  teamsel-join-done: '§a你已加入 {team_color}{team_name}'
+  teamsel-leave: '§c你已离开你的队伍! '
   # 资源模式名称
   game-bwim-i: '普通'
   game-bwim-xp: '经验'
@@ -1003,6 +1007,10 @@ sound:
     type: NOTE_PLING
     volume: 10
     pitch: 2
+  teamsel-full:
+    type: ENDERMAN_TELEPORT
+    volume: 10
+    pitch: 1
   teamsel-clear:
     type: NOTE_BASS
     volume: 10
