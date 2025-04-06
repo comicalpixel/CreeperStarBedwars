@@ -5,6 +5,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -98,7 +99,7 @@ public class TeamManager {
 
         if (count >= GameData_cfg.team_players) {
             // p.sendMessage("该队伍已满！");
-            p.sendMessage(ConfigData.language_teamsel_join_full);
+            p.sendMessage(MessageVariableUtils.teamNameColor_p_s(ConfigData.language_teamsel_join_full, team));
             ConfigUtils.playSound(p, CreeperStarBedwars.getInstance().getConfig(), "sound.teamsel-full");
             return;
         }
@@ -106,12 +107,13 @@ public class TeamManager {
         player_teams.put(p, team);
         // p.sendMessage("你已成功加入 " + team + " 队伍！");
         ConfigUtils.playSound(p, CreeperStarBedwars.getInstance().getConfig(), "sound.teamsel-set");
-        p.sendMessage(ConfigData.language_teamsel_join_done);
+        p.sendMessage(MessageVariableUtils.teamNameColor_p_s(ConfigData.language_teamsel_join_done, team));
     }
 
     public static void clear(Player p) {
         player_teams.remove(p);
-        p.sendMessage(ConfigData.language_teamsel_join_full);
+        p.sendMessage(ConfigData.language_teamsel_leave);
+        ConfigUtils.playSound(p, CreeperStarBedwars.getInstance().getConfig(), "sound.teamsel-clear");
     }
 
     public static void addTeamPlayer(String team, Player p) {

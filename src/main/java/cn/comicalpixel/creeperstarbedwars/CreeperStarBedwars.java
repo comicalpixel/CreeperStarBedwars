@@ -183,8 +183,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.teamsel_gui_items_wool_lore_player = ConfigUtils.getString(config, "select_team.team-item.lore-player");
         ConfigData.teamsel_gui_items_leave_name = ConfigUtils.getString(config, "select_team.leave-item.name");
         ConfigData.teamsel_gui_items_leave_lore = ConfigUtils.getStringList(config, "select_team.leave-item.lore");
-        ConfigData.teamsel_gui_items_close_name = ConfigUtils.getString(config, "select_team.leave-item.name");
-        ConfigData.teamsel_gui_items_close_lore = ConfigUtils.getStringList(config, "select_team.leave-item.lore");
+        ConfigData.teamsel_gui_items_close_name = ConfigUtils.getString(config, "select_team.close-item.name");
+        ConfigData.teamsel_gui_items_close_lore = ConfigUtils.getStringList(config, "select_team.close-item.lore");
 
         ConfigData.bwimsel_enabled = ConfigUtils.getBoolean(config, "select-bwim.enable");
         ConfigData.bwimsel_default = ConfigUtils.getInt(config, "select-bwim.def");

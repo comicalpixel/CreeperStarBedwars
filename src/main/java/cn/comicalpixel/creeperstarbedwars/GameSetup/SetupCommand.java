@@ -32,8 +32,8 @@ public class SetupCommand implements CommandExecutor {
 
                     if (args.length >= 1) {
                         String arg1 = args[0];
+                        arg1 = arg1.toLowerCase();
                         switch (arg1) {
-
                             case "disable":
                                 if (args.length == 2 && args[1].equalsIgnoreCase("confirm")) {
                                     sender.sendMessage("§c[SETUP] 正在更改设置... ");
@@ -80,7 +80,7 @@ public class SetupCommand implements CommandExecutor {
                                     p.sendMessage(ChatColor.RED + "缺少了参数, arg2:int");
                                 }
                                 break;
-                            case "setName":
+                            case "setname":
                                 if (args.length == 2) {
                                     String map_name = args[1];
                                     CreeperStarBedwars.getPlugin().getGameConfig().set("map-name", map_name);
@@ -93,7 +93,7 @@ public class SetupCommand implements CommandExecutor {
                                     p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String");
                                 }
                                 break;
-                            case "setAuthor":
+                            case "setauthor":
                                 if (args.length == 2) {
                                     String auhtor = args[1];
                                     CreeperStarBedwars.getPlugin().getGameConfig().set("map-author", auhtor);
@@ -202,7 +202,7 @@ public class SetupCommand implements CommandExecutor {
                                     p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM)");
                                 }
                                 break;
-                            case "teamName":
+                            case "teamname":
                                 if (args.length == 3) {
                                     String arg2 = args[1];
                                     String arg3 = args[2];
@@ -242,7 +242,7 @@ public class SetupCommand implements CommandExecutor {
                                 for (String s : CreeperStarBedwars.getPlugin().getGameConfig().getStringList("teams")) {
                                     sender.sendMessage("§7▎ " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+s.toLowerCase()+".color") + s + " §7-§7 " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+s.toLowerCase()+".color") + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+s.toLowerCase()+".name"));                                }
                                 break;
-                            case "setBed":
+                            case "setbed":
                                 if (args.length == 2) {
                                     String arg2 = args[1];
                                     List<String> setbed_teams = new ArrayList<>();
@@ -323,7 +323,7 @@ public class SetupCommand implements CommandExecutor {
                                     p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM)");
                                 }
                                 break;
-                            case "setGenerator":
+                            case "setgenerator":
                                 if (args.length == 2) {
                                     String arg2 = args[1];
                                     List<String> setspawn_teams = new ArrayList<>();
@@ -365,7 +365,7 @@ public class SetupCommand implements CommandExecutor {
                                     p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM)");
                                 }
                                 break;
-                            case "addShop":
+                            case "addshop":
                                 if (args.length == 2) {
                                     String arg2 = args[1];
                                     if (arg2.equalsIgnoreCase("item")) {
@@ -395,7 +395,7 @@ public class SetupCommand implements CommandExecutor {
                                     sender.sendMessage("§c缺少了参数, arg2:String(type;item/team)");
                                 }
                                 break;
-                            case "addGenerator":
+                            case "addgenerator":
                                 if (args.length == 2) {
                                     String arg2 = args[1];
                                     if (SetupListener.block != null) {
