@@ -274,6 +274,32 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.LobbyItems_i8_permissions = ConfigUtils.getString(config, "lobby-items.i8.permissions");
         ConfigData.LobbyItems_i8_item = ConfigUtils.getItemStack(config, "lobby-items.i8.item");
 
+
+        ConfigData.generator_team_l0_iron = ConfigUtils.getDouble(config, "generator-level.team-0.iron");
+        ConfigData.generator_team_l0_gold = ConfigUtils.getDouble(config, "generator-level.team-0.gold");
+        ConfigData.generator_team_l0_emerald = ConfigUtils.getDouble(config, "generator-level.team-0.emerald");
+        ConfigData.generator_team_l1_iron = ConfigUtils.getDouble(config, "generator-level.team-1.iron");
+        ConfigData.generator_team_l1_gold = ConfigUtils.getDouble(config, "generator-level.team-1.gold");
+        ConfigData.generator_team_l1_emerald = ConfigUtils.getDouble(config, "generator-level.team-1.emerald");
+        ConfigData.generator_team_l2_iron = ConfigUtils.getDouble(config, "generator-level.team-2.iron");
+        ConfigData.generator_team_l2_gold = ConfigUtils.getDouble(config, "generator-level.team-2.gold");
+        ConfigData.generator_team_l2_emerald = ConfigUtils.getDouble(config, "generator-level.team-2.emerald");
+        ConfigData.generator_team_l3_iron = ConfigUtils.getDouble(config, "generator-level.team-3.iron");
+        ConfigData.generator_team_l3_gold = ConfigUtils.getDouble(config, "generator-level.team-3.gold");
+        ConfigData.generator_team_l3_emerald = ConfigUtils.getDouble(config, "generator-level.team-3.emerald");
+        ConfigData.generator_team_l4_iron = ConfigUtils.getDouble(config, "generator-level.team-4.iron");
+        ConfigData.generator_team_l4_gold = ConfigUtils.getDouble(config, "generator-level.team-4.gold");
+        ConfigData.generator_team_l4_emerald = ConfigUtils.getDouble(config, "generator-level.team-4.emerald");
+
+        ConfigData.generator_diamond_l1 = ConfigUtils.getDouble(config, "generator-level.diamond-1");
+        ConfigData.generator_diamond_l2 = ConfigUtils.getDouble(config, "generator-level.diamond-2");
+        ConfigData.generator_diamond_l3 = ConfigUtils.getDouble(config, "generator-level.diamond-3");
+
+        ConfigData.generator_emerald_l1 = ConfigUtils.getDouble(config, "generator-level.emerald-1");
+        ConfigData.generator_emerald_l2 = ConfigUtils.getDouble(config, "generator-level.emerald-2");
+        ConfigData.generator_emerald_l3 = ConfigUtils.getDouble(config, "generator-level.emerald-3");
+
+
         ConfigData.ItemsInGame_respawn_bed_enabled = ConfigUtils.getBoolean(config, "items.respawn-bed.enable");
         ConfigData.ItemInGame_respawn_bed_started = ConfigUtils.getInt(config, "items.respawn-bed.started");
 

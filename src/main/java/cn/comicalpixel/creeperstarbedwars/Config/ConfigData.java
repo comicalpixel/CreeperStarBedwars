@@ -155,18 +155,32 @@ public class ConfigData {
     public static String LobbyItems_i8_permissions;
     public static ItemStack LobbyItems_i8_item;
 
+
     // 资源点生成时间设置
-    public static int generator_team_l0 = -1;
-    public static int generator_team_l1= -1;
-    public static int generator_team_l2 = -1;
-    public static int generator_team_l3 = -1;
-    public static int generator_team_l4 = -1;
-    public static int generator_diamond_l1 = -1;
-    public static int generator_diamond_l2 = -1;
-    public static int generator_diamond_l3 = -1;
-    public static int generator_emerald_l1 = -1;
-    public static int generator_emerald_l2 = -1;
-    public static int generator_emerald_l3 = -1;
+    // 队伍部分
+    public static double generator_team_l0_iron = -1;
+    public static double generator_team_l0_gold = -1;
+    public static double generator_team_l0_emerald = -1;
+    public static double generator_team_l1_iron = -1;
+    public static double generator_team_l1_gold = -1;
+    public static double generator_team_l1_emerald = -1;
+    public static double generator_team_l2_iron = -1;
+    public static double generator_team_l2_gold = -1;
+    public static double generator_team_l2_emerald = -1;
+    public static double generator_team_l3_iron = -1;
+    public static double generator_team_l3_gold = -1;
+    public static double generator_team_l3_emerald = -1;
+    public static double generator_team_l4_iron = -1;
+    public static double generator_team_l4_gold = -1;
+    public static double generator_team_l4_emerald = -1;
+    // 游戏资源点
+    public static double generator_diamond_l1 = -1;
+    public static double generator_diamond_l2 = -1;
+    public static double generator_diamond_l3 = -1;
+    public static double generator_emerald_l1 = -1;
+    public static double generator_emerald_l2 = -1;
+    public static double generator_emerald_l3 = -1;
+
 
     // 游戏道具物品设置
     // 回春床

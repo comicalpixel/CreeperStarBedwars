@@ -457,34 +457,34 @@ lobby-items:
 
 # 资源点设置
 # 不支持自定义等级
-# 时间单位为tick 1s=20tick
+# 时间单位为s
 generator-level:
   team-0:
-    iron: 15
-    gold: 40
+    iron: 0.7
+    gold: 1.8
     emerald: -1
   team-1:
-    iron: 17
-    gold: 32
+    iron: 0.7
+    gold: 1.5
     emerald: -1
   team-2:
-    iron: 17
-    gold: 28
+    iron: 0.7
+    gold: 1.2
     emerald: -1
   team-3:
-    iron: 14
-    gold: 24
+    iron: 0.7
+    gold: 1.2
     emerald: 15
   team-4:
-    iron: 10
-    gold: 20
+    iron: 0.5
+    gold: 1.1
     emerald: 10
-  diamond-1: 600
-  diamond-2: 400
-  diamond-3: 300
-  emerald-1: 1400
-  emerald-2: 1000
-  emerald-3: 600
+  diamond-1: 30
+  diamond-2: 20
+  diamond-3: 15
+  emerald-1: 70
+  emerald-2: 50
+  emerald-3: 30
 
 
 # 道具设置
