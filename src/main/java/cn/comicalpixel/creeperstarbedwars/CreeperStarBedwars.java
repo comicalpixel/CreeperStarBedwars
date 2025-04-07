@@ -12,6 +12,7 @@ import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Listener.JoinPluginCheck;
+import cn.comicalpixel.creeperstarbedwars.Listener.PlayerDamage;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerJoinLeave;
 import cn.comicalpixel.creeperstarbedwars.Listener.ServerMotdListener;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
@@ -118,24 +119,20 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new TeamSel_GUI(), this);
 
+        getServer().getPluginManager().registerEvents(new PlayerDamage(), this);
+
 
 
     }
 
     public void startGameCfgRead() {
-        // 检查是否为setup模式
-        if (gameConfig.getBoolean("setup")) {
-            GameStats.set(0);
-            Bukkit.getLogger().info("The current mode is detected as SETUP; only administrators can join and edit the game. ");
-            Bukkit.getLogger().info("If you need to disable setup mode, please set the \"setup\" option in game.yml to \"false.\"");
-            return;
-        } GameStats.set(1);
+        GameStats.set(-1);
         new BukkitRunnable() {
             @Override
             public void run() {
                 loadGameConfig();
             }
-        }.runTaskLater(CreeperStarBedwars.getPlugin(), 20);
+        }.runTaskLater(CreeperStarBedwars.getPlugin(), 10);
     }
 
     @Override
@@ -524,6 +521,14 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
     }
     public void loadGameConfig() {
+
+        // Is Setup?
+        if (gameConfig.getBoolean("setup")) {
+            GameStats.set(0);
+            Bukkit.getLogger().info("The current mode is detected as SETUP; only administrators can join and edit the game. ");
+            Bukkit.getLogger().info("If you need to disable setup mode, please set the \"setup\" option in game.yml to \"false.\"");
+            return;
+        } GameStats.set(1);
 
         GameData_cfg.map_name = gameConfig.getString("map-name");
         GameData_cfg.map_author = gameConfig.getString("map-author");
