@@ -136,12 +136,12 @@ public class ConfigUtils {
     public static Location getLocation(FileConfiguration config, String path) {
         if (config.getString(path) != null) {
             String locationString = config.getString(path);
-            World world = Bukkit.getWorld(locationString.split(",")[0]);
-            double x = Double.parseDouble(locationString.split(",")[1]);
-            double y = Double.parseDouble(locationString.split(",")[2]);
-            double z = Double.parseDouble(locationString.split(",")[3]);
-            double yaw = Double.parseDouble(locationString.split(",")[4]);
-            double pitch = Double.parseDouble(locationString.split(",")[5]);
+            World world = Bukkit.getWorld(locationString.split(", ")[0]);
+            double x = Double.parseDouble(locationString.split(", ")[1]);
+            double y = Double.parseDouble(locationString.split(", ")[2]);
+            double z = Double.parseDouble(locationString.split(", ")[3]);
+            double yaw = Double.parseDouble(locationString.split(", ")[4]);
+            double pitch = Double.parseDouble(locationString.split(", ")[5]);
             return new Location(world, x, y, z, (float) yaw, (float) pitch);
         }
         return null;
@@ -152,10 +152,10 @@ public class ConfigUtils {
     public static Location getBlockLocation(FileConfiguration config, String path) {
         if (config.getString(path) != null) {
             String locationString = config.getString(path);
-            World world = Bukkit.getWorld(locationString.split(",")[0]);
-            int x = (int) Double.parseDouble(locationString.split(",")[1]);
-            int y = (int) Double.parseDouble(locationString.split(",")[2]);
-            int z = (int) Double.parseDouble(locationString.split(",")[3]);
+            World world = Bukkit.getWorld(locationString.split(", ")[0]);
+            int x = (int) Double.parseDouble(locationString.split(", ")[1]);
+            int y = (int) Double.parseDouble(locationString.split(", ")[2]);
+            int z = (int) Double.parseDouble(locationString.split(", ")[3]);
             return new Location(world, x +0.5, y, z +0.5); /**/
         }
         return null;

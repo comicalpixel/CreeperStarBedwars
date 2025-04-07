@@ -20,6 +20,7 @@ import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 // git push -u origin main
 
@@ -85,7 +86,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         // 加载游戏配置文件
         gameConfig = new GameConfig(this,"game.yml");
-        loadGameConfig();
+        startGameCfgRead();
 
 
         /**/
@@ -119,6 +120,22 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
 
 
+    }
+
+    public void startGameCfgRead() {
+        // 检查是否为setup模式
+        if (gameConfig.getBoolean("setup")) {
+            GameStats.set(0);
+            Bukkit.getLogger().info("The current mode is detected as SETUP; only administrators can join and edit the game. ");
+            Bukkit.getLogger().info("If you need to disable setup mode, please set the \"setup\" option in game.yml to \"false.\"");
+            return;
+        } GameStats.set(1);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                loadGameConfig();
+            }
+        }.runTaskLater(CreeperStarBedwars.getPlugin(), 20);
     }
 
     @Override
@@ -507,14 +524,6 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
     }
     public void loadGameConfig() {
-
-        // 检查是否为setup模式
-        if (gameConfig.getBoolean("setup")) {
-            GameStats.set(0);
-            Bukkit.getLogger().info("The current mode is detected as SETUP; only administrators can join and edit the game. ");
-            Bukkit.getLogger().info("If you need to disable setup mode, please set the \"setup\" option in game.yml to \"false.\"");
-            return;
-        } GameStats.set(1);
 
         GameData_cfg.map_name = gameConfig.getString("map-name");
         GameData_cfg.map_author = gameConfig.getString("map-author");

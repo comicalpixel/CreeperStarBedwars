@@ -2,10 +2,7 @@ package cn.comicalpixel.creeperstarbedwars.GameSetup;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -58,6 +55,10 @@ public class SetupListener implements Listener {
         p.sendMessage("§c[SETUP] Use \"/setup\" to view the instructions.");
         p.sendMessage("§c[SETUP] If you need to enable the game, please set 'setup' to false in the config.yml file.");
         p.sendMessage("§c[SETUP] Not configuring the game or misconfiguring it will cause the game to not work properly!");
+
+        p.setGameMode(GameMode.CREATIVE);
+        p.setAllowFlight(true);
+        p.setFlying(true);
 
     }
 

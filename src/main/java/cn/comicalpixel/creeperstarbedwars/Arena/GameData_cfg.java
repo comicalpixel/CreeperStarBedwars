@@ -15,10 +15,10 @@ public class GameData_cfg {
     public static int minPlayers = 2;
     public static int maxPlayers = 2;
 
-    public static Location lobby_loc = null;
-    public static Location spec_loc = null;
+    public static Location lobby_loc;
+    public static Location spec_loc;
 
-    public static Location mapCenter_loc = null;
+    public static Location mapCenter_loc;
     public static int mapCenter_radius = 300;
 
     // 队伍箱子检测半径(中心点为队伍的出生点)

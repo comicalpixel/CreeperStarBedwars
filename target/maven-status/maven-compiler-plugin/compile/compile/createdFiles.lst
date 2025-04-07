@@ -25,5 +25,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Utils\MessageVariableUtils.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\ActionBarUtils.class
+cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\BedBlockUtils.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$1.class
+cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$1.class
