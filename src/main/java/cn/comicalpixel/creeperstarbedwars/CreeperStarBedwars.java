@@ -11,10 +11,7 @@ import cn.comicalpixel.creeperstarbedwars.Fix.ComboFix;
 import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
-import cn.comicalpixel.creeperstarbedwars.Listener.JoinPluginCheck;
-import cn.comicalpixel.creeperstarbedwars.Listener.PlayerDamage;
-import cn.comicalpixel.creeperstarbedwars.Listener.PlayerJoinLeave;
-import cn.comicalpixel.creeperstarbedwars.Listener.ServerMotdListener;
+import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
@@ -120,6 +117,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new TeamSel_GUI(), this);
 
         getServer().getPluginManager().registerEvents(new PlayerDamage(), this);
+
+        getServer().getPluginManager().registerEvents(new PlayerFoodLevel(), this);
 
 
 

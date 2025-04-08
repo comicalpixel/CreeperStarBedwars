@@ -22,7 +22,7 @@ public class PlayerUtils {
 
         p.setMaxHealth(20);
         p.setHealth(20);
-        p.setFoodLevel(20);
+        p.setFoodLevel(24);
         p.setFireTicks(0);
         p.setRemainingAir(p.getMaximumAir());
         p.setBedSpawnLocation(null);
