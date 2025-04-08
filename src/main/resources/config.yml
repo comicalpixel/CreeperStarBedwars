@@ -155,6 +155,15 @@ select-bwim:
   status-select: '§a §a§l✔ §a已选择 '
   status-noselect: '§e §e§l▶ §e单击选择 '
 
+  # 资源转换
+  # 资源类型:经验等级
+  conversion:
+    iron: 1
+    gold: 10
+    diamond: 100
+    emerald: 100
+
+
   # 物品设置
   item:
     i:
@@ -896,7 +905,7 @@ sound:
   # 加入游戏(其他玩家听到的)
   join-players:
     type: ITEM_PICKUP
-    volume: 0
+    volume: 1
     pitch: 1.0
   # 物品商店部分
   shop-open:

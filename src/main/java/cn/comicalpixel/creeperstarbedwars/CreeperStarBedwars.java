@@ -120,6 +120,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerFoodLevel(), this);
 
+        getServer().getPluginManager().registerEvents(new BwimResItemManager(), this);
 
 
     }
@@ -209,6 +210,11 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.bwimsel_gui_items_xp_durability = ConfigUtils.getInt(config, "select-bwim.item.xp.durability");
         ConfigData.bwimsel_gui_items_xp_name = ConfigUtils.getString(config, "select-bwim.item.xp.name");
         ConfigData.bwimsel_gui_items_xp_lore = ConfigUtils.getStringList(config, "select-bwim.item.xp.lore");
+
+        ConfigData.bwim_conversion_iron = ConfigUtils.getInt(config, "select-bwim.conversion.iron");
+        ConfigData.bwim_conversion_gold = ConfigUtils.getInt(config, "select-bwim.conversion.gold");
+        ConfigData.bwim_conversion_emerald = ConfigUtils.getInt(config, "select-bwim.conversion.emerald");
+        ConfigData.bwim_conversion_diamond = ConfigUtils.getInt(config, "select-bwim.conversion.diamond");
 
         ConfigData.damageholo_damage_enabled = ConfigUtils.getBoolean(config, "damage-holo.damage.enable");
         ConfigData.damageholo_bow_enabled = ConfigUtils.getBoolean(config, "damage-holo.bow.enable");

@@ -65,6 +65,11 @@ public class ConfigData {
     public static int bwimsel_gui_items_xp_durability;
     public static String bwimsel_gui_items_xp_name;
     public static List<String> bwimsel_gui_items_xp_lore = new ArrayList<>();
+    // 资源倍率转换
+    public static int bwim_conversion_iron = 1;
+    public static int bwim_conversion_gold = 10;
+    public static int bwim_conversion_emerald = 100;
+    public static int bwim_conversion_diamond = 100;
     // 掉线重连 -> 暂时没写
     // 伤害全息
     public static boolean damageholo_damage_enabled;

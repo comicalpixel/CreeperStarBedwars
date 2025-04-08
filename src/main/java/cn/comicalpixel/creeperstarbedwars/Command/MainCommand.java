@@ -24,6 +24,18 @@ public class MainCommand implements CommandExecutor {
                 String arg1 = args[0];
                 arg1 = arg1.toLowerCase();
                 switch (arg1) {
+                    case "help":
+                        if (p.isOp() || p.hasPermission("bedwars.admin")) {
+                            sender.sendMessage("§aCreeper§eStar§fBedwars §7v" + CreeperStarBedwars.getPlugin().getDescription().getVersion());
+                            sender.sendMessage("§fpowered by §6Xiaol789zxc §7- §bComical§ePixel §fNetwork ");
+                            sender.sendMessage("§f/bw start §aShorten the game countdown");
+                            sender.sendMessage("§f/bw setup §aSETUP Commands");
+                            sender.sendMessage("§f/bw debug §aTest game instructions (developer debugging)");
+                        } else {
+                            sender.sendMessage("§aCreeper§eStar§fBedwars §7v" + CreeperStarBedwars.getPlugin().getDescription().getVersion());
+                            sender.sendMessage("§f/bw start §aShorten the game countdown");
+                        }
+                        break;
                     case "teamsel":
                         if (GameStats.get() == 1) {
                             TeamSel_GUI.open(p);
