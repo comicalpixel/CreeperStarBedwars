@@ -21,6 +21,7 @@ cn\comicalpixel\creeperstarbedwars\GameSetup\SetupListener.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\GUI\TeamSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Player.class
+cn\comicalpixel\creeperstarbedwars\GUI\BwimSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Utils\MessageVariableUtils.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerFoodLevel.class

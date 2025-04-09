@@ -15,7 +15,6 @@ import org.bukkit.event.player.PlayerPickupItemEvent
 class BwimResItemManager : Listener {
 
     companion object {
-        // 静态变量
         var playerMode = HashMap<Player, Int>()
     }
 
@@ -74,22 +73,22 @@ class BwimResItemManager : Listener {
                 var xp = 0
                 val amount = e.item.itemStack.amount
                 if (e.item.itemStack.type == Material.IRON_INGOT) {
-                    xp += amount * 1
+                    xp += amount * ConfigData.bwim_conversion_iron
                     e.isCancelled = true
                     e.item.remove()
                 }
                 if (e.item.itemStack.type == Material.GOLD_INGOT) {
-                    xp += amount * 10
+                    xp += amount * ConfigData.bwim_conversion_gold
                     e.isCancelled = true
                     e.item.remove()
                 }
                 if (e.item.itemStack.type == Material.EMERALD) {
-                    xp += amount * 100
+                    xp += amount * ConfigData.bwim_conversion_emerald
                     e.isCancelled = true
                     e.item.remove()
                 }
                 if (e.item.itemStack.type == Material.DIAMOND) {
-                    xp += amount * 100
+                    xp += amount * ConfigData.bwim_conversion_diamond
                     e.isCancelled = true
                     e.item.remove()
                 }

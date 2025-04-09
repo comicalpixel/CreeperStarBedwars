@@ -167,7 +167,7 @@ select-bwim:
   # 物品设置
   item:
     i:
-      type: BED_ITEM
+      type: BED
       durability: 0
       name: '§e实体资源模式'
       lore:
@@ -640,8 +640,6 @@ language:
   joingame-chat: '§7{player}§e加入了游戏§e(§a{players}§f/§c{maxplayers}§e) '
   # 离开游戏
   leavegame-chat: '§7{player}§e离开了游戏§e(§a{players}§f/§c{maxplayers}§e) '
-  # 断线重连
-  rejoin-chat: '§e{player} 重新加入了游戏! '
   # 伤害标题
   damageholo-damage-title: '§r '
   damageholo-damage-subtitle: '§e伤害 - {damage}'

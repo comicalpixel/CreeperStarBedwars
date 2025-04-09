@@ -9,6 +9,7 @@ import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
 import cn.comicalpixel.creeperstarbedwars.Entity.AntiMobs;
 import cn.comicalpixel.creeperstarbedwars.Fix.ComboFix;
 import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
+import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
@@ -115,6 +116,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         AntiMobs.clear_task();
 
         getServer().getPluginManager().registerEvents(new TeamSel_GUI(), this);
+        getServer().getPluginManager().registerEvents(new BwimSel_GUI(), this);
 
         getServer().getPluginManager().registerEvents(new PlayerDamage(), this);
 
@@ -394,7 +396,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.language_joingame_chat = ConfigUtils.getString(config, "language.joingame-chat");
         ConfigData.language_leavegame_chat = ConfigUtils.getString(config, "language.leavegame-chat");
 
-        ConfigData.language_rejoin_chat = ConfigUtils.getString(config, "language.rejoin-chat");
+        // ConfigData.language_rejoin_chat = ConfigUtils.getString(config, "language.rejoin-chat");
+        // rejoin打算写扩展
 
         ConfigData.damageholo_damage_title = ConfigUtils.getString(config, "language.damageholo-damage-title");
         ConfigData.damageholo_damage_subtitle = ConfigUtils.getString(config, "language.damageholo-damage-subtitle");

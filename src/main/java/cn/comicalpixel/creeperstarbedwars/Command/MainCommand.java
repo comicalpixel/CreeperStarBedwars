@@ -7,6 +7,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.GUI.TeamSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import org.bukkit.ChatColor;
@@ -47,7 +48,7 @@ public class MainCommand implements CommandExecutor {
                     case "bwimsel":
                         if (ConfigData.teamsel_enabled) {
                             if (GameStats.get() == 1) {
-
+                                BwimSel_GUI.open(p);
                             } else {
                                 sender.sendMessage(ChatColor.RED + "The game has already started! You cannot do this now.");
                             }
