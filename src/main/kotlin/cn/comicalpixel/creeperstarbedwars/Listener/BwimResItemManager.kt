@@ -14,7 +14,10 @@ import org.bukkit.event.player.PlayerPickupItemEvent
 
 class BwimResItemManager : Listener {
 
-    val player_mode = HashMap<Player, Int>()
+    companion object {
+        // 静态变量
+        var playerMode = HashMap<Player, Int>()
+    }
 
 //    本来是想用来写击杀给予资源的...
 //    val player_iron = HashMap<Player, Int>()
@@ -30,8 +33,8 @@ class BwimResItemManager : Listener {
 
         val p = e.player
 
-        player_mode.put(p, 0)
-        
+        BwimResItemManager.playerMode.put(p, 0)
+
     }
 
     @EventHandler
@@ -54,7 +57,7 @@ class BwimResItemManager : Listener {
 
         if (ConfigData.bwimsel_enabled) {
 
-            if (player_mode.get(p) == 0) {
+            if (BwimResItemManager.playerMode.get(p) == 0) {
 
                 e.isCancelled = false
                 e.item.remove()
@@ -65,7 +68,7 @@ class BwimResItemManager : Listener {
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().config, "sound.resitem-pickup-bwim0")
 
             }
-            else if (player_mode.get(p) == 1) {
+            else if (BwimResItemManager.playerMode.get(p) == 1) {
 
                 e.isCancelled = true
                 var xp = 0

@@ -7,6 +7,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.GUI.TeamSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -41,6 +42,31 @@ public class MainCommand implements CommandExecutor {
                             TeamSel_GUI.open(p);
                         } else {
                             sender.sendMessage(ChatColor.RED + "The game has already started! You cannot do this now.");
+                        }
+                        break;
+                    case "bwimsel":
+                        if (ConfigData.teamsel_enabled) {
+                            if (GameStats.get() == 1) {
+
+                            } else {
+                                sender.sendMessage(ChatColor.RED + "The game has already started! You cannot do this now.");
+                            }
+                        }
+                        break;
+                    case "bwim":
+                        if (p.hasPermission("bedwars.admin") || p.isOp()) {
+                            if (args.length == 2) {
+                                if (args[1].equalsIgnoreCase("0")) {
+                                    BwimResItemManager.Companion.getPlayerMode().put(p, 0);
+                                    sender.sendMessage("Your resource model has been updated!");
+                                }
+                                if (args[1].equalsIgnoreCase("1")) {
+                                    BwimResItemManager.Companion.getPlayerMode().put(p, 1);
+                                    sender.sendMessage("Your resource model has been updated!");
+                                }
+                            }
+                        } else {
+                            p.sendMessage(ConfigData.language_command_bwstart_nopermissions);
                         }
                         break;
                     case "start":
