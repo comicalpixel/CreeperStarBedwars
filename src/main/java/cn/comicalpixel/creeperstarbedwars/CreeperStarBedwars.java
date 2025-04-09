@@ -212,6 +212,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.bwimsel_gui_items_xp_durability = ConfigUtils.getInt(config, "select-bwim.item.xp.durability");
         ConfigData.bwimsel_gui_items_xp_name = ConfigUtils.getString(config, "select-bwim.item.xp.name");
         ConfigData.bwimsel_gui_items_xp_lore = ConfigUtils.getStringList(config, "select-bwim.item.xp.lore");
+        ConfigData.bwimsel_gui_items_status_select = ConfigUtils.getString(config, "select-bwim.status-select");
+        ConfigData.bwimsel_gui_items_status_noselect = ConfigUtils.getString(config, "select-bwim.status-noselect");
 
         ConfigData.bwim_conversion_iron = ConfigUtils.getInt(config, "select-bwim.conversion.iron");
         ConfigData.bwim_conversion_gold = ConfigUtils.getInt(config, "select-bwim.conversion.gold");
