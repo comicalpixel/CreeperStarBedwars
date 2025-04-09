@@ -14,6 +14,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BwimSel_GUI implements Listener {
@@ -29,7 +30,8 @@ public class BwimSel_GUI implements Listener {
         ItemStack i_item = new ItemStack(Material.valueOf(ConfigData.bwimsel_gui_items_i_type), 1);
         ItemMeta i_meta = i_item.getItemMeta();
         i_meta.setDisplayName(ConfigData.bwimsel_gui_items_i_name);
-        List<String> i_lore = ConfigData.bwimsel_gui_items_i_lore;
+        List<String> i_lore = new ArrayList<>();
+        i_lore.addAll(ConfigData.bwimsel_gui_items_i_lore);
         if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
             i_lore.add(ConfigData.bwimsel_gui_items_status_select);
         } else {
@@ -43,7 +45,8 @@ public class BwimSel_GUI implements Listener {
         ItemStack xp_item = new ItemStack(Material.valueOf(ConfigData.bwimsel_gui_items_xp_type), 1);
         ItemMeta xp_meta = xp_item.getItemMeta();
         xp_meta.setDisplayName(ConfigData.bwimsel_gui_items_xp_name);
-        List<String> xp_lore = ConfigData.bwimsel_gui_items_xp_lore;
+        List<String> xp_lore = new ArrayList<>();
+        xp_lore.addAll(ConfigData.bwimsel_gui_items_xp_lore);
         if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
             xp_lore.add(ConfigData.bwimsel_gui_items_status_select);
         } else {
