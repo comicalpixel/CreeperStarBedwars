@@ -76,9 +76,11 @@ public class MainCommand implements CommandExecutor {
 
                             if (args.length == 1) {
                                 if (p.hasPermission("bedwars.start")) {
-                                    p.sendMessage(ConfigData.language_command_bwstart_done);
-                                    Game_Countdown_Task.countdown = 6;
-                                    Game_Countdown_Task.countdown_running = true;
+                                    if (Game_Countdown_Task.countdown > 6) {
+                                        p.sendMessage(ConfigData.language_command_bwstart_done);
+                                        Game_Countdown_Task.countdown = 6;
+                                        Game_Countdown_Task.countdown_running = true;
+                                    }
                                 } else {
                                     p.sendMessage(ConfigData.language_command_bwstart_nopermissions);
                                 }

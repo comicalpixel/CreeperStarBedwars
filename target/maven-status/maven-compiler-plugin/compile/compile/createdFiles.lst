@@ -6,12 +6,14 @@ cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task.class
 cn\comicalpixel\creeperstarbedwars\Utils\NoAIUtils.class
 cn\comicalpixel\creeperstarbedwars\Fix\LadderFix.class
 cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils.class
+cn\comicalpixel\creeperstarbedwars\Arena\GameTools.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameStart.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameData_cfg.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$3.class
 cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils.class
+cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecManager.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs.class
 cn\comicalpixel\creeperstarbedwars\Arena\GamePlayers.class
@@ -28,7 +30,9 @@ cn\comicalpixel\creeperstarbedwars\Listener\PlayerFoodLevel.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\ActionBarUtils.class
+cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamSpawn.class
 cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\BedBlockUtils.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$1.class
+cn\comicalpixel\creeperstarbedwars\Listener\InventoryListener.class

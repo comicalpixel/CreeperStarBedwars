@@ -124,6 +124,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new BwimResItemManager(), this);
 
+        getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 
     }
 
