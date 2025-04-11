@@ -13,7 +13,7 @@ public class ConfigUtils {
 
     // 获取物品
     public static ItemStack getItemStack(FileConfiguration config, String path) {
-        List<?> itemList = config.getList("test");
+        List<?> itemList = config.getList(path);
         if (itemList != null) {
             for (Object obj : itemList) {
                 if (obj instanceof ItemStack) {

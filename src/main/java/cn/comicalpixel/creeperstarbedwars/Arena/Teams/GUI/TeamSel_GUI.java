@@ -59,25 +59,25 @@ public class TeamSel_GUI implements Listener {
         int teamCount = TeamManager.teams.size();
         if (teamCount == 2) {
             slots = new int[]{11, 15};
-            gui = Bukkit.createInventory((InventoryHolder) null, 4 * 9, CreeperStarBedwars.getPlugin().getConfig().getString("select_team.gui-name"));
+            gui = Bukkit.createInventory((InventoryHolder) null, 4 * 9, CreeperStarBedwars.getPlugin().getConfig().getString("select_team.gui-name") + "§8§a§f§e§9§f§3§2");
 
             gui.setItem(30, leaveTeam_item);
             gui.setItem(32, closeGUI_item);
         } else if (teamCount == 4) {
             slots = new int[]{10, 12, 14, 16};
-            gui = Bukkit.createInventory((InventoryHolder) null, 4 * 9, CreeperStarBedwars.getPlugin().getConfig().getString("select_team.gui-name"));
+            gui = Bukkit.createInventory((InventoryHolder) null, 4 * 9, CreeperStarBedwars.getPlugin().getConfig().getString("select_team.gui-name") + "§8§a§f§e§9§f§3§2");
 
             gui.setItem(30, leaveTeam_item);
             gui.setItem(32, closeGUI_item);
         } else if (teamCount == 8) {
             slots = new int[]{10, 12, 14, 16, 28, 30, 32, 34};
-            gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, CreeperStarBedwars.getPlugin().getConfig().getString("select_team.gui-name"));
+            gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, CreeperStarBedwars.getPlugin().getConfig().getString("select_team.gui-name") + "§8§a§f§e§9§f§3§2");
 
             gui.setItem(48, leaveTeam_item);
             gui.setItem(50, closeGUI_item);
         } else {
             slots = new int[]{10, 11, 12, 13, 14, 15, 16, 19};
-            gui = Bukkit.createInventory((InventoryHolder) null, 4 * 9, CreeperStarBedwars.getPlugin().getConfig().getString("select_team.gui-name"));
+            gui = Bukkit.createInventory((InventoryHolder) null, 4 * 9, CreeperStarBedwars.getPlugin().getConfig().getString("select_team.gui-name") + "§8§a§f§e§9§f§3§2");
 
             gui.setItem(30, leaveTeam_item);
             gui.setItem(32, closeGUI_item);
@@ -92,7 +92,7 @@ public class TeamSel_GUI implements Listener {
 
             String item_name = ConfigData.teamsel_gui_items_wool_name;
             item_name = MessageVariableUtils.teamNameColor_p_s(item_name, team);
-            meta.setDisplayName(item_name);
+            meta.setDisplayName(item_name + "§8§a§f§e§a§3§7§a§f");
 
             List<String> item_lore = new ArrayList<>();
             for (String s : ConfigData.teamsel_gui_items_wool_lore_head) {
@@ -175,14 +175,15 @@ public class TeamSel_GUI implements Listener {
         Player p = (Player) e.getWhoClicked();
 
         if (e.getInventory().getType() == InventoryType.CHEST &&
-                e.getInventory().getName().equalsIgnoreCase(ConfigData.teamsel_gui_name) &&
-                    GameStats.get() == 1 && ConfigData.teamsel_enabled && e.getCurrentItem() != null) {
+                e.getInventory().getName().endsWith("§8§a§f§e§9§f§3§2") &&
+                    GameStats.get() == 1 && ConfigData.teamsel_enabled
+                && e.getCurrentItem() != null && e.getCurrentItem().getItemMeta() != null) {
             e.setCancelled(true);
 
             ItemStack item = e.getCurrentItem();
             ItemMeta meta = item.getItemMeta();
 
-            if (item.getType() == Material.WOOL) {
+            if (item.getType() == Material.WOOL && meta.getDisplayName().endsWith("§8§a§f§e§a§3§7§a§f")) {
                 if (item.getDurability() == 14) {
                     p.closeInventory();
                     TeamManager.join(p, "RED");
@@ -215,7 +216,8 @@ public class TeamSel_GUI implements Listener {
                     p.closeInventory();
                     TeamManager.join(p, "WHITE");
                 }
-
+            }
+            if (item.getType() == Material.WOOL) {
                 if (item.getDurability() == 16 && meta.getDisplayName().equalsIgnoreCase(ConfigData.teamsel_gui_items_leave_name)) {
                     p.closeInventory();
                     TeamManager.clear(p);

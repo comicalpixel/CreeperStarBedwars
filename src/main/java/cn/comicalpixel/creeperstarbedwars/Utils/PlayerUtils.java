@@ -1,10 +1,9 @@
 package cn.comicalpixel.creeperstarbedwars.Utils;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
+import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Color;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -58,6 +57,22 @@ public class PlayerUtils {
                 }
             }.runTaskLater(CreeperStarBedwars.getPlugin(), 10);
         }
+
+    }
+
+    public static void leave_game(Player p) {
+
+        GamePlayers.players.remove(p);
+        GamePlayers.specs.remove(p);
+
+        p.setGameMode(GameMode.SPECTATOR);
+
+        CreeperStarBedwars.bungeecord_SendServer(p, ConfigData.bungeecord_lobby);
+        Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+            if (p.isOnline()) {
+                p.kickPlayer("You have already left the game, but it seems you have not been automatically transferred back to the lobby.");
+            }
+        },(1+1+1+1+1+1+1+1+1+1)*2);
 
     }
 

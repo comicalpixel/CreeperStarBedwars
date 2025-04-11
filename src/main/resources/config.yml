@@ -331,7 +331,7 @@ countdown-settings:
 lobby-items:
   i0:
     enable: true
-    command: 'bwsel team'
+    command: 'bw teamsel'
     permissions: null
     item:
       - ==: org.bukkit.inventory.ItemStack
@@ -346,7 +346,7 @@ lobby-items:
             - '§8等待大厅物品'
   i1:
     enable: true
-    command: 'bwsel im'
+    command: 'bw bwimsel'
     permissions: null
     item:
       - ==: org.bukkit.inventory.ItemStack

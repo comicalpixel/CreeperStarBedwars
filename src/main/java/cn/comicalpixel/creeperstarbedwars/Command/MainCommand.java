@@ -10,6 +10,7 @@ import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
+import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -48,7 +49,7 @@ public class MainCommand implements CommandExecutor {
                     case "bwimsel":
                         if (ConfigData.teamsel_enabled) {
                             if (GameStats.get() == 1) {
-                                BwimSel_GUI.open(p);
+                                BwimSel_GUI.open(p, true);
                             } else {
                                 sender.sendMessage(ChatColor.RED + "The game has already started! You cannot do this now.");
                             }
@@ -69,6 +70,9 @@ public class MainCommand implements CommandExecutor {
                         } else {
                             p.sendMessage(ConfigData.language_command_bwstart_nopermissions);
                         }
+                        break;
+                    case "leave":
+                        PlayerUtils.leave_game(p);
                         break;
                     case "start":
                         // 检查游戏是否开始

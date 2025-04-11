@@ -18,8 +18,12 @@ import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 
 // git push -u origin main
 
@@ -58,6 +62,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
             Bukkit.getLogger().warning("CreeperStarBedwars does not support folia, please use version 1.8.8 of CraftBukkit or Spigot or Paper server kernel!");
             this.getPluginLoader().disablePlugin(this);
         }
+
+        getServer().getMessenger().registerOutgoingPluginChannel(CreeperStarBedwars.getPlugin(), "BungeeCord");
 
 //        Bukkit.getLogger().info(" ");
 //        Bukkit.getLogger().info("CreeperStarBedwars Plugin.");
@@ -636,6 +642,26 @@ public final class CreeperStarBedwars extends JavaPlugin {
             GameData_cfg.team_white_bed_b = ConfigUtils.getBlockLocation(gameConfig, "team-white.bed-b");
         }
 
+    }
+
+
+    public static boolean bungeecord_SendServer(Player player, String server) {
+        try {
+            if (server.length() == 0) {
+                return false;
+            } else {
+                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                DataOutputStream out = new DataOutputStream(byteArray);
+                out.writeUTF("Connect");
+                out.writeUTF(server);
+                player.sendPluginMessage(CreeperStarBedwars.getPlugin(), "BungeeCord", byteArray.toByteArray());
+                return true;
+            }
+        } catch (Exception var4) {
+            Exception ex = var4;
+            CreeperStarBedwars.getPlugin().getLogger().info(ex.getMessage());
+            return false;
+        }
     }
 
 }
