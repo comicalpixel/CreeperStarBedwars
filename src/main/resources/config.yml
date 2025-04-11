@@ -1,6 +1,5 @@
 # CreeperStarBedwars by Xiaol789zxc. https://comicalpixel.github.io
 # ComicalPixel Network 2023-2025
-# LanternMC Network 2021-2025
 
 
 author: Xiaol789zxc
@@ -21,9 +20,11 @@ data:
   # 想要数据库的可以自行拿源码改
 
   # 玩家游玩数据储存路径(目录名称不可以带空格和特殊符号) player_data.yml
-  player-data: './'
+  # 空即在插件默认配置文件储存目录
+  player-data: ''
   # 玩家商店数据储存路径(目录名称不可以带空格和特殊符号) shop_data.yml
-  shop-data: './'
+  # 空即在插件默认配置文件储存目录
+  shop-data: ''
 
 # 玩家NameTag的血量显示(玩家头顶上的+tab玩家列表的)
 nametag-health: true
@@ -111,7 +112,7 @@ select_team:
   # 队伍选择器语言部分
   gui-name: '§7队伍选择器'
   status-select: '§e§l单击加入队伍 '
-  status-inteam: '§e§l单击加入队伍 '
+  status-inteam: '§a §a§l✔ §a已选择 '
   status-full: '§e§l单击加入队伍 '
 
   # 队伍选择物品(羊毛)
@@ -762,7 +763,7 @@ language:
         - '§f模式 §bSolo '
         - '§f版本 §73.0'
         - '§r§r§r§r§r'
-        - '§eplay.lanternmc.cn '
+        - '§ehttp://comicalpixel.github.io '
       countdown:
         - '§b§l起床战争'
         - '{date} #CSBW'
@@ -778,7 +779,7 @@ language:
         - '§f模式 §bSolo '
         - '§f版本 §73.0'
         - '§r§r§r§r§r'
-        - '§eplay.lanternmc.cn '
+        - '§ehttp://comicalpixel.github.io '
     game:
       player:
         - '§b§l起床战争'
@@ -794,7 +795,7 @@ language:
         - '§f我的队伍: {my_teamchatcolor}{my_team}队 '
         - '§f击杀:§a{kills}§f/摧床:§a{beds}§f/最击:§a{fkills}'
         - '     '
-        - '§eplay.lanternmc.cn '
+        - '§ehttp://comicalpixel.github.io '
       spec:
         - '§b§l起床战争'
         - '{date} #CSBW'
@@ -808,7 +809,7 @@ language:
         - '   '
         - '§d旁观中... '
         - '     '
-        - '§eplay.lanternmc.cn '
+        - '§ehttp://comicalpixel.github.io '
   # 游戏结束
   game-end-winner-title: '§6§l获胜!'
   game-end-winner-subtitle: '§7你获得了最终的胜利!'

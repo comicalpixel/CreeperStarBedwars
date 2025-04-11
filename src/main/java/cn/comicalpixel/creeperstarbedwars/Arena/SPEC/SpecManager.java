@@ -18,6 +18,11 @@ public class SpecManager {
         p.setFlying(true);
         p.setHealth(p.getMaxHealth());
         p.setFoodLevel(21);
+        p.getInventory().clear();
+        p.getInventory().setHelmet(null);
+        p.getInventory().setChestplate(null);
+        p.getInventory().setLeggings(null);
+        p.getInventory().setBoots(null);
         p.teleport(GameData_cfg.spec_loc.clone());
     }
 
