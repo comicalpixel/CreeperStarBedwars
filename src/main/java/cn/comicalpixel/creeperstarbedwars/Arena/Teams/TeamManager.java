@@ -244,6 +244,81 @@ public class TeamManager {
         }
     }
 
+    public static String getTeamChatColor(String team) {
+        if (    team.equals("RED") ||
+                team.equals("BLUE") ||
+                team.equals("GREEN") ||
+                team.equals("YELLOW") ||
+                team.equals("PINK") ||
+                team.equals("AQUA") ||
+                team.equals("GRAY") ||
+                team.equals("WHITE")
+        ) {
+
+            if (teams.contains(team)) {
+                switch (team) {
+                    case "RED":
+                        return GameData_cfg.team_red_chatcolor;
+                    case "BLUE":
+                        return GameData_cfg.team_blue_chatcolor;
+                    case "GREEN":
+                        return GameData_cfg.team_green_chatcolor;
+                    case "YELLOW":
+                        return GameData_cfg.team_yellow_chatcolor;
+                    case "PINK":
+                        return GameData_cfg.team_pink_chatcolor;
+                    case "AQUA":
+                        return GameData_cfg.team_aqua_chatcolor;
+                    case "GRAY":
+                        return GameData_cfg.team_gray_chatcolor;
+                    case "WHITE":
+                        return GameData_cfg.team_white_chatcolor;
+                }
+            }
+
+        }
+        return "§7";
+    }
+
+    public static boolean getbed(String team) {
+
+        if (    team.equals("RED") ||
+                team.equals("BLUE") ||
+                team.equals("GREEN") ||
+                team.equals("YELLOW") ||
+                team.equals("PINK") ||
+                team.equals("AQUA") ||
+                team.equals("GRAY") ||
+                team.equals("WHITE")
+        ) {
+
+            if (teams.contains(team)) {
+                switch (team) {
+                    case "RED":
+                        return team_red_bed;
+                    case "BLUE":
+                        return team_blue_bed;
+                    case "GREEN":
+                        return team_green_bed;
+                    case "YELLOW":
+                        return team_yellow_bed;
+                    case "PINK":
+                        return team_pink_bed;
+                    case "AQUA":
+                        return team_aqua_bed;
+                    case "GRAY":
+                        return team_gray_bed;
+                    case "WHITE":
+                        return team_white_bed;
+                }
+            }
+
+        }
+
+        return false;
+    }
+
+
     public static int getTeamPlayerSize(String team) {
         int i = 0;
 
@@ -259,6 +334,7 @@ public class TeamManager {
 
         return i;
     }
+
 
 
 }

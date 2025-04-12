@@ -12,6 +12,7 @@ import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
+import cn.comicalpixel.creeperstarbedwars.Items.FIREBALL_Item;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
@@ -131,6 +132,13 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BwimResItemManager(), this);
 
         getServer().getPluginManager().registerEvents(new InventoryListener(), this);
+
+        getServer().getPluginManager().registerEvents(new PlayerBlocks(), this);
+
+        getServer().getPluginManager().registerEvents(new DeathMove(), this);
+
+
+        getServer().getPluginManager().registerEvents(new FIREBALL_Item(), this);
 
     }
 
@@ -492,7 +500,6 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.language_playerdie_boom = ConfigUtils.getString(config, "language.playerdie-boom");
         ConfigData.language_playerdie_shoot = ConfigUtils.getString(config, "language.playerdie-shoot");
         ConfigData.language_playerdie_none = ConfigUtils.getString(config, "language.playerdie-null");
-        ConfigData.language_playerdie_killme = ConfigUtils.getString(config, "language.playerdie-killme");
         ConfigData.language_playerdie_killer_ = ConfigUtils.getString(config, "language.playerdie-killer");
         ConfigData.language_playerdie_final_ = ConfigUtils.getString(config, "language.playerdie-final");
 
@@ -535,6 +542,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.language_bed_invincibility_end_title = ConfigUtils.getString(config, "language.bed-invincibility-end-title");
         ConfigData.language_bed_invincibility_end_subtitle = ConfigUtils.getString(config, "language.bed-invincibility-end-subtitle");
         ConfigData.language_bed_invincibility_end_chat = ConfigUtils.getString(config, "language.bed-invincibility-end-chat");
+
+        ConfigData.sound_respawn_enabled = ConfigUtils.getBoolean(config, "sound.respawn.enable");
 
     }
     public void loadGameConfig() {

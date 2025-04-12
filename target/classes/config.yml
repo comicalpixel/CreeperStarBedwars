@@ -436,7 +436,7 @@ lobby-items:
             - '§8lore list'
   i7:
     enable: true
-    command: 'bw debug start'
+    command: 'bw start debug'
     permissions: 'bedwars.admin'
     item:
       - ==: org.bukkit.inventory.ItemStack
@@ -834,7 +834,6 @@ language:
   playerdie-boom: '{player} §7被炸成了碎片{killer}{final}'
   playerdie-shoot: '{player} §7被射死了{killer}{final}'
   playerdie-null: '{player} §7去了异世界? {final}'
-  playerdie-killme: '{player} §7他自杀了 {final}'
   playerdie-killer: '§7, 击杀者: {player} '
   playerdie-final: '§b§l最终击杀！ '
   # 小贴士提示(游戏开始时会在物品栏上方显示几秒)
@@ -1043,7 +1042,8 @@ sound:
     pitch: 2
   # 击杀音效
   killer-sound:
-    - ORB_PICKUP, 10, 1.0
+    - ORB_PICKUP,10,1.0
+    - LEVEL_UP,10,2.0
   # 游戏结束
   game-end:
     type: LEVEL_UP

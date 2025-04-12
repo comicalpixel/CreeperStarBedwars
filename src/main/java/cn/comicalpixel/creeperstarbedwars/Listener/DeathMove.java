@@ -1,0 +1,214 @@
+package cn.comicalpixel.creeperstarbedwars.Listener;
+
+import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
+import cn.comicalpixel.creeperstarbedwars.Arena.GameTools;
+import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecManager;
+import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
+import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
+import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
+import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.Sound;
+import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+
+public class DeathMove implements Listener {
+
+    @EventHandler
+    public void onDeath(PlayerDeathEvent e) {
+
+        Player p = e.getEntity();
+
+        if (GameStats.get() != 2 && GameStats.get() != 3) return;
+
+        e.setDeathMessage(null);
+
+        e.setKeepLevel(true);
+        e.setKeepInventory(true);
+
+        if (ConfigData.fast_respawn_enabled) {
+            p.setHealth(p.getMaxHealth());
+            respawn(p);
+        } else {
+            Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+                respawn(p);
+            },10);
+        }
+
+
+        // killer sound
+        if (e.getEntity().getKiller() != null && e.getEntity().getKiller() instanceof Player) {
+            Player killer = e.getEntity().getKiller();
+            List<String> sounds = ConfigUtils.getStringList(CreeperStarBedwars.getInstance().getConfig(), "sound.killer-sound");
+            String[] sound = sounds.get(new Random().nextInt(sounds.size())).split(",");
+            if (sound.length == 3) {
+                killer.playSound(killer.getLocation(), Sound.valueOf(sound[0]), Integer.parseInt(sound[1]), (float) Double.parseDouble(sound[2]));
+            }
+        }
+
+
+        // kill message
+        // {player} {killer} {final}
+        String killer_message = "";
+        if (p.getKiller() != null) {
+            killer_message = ConfigData.language_playerdie_killer_;
+            killer_message = killer_message.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p.getKiller())) + p.getKiller().getName());
+        }
+        String finalKill_message = "";
+        if (TeamManager.getbed(TeamManager.player_teams.get(p))) {
+            finalKill_message = ConfigData.language_playerdie_final_;
+        }
+        if (p.getLastDamageCause().getCause() != null && p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) {
+            String s = ConfigData.language_playerdie_void;
+            s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
+            s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
+            for (Player allp : Bukkit.getOnlinePlayers()) {
+                allp.sendMessage(s);
+            }
+        } else if (p.getLastDamageCause().getCause() != null && p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.PROJECTILE) {
+            String s = ConfigData.language_playerdie_shoot;
+            s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
+            s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
+            for (Player allp : Bukkit.getOnlinePlayers()) {
+                allp.sendMessage(s);
+            }
+        } else if (p.getLastDamageCause().getCause() != null && (p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALL || p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALLING_BLOCK)) {
+            String s = ConfigData.language_playerdie_fall;
+            s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
+            s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
+            for (Player allp : Bukkit.getOnlinePlayers()) {
+                allp.sendMessage(s);
+            }
+        } else if (p.getLastDamageCause().getCause() != null && p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
+            String s = ConfigData.language_playerdie_boom;
+            s = s.replace("{final}", finalKill_message);
+            s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
+            killer_message = ConfigData.language_playerdie_killer_;
+            if (p.getLastDamageCause().getEntity() instanceof TNTPrimed) {
+                TNTPrimed tnt = (TNTPrimed) p.getLastDamageCause().getEntity();
+                killer_message = killer_message.replace("{player}", tnt.getSource().getName().toString());
+                s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message);
+            } else if (p.getLastDamageCause().getEntity() instanceof Fireball) {
+                Fireball fireball = (Fireball) p.getLastDamageCause().getEntity();
+                killer_message = killer_message.replace("{player}", fireball.getShooter().toString());
+                s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message);
+            } else {
+                s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", "");
+            }
+            for (Player allp : Bukkit.getOnlinePlayers()) {
+                allp.sendMessage(s);
+            }
+        } else if (p.getKiller() != null && p.getKiller() instanceof Player) {
+            String s = ConfigData.language_playerdie_byplayer;
+            s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
+            s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
+            for (Player allp : Bukkit.getOnlinePlayers()) {
+                allp.sendMessage(s);
+            }
+        } else {
+            String s = ConfigData.language_playerdie_none;
+            s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
+            s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
+            for (Player allp : Bukkit.getOnlinePlayers()) {
+                allp.sendMessage(s);
+            }
+        }
+
+
+    }
+
+    public static void respawn(Player p) {
+        p.spigot().respawn();
+        p.spigot().respawn();
+        PlayerUtils.reset(p);
+        PlayerUtils.clear_effects(p);
+
+        p.setLevel(0);
+        p.setExp(0);
+        GameTools.InitializationInventory(p);
+
+        p.teleport(GameData_cfg.spec_loc);
+
+        Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+            p.damage(0.1);
+            sound.add(p.getUniqueId());
+            if (ConfigData.sound_respawn_enabled) {
+                if (sound.contains(p.getUniqueId())) {
+                    respawn_sound_plays(p);
+                    sound.remove(p.getUniqueId());
+                    i = 5;
+                }
+            }
+        },1);
+
+        if (!TeamManager.getbed(TeamManager.player_teams.get(p))) {
+            p.setGameMode(GameMode.SPECTATOR);
+            new BukkitRunnable() {
+                int resapwn = 5;
+                @Override
+                public void run() {
+                    if (resapwn > 0) {
+                        NMSTitleUntils.Title.send(p, ConfigData.language_respawn_respawning_title.replace("{time}", resapwn+"").replace("{timer}", resapwn+""), ConfigData.language_respawn_respawning_subtitle.replace("{time}", resapwn+"").replace("{timer}", resapwn+""), 2, 40, 7);
+                        p.sendMessage(ConfigData.language_respawn_respawning_chat.replace("{time}", resapwn+"").replace("{timer}", resapwn+""));
+                    }
+                    if (resapwn <= 0) {
+                        NMSTitleUntils.Title.send(p, ConfigData.language_respawn_respawn_title.replace("{time}", (resapwn+1)+"").replace("{timer}", (resapwn+1)+""), ConfigData.language_respawn_respawn_subtitle.replace("{time}", (resapwn+1)+"").replace("{timer}", (resapwn+1)+""), 7, 30, 10);
+                        PlayerUtils.reset(p);
+                        p.setFlying(false);
+                        p.setAllowFlight(false);
+                        p.setGameMode(GameMode.SURVIVAL);
+                        TeamSpawn.send(p, TeamManager.player_teams.get(p));
+                        p.setLevel(0);
+                        p.setExp(0);
+                        PlayerDamage.noDamageMode(p);
+                        cancel();
+                    }
+                    resapwn--;
+                }
+            }.runTaskTimer(CreeperStarBedwars.getPlugin(), 0,20);
+        } else {
+            SpecManager.setSpec(p);
+            NMSTitleUntils.Title.send(p, ConfigData.language_respawn_eliminated_title, ConfigData.language_respawn_eliminated_subtitle, 2, 40, 10);
+            p.sendMessage(ConfigData.language_respawn_eliminated_chat);
+        }
+
+    }
+
+
+
+    private static final List<UUID> sound = new ArrayList<>();
+    static int i = 5;
+
+    public static void respawn_sound_plays(Player player) {
+        for (float f = 1.7F; f < 2; f += 0.1F) {
+            float finalf = f;
+            Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(), () -> {
+                player.playSound(player.getLocation(), Sound.LEVEL_UP, 1, finalf);
+            }, i * 2L);
+            i++;
+        }
+        int finali = i;
+        for (; i < finali + 7; i++) {
+            Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(), () -> {
+                player.playSound(player.getLocation(), Sound.LEVEL_UP, 1, 2F);
+            }, i * 2L);
+        }
+    }
+
+}
