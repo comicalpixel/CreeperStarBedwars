@@ -13,7 +13,9 @@ public class SpecManager {
         GamePlayers.specs.add(p);
         PlayerUtils.clear_effects(p);
         PlayerUtils.reset(p);
-        p.setGameMode(GameMode.SPECTATOR);
+        p.setGameMode(GameMode.ADVENTURE);
+        PlayerUtils.setCollidesWithEntities(p, false);
+        PlayerUtils.hidePlayer(p);
         p.setAllowFlight(true);
         p.setFlying(true);
         p.setHealth(p.getMaxHealth());
@@ -23,6 +25,7 @@ public class SpecManager {
         p.getInventory().setChestplate(null);
         p.getInventory().setLeggings(null);
         p.getInventory().setBoots(null);
+        p.setFlying(true);
         p.teleport(GameData_cfg.spec_loc.clone());
     }
 

@@ -2,6 +2,7 @@ package cn.comicalpixel.creeperstarbedwars.Listener;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
+import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
@@ -74,6 +75,7 @@ public class PlayerJoinLeave implements Listener {
             p.getInventory().setLeggings(null);
             p.getInventory().setBoots(null);
             p.getInventory().clear();
+
 
             // 0: §r§9§a§e§f§f
             // 1: §r§9§a§e§f§a
@@ -191,7 +193,7 @@ public class PlayerJoinLeave implements Listener {
 
 
         } else if (GameStats.get() == 2) {
-            e.getPlayer().setGameMode(GameMode.SPECTATOR);
+            SpecManager.setSpec(p);
         } else if (GameStats.get() == 3) {
             e.getPlayer().kickPlayer(ChatColor.RED + "The game is over, and you can't join the spectators!");
         }

@@ -12,6 +12,19 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.wrappers.EnumWrappers;
+import com.comphenix.protocol.wrappers.PlayerInfoData;
+import com.comphenix.protocol.wrappers.WrappedChatComponent;
+import com.comphenix.protocol.wrappers.WrappedGameProfile;
+import org.bukkit.entity.Player;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
+
+
 import java.util.*;
 
 public class PlayerUtils {
@@ -74,6 +87,22 @@ public class PlayerUtils {
             }
         },(1+1+1+1+1+1+1+1+1+1)*2);
 
+    }
+
+    public static void setCollidesWithEntities(Player p, boolean enable) {
+        p.spigot().setCollidesWithEntities(enable);
+    }
+
+    public static void hidePlayer(Player p) {
+        for (Player allp : GamePlayers.players) {
+            allp.hidePlayer(p);
+        }
+    }
+
+    public static void showPlayer(Player p) {
+        for (Player allp : GamePlayers.players) {
+            allp.showPlayer(p);
+        }
     }
 
 }
