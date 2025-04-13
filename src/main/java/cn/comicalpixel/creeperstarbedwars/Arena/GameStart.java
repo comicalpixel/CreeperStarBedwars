@@ -33,6 +33,8 @@ public class GameStart {
             GameTools.InitializationInventory(p);
             p.setGameMode(GameMode.SURVIVAL);
 
+            p.getEnderChest().clear();
+
         }
 
 

@@ -51,7 +51,7 @@ public class DeathMove implements Listener {
 
 
         // killer sound
-        if (PlayerDamage.Playerkillers.get(p) != null) {
+        if (PlayerDamage.Playerkillers.get(p) != null && p != PlayerDamage.Playerkillers.get(p)) {
             Player killer = PlayerDamage.Playerkillers.get(p);
             List<String> sounds = ConfigUtils.getStringList(CreeperStarBedwars.getInstance().getConfig(), "sound.killer-sound");
             String[] sound = sounds.get(new Random().nextInt(sounds.size())).split(",");
@@ -64,7 +64,7 @@ public class DeathMove implements Listener {
         // kill message
         // {player} {killer} {final}
         String killer_message = "";
-        if (PlayerDamage.Playerkillers.get(p) != null) {
+        if (PlayerDamage.Playerkillers.get(p) != null && PlayerDamage.Playerkillers.get(p) != p) {
             killer_message = ConfigData.language_playerdie_killer_;
             killer_message = killer_message.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(PlayerDamage.Playerkillers.get(p))) + PlayerDamage.Playerkillers.get(p).getName());
         }
@@ -72,6 +72,7 @@ public class DeathMove implements Listener {
         if (TeamManager.getbed(TeamManager.player_teams.get(p))) {
             finalKill_message = ConfigData.language_playerdie_final_;
         }
+
         if (p.getLastDamageCause().getCause() != null && p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) {
             String s = ConfigData.language_playerdie_void;
             s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
@@ -86,20 +87,20 @@ public class DeathMove implements Listener {
             for (Player allp : Bukkit.getOnlinePlayers()) {
                 allp.sendMessage(s);
             }
-        } else if (p.getLastDamageCause().getCause() != null && (p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALL)) { // p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALLING_BLOCK)
-            String s = ConfigData.language_playerdie_fall;
-            s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
-            s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
-            for (Player allp : Bukkit.getOnlinePlayers()) {
-                allp.sendMessage(s);
-            }
-        } else if (p.getLastDamageCause().getCause() != null && p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
+        } else if (p.getLastDamageCause().getCause() != null && (p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION || p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION)) {
 
             String s = ConfigData.language_playerdie_boom;
             s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
             s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
 
 
+            for (Player allp : Bukkit.getOnlinePlayers()) {
+                allp.sendMessage(s);
+            }
+        } else if (p.getLastDamageCause().getCause() != null && (p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALL)) { // p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALLING_BLOCK)
+            String s = ConfigData.language_playerdie_fall;
+            s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
+            s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
             for (Player allp : Bukkit.getOnlinePlayers()) {
                 allp.sendMessage(s);
             }

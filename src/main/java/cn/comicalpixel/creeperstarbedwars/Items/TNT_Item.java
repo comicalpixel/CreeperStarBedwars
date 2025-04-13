@@ -139,7 +139,7 @@ public class TNT_Item implements Listener {
                     } else {
                         p.damage(ConfigData.ItemsInGame_tnt_damage);
                     }
-                    p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.ENTITY_EXPLOSION, ConfigData.ItemsInGame_tnt_damage));
+                    p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.BLOCK_EXPLOSION, ConfigData.ItemsInGame_tnt_damage));
                 }
                 Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), 0.9).multiply(ConfigData.ItemsInGame_tnt_vlocity_multiply);
                 p.setVelocity(v.setY(ConfigData.ItemsInGame_tnt_vlocity_y));
@@ -159,6 +159,7 @@ public class TNT_Item implements Listener {
         if (GameStats.get() != 2 && GameStats.get() != 3) return;
         if (e.getDamager() instanceof TNTPrimed) {
             e.setCancelled(true);
+            e.getEntity().setLastDamageCause(new EntityDamageEvent(e.getEntity(), EntityDamageEvent.DamageCause.BLOCK_EXPLOSION, ConfigData.ItemsInGame_tnt_damage));
         }
     }
 
