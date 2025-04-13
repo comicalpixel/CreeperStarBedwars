@@ -9,11 +9,17 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PlayerDamage implements Listener {
+
+    public static Map<Player, Player> Playerkillers = new HashMap<Player, Player>();
+
 
     @EventHandler
     public void onDamage(EntityDamageEvent e) {
@@ -60,6 +66,23 @@ public class PlayerDamage implements Listener {
             Player p = (Player) e.getDamager();
             noDamagePlayers.remove(p);
         }
+    }
+    @EventHandler
+    public void setkiller_playerHitPlayer(EntityDamageByEntityEvent e) {
+        if (e.getEntity() instanceof Player && e.getDamager() instanceof Player && e.getEntity().getLastDamageCause().getCause() != EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
+            if (e.isCancelled()) {
+                return;
+            }
+            Player p = (Player) e.getEntity();
+            Player killer = (Player) e.getDamager();
+            Playerkillers.put(p, killer);
+        }
+    }
+    @EventHandler
+    public void resetkiller_PlayerDeath(PlayerDeathEvent e) {
+        Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+            Playerkillers.remove(e.getEntity());
+        },10);
     }
 
 }

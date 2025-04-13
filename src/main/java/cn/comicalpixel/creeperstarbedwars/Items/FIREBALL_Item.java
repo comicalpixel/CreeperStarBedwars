@@ -4,11 +4,13 @@ import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerBlocks;
+import cn.comicalpixel.creeperstarbedwars.Listener.PlayerDamage;
 import cn.comicalpixel.creeperstarbedwars.Utils.FireballUtil;
 import cn.comicalpixel.creeperstarbedwars.Utils.LocationUtil;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -68,7 +70,11 @@ public class FIREBALL_Item implements Listener {
         f.setShooter(p);
         f.setYield(ConfigData.ItemsInGame_fireball_radius);
 
+        fireball_isWho.put(f, p);
+
     }
+
+    public static HashMap<Fireball, Player> fireball_isWho = new HashMap<>();
 
 
     @EventHandler
@@ -78,6 +84,7 @@ public class FIREBALL_Item implements Listener {
         if (e.getEntity() instanceof Fireball) {
             e.setCancelled(true);
 
+            Fireball fireball = (Fireball) e.getEntity();
 
             // 防爆玻璃 不好的算法:(
             Location explosionLoc = e.getLocation();
@@ -150,10 +157,17 @@ public class FIREBALL_Item implements Listener {
             for (Player p : GamePlayers.players) {
                 if (p.getLocation().distance(e.getLocation()) < ConfigData.ItemsInGame_fireball_radius && Objects.equals(p.getLocation().getWorld().getName(), e.getLocation().getWorld().getName())) {
                     if (GameStats.get() == 2) {
-                        p.damage(ConfigData.ItemsInGame_fireball_damage);
+                        PlayerDamage.Playerkillers.put(p, fireball_isWho.get(fireball));
+                        // 格挡
+                        if (p.isBlocking()) {
+                            p.damage(ConfigData.ItemsInGame_fireball_damage * 0.5);
+                        } else {
+                            p.damage(ConfigData.ItemsInGame_fireball_damage);
+                        }
+                        p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.ENTITY_EXPLOSION, ConfigData.ItemsInGame_fireball_damage));
                     }
-                    p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.ENTITY_EXPLOSION, ConfigData.ItemsInGame_fireball_damage));
-                    p.setVelocity(LocationUtil.getPosition(p.getLocation(), e.getLocation(), 0.9).multiply(ConfigData.ItemsInGame_fireball_vlocity_multiply).setY(ConfigData.ItemsInGame_fireball_vlocity_y));
+                    Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), 0.9).multiply(ConfigData.ItemsInGame_fireball_vlocity_multiply);
+                    p.setVelocity(v.setY(ConfigData.ItemsInGame_fireball_vlocity_y));
                 }
             }
 

@@ -40,4 +40,5 @@ cn\comicalpixel\creeperstarbedwars\Utils\BedBlockUtils.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\DeathMove$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$1.class
+cn\comicalpixel\creeperstarbedwars\Items\TNT_Item.class
 cn\comicalpixel\creeperstarbedwars\Listener\InventoryListener.class

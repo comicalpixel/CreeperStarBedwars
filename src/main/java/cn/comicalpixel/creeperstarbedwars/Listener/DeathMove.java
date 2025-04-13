@@ -14,9 +14,7 @@ import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
-import org.bukkit.entity.Fireball;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -53,8 +51,8 @@ public class DeathMove implements Listener {
 
 
         // killer sound
-        if (e.getEntity().getKiller() != null && e.getEntity().getKiller() instanceof Player) {
-            Player killer = e.getEntity().getKiller();
+        if (PlayerDamage.Playerkillers.get(p) != null) {
+            Player killer = PlayerDamage.Playerkillers.get(p);
             List<String> sounds = ConfigUtils.getStringList(CreeperStarBedwars.getInstance().getConfig(), "sound.killer-sound");
             String[] sound = sounds.get(new Random().nextInt(sounds.size())).split(",");
             if (sound.length == 3) {
@@ -66,9 +64,9 @@ public class DeathMove implements Listener {
         // kill message
         // {player} {killer} {final}
         String killer_message = "";
-        if (p.getKiller() != null) {
+        if (PlayerDamage.Playerkillers.get(p) != null) {
             killer_message = ConfigData.language_playerdie_killer_;
-            killer_message = killer_message.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p.getKiller())) + p.getKiller().getName());
+            killer_message = killer_message.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(PlayerDamage.Playerkillers.get(p))) + PlayerDamage.Playerkillers.get(p).getName());
         }
         String finalKill_message = "";
         if (TeamManager.getbed(TeamManager.player_teams.get(p))) {
@@ -88,7 +86,7 @@ public class DeathMove implements Listener {
             for (Player allp : Bukkit.getOnlinePlayers()) {
                 allp.sendMessage(s);
             }
-        } else if (p.getLastDamageCause().getCause() != null && (p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALL || p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALLING_BLOCK)) {
+        } else if (p.getLastDamageCause().getCause() != null && (p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALL)) { // p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.FALLING_BLOCK)
             String s = ConfigData.language_playerdie_fall;
             s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
             s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
@@ -96,25 +94,16 @@ public class DeathMove implements Listener {
                 allp.sendMessage(s);
             }
         } else if (p.getLastDamageCause().getCause() != null && p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
+
             String s = ConfigData.language_playerdie_boom;
-            s = s.replace("{final}", finalKill_message);
+            s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
             s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());
-            killer_message = ConfigData.language_playerdie_killer_;
-            if (p.getLastDamageCause().getEntity() instanceof TNTPrimed) {
-                TNTPrimed tnt = (TNTPrimed) p.getLastDamageCause().getEntity();
-                killer_message = killer_message.replace("{player}", tnt.getSource().getName().toString());
-                s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message);
-            } else if (p.getLastDamageCause().getEntity() instanceof Fireball) {
-                Fireball fireball = (Fireball) p.getLastDamageCause().getEntity();
-                killer_message = killer_message.replace("{player}", fireball.getShooter().toString());
-                s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message);
-            } else {
-                s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", "");
-            }
+
+
             for (Player allp : Bukkit.getOnlinePlayers()) {
                 allp.sendMessage(s);
             }
-        } else if (p.getKiller() != null && p.getKiller() instanceof Player) {
+        } else if (PlayerDamage.Playerkillers.get(p) != null && PlayerDamage.Playerkillers.get(p) instanceof Player) {
             String s = ConfigData.language_playerdie_byplayer;
             s = s.replace(TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + "{player}", p.getName()).replace("{killer}", killer_message).replace("{final}", finalKill_message);
             s = s.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + p.getName());

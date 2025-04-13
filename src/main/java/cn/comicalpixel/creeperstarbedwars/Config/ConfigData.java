@@ -206,9 +206,11 @@ public class ConfigData {
     // TNT
     public static boolean ItemsInGame_tnt_enabled;
     public static int ItemsInGame_tnt_cooldown;
+    public static int ItemsInGame_tnt_fticks;
     public static int ItemsInGame_tnt_radius;
     public static int ItemsInGame_tnt_damage;
     public static double ItemsInGame_tnt_vlocity_multiply;
+    public static double ItemsInGame_tnt_vlocity_y;
     public static String  ItemsInGame_tnt_cooldown_chat;
     // 追踪指南针
     public static boolean ItemsInGame_compass_enabled;

@@ -13,6 +13,7 @@ import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Items.FIREBALL_Item;
+import cn.comicalpixel.creeperstarbedwars.Items.TNT_Item;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
@@ -139,6 +140,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
 
         getServer().getPluginManager().registerEvents(new FIREBALL_Item(), this);
+        getServer().getPluginManager().registerEvents(new TNT_Item(), this);
 
     }
 
@@ -357,9 +359,11 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         ConfigData.ItemsInGame_tnt_enabled = ConfigUtils.getBoolean(config, "items.tnt.enable");
         ConfigData.ItemsInGame_tnt_cooldown = ConfigUtils.getInt(config, "items.tnt.cooldown");
+        ConfigData.ItemsInGame_tnt_fticks = ConfigUtils.getInt(config, "items.tnt.FuseTicks");
         ConfigData.ItemsInGame_tnt_radius = ConfigUtils.getInt(config, "items.tnt.radius");
         ConfigData.ItemsInGame_tnt_damage = ConfigUtils.getInt(config, "items.tnt.damage");
         ConfigData.ItemsInGame_tnt_vlocity_multiply = ConfigUtils.getDouble(config, "items.tnt.vlocity-multiply");
+        ConfigData.ItemsInGame_tnt_vlocity_y = ConfigUtils.getDouble(config, "items.tnt.vlocity-y");
         ConfigData.ItemsInGame_tnt_cooldown_chat = ConfigUtils.getString(config, "items.tnt.cooldown-chat");
 
         ConfigData.ItemsInGame_compass_enabled = ConfigUtils.getBoolean(config, "items.Compass.enable");
