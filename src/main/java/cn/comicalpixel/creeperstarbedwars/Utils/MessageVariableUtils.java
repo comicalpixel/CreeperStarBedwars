@@ -58,4 +58,8 @@ public class MessageVariableUtils {
         return s.replace("{team_color}", color).replace("{team_name}", name);
     }
 
+    public static int convertMillisecondsToSeconds(long milliseconds) {
+        return (int) (milliseconds / 1000 + 1);//+1实现防出现0秒
+    }
+
 }

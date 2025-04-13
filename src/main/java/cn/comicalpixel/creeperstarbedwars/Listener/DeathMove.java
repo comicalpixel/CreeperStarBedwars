@@ -146,6 +146,7 @@ public class DeathMove implements Listener {
         p.teleport(GameData_cfg.spec_loc);
 
         Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+            p.teleport(GameData_cfg.spec_loc);
             p.damage(0.1);
             sound.add(p.getUniqueId());
             if (ConfigData.sound_respawn_enabled) {

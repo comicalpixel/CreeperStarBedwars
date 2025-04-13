@@ -351,14 +351,15 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.ItemsInGame_fireball_cooldown = ConfigUtils.getInt(config, "items.fireball.cooldown");
         ConfigData.ItemsInGame_fireball_radius = ConfigUtils.getInt(config, "items.fireball.radius");
         ConfigData.ItemsInGame_fireball_damage = ConfigUtils.getInt(config, "items.fireball.damage");
-        ConfigData.ItemsInGame_fireball_vlocity_multiply = ConfigUtils.getInt(config, "items.fireball.vlocity-multiply");
+        ConfigData.ItemsInGame_fireball_vlocity_multiply = ConfigUtils.getDouble(config, "items.fireball.vlocity-multiply");
+        ConfigData.ItemsInGame_fireball_vlocity_y = ConfigUtils.getDouble(config, "items.fireball.vlocity-y");
         ConfigData.ItemsInGame_fireball_cooldown_chat = ConfigUtils.getString(config, "items.fireball.cooldown-chat");
 
         ConfigData.ItemsInGame_tnt_enabled = ConfigUtils.getBoolean(config, "items.tnt.enable");
         ConfigData.ItemsInGame_tnt_cooldown = ConfigUtils.getInt(config, "items.tnt.cooldown");
         ConfigData.ItemsInGame_tnt_radius = ConfigUtils.getInt(config, "items.tnt.radius");
         ConfigData.ItemsInGame_tnt_damage = ConfigUtils.getInt(config, "items.tnt.damage");
-        ConfigData.ItemsInGame_tnt_vlocity_multiply = ConfigUtils.getInt(config, "items.tnt.vlocity-multiply");
+        ConfigData.ItemsInGame_tnt_vlocity_multiply = ConfigUtils.getDouble(config, "items.tnt.vlocity-multiply");
         ConfigData.ItemsInGame_tnt_cooldown_chat = ConfigUtils.getString(config, "items.tnt.cooldown-chat");
 
         ConfigData.ItemsInGame_compass_enabled = ConfigUtils.getBoolean(config, "items.Compass.enable");

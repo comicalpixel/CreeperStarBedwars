@@ -200,14 +200,15 @@ public class ConfigData {
     public static int ItemsInGame_fireball_cooldown;
     public static int ItemsInGame_fireball_radius;
     public static int ItemsInGame_fireball_damage;
-    public static int ItemsInGame_fireball_vlocity_multiply;
+    public static double ItemsInGame_fireball_vlocity_multiply;
+    public static double ItemsInGame_fireball_vlocity_y;
     public static String ItemsInGame_fireball_cooldown_chat;
     // TNT
     public static boolean ItemsInGame_tnt_enabled;
     public static int ItemsInGame_tnt_cooldown;
     public static int ItemsInGame_tnt_radius;
     public static int ItemsInGame_tnt_damage;
-    public static int ItemsInGame_tnt_vlocity_multiply;
+    public static double ItemsInGame_tnt_vlocity_multiply;
     public static String  ItemsInGame_tnt_cooldown_chat;
     // 追踪指南针
     public static boolean ItemsInGame_compass_enabled;
