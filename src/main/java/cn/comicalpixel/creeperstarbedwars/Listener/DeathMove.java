@@ -40,6 +40,7 @@ public class DeathMove implements Listener {
         e.setKeepLevel(true);
         e.setKeepInventory(true);
 
+        // 是否开启快速重生
         if (ConfigData.fast_respawn_enabled) {
             p.setHealth(p.getMaxHealth());
             respawn(p);
