@@ -388,6 +388,7 @@ public class ConfigData {
     public static String language_bed_invincibility_end_chat;
     public static String language_bed_invincibility_end_title;
     public static String language_bed_invincibility_end_subtitle;
+    public static String language_bed_invincibility_breakC;
 
 
 

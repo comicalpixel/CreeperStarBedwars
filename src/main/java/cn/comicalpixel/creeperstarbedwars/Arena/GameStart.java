@@ -1,5 +1,6 @@
 package cn.comicalpixel.creeperstarbedwars.Arena;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.GameEvents.BedInvincibilityEvent;
 import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
@@ -36,6 +37,9 @@ public class GameStart {
             p.getEnderChest().clear();
 
         }
+
+        // 床无敌
+        BedInvincibilityEvent.start();
 
 
 

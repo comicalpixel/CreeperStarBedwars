@@ -4,6 +4,8 @@ main: cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars
 load: STARTUP
 author: Xiaol789zxc
 
+api-version: 1.8
+
 softdepend: [ProtocolLib, My_Worlds, BKCommonLib, NameTagEdit, PlaceholderAPI]
 folia-supported: false
 

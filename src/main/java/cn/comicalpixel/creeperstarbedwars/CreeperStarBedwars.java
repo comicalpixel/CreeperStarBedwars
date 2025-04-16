@@ -135,6 +135,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InventoryListener(), this);
 
         getServer().getPluginManager().registerEvents(new PlayerBlocks(), this);
+        getServer().getPluginManager().registerEvents(new BedBlockListener(), this);
 
         getServer().getPluginManager().registerEvents(new DeathMove(), this);
 
@@ -408,7 +409,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.beddanger_enabled = ConfigUtils.getBoolean(config, "beddanger-title.enabled");
         ConfigData.beddanger_subtitle = ConfigUtils.getString(config, "beddanger-title.subtitle");
 
-        ConfigData.bed_invincibility_enabled = ConfigUtils.getBoolean(config, "bed-invincibility.enabled");
+        ConfigData.bed_invincibility_enabled = ConfigUtils.getBoolean(config, "bed-invincibility.enable");
         ConfigData.bed_invincibility_started_timer = ConfigUtils.getInt(config, "bed-invincibility.timer");
 
 
@@ -547,6 +548,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.language_bed_invincibility_end_title = ConfigUtils.getString(config, "language.bed-invincibility-end-title");
         ConfigData.language_bed_invincibility_end_subtitle = ConfigUtils.getString(config, "language.bed-invincibility-end-subtitle");
         ConfigData.language_bed_invincibility_end_chat = ConfigUtils.getString(config, "language.bed-invincibility-end-chat");
+        ConfigData.language_bed_invincibility_breakC = ConfigUtils.getString(config, "language.bed-invincibility-break-setCancelled");
 
         ConfigData.sound_respawn_enabled = ConfigUtils.getBoolean(config, "sound.respawn.enable");
 

@@ -2,7 +2,11 @@ package cn.comicalpixel.creeperstarbedwars.Utils;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
+import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MessageVariableUtils {
 
@@ -60,6 +64,12 @@ public class MessageVariableUtils {
 
     public static int convertMillisecondsToSeconds(long milliseconds) {
         return (int) (milliseconds / 1000 + 1);//+1实现防出现0秒
+    }
+
+    public static String getDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(ConfigData.language_date);
+        String date = dateFormat.format(new Date());
+        return date;
     }
 
 }

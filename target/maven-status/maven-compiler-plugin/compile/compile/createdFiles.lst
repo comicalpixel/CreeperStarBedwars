@@ -2,6 +2,7 @@ cn\comicalpixel\creeperstarbedwars\Fix\ComboFix.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamManager.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Title.class
+cn\comicalpixel\creeperstarbedwars\Listener\BedBlockListener.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task.class
 cn\comicalpixel\creeperstarbedwars\Utils\NoAIUtils.class
 cn\comicalpixel\creeperstarbedwars\Fix\LadderFix.class
@@ -17,6 +18,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils.class
 cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecManager.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class
+cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecListener.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs.class
 cn\comicalpixel\creeperstarbedwars\Utils\LocationUtil.class
 cn\comicalpixel\creeperstarbedwars\Utils\FireballUtil.class
@@ -24,6 +26,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\GamePlayers.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$2.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupListener.class
+cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent$1.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\GUI\TeamSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Player.class
@@ -32,6 +35,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Utils\MessageVariableUtils.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerFoodLevel.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
+cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\ActionBarUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamSpawn.class
