@@ -59,20 +59,20 @@ public class PlayerDamage implements Listener {
     }
     @EventHandler
     public void PlayerHitplayer_cancelNoDamge(EntityDamageByEntityEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
         if (e.getEntity() instanceof Player && e.getDamager() instanceof Player) {
-            if (e.isCancelled()) {
-                return;
-            }
             Player p = (Player) e.getDamager();
             noDamagePlayers.remove(p);
         }
     }
     @EventHandler
     public void setkiller_playerHitPlayer(EntityDamageByEntityEvent e) {
+        if (e.isCancelled()) {
+            return;
+        }
         if (e.getEntity() instanceof Player && e.getDamager() instanceof Player && e.getEntity().getLastDamageCause().getCause() != EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
-            if (e.isCancelled()) {
-                return;
-            }
             Player p = (Player) e.getEntity();
             Player killer = (Player) e.getDamager();
             Playerkillers.put(p, killer);

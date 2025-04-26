@@ -327,8 +327,10 @@ public class TeamManager {
         }
 
         for (Player p : GamePlayers.players) {
-            if (player_teams.get(p).equals(team)) {
-                i++;
+            if (p.isOnline() && player_teams.containsKey(p)) {
+                if (player_teams.get(p).equals(team)) {
+                    i++;
+                }
             }
         }
 

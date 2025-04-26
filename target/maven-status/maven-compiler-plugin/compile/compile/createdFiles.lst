@@ -1,4 +1,5 @@
 cn\comicalpixel\creeperstarbedwars\Fix\ComboFix.class
+cn\comicalpixel\creeperstarbedwars\Task\Game_WinCheck_Task.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamManager.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Title.class
@@ -37,6 +38,7 @@ cn\comicalpixel\creeperstarbedwars\Listener\PlayerFoodLevel.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs$1.class
+cn\comicalpixel\creeperstarbedwars\Task\Game_WinCheck_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\ActionBarUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamSpawn.class
 cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars$1.class
