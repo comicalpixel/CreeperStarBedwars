@@ -1,6 +1,7 @@
 package cn.comicalpixel.creeperstarbedwars.Arena;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameEvents.BedInvincibilityEvent;
+import cn.comicalpixel.creeperstarbedwars.Arena.Generator.StartGenerator;
 import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
@@ -36,10 +37,19 @@ public class GameStart {
 
             p.getEnderChest().clear();
 
+            p.setLevel(0);
+            p.setExp(0);
+
+            p.setFlying(false);
+            p.setAllowFlight(false);
+
         }
 
         // 床无敌
         BedInvincibilityEvent.start();
+
+        // 启动资源点
+        new StartGenerator();
 
 
 

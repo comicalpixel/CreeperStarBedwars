@@ -14,6 +14,7 @@ cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameStart.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerBlocks.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameData_cfg.class
+cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$2.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$3.class
 cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils.class
@@ -21,6 +22,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecManager.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class
 cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecListener.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Emerald.class
 cn\comicalpixel\creeperstarbedwars\Utils\LocationUtil.class
 cn\comicalpixel\creeperstarbedwars\Utils\FireballUtil.class
 cn\comicalpixel\creeperstarbedwars\Arena\GamePlayers.class
@@ -30,15 +32,19 @@ cn\comicalpixel\creeperstarbedwars\GameSetup\SetupListener.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent$1.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\GUI\TeamSel_GUI.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Player.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\StartGenerator.class
 cn\comicalpixel\creeperstarbedwars\GUI\BwimSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Utils\MessageVariableUtils.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerFoodLevel.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Emerald$1.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs$1.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_WinCheck_Task$1.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\ActionBarUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamSpawn.class
 cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars$1.class

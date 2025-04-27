@@ -15,7 +15,7 @@ import org.bukkit.event.player.PlayerPickupItemEvent
 class BwimResItemManager : Listener {
 
     companion object {
-        var playerMode = HashMap<Player, Int>()
+        var playerMode = mutableMapOf<Player, Int>()
     }
 
 //    本来是想用来写击杀给予资源的...
@@ -56,7 +56,7 @@ class BwimResItemManager : Listener {
 
         if (ConfigData.bwimsel_enabled) {
 
-            if (BwimResItemManager.playerMode.get(p) == 0) {
+            if (playerMode.get(p) == 0) {
 
                 e.isCancelled = false
                 e.item.remove()
@@ -67,7 +67,7 @@ class BwimResItemManager : Listener {
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().config, "sound.resitem-pickup-bwim0")
 
             }
-            else if (BwimResItemManager.playerMode.get(p) == 1) {
+            else if (playerMode[p] == 1) {
 
                 e.isCancelled = true
                 var xp = 0

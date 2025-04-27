@@ -106,10 +106,12 @@ public class TeamSel_GUI implements Listener {
             for (String s : ConfigData.teamsel_gui_items_wool_lore_foot) {
                 item_lore.add(MessageVariableUtils.teamNameColor_p_s(s, team).replace("{players}",TeamManager.getTeamPlayerSize(team)+"").replace("maxplayers", GameData_cfg.team_players+""));
             }
+
+            String playerTeam = TeamManager.player_teams.get(p);
             if (!TeamManager.player_teams.isEmpty()) {
-                if (TeamManager.player_teams.get(p).equals(team) && TeamManager.player_teams.containsKey(p)) {
+                if (playerTeam != null && TeamManager.player_teams.get(p).equals(team)) {
                     item_lore.add(ConfigData.teamsel_gui_items_status_inteam);
-                } else if (!TeamManager.player_teams.get(p).equals(team) && TeamManager.player_teams.containsKey(p) && TeamManager.getTeamPlayerSize(team) >= GameData_cfg.team_players) {
+                } else if (playerTeam != null && !TeamManager.player_teams.get(p).equals(team) && TeamManager.getTeamPlayerSize(team) >= GameData_cfg.team_players) {
                     item_lore.add(ConfigData.teamsel_gui_items_status_full);
                 } else {
                     item_lore.add(ConfigData.teamsel_gui_items_status_select);
