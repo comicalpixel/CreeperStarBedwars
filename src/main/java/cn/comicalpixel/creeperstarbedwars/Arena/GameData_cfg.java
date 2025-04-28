@@ -25,8 +25,8 @@ public class GameData_cfg {
     public static int teamChest_radius = 15;
 
     // 游戏资源点
-    public static List<Location> gameGenerator_diamond_locs = new ArrayList<>();
-    public static List<Location> gameGenerator_emerald_locs = new ArrayList<>();
+    public static List<String> gameGenerator_diamond_locs = new ArrayList<>();
+    public static List<String> gameGenerator_emerald_locs = new ArrayList<>();
 
     // 所有队伍(里面填队伍颜色, 如：RED/BLUE/GREEN/YELLOW/PINK/AQUA/GRAY/WHITE)
     public static List<String> teams_list = new ArrayList<String>();

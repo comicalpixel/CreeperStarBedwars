@@ -236,6 +236,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.bwimsel_gui_items_xp_lore = ConfigUtils.getStringList(config, "select-bwim.item.xp.lore");
         ConfigData.bwimsel_gui_items_status_select = ConfigUtils.getString(config, "select-bwim.status-select");
         ConfigData.bwimsel_gui_items_status_noselect = ConfigUtils.getString(config, "select-bwim.status-noselect");
+        ConfigData.bwimsel_set_i_message = ConfigUtils.getString(config, "select-bwim.set-i-message");
+        ConfigData.bwimsel_set_xp_message = ConfigUtils.getString(config, "select-bwim.set-xp-message");
 
         ConfigData.bwim_conversion_iron = ConfigUtils.getInt(config, "select-bwim.conversion.iron");
         ConfigData.bwim_conversion_gold = ConfigUtils.getInt(config, "select-bwim.conversion.gold");
@@ -578,14 +580,14 @@ public final class CreeperStarBedwars extends JavaPlugin {
         GameData_cfg.teamChest_radius = gameConfig.getInt("teamchest-radius");
         if (gameConfig.getStringList("generator.diamond") != null) {
             for (String s : ConfigUtils.getStringList(gameConfig, "generator.diamond")) {
-                GameData_cfg.gameGenerator_diamond_locs.add(ConfigUtils.getBlockLocation(gameConfig, s));
+                GameData_cfg.gameGenerator_diamond_locs.add(s);
             }
         } else {
             Bukkit.getLogger().warning("GameConfig game.yml, generator.diamond == null !!");
         }
         if (gameConfig.getStringList("generator.emerald") != null) {
             for (String s : ConfigUtils.getStringList(gameConfig, "generator.emerald")) {
-                GameData_cfg.gameGenerator_emerald_locs.add(ConfigUtils.getBlockLocation(gameConfig, s));
+                GameData_cfg.gameGenerator_emerald_locs.add(s);
             }
         } else {
             Bukkit.getLogger().warning("GameConfig game.yml, generator.emerald == null !!");

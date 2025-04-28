@@ -160,6 +160,28 @@ public class ConfigUtils {
         }
         return null;
     }
+    public static Location getBlockLocation(String message_loc) {
+
+        World world = Bukkit.getWorld(message_loc.split(", ")[0]);
+        int x = (int) Double.parseDouble(message_loc.split(", ")[1]);
+        int y = (int) Double.parseDouble(message_loc.split(", ")[2]);
+        int z = (int) Double.parseDouble(message_loc.split(", ")[3]);
+        return new Location(world, x +0.5, y, z +0.5); /**/
+
+    }
+
+    public static List<Location> getBlockStrLocationList(List<String> list) {
+
+        if (list.isEmpty()) return null;
+
+        List<Location> locs = new ArrayList<>();
+
+        for (String s : list) {
+            locs.add(getBlockLocation(s));
+        }
+
+        return locs;
+    }
 
 
 }

@@ -65,6 +65,8 @@ public class ConfigData {
     public static int bwimsel_gui_items_xp_durability;
     public static String bwimsel_gui_items_xp_name;
     public static List<String> bwimsel_gui_items_xp_lore = new ArrayList<>();
+    public static String bwimsel_set_i_message;
+    public static String bwimsel_set_xp_message;
     // 资源倍率转换
     public static int bwim_conversion_iron = 1;
     public static int bwim_conversion_gold = 10;

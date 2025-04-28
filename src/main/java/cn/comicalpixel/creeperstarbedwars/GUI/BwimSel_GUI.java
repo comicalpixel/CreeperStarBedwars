@@ -83,12 +83,14 @@ public class BwimSel_GUI implements Listener {
             if (item_meta.getDisplayName().endsWith("§8§a§e§f§3§6§e")) {
                 BwimResItemManager.Companion.getPlayerMode().put(p, 0);
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.bwim-set");
-                open(p, false);
+                // open(p, false);
+                p.sendMessage(ConfigData.bwimsel_set_i_message);
             }
             if (item_meta.getDisplayName().endsWith("§8§a§e§f§3§6§a")) {
                 BwimResItemManager.Companion.getPlayerMode().put(p, 1);
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.bwim-set");
-                open(p, false);
+                // open(p, false);
+                p.sendMessage(ConfigData.bwimsel_set_xp_message);
             }
 
         }

@@ -1,7 +1,9 @@
 package cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.ItemSpawn;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
+import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -86,7 +88,8 @@ public class Generators_Diamond {
             return;
         }
 
-        for (Location location : GameData_cfg.gameGenerator_diamond_locs) {
+        for (Location location : ConfigUtils.getBlockStrLocationList(GameData_cfg.gameGenerator_diamond_locs)) {
+            location = location.clone().add(0, 1, 0);
             List<Item> nearbyDiamonds = location.getWorld().getNearbyEntities(location, 2, 2, 2).stream()
                     .filter(entity -> entity instanceof Item)
                     .map(entity -> (Item) entity)
