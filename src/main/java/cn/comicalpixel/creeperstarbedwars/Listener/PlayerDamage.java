@@ -4,6 +4,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -34,10 +35,14 @@ public class PlayerDamage implements Listener {
                     e.setCancelled(true);
                 } else {
 
+                    if (p.getGameMode() == GameMode.SPECTATOR) {
+                        e.setCancelled(true);
+                    }
+
                     if (noDamagePlayers.contains(p)) {
                         e.setCancelled(true);
                     }
-                    if (e.getCause() == EntityDamageEvent.DamageCause.VOID) {
+                    if (e.getCause() == EntityDamageEvent.DamageCause.VOID && p.getGameMode() != GameMode.SPECTATOR) {
                         e.setDamage(p.getHealth() + 21.8);
                         e.setCancelled(false);
                     }

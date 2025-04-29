@@ -3,6 +3,7 @@ package cn.comicalpixel.creeperstarbedwars;
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.GUI.TeamSel_GUI;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamChest;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
@@ -143,6 +144,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new DeathMove(), this);
 
+        getServer().getPluginManager().registerEvents(new TeamChest(), this);
 
         getServer().getPluginManager().registerEvents(new FIREBALL_Item(), this);
         getServer().getPluginManager().registerEvents(new TNT_Item(), this);

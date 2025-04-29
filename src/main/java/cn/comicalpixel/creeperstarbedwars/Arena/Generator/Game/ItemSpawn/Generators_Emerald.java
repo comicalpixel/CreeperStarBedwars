@@ -87,6 +87,7 @@ public class Generators_Emerald {
         }
 
         for (Location location : ConfigUtils.getBlockStrLocationList(GameData_cfg.gameGenerator_emerald_locs)) {
+            location = location.clone().add(0, 1.0, 0);
             List<Item> nearbyEmeralds = location.getWorld().getNearbyEntities(location, 2, 2, 2).stream()
                     .filter(entity -> entity instanceof Item)
                     .map(entity -> (Item) entity)

@@ -156,6 +156,9 @@ select-bwim:
   status-select: '§a §a§l✔ §a已选择 '
   status-noselect: '§e §e§l▶ §e单击选择 '
 
+  set-i-message:  '§a你已选择 §e实体资源'
+  set-xp-message:  '§a你已选择 §a经验资源'
+
   # 资源转换
   # 资源类型:经验等级
   conversion:
@@ -516,13 +519,14 @@ items:
     # 是否启用
     enable: true
     # 冷却s
-    cooldown: 1
+    cooldown: 0
     # 范围
-    radius: 3
+    radius: 5
     # 伤害
     damage: 4
     # 击退
-    vlocity-multiply: 5
+    vlocity-multiply: 1.5
+    vlocity-y: 0.9
     # 语言部分
     cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
   # TNT
@@ -531,12 +535,15 @@ items:
     enable: true
     # 冷却s
     cooldown: 0
+    # 爆炸时间tick
+    FuseTicks: 40
     # 范围
     radius: 5
     # 伤害
     damage: 7
     # 击退
-    vlocity-multiply: 5
+    vlocity-multiply: 1.3
+    vlocity-y: 0.9
     # 语言部分
     cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
   # 追踪指南针
@@ -706,12 +713,12 @@ language:
     - "(๑́•∀•๑̀)ฅ"
   # 床的部分 (拆床/回春床 标题)
   bed-destroy-ismyteam-chat: "§c色盲还是脑袋被门夹了!? 这是自家床!"
-  bed-destroy-chat: "§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n§f \n §f§l床已被摧毁 > {bed_color}{bed_team} §a的床被 {player_color}{player_name} 挖爆\n \n§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+  bed-destroy-chat: "§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n§f \n §f§l床已被摧毁 > {bed_color}{bed_name} §a的床被 {player_color}{player_name} 挖爆\n \n§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
   bed-destroy-team-title: '§c床已被摧毁!'
   bed-destroy-team-subtitle: '§f死亡后将无法重生!'
-  bed-destroy-me-title: '{bed_color}{bed_team} 床已被摧毁!'
+  bed-destroy-me-title: '{bed_color}{bed_name} 床已被摧毁!'
   bed-destroy-me-subtitle: '§f你现在可以淘汰该队伍玩家了!'
-  bed-destroy-all-title: '{bed_color}{bed_team} 床已被摧毁!'
+  bed-destroy-all-title: '{bed_color}{bed_name} 床已被摧毁!'
   bed-destroy-all-subtitle: '§f你现在可以淘汰该队伍玩家了!'
   bed-respawn-chat: "§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n \n §f§l回春床 > {TeamChatColor}{TeamName} §f使用了回春床！ \n \n§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
   bed-respawn-team-title: '§a§l床已恢复!'
@@ -887,6 +894,7 @@ language:
   bed-invincibility-end-chat: "§c床无敌时间结束,现在你可以摧毁敌人的床了! "
   bed-invincibility-end-title: "§c§l床无敌结束!"
   bed-invincibility-end-subtitle: "§f保护你队伍的床, 现在你可以摧毁敌人的床了 "
+  bed-invincibility-break-setCancelled: "§c床无敌时间内不可以摧毁床! "
 
 
 # 音效设置
@@ -1045,7 +1053,15 @@ sound:
     - ORB_PICKUP,10,1.0
     - LEVEL_UP,10,2.0
   # 游戏结束
-  game-end:
+  game-end-winner:
+    type: LEVEL_UP
+    volume: 0
+    pitch: 1.0
+  game-end-spec:
+    type: LEVEL_UP
+    volume: 0
+    pitch: 1.0
+  game-end-nowin:
     type: LEVEL_UP
     volume: 0
     pitch: 1.0

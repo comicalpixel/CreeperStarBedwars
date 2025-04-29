@@ -4,6 +4,7 @@ cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamManager.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Title.class
+cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamChest.class
 cn\comicalpixel\creeperstarbedwars\Listener\BedBlockListener.class
 cn\comicalpixel\creeperstarbedwars\Utils\HolographicAPI$1.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task.class

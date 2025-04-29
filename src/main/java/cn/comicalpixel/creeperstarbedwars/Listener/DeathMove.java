@@ -40,16 +40,6 @@ public class DeathMove implements Listener {
         e.setKeepLevel(true);
         e.setKeepInventory(true);
 
-        // 是否开启快速重生
-        if (ConfigData.fast_respawn_enabled) {
-            p.setHealth(p.getMaxHealth());
-            respawn(p);
-        } else {
-            Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
-                respawn(p);
-            },10);
-        }
-
 
         // killer sound
         if (PlayerDamage.Playerkillers.get(p) != null && p != PlayerDamage.Playerkillers.get(p)) {
@@ -121,6 +111,16 @@ public class DeathMove implements Listener {
             }
         }
 
+        
+        // 是否开启快速重生
+        if (ConfigData.fast_respawn_enabled) {
+            p.setHealth(p.getMaxHealth());
+            respawn(p);
+        } else {
+            Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+                respawn(p);
+            },10);
+        }
 
     }
 
