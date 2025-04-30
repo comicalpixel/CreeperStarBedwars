@@ -59,6 +59,8 @@ public class MessageVariableUtils {
                 name = GameData_cfg.team_white_name;
                 break;
         }
+        if (color == null) color = "null";
+        if (name == null) name = "null";
         return s.replace("{team_color}", color).replace("{team_name}", name);
     }
 

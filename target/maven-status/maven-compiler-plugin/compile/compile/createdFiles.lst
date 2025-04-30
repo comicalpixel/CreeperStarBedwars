@@ -26,6 +26,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic.
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic.class
 cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecManager.class
 cn\comicalpixel\creeperstarbedwars\Utils\HolographicAPI.class
+cn\comicalpixel\creeperstarbedwars\Task\Sidebar_Scoreboard_Task$1.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$2.class
 cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecListener.class
@@ -42,6 +43,7 @@ cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\GUI\TeamSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond.class
+cn\comicalpixel\creeperstarbedwars\Task\Sidebar_Scoreboard_Task.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$Player.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\StartGenerator.class
 cn\comicalpixel\creeperstarbedwars\GUI\BwimSel_GUI.class

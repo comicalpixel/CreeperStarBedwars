@@ -77,7 +77,7 @@ public class PlayerDamage implements Listener {
         if (e.isCancelled()) {
             return;
         }
-        if (e.getEntity() instanceof Player && e.getDamager() instanceof Player && e.getEntity().getLastDamageCause().getCause() != EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
+        if (e.getEntity() instanceof Player && e.getDamager() instanceof Player && e.getEntity().getLastDamageCause() != null &&  e.getEntity().getLastDamageCause().getCause() != EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
             Player p = (Player) e.getEntity();
             Player killer = (Player) e.getDamager();
             Playerkillers.put(p, killer);

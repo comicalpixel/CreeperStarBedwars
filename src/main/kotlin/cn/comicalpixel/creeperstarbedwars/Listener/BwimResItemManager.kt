@@ -16,6 +16,21 @@ class BwimResItemManager : Listener {
 
     companion object {
         var playerMode = mutableMapOf<Player, Int>()
+
+        fun getModeName(p:Player):String {
+
+            var s = " "
+
+            if (playerMode.get(p) == 0) {
+                s = CreeperStarBedwars.getPlugin().config.getString("select-bwim.name-i")
+            }
+            if (playerMode.get(p) == 1) {
+                s = CreeperStarBedwars.getPlugin().config.getString("select-bwim.name-xp")
+            }
+
+            return s
+        }
+
     }
 
 //    本来是想用来写击杀给予资源的...
