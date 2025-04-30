@@ -19,6 +19,7 @@ import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
+import cn.comicalpixel.creeperstarbedwars.Task.Sidebar_Scoreboard_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -114,6 +115,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         // 游戏胜利判断
         new Game_WinCheck_Task();
+
+        // 计分板
+        new Sidebar_Scoreboard_Task();
 
         // 修复
         getServer().getPluginManager().registerEvents(new ComboFix(), this);

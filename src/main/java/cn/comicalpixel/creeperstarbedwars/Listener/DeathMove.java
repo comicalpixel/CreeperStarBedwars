@@ -111,7 +111,7 @@ public class DeathMove implements Listener {
             }
         }
 
-        
+
         // 是否开启快速重生
         if (ConfigData.fast_respawn_enabled) {
             p.setHealth(p.getMaxHealth());
