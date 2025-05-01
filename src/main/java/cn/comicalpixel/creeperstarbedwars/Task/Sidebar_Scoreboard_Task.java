@@ -1,7 +1,9 @@
 package cn.comicalpixel.creeperstarbedwars.Task;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
@@ -34,6 +36,11 @@ public class Sidebar_Scoreboard_Task {
                         send_lobby(p);
                     }
                 }
+                if (GameStats.get() == 2 || GameStats.get() == 3) {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        send_InGame(p);
+                    }
+                }
 
             }
         }.runTaskTimer(CreeperStarBedwars.getPlugin(), 0,10);
@@ -62,6 +69,12 @@ public class Sidebar_Scoreboard_Task {
             s = MessageVariableUtils.gameMapInformation_p_s(s);
             s = s.replace("{countdown}", Game_Countdown_Task.countdown+"");
             s = s.replace("{bwim}", BwimResItemManager.Companion.getModeName(p));
+
+
+            if (s.length() > 40) {
+                s = s.substring(0, 40);
+            }
+
             Score score = objective.getScore(s);
             score.setScore(message_list.size() - slot);
             slot++;
@@ -93,6 +106,14 @@ public class Sidebar_Scoreboard_Task {
             s = s.replace("{date}", MessageVariableUtils.getDate());
             s = MessageVariableUtils.gameMapInformation_p_s(s);
             s = s.replace("{bwim}", BwimResItemManager.Companion.getModeName(p));
+
+            s = MessageVariableUtils.getTeamMessageToSidebar(s, p);
+
+
+            if (s.length() > 40) {
+                s = s.substring(0, 40);
+            }
+
             Score score = objective.getScore(s);
             score.setScore(message_list.size() - slot);
             slot++;
