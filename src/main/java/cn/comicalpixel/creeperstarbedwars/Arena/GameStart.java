@@ -9,6 +9,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Listener.BedBlockListener;
+import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
 import org.bukkit.GameMode;
@@ -67,6 +68,9 @@ public class GameStart {
                 p.sendMessage(s);
             }
         }
+
+        // 淘汰队伍检测Task
+        new GameTeamEliminated_Task();
 
     }
 

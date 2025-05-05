@@ -12,6 +12,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\GameTimerEvent_Main.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic.class
 cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecManager.class
+cn\comicalpixel\creeperstarbedwars\Task\GameTeamEliminated_Task.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$2.class
 cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecListener.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs.class
@@ -61,6 +62,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\MessageVariableUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\TimerEvent_BedBreak.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerFoodLevel.class
+cn\comicalpixel\creeperstarbedwars\Task\GameTeamEliminated_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Emerald$1.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs$1.class
