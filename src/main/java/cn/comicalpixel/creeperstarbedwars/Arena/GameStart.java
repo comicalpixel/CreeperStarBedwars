@@ -7,6 +7,9 @@ import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
+import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
+import cn.comicalpixel.creeperstarbedwars.Listener.BedBlockListener;
+import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -46,6 +49,9 @@ public class GameStart {
 
         }
 
+        // 清除无效床
+        BedBlockUtils.clear_bed_GameStart();
+
         // 床无敌
         BedInvincibilityEvent.start();
 
@@ -55,7 +61,12 @@ public class GameStart {
         // 启动游戏事件
         new GameTimerEvent_Main();
 
-
+        // 游戏开始chat
+        for (Player p : GamePlayers.players) {
+            for (String s : ConfigData.language_game_start_chat) {
+                p.sendMessage(s);
+            }
+        }
 
     }
 

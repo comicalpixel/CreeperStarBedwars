@@ -66,6 +66,10 @@ public class BedBlockListener implements Listener {
                 p.sendMessage(ConfigData.language_bed_destroy_ismyteam_chat);
                 return;
             }
+            if (TeamManager.team_red_bed || TeamManager.getTeamPlayerSize("RED") <= 0 || !TeamManager.teams.contains("RED")) {
+                p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.bed-destroy-unknow-team"));
+                return;
+            }
             TeamManager.team_red_bed = true;
             bed_team_chatColor = TeamManager.getTeamChatColor("RED");
             bed_team_name = GameData_cfg.team_red_name;
@@ -74,6 +78,10 @@ public class BedBlockListener implements Listener {
             bed_TEAM = "BLUE";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
                 p.sendMessage(ConfigData.language_bed_destroy_ismyteam_chat);
+                return;
+            }
+            if (TeamManager.team_blue_bed || TeamManager.getTeamPlayerSize("BLUE") <= 0 || !TeamManager.teams.contains("BLUE")) {
+                p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.bed-destroy-unknow-team"));
                 return;
             }
             TeamManager.team_blue_bed = true;
@@ -86,6 +94,10 @@ public class BedBlockListener implements Listener {
                 p.sendMessage(ConfigData.language_bed_destroy_ismyteam_chat);
                 return;
             }
+            if (TeamManager.team_green_bed || TeamManager.getTeamPlayerSize("GREEN") <= 0 || !TeamManager.teams.contains("GREEN")) {
+                p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.bed-destroy-unknow-team"));
+                return;
+            }
             TeamManager.team_green_bed = true;
             bed_team_chatColor = TeamManager.getTeamChatColor("GREEN");
             bed_team_name = GameData_cfg.team_green_name;
@@ -94,6 +106,10 @@ public class BedBlockListener implements Listener {
             bed_TEAM = "YELLOW";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
                 p.sendMessage(ConfigData.language_bed_destroy_ismyteam_chat);
+                return;
+            }
+            if (TeamManager.team_yellow_bed || TeamManager.getTeamPlayerSize("YELLOW") <= 0 || !TeamManager.teams.contains("YELLOW")) {
+                p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.bed-destroy-unknow-team"));
                 return;
             }
             TeamManager.team_yellow_bed = true;
@@ -106,6 +122,10 @@ public class BedBlockListener implements Listener {
                 p.sendMessage(ConfigData.language_bed_destroy_ismyteam_chat);
                 return;
             }
+            if (TeamManager.team_pink_bed || TeamManager.getTeamPlayerSize("PINK") <= 0 || !TeamManager.teams.contains("PINK")) {
+                p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.bed-destroy-unknow-team"));
+                return;
+            }
             TeamManager.team_pink_bed = true;
             bed_team_chatColor = TeamManager.getTeamChatColor("PINK");
             bed_team_name = GameData_cfg.team_pink_name;
@@ -114,6 +134,10 @@ public class BedBlockListener implements Listener {
             bed_TEAM = "AQUA";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
                 p.sendMessage(ConfigData.language_bed_destroy_ismyteam_chat);
+                return;
+            }
+            if (TeamManager.team_aqua_bed || TeamManager.getTeamPlayerSize("AQUA") <= 0 || !TeamManager.teams.contains("AQUA")) {
+                p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.bed-destroy-unknow-team"));
                 return;
             }
             TeamManager.team_aqua_bed = true;
@@ -126,6 +150,10 @@ public class BedBlockListener implements Listener {
                 p.sendMessage(ConfigData.language_bed_destroy_ismyteam_chat);
                 return;
             }
+            if (TeamManager.team_gray_bed || TeamManager.getTeamPlayerSize("GRAY") <= 0 || !TeamManager.teams.contains("GRAY")) {
+                p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.bed-destroy-unknow-team"));
+                return;
+            }
             TeamManager.team_gray_bed = true;
             bed_team_chatColor = TeamManager.getTeamChatColor("GRAY");
             bed_team_name = GameData_cfg.team_gray_name;
@@ -134,6 +162,10 @@ public class BedBlockListener implements Listener {
             bed_TEAM = "WHITE";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
                 p.sendMessage(ConfigData.language_bed_destroy_ismyteam_chat);
+                return;
+            }
+            if (TeamManager.team_white_bed || TeamManager.getTeamPlayerSize("WHITE") <= 0 || !TeamManager.teams.contains("WHITE")) {
+                p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.bed-destroy-unknow-team"));
                 return;
             }
             TeamManager.team_white_bed = true;
@@ -242,7 +274,5 @@ public class BedBlockListener implements Listener {
         }
 
     }
-
-
 
 }

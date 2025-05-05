@@ -33,7 +33,7 @@ public class ConfigUtils {
         player.playSound(player.getLocation(), Sound.valueOf(config.getString(path + ".type")), config.getInt(path + ".volume"), (float) config.getDouble(path + ".pitch"));
     }
     public static void playSound(Player player, String splitstr_sound) {
-        String[] sound_split = splitstr_sound.split(", ");
+        String[] sound_split = splitstr_sound.split(",");
         if (sound_split.length == 3) {
             player.playSound(player.getLocation(), Sound.valueOf(sound_split[0]), Integer.parseInt(sound_split[1]), (float) Double.parseDouble(sound_split[2]));
         }

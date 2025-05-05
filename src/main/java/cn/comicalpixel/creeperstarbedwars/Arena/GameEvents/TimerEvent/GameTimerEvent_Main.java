@@ -5,6 +5,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.ItemSpawn.Generat
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import org.bukkit.Bukkit;
@@ -40,8 +41,19 @@ public class GameTimerEvent_Main {
 
                 event();
                 event_timerString = formatTime(event_timer);
-                event_timer--;
-                gameNowTimer--;
+
+                // 平局检测
+                if (gameNowTimer <= 0) {
+                    Game_WinCheck_Task.notWinGameEnd();
+                    cancel();
+                }
+
+                if (event_timer >= 1) {
+                    event_timer--;
+                }
+                if (gameNowTimer >= 1) {
+                    gameNowTimer--;
+                }
 
             }
         }.runTaskTimer(CreeperStarBedwars.getPlugin(), 0,20);
@@ -57,7 +69,7 @@ public class GameTimerEvent_Main {
                 event_timer = ConfigUtils.getInt(CreeperStarBedwars.getPlugin().getConfig(), "timer-event.events."+s+".countdown-timer");
                 event_name = ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "timer-event.events."+s+".event-name");
                 action_utils(s);
-                Bukkit.getLogger().info("timer-event.events."+s+".*");
+                // Bukkit.getLogger().info("timer-event.events."+s+".*");
             }
         }
 
@@ -103,7 +115,12 @@ public class GameTimerEvent_Main {
                         }
                     }
                 } else if (s.startsWith("[event]")) {
-
+                    s = s.replace("[event]", "");
+                    if (s.startsWith("bedbreak")) {
+                        new TimerEvent_BedBreak();
+                    } else if (s.startsWith("deathmode")) {
+                        new TimerEvent_DeathMode();
+                    }
                 } else if (s.startsWith("[editgens]")) {
                     s = s.replace("[editgens]", "");
                     String[] args = s.split(":");
@@ -113,6 +130,11 @@ public class GameTimerEvent_Main {
                         } else if (args[0].equalsIgnoreCase("emerald")) {
 
                         }
+                    }
+                } else if (s.startsWith("[chat]")) {
+                    s = s.replace("[chat]", "");
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        p.sendMessage(s);
                     }
                 } else {
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(), s);

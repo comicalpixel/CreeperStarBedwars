@@ -89,6 +89,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         JoinPluginCheck.check();
         getServer().getPluginManager().registerEvents(new JoinPluginCheck(), this);
 
+        // Bungeecord频道
+        getServer().getMessenger().registerOutgoingPluginChannel(CreeperStarBedwars.getInstance(), "BungeeCord");
 
         // 加载配置文件
         saveDefaultConfig();
@@ -122,7 +124,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // 修复
         getServer().getPluginManager().registerEvents(new ComboFix(), this);
         getServer().getPluginManager().registerEvents(new LadderFix(), this);
-
+        getServer().getPluginManager().registerEvents(new EnderDragon_Block(), this);
 
         // motd
         getServer().getPluginManager().registerEvents(new ServerMotdListener(), this);

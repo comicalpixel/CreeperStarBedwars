@@ -5,12 +5,15 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils
+import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.player.PlayerDropItemEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.event.player.PlayerPickupItemEvent
+import kotlin.random.Random
 
 class BwimResItemManager : Listener {
 
@@ -117,11 +120,12 @@ class BwimResItemManager : Listener {
         } else {
             if (ConfigData.bwimsel_default == 0) {
 
-                e.isCancelled = false
+                e.isCancelled = true
                 e.item.remove()
                 val meta = e.item.itemStack.itemMeta
                 meta.displayName = null
                 e.item.itemStack.setItemMeta(meta)
+                p.inventory.addItem(e.item.itemStack)
 
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().config, "sound.resitem-pickup-bwim0")
 
@@ -156,6 +160,34 @@ class BwimResItemManager : Listener {
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().config, "sound.resitem-pickup-bwim1")
 
             }
+        }
+
+    }
+
+    @EventHandler
+    fun onDrop(e:PlayerDropItemEvent) {
+        //ChatColor.WHITE + "[CreeperStarBedwars] Diamond " + random.nextInt(25565) + 1000
+
+        if (GameStats.get() != 2 && GameStats.get() != 3) return
+
+        if (!GamePlayers.players.contains(e.player)) return
+
+        if (e.itemDrop.itemStack.type != Material.IRON_INGOT && e.itemDrop.itemStack.type != Material.GOLD_INGOT && e.itemDrop.itemStack.type != Material.DIAMOND && e.itemDrop.itemStack.type != Material.EMERALD) {
+            return
+        }
+
+        if (e.isCancelled) return
+
+        val p = e.player
+
+        if (e.itemDrop.itemStack.type == Material.IRON_INGOT) {
+            e.itemDrop.itemStack.itemMeta.displayName = "[CreeperStarBedwars] IRON " + Random.nextInt(25565) + 1000;
+        } else if (e.itemDrop.itemStack.type == Material.GOLD_INGOT) {
+            e.itemDrop.itemStack.itemMeta.displayName = "[CreeperStarBedwars] GOLD " + Random.nextInt(25565) + 1000;
+        } else if (e.itemDrop.itemStack.type == Material.DIAMOND) {
+            e.itemDrop.itemStack.itemMeta.displayName = "[CreeperStarBedwars] DIAMOND " + Random.nextInt(25565) + 1000;
+        } else if (e.itemDrop.itemStack.type == Material.EMERALD) {
+            e.itemDrop.itemStack.itemMeta.displayName = "[CreeperStarBedwars] EMERALD " + Random.nextInt(25565) + 1000;
         }
 
     }

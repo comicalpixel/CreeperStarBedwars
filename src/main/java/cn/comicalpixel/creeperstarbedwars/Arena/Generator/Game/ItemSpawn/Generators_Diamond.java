@@ -27,7 +27,7 @@ public class Generators_Diamond {
 
 
     public static void set(int interval, int level) {
-        interval_ = interval;
+        set_interval(interval);
         set_level(level);
         startResourceGeneration();
     }
@@ -72,7 +72,7 @@ public class Generators_Diamond {
         cancelTasks();
 
         int interval;
-        interval = interval_;
+        interval = interval_ * 20;
 
 //        int interval;
 //        switch (level) {

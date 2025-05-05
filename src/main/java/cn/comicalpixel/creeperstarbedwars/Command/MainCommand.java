@@ -1,6 +1,7 @@
 package cn.comicalpixel.creeperstarbedwars.Command;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
+import cn.comicalpixel.creeperstarbedwars.Arena.GameEvents.TimerEvent.GameTimerEvent_Main;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.GameStart;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
@@ -33,7 +34,7 @@ public class MainCommand implements CommandExecutor {
                             sender.sendMessage("§fpowered by §6Xiaol789zxc §7- §bComical§ePixel §fNetwork ");
                             sender.sendMessage("§f/bw start §aShorten the game countdown");
                             sender.sendMessage("§f/bw setup §aSETUP Commands");
-                            sender.sendMessage("§f/bw debug §aTest game instructions (developer debugging)");
+                            // sender.sendMessage("§f/bw debug §aTest game instructions (developer debugging)");
                         } else {
                             sender.sendMessage("§aCreeper§eStar§fBedwars §7v" + CreeperStarBedwars.getPlugin().getDescription().getVersion());
                             sender.sendMessage("§f/bw start §aShorten the game countdown");
@@ -112,11 +113,17 @@ public class MainCommand implements CommandExecutor {
                     case "debug":
                         if (p.isOp() || p.hasPermission("bedwars.admin")) {
                             if (args.length >= 3) {
-                                switch (args[2]) {
+                                switch (args[1]) {
                                     case "setGameTimer":
-
+                                        if (args.length == 3) {
+                                            GameTimerEvent_Main.gameNowTimer = Integer.parseInt(args[2]);
+                                            sender.sendMessage("§a你已将游戏时间(倒计时)设置为 " + args[2] + " §a秒");
+                                        } else {
+                                            sender.sendMessage("§c错误的语法");
+                                        }
                                         break;
-                                    case "setGenI":
+                                    case "setGen":
+                                        // 这玩意我不想写了 :(
                                         break;
                                     case "setBed":
                                         break;
@@ -132,7 +139,6 @@ public class MainCommand implements CommandExecutor {
                             } else {
                                 sender.sendMessage("§c§lCreeperStarBedwars debug Commands §7v" + CreeperStarBedwars.getPlugin().getDescription().getVersion());
                                 sender.sendMessage("§c/bw debug setGameTimer §e设置游戏时间");
-                                sender.sendMessage("§c/bw debug setGenI §e设置游戏资源点的生成时间与等级");
                                 sender.sendMessage("§c/bw debug setBed §e设置队伍床状态");
                                 sender.sendMessage("§c/bw debug winCheck §e开关游戏胜利判断");
                                 sender.sendMessage("§c/bw debug setTeamGenL §e设置队伍的资源点等级");
