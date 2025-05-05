@@ -1,6 +1,7 @@
 package cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.ItemSpawn;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
+import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
@@ -98,7 +99,7 @@ public class Generators_Emerald {
                     .mapToInt(item -> item.getItemStack().getAmount())
                     .sum();
 
-            if (existingEmeralds < 4 + 1) {
+            if (existingEmeralds < ConfigData.resourcelimit_emerald + 1) {
                 ItemStack emerald = new ItemStack(Material.EMERALD, 1);
                 ItemMeta emeraldMeta = emerald.getItemMeta();
                 emeraldMeta.setDisplayName(ChatColor.WHITE + "[CreeperStarBedwars] Emerald " + random.nextInt(25565) + 1000);

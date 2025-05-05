@@ -279,6 +279,41 @@ public class TeamManager {
         }
         return "§7";
     }
+    public static String getTeamName(String team) {
+        if (    team.equals("RED") ||
+                team.equals("BLUE") ||
+                team.equals("GREEN") ||
+                team.equals("YELLOW") ||
+                team.equals("PINK") ||
+                team.equals("AQUA") ||
+                team.equals("GRAY") ||
+                team.equals("WHITE")
+        ) {
+
+            if (teams.contains(team)) {
+                switch (team) {
+                    case "RED":
+                        return GameData_cfg.team_red_name;
+                    case "BLUE":
+                        return GameData_cfg.team_blue_name;
+                    case "GREEN":
+                        return GameData_cfg.team_green_name;
+                    case "YELLOW":
+                        return GameData_cfg.team_yellow_name;
+                    case "PINK":
+                        return GameData_cfg.team_pink_name;
+                    case "AQUA":
+                        return GameData_cfg.team_aqua_name;
+                    case "GRAY":
+                        return GameData_cfg.team_gray_name;
+                    case "WHITE":
+                        return GameData_cfg.team_white_name;
+                }
+            }
+
+        }
+        return "§7";
+    }
 
     public static boolean getbed(String team) {
 

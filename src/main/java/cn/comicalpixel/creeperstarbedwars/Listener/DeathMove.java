@@ -8,6 +8,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
@@ -58,10 +59,16 @@ public class DeathMove implements Listener {
         if (PlayerDamage.Playerkillers.get(p) != null && PlayerDamage.Playerkillers.get(p) != p) {
             killer_message = ConfigData.language_playerdie_killer_;
             killer_message = killer_message.replace("{player}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(PlayerDamage.Playerkillers.get(p))) + PlayerDamage.Playerkillers.get(p).getName());
+
+            // Player kill data
+            PlayerInGameData.Companion.getKills().put(PlayerDamage.getKiller(p), PlayerInGameData.Companion.getKills().getOrDefault(PlayerDamage.getKiller(p), 0) + 1);
         }
         String finalKill_message = "";
         if (TeamManager.getbed(TeamManager.player_teams.get(p))) {
             finalKill_message = ConfigData.language_playerdie_final_;
+
+            // Player fkill data
+            PlayerInGameData.Companion.getFkills().put(PlayerDamage.getKiller(p), PlayerInGameData.Companion.getFkills().getOrDefault(PlayerDamage.getKiller(p), 0) + 1);
         }
 
         if (p.getLastDamageCause().getCause() != null && p.getLastDamageCause().getCause() == EntityDamageEvent.DamageCause.VOID) {

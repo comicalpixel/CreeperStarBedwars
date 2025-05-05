@@ -89,5 +89,11 @@ public class PlayerDamage implements Listener {
             Playerkillers.remove(e.getEntity());
         },10);
     }
+    public static Player getKiller(Player p) {
+        if (Playerkillers.containsKey(p) && Playerkillers.get(p) != null) {
+            return Playerkillers.get(p);
+        }
+        return null;
+    }
 
 }

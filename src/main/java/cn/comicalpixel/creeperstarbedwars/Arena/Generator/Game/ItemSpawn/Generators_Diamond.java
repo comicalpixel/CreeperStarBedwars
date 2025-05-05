@@ -22,25 +22,36 @@ public class Generators_Diamond {
     private static BukkitTask diamondTask;
     private static Random random = new Random();
     public static int level = 1;
+    public static int interval_ = 30;
     public static int timer_message = 0;
 
-    public static void set(int i) {
-        switch (i) {
-            case 1:
-                level = 1;
-                break;
-            case 2:
-                level = 2;
-                break;
-            case 3:
-                level = 3;
-                break;
-            default:
-                Bukkit.getLogger().warning("Error Diamond Level! 1/2/3");
-                level = 1;
-                break;
-        }
+
+    public static void set(int interval, int level) {
+        interval_ = interval;
+        set_level(level);
         startResourceGeneration();
+    }
+
+    public static void set_level(int i) {
+        level = i;
+    }
+    public static void set_interval(int i) {
+//        switch (i) {
+//            case 1:
+//                level = 1;
+//                break;
+//            case 2:
+//                level = 2;
+//                break;
+//            case 3:
+//                level = 3;
+//                break;
+//            default:
+//                Bukkit.getLogger().warning("Error Diamond Level! 1/2/3");
+//                level = 1;
+//                break;
+//        }
+        interval_ = i;
     }
 
     public static void start() {
@@ -61,20 +72,23 @@ public class Generators_Diamond {
         cancelTasks();
 
         int interval;
-        switch (level) {
-            case 1:
-                interval = 30 * 20; // 30 seconds
-                break;
-            case 2:
-                interval = 20 * 20; // 20 seconds
-                break;
-            case 3:
-                interval = 10 * 20; // 10 seconds
-                break;
-            default:
-                interval = 30 * 20; // Default to 30 seconds
-                break;
-        }
+        interval = interval_;
+
+//        int interval;
+//        switch (level) {
+//            case 1:
+//                interval = 30 * 20; // 30 seconds
+//                break;
+//            case 2:
+//                interval = 20 * 20; // 20 seconds
+//                break;
+//            case 3:
+//                interval = 10 * 20; // 10 seconds
+//                break;
+//            default:
+//                interval = 30 * 20; // Default to 30 seconds
+//                break;
+//        }
 
         diamondTask = Bukkit.getScheduler().runTaskTimer(CreeperStarBedwars.getPlugin(), () -> {
             timer_message = interval / 20;
@@ -100,7 +114,7 @@ public class Generators_Diamond {
                     .mapToInt(item -> item.getItemStack().getAmount())
                     .sum();
 
-            if (existingDiamonds < 4 + 1) {
+            if (existingDiamonds < ConfigData.resourcelimit_diamond + 1) {
                 ItemStack diamond = new ItemStack(Material.DIAMOND, 1);
                 ItemMeta diamondMeta = diamond.getItemMeta();
                 diamondMeta.setDisplayName(ChatColor.WHITE + "[CreeperStarBedwars] Diamond " + random.nextInt(25565) + 1000);

@@ -345,13 +345,20 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.generator_team_l4_gold = ConfigUtils.getDouble(config, "generator-level.team-4.gold");
         ConfigData.generator_team_l4_emerald = ConfigUtils.getDouble(config, "generator-level.team-4.emerald");
 
-        ConfigData.generator_diamond_l1 = ConfigUtils.getDouble(config, "generator-level.diamond-1");
-        ConfigData.generator_diamond_l2 = ConfigUtils.getDouble(config, "generator-level.diamond-2");
-        ConfigData.generator_diamond_l3 = ConfigUtils.getDouble(config, "generator-level.diamond-3");
+        ConfigData.generator_game_diamond = ConfigUtils.getInt(config, "generator-level.diamond");
+        ConfigData.generator_game_emerald = ConfigUtils.getInt(config, "generator-level.emerald");
+//        ConfigData.generator_diamond_l1 = ConfigUtils.getDouble(config, "generator-level.diamond-1");
+//        ConfigData.generator_diamond_l2 = ConfigUtils.getDouble(config, "generator-level.diamond-2");
+//        ConfigData.generator_diamond_l3 = ConfigUtils.getDouble(config, "generator-level.diamond-3");
+//
+//        ConfigData.generator_emerald_l1 = ConfigUtils.getDouble(config, "generator-level.emerald-1");
+//        ConfigData.generator_emerald_l2 = ConfigUtils.getDouble(config, "generator-level.emerald-2");
+//        ConfigData.generator_emerald_l3 = ConfigUtils.getDouble(config, "generator-level.emerald-3");
 
-        ConfigData.generator_emerald_l1 = ConfigUtils.getDouble(config, "generator-level.emerald-1");
-        ConfigData.generator_emerald_l2 = ConfigUtils.getDouble(config, "generator-level.emerald-2");
-        ConfigData.generator_emerald_l3 = ConfigUtils.getDouble(config, "generator-level.emerald-3");
+        ConfigData.resourcelimit_iron = ConfigUtils.getInt(config, "resourcelimit.IRON");
+        ConfigData.resourcelimit_gold = ConfigUtils.getInt(config, "resourcelimit.GOLD");
+        ConfigData.resourcelimit_diamond = ConfigUtils.getInt(config, "resourcelimit.DIAMOND");
+        ConfigData.resourcelimit_emerald = ConfigUtils.getInt(config, "resourcelimit.EMERALD");
 
 
         ConfigData.ItemsInGame_respawn_bed_enabled = ConfigUtils.getBoolean(config, "items.respawn-bed.enable");

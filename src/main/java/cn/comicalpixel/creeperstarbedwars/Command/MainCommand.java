@@ -109,6 +109,44 @@ public class MainCommand implements CommandExecutor {
                             p.sendMessage(ConfigData.language_command_nopermissions);
                         }
                         break;
+                    case "debug":
+                        if (p.isOp() || p.hasPermission("bedwars.admin")) {
+                            if (args.length >= 3) {
+                                switch (args[2]) {
+                                    case "setGameTimer":
+
+                                        break;
+                                    case "setGenI":
+                                        break;
+                                    case "setBed":
+                                        break;
+                                    case "winCheck":
+                                        break;
+                                    case "setTeamGenL":
+                                        break;
+                                    default:
+                                        sender.sendMessage("§c§lCreeperStarBedwars debug Commands §7v" + CreeperStarBedwars.getPlugin().getDescription().getVersion());
+                                        sender.sendMessage("§fUnknown debug command. ");
+                                        break;
+                                }
+                            } else {
+                                sender.sendMessage("§c§lCreeperStarBedwars debug Commands §7v" + CreeperStarBedwars.getPlugin().getDescription().getVersion());
+                                sender.sendMessage("§c/bw debug setGameTimer §e设置游戏时间");
+                                sender.sendMessage("§c/bw debug setGenI §e设置游戏资源点的生成时间与等级");
+                                sender.sendMessage("§c/bw debug setBed §e设置队伍床状态");
+                                sender.sendMessage("§c/bw debug winCheck §e开关游戏胜利判断");
+                                sender.sendMessage("§c/bw debug setTeamGenL §e设置队伍的资源点等级");
+                                sender.sendMessage("§c/bw debug §e查看测试指令");
+                            }
+                        } else {
+                            p.sendMessage(ConfigData.language_command_nopermissions);
+                        }
+                        break;
+                    default:
+                        sender.sendMessage("§aCreeper§eStar§fBedwars §7v" + CreeperStarBedwars.getInstance().getDescription().getVersion());
+                        sender.sendMessage("§epowered by §aXiaol789zxc §f- §bComical§ePixel §fNetwork");
+                        sender.sendMessage("§c未知指令! §f请使用 /bw help 查看指令列表");
+                        break;
                 }
             } else {
                 sender.sendMessage("§aCreeper§eStar§fBedwars §7v" + CreeperStarBedwars.getInstance().getDescription().getVersion());

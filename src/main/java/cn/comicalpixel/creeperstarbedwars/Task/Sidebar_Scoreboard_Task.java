@@ -1,11 +1,12 @@
 package cn.comicalpixel.creeperstarbedwars.Task;
 
-import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
+import cn.comicalpixel.creeperstarbedwars.Arena.GameEvents.TimerEvent.GameTimerEvent_Main;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import org.bukkit.Bukkit;
@@ -33,7 +34,7 @@ public class Sidebar_Scoreboard_Task {
 
                 if (GameStats.get() == 1) {
                     for (Player p : GamePlayers.players) {
-                        send_lobby(p);
+                        send_Inlobby(p);
                     }
                 }
                 if (GameStats.get() == 2 || GameStats.get() == 3) {
@@ -47,10 +48,10 @@ public class Sidebar_Scoreboard_Task {
 
     }
 
-    public void send_lobby(Player p) {
+    public void send_Inlobby(Player p) {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective objective = null;
-        List<String> message_list = new ArrayList<>();
+      List<String> message_list = new ArrayList<>();
         if (Game_Countdown_Task.countdown_running) {
             message_list.addAll(ConfigData.language_sidebarboard_list_lobby_countdown);
             objective = scoreboard.registerNewObjective(ConfigData.language_sidebarboard_list_lobby_countdown.get(0)+" ", "dummy");
@@ -109,6 +110,25 @@ public class Sidebar_Scoreboard_Task {
 
             s = MessageVariableUtils.getTeamMessageToSidebar(s, p);
 
+            s = s
+                    .replace("{events_name}", GameTimerEvent_Main.event_name)
+                    .replace("{events_timer}",GameTimerEvent_Main.event_timerString)
+            ;
+
+            if (GamePlayers.players.contains(p)) {
+                s = s
+                        .replace("{kills}", PlayerInGameData.Companion.getKills().getOrDefault(p, 0)+"")
+                        .replace("{fkills}", PlayerInGameData.Companion.getFkills().getOrDefault(p, 0)+"")
+                        .replace("{beds}", PlayerInGameData.Companion.getBeds().getOrDefault(p, 0)+"")
+                ;
+                s = s
+                        .replace("{myteam_name}", TeamManager.getTeamName(TeamManager.player_teams.get(p)))
+                        .replace("{myteam_color}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)))
+                        .replace("{myteam}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)) + TeamManager.getTeamName(TeamManager.player_teams.get(p)))
+                ;
+            } else if (GamePlayers.specs.contains(p)) {
+
+            }
 
             if (s.length() > 40) {
                 s = s.substring(0, 40);

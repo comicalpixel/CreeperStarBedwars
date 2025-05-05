@@ -7,6 +7,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
@@ -149,6 +150,8 @@ public class BedBlockListener implements Listener {
         }
 
 
+        // Player beds data
+        PlayerInGameData.Companion.getBeds().put(p, PlayerInGameData.Companion.getBeds().getOrDefault(p, 0) + 1);
 
 
         // 变量

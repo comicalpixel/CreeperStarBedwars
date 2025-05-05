@@ -159,6 +159,9 @@ select-bwim:
   set-i-message:  '§a你已选择 §e实体资源'
   set-xp-message:  '§a你已选择 §a经验资源'
 
+  name-i: '实体资源'
+  name-xp: '经验资源'
+
   # 资源转换
   # 资源类型:经验等级
   conversion:
@@ -492,12 +495,15 @@ generator-level:
     iron: 0.5
     gold: 1.1
     emerald: 10
-  diamond-1: 30
-  diamond-2: 20
-  diamond-3: 15
-  emerald-1: 70
-  emerald-2: 50
-  emerald-3: 30
+  diamond: 30
+  emerald: 70
+
+# 资源点物品生成数量限制
+resourcelimit:
+  IRON: 64
+  GOLD: 16
+  DIAMOND: 8
+  EMERALD: 4
 
 
 # 道具设置
@@ -638,6 +644,96 @@ bed-invincibility:
   # 持续时间s
   timer: 120
 
+# 游戏事件
+# 支持自定义
+timer-event:
+  # 游戏总时长
+  game-timer: 3600
+  # 所有已启用的事件
+  events-list:
+    - game-starting
+    - start_main
+    - diamond2
+    - emerald2
+    - diamond3
+    - emerald3
+    - bedbreak
+    - deathmode
+  # 所有事件
+  events:
+    # 实例(启用需要在timer-event.events-list中添加，例如test_event)
+    #test_event:
+    #game-timer: 3599
+    #countdown-timer: 300
+    #event-name: '§bEdited event name'
+    # 操作，目前仅支持command/title/sound/event(bedbreak/deathmode)/editgens(仅支持diamond/emerald的资源类型)的操作，格式见实例
+    #actions:
+    #    - '[command] bw'
+    #    - '[title] §a§lText;_;§fText;_;10;_;40;_;10'
+    #    - '[sound] GHAST_MOAN,10,1.0'
+    #    - '[editgens] diamond:30'
+    game-starting:
+      game-timer: 3605
+      countdown-timer: 300
+      event-name: '§3游戏开始'
+      actions:
+        - null
+    start_main:
+      game-timer: 3599
+      countdown-timer: 300
+      event-name: '§b钻石§fII'
+      actions:
+        - null
+    diamond2:
+      game-timer: 2700
+      countdown-timer: 300
+      event-name: '§2绿宝石§fII'
+      actions:
+        - '[editgens] diamond:20'
+        - '[title] §c;_;§b钻石资源点§f已升级至II;_;10;_;40;_;10'
+        - '[sound] GHAST_MOAN,10,1.0'
+    emerald2:
+      game-timer: 2400
+      countdown-timer: 300
+      event-name: '§b钻石§fIII'
+      actions:
+        - '[editgens] emerald:40'
+        - '[title] §c;_;§2绿宝石资源点§f已升级至II;_;10;_;40;_;10'
+        - '[sound] GHAST_MOAN,10,1.0'
+    diamond3:
+      game-timer: 2100
+      countdown-timer: 300
+      event-name: '§2绿宝石§fIII'
+      actions:
+        - '[editgens] diamond:15'
+        - '[title] §c;_;§b钻石资源点§f已升级至III;_;10;_;40;_;10'
+        - '[sound] GHAST_MOAN,10,1.0'
+    emerald3:
+      game-timer: 1800
+      countdown-timer: 900
+      event-name: '§c床自毁'
+      actions:
+        - '[editgens] emerald:20'
+        - '[title] §c;_;§2绿宝石资源点§f已升级至III;_;10;_;40;_;10'
+        - '[sound] GHAST_MOAN,10,1.0'
+    bedbreak:
+      game-timer: 900
+      countdown-timer: 300
+      event-name: '§c死亡模式'
+      actions:
+        - '[event] bedbreak'
+        - '[title] §c;_;§2绿宝石资源点§f已升级至III;_;10;_;40;_;10'
+        - '[sound] GHAST_MOAN,10,1.0'
+    deathmode:
+      game-timer: 600
+      countdown-timer: 600
+      event-name: '§e游戏结束'
+      actions:
+        - '[event] deathmode'
+        - '[title] §c;_;§2绿宝石资源点§f已升级至III;_;10;_;40;_;10'
+        - '[sound] GHAST_MOAN,10,1.0'
+
+
 
 
 # 语言设置(部分语言不在这里awa)
@@ -685,7 +781,7 @@ language:
     - '§e将在§c{timer}§e秒后刷新'
   generatorholo-emerald-list:
     - '§e等级 §c{level}'
-    - '§b钻石'
+    - '§2绿宝石'
     - '§e将在§c{timer}§e秒后刷新'
   generatorholo-team-list:
     - '§b附近方块人都能吸到捏 §6{rywz}'
@@ -757,7 +853,7 @@ language:
     lobby:
       waiting:
         - '§b§l起床战争'
-        - '{date} #CSBW'
+        - '§7{date} #CSBW'
         - '§r'
         - '§f地图 §b{map}'
         - '§f建筑师 §b{author}'
@@ -773,7 +869,7 @@ language:
         - '§ehttp://comicalpixel.github.io '
       countdown:
         - '§b§l起床战争'
-        - '{date} #CSBW'
+        - '§7{date} #CSBW'
         - '§r'
         - '§f地图 §b{map}'
         - '§f建筑师 §b{author}'
@@ -790,7 +886,7 @@ language:
     game:
       player:
         - '§b§l起床战争'
-        - '{date} #CSBW'
+        - '§7{date} #CSBW'
         - ' '
         - '{events_name} §f- §a{events_timer}'
         - '  '
@@ -799,13 +895,13 @@ language:
         - ' {team_pink}  {team_aqua} '
         - ' {team_white}  {team_gray} '
         - '   '
-        - '§f我的队伍: {my_teamchatcolor}{my_team}队 '
+        - '§f我的队伍: {myteam_color}{myteam_name}队 '
         - '§f击杀:§a{kills}§f/摧床:§a{beds}§f/最击:§a{fkills}'
         - '     '
         - '§ehttp://comicalpixel.github.io '
       spec:
         - '§b§l起床战争'
-        - '{date} #CSBW'
+        - '§7{date} #CSBW'
         - ' '
         - '{events_name} §f- §a{events_timer}'
         - '  '

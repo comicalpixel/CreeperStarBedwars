@@ -1,6 +1,7 @@
 package cn.comicalpixel.creeperstarbedwars.Arena;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameEvents.BedInvincibilityEvent;
+import cn.comicalpixel.creeperstarbedwars.Arena.GameEvents.TimerEvent.GameTimerEvent_Main;
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.StartGenerator;
 import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
@@ -50,6 +51,9 @@ public class GameStart {
 
         // 启动资源点
         new StartGenerator();
+
+        // 启动游戏事件
+        new GameTimerEvent_Main();
 
 
 

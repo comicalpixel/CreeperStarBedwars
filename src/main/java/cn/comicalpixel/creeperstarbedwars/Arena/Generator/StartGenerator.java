@@ -4,12 +4,13 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.Holo.Diamondholog
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.Holo.Emeraldholographic;
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.ItemSpawn.Generators_Diamond;
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.ItemSpawn.Generators_Emerald;
+import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 
 public class StartGenerator {
 
     public StartGenerator() {
 
-        Generators_Diamond.set(1);
+        Generators_Diamond.set(ConfigData.resourcelimit_diamond, 1);
         Generators_Emerald.set(1);
         Generators_Diamond.start();
         Generators_Emerald.start();

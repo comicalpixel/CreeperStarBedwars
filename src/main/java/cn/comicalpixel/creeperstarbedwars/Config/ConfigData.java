@@ -181,12 +181,18 @@ public class ConfigData {
     public static double generator_team_l4_gold = -1;
     public static double generator_team_l4_emerald = -1;
     // 游戏资源点
-    public static double generator_diamond_l1 = -1;
-    public static double generator_diamond_l2 = -1;
-    public static double generator_diamond_l3 = -1;
-    public static double generator_emerald_l1 = -1;
-    public static double generator_emerald_l2 = -1;
-    public static double generator_emerald_l3 = -1;
+    public static int generator_game_diamond = 30;
+    public static int generator_game_emerald = 70;
+//    public static double generator_diamond_l1 = -1;
+//    public static double generator_diamond_l2 = -1;
+//    public static double generator_diamond_l3 = -1;
+//    public static double generator_emerald_l1 = -1;
+//    public static double generator_emerald_l2 = -1;
+//    public static double generator_emerald_l3 = -1;
+    public static int resourcelimit_iron = 64;
+    public static int resourcelimit_gold = 16;
+    public static int resourcelimit_diamond = 8;
+    public static int resourcelimit_emerald = 4;
 
 
     // 游戏道具物品设置
