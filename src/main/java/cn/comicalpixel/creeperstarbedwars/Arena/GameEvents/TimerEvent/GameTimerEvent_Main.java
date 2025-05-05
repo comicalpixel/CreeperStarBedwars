@@ -2,6 +2,7 @@ package cn.comicalpixel.creeperstarbedwars.Arena.GameEvents.TimerEvent;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.ItemSpawn.Generators_Diamond;
+import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.ItemSpawn.Generators_Emerald;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
@@ -128,7 +129,7 @@ public class GameTimerEvent_Main {
                         if (args[0].equalsIgnoreCase("diamond")) {
                             Generators_Diamond.set(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
                         } else if (args[0].equalsIgnoreCase("emerald")) {
-
+                            Generators_Emerald.set(Integer.parseInt(args[1]), Integer.parseInt(args[2]));
                         }
                     }
                 } else if (s.startsWith("[chat]")) {

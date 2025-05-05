@@ -11,7 +11,7 @@ public class StartGenerator {
     public StartGenerator() {
 
         Generators_Diamond.set(ConfigData.generator_game_diamond, 1);
-        Generators_Emerald.set(1);
+        Generators_Emerald.set(ConfigData.generator_game_emerald, 1);
         Generators_Diamond.start();
         Generators_Emerald.start();
         new Diamondholographic();

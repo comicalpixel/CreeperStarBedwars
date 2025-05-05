@@ -22,25 +22,36 @@ public class Generators_Emerald {
     private static BukkitTask emeraldTask;
     private static Random random = new Random();
     public static int level = 1;
+    public static int interval_ = 70;
     public static int timer_message = 0;
 
-    public static void set(int i) {
-        switch (i) {
-            case 1:
-                level = 1;
-                break;
-            case 2:
-                level = 2;
-                break;
-            case 3:
-                level = 3;
-                break;
-            default:
-                Bukkit.getLogger().warning("Error Emerald Level! 1/2/3");
-                level = 1;
-                break;
-        }
+
+    public static void set(int interval, int level) {
+        set_interval(interval);
+        set_level(level);
         startResourceGeneration();
+    }
+
+    public static void set_level(int i) {
+        level = i;
+    }
+    public static void set_interval(int i) {
+//        switch (i) {
+//            case 1:
+//                level = 1;
+//                break;
+//            case 2:
+//                level = 2;
+//                break;
+//            case 3:
+//                level = 3;
+//                break;
+//            default:
+//                Bukkit.getLogger().warning("Error Emerald Level! 1/2/3");
+//                level = 1;
+//                break;
+//        }
+        interval_ = i;
     }
 
     public static void start() {
@@ -51,6 +62,7 @@ public class Generators_Emerald {
                 if (timer_message < 1) {
                     return;
                 }
+
                 timer_message--;
             }
         }, 0, 20);
@@ -60,20 +72,23 @@ public class Generators_Emerald {
         cancelTasks();
 
         int interval;
-        switch (level) {
-            case 1:
-                interval = 60 * 20; // 60 seconds
-                break;
-            case 2:
-                interval = 40 * 20; // 40 seconds
-                break;
-            case 3:
-                interval = 20 * 20; // 20 seconds
-                break;
-            default:
-                interval = 60 * 20; // Default to 60 seconds
-                break;
-        }
+        interval = interval_ * 20;
+
+//        int interval;
+//        switch (level) {
+//            case 1:
+//                interval = 30 * 20; // 30 seconds
+//                break;
+//            case 2:
+//                interval = 20 * 20; // 20 seconds
+//                break;
+//            case 3:
+//                interval = 10 * 20; // 10 seconds
+//                break;
+//            default:
+//                interval = 30 * 20; // Default to 30 seconds
+//                break;
+//        }
 
         emeraldTask = Bukkit.getScheduler().runTaskTimer(CreeperStarBedwars.getPlugin(), () -> {
             timer_message = interval / 20;
@@ -88,7 +103,7 @@ public class Generators_Emerald {
         }
 
         for (Location location : ConfigUtils.getBlockStrLocationList(GameData_cfg.gameGenerator_emerald_locs)) {
-            location = location.clone().add(0, 1.0, 0);
+            location = location.clone().add(0, 1, 0);
             List<Item> nearbyEmeralds = location.getWorld().getNearbyEntities(location, 2, 2, 2).stream()
                     .filter(entity -> entity instanceof Item)
                     .map(entity -> (Item) entity)

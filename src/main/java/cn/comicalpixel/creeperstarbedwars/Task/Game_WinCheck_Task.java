@@ -89,11 +89,11 @@ public class Game_WinCheck_Task {
 
         Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
             for (Player p : wins) {
-                NMSTitleUntils.Title.send(p, ConfigData.language_game_end_winner_title, ConfigData.language_game_end_winner_subtitle, 5, 70, 5);
+                NMSTitleUntils.Title.send(p, ConfigData.language_game_end_stalemate_title, ConfigData.language_game_end_stalemate_subtitle, 5, 70, 5);
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.game-end-nowin");
             }
             for (Player p : specs) {
-                NMSTitleUntils.Title.send(p, ConfigData.language_game_end_loser_title, ConfigData.language_game_end_loser_subtitle, 5, 70, 5);
+                NMSTitleUntils.Title.send(p, ConfigData.language_game_end_stalemate_title, ConfigData.language_game_end_stalemate_subtitle, 5, 70, 5);
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.game-end-nowin");
             }
         },40);

@@ -68,8 +68,6 @@ public final class CreeperStarBedwars extends JavaPlugin {
             this.getPluginLoader().disablePlugin(this);
         }
 
-        getServer().getMessenger().registerOutgoingPluginChannel(CreeperStarBedwars.getPlugin(), "BungeeCord");
-
 //        Bukkit.getLogger().info(" ");
 //        Bukkit.getLogger().info("CreeperStarBedwars Plugin.");
 //        Bukkit.getLogger().info("Author: Xiaol789zxc");
@@ -684,7 +682,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
     public static boolean bungeecord_SendServer(Player player, String server) {
         try {
-            if (server.length() == 0) {
+            if (server.isEmpty()) {
                 return false;
             } else {
                 ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
