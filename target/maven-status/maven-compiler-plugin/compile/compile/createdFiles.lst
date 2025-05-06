@@ -1,5 +1,6 @@
 cn\comicalpixel\creeperstarbedwars\Fix\ComboFix.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task$1.class
+cn\comicalpixel\creeperstarbedwars\Task\GameLobby_Actionbar_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\TimerEvent_DeathMode.class
 cn\comicalpixel\creeperstarbedwars\Utils\NoAIUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\GameTimerEvent_Main$1.class
@@ -50,6 +51,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\HolographicAPI.class
 cn\comicalpixel\creeperstarbedwars\Task\Sidebar_Scoreboard_Task$1.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class
 cn\comicalpixel\creeperstarbedwars\Utils\LocationUtil.class
+cn\comicalpixel\creeperstarbedwars\Task\GameLobby_Actionbar_Task.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$2.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupListener.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent$1.class

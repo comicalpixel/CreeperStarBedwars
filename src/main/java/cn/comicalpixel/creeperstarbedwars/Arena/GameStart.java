@@ -8,12 +8,18 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
-import cn.comicalpixel.creeperstarbedwars.Listener.BedBlockListener;
+import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
+import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
+import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
+import cn.comicalpixel.creeperstarbedwars.Utils.ActionBarUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
+
+import java.util.Random;
 
 public class GameStart {
 
@@ -71,6 +77,17 @@ public class GameStart {
 
         // 淘汰队伍检测Task
         new GameTeamEliminated_Task();
+
+        // 小贴士Actionbar
+        if (!ConfigData.language_game_start_tips_actionbar.isEmpty()) {
+            for (Player p : GamePlayers.players) {
+                ActionBarUtils.sendActionBar(p, ConfigData.language_game_start_tips_actionbar.get(new Random().nextInt(ConfigData.language_game_start_tips_actionbar.size())));
+            }
+        }
+        // 启动游戏追踪Actionbar
+        Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+            new Game_Actionbar_Task();
+        },90);
 
     }
 

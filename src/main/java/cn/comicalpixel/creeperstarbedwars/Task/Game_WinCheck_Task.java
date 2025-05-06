@@ -42,7 +42,9 @@ public class Game_WinCheck_Task {
                     }
                 }
                 if (teams.size() == 1) {
-                    GameStats.set(3);
+                    Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+                        GameStats.set(3);
+                    },1);
                     win();
                 }
 

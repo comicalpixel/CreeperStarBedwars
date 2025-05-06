@@ -16,7 +16,7 @@ import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Items.FIREBALL_Item;
 import cn.comicalpixel.creeperstarbedwars.Items.TNT_Item;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
-import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
+import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Sidebar_Scoreboard_Task;
@@ -110,8 +110,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // 游戏倒计时
         new Game_Countdown_Task();
 
-        // Actionbar
-        new Game_Actionbar_Task();
+        // Lobby Actionbar
+        new GameLobby_Actionbar_Task();
 
         // 游戏胜利判断
         new Game_WinCheck_Task();
