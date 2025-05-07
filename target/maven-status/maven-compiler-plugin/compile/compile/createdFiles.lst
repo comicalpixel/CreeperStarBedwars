@@ -28,6 +28,7 @@ cn\comicalpixel\creeperstarbedwars\GUI\BwimSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
 cn\comicalpixel\creeperstarbedwars\Items\Compass_Item$1.class
+cn\comicalpixel\creeperstarbedwars\Items\BridgeEgg_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond$1.class
 cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$1.class
@@ -47,6 +48,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic$
 cn\comicalpixel\creeperstarbedwars\Arena\GameData_cfg.class
 cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils.class
+cn\comicalpixel\creeperstarbedwars\Items\BridgeEgg_Item.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic.class
 cn\comicalpixel\creeperstarbedwars\Items\Compass_Item.class
 cn\comicalpixel\creeperstarbedwars\Utils\HolographicAPI.class
@@ -73,6 +75,7 @@ cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs$1.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_WinCheck_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\ActionBarUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamSpawn.class
+cn\comicalpixel\creeperstarbedwars\Items\BridgeEgg_Item$1$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\BedBlockUtils.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\DeathMove$1.class

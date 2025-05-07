@@ -13,6 +13,7 @@ import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
+import cn.comicalpixel.creeperstarbedwars.Items.BridgeEgg_Item;
 import cn.comicalpixel.creeperstarbedwars.Items.FIREBALL_Item;
 import cn.comicalpixel.creeperstarbedwars.Items.TNT_Item;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
@@ -151,8 +152,15 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new TeamChest(), this);
 
-        getServer().getPluginManager().registerEvents(new FIREBALL_Item(), this);
-        getServer().getPluginManager().registerEvents(new TNT_Item(), this);
+        if (ConfigData.ItemsInGame_fireball_enabled) {
+            getServer().getPluginManager().registerEvents(new FIREBALL_Item(), this);
+        }
+        if (ConfigData.ItemsInGame_tnt_enabled) {
+            getServer().getPluginManager().registerEvents(new TNT_Item(), this);
+        }
+        if (ConfigData.ItemsInGame_bridge_egg_enabled) {
+            getServer().getPluginManager().registerEvents(new BridgeEgg_Item(), this);
+        }
 
     }
 
