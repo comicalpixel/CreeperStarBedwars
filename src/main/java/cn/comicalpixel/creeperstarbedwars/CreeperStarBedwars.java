@@ -15,6 +15,7 @@ import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Items.BridgeEgg_Item;
 import cn.comicalpixel.creeperstarbedwars.Items.FIREBALL_Item;
+import cn.comicalpixel.creeperstarbedwars.Items.RespawnBed_Item;
 import cn.comicalpixel.creeperstarbedwars.Items.TNT_Item;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
@@ -160,6 +161,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         }
         if (ConfigData.ItemsInGame_bridge_egg_enabled) {
             getServer().getPluginManager().registerEvents(new BridgeEgg_Item(), this);
+        }
+        if (ConfigData.ItemsInGame_respawn_bed_enabled) {
+            getServer().getPluginManager().registerEvents(new RespawnBed_Item(), this);
         }
 
     }

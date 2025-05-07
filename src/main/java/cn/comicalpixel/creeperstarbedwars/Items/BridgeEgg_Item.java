@@ -1,5 +1,6 @@
 package cn.comicalpixel.creeperstarbedwars.Items;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
@@ -32,6 +33,8 @@ public class BridgeEgg_Item implements Listener {
     public void onInteract(PlayerInteractEvent e) {
 
         if (GameStats.get() != 2 && GameStats.get() != 3) return;
+
+        if (!GamePlayers.players.contains(e.getPlayer())) return;
 
         if ((e.getAction().equals(Action.RIGHT_CLICK_AIR) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) && e.getItem() != null && e.getItem().getType() == Material.EGG ) {
 

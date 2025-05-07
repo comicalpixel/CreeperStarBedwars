@@ -1,14 +1,14 @@
 # CreeperStarBedwars by Xiaol789zxc. https://comicalpixel.github.io
 # ComicalPixel Network 2023-2025
 
-
+# 不要修改此项!!
 author: Xiaol789zxc
 
 # Bungeecord设置
 # lobby-server 大厅服务器子服
 # motd用于匹配，匹配插件可以使用ServerJoiner、CyanJoiner
 bungeecord:
-  lobby-server: BedwarsLobby
+  lobby-server: lobby
   motd-waiting: '§a等待中...'
   motd-playing: '§6游戏中...'
   moyd-end: '§c游戏结束'
@@ -648,7 +648,7 @@ bed-invincibility:
 # 支持自定义
 timer-event:
   # 游戏总时长
-  game-timer: 3600
+  game-timer: 3000
   # 所有已启用的事件
   events-list:
     - game-starting
@@ -673,65 +673,71 @@ timer-event:
     #    - '[sound] GHAST_MOAN,10,1.0'
     #    - '[editgens] diamond:30'
     game-starting:
-      game-timer: 3605
+      game-timer: 3005
       countdown-timer: 300
       event-name: '§3游戏开始'
       actions:
-        - null
+        - ""
     start_main:
-      game-timer: 3599
+      game-timer: 3000
       countdown-timer: 300
       event-name: '§b钻石§fII'
       actions:
-        - null
+        - ""
     diamond2:
       game-timer: 2700
       countdown-timer: 300
       event-name: '§2绿宝石§fII'
       actions:
-        - '[editgens] diamond:20'
-        - '[title] §c;_;§b钻石资源点§f已升级至II;_;10;_;40;_;10'
-        - '[sound] GHAST_MOAN,10,1.0'
+        - '[editgens]diamond:20:2'
+        - '[title]§a§l资源点升级;_;§b钻石资源点§f已升级至II;_;10;_;40;_;10'
+        - '[chat]§b§l钻石资源点 §f已升级至II级'
+        - '[sound]GHAST_MOAN,10,1.0'
     emerald2:
       game-timer: 2400
       countdown-timer: 300
       event-name: '§b钻石§fIII'
       actions:
-        - '[editgens] emerald:40'
-        - '[title] §c;_;§2绿宝石资源点§f已升级至II;_;10;_;40;_;10'
-        - '[sound] GHAST_MOAN,10,1.0'
+        - '[editgens]emerald:40:2'
+        - '[title]§a§l资源点升级;_;§2绿宝石资源点§f已升级至II;_;10;_;40;_;10'
+        - '[chat]§2§l绿宝石资源点 §f已升级至II级'
+        - '[sound]GHAST_MOAN,10,1.0'
     diamond3:
       game-timer: 2100
       countdown-timer: 300
       event-name: '§2绿宝石§fIII'
       actions:
-        - '[editgens] diamond:15'
-        - '[title] §c;_;§b钻石资源点§f已升级至III;_;10;_;40;_;10'
-        - '[sound] GHAST_MOAN,10,1.0'
+        - '[editgens]diamond:15:3'
+        - '[title]§a§l资源点升级;_;§b钻石资源点§f已升级至III;_;10;_;40;_;10'
+        - '[chat]§b§l钻石资源点 §f已升级至III级'
+        - '[sound]GHAST_MOAN,10,1.0'
     emerald3:
       game-timer: 1800
       countdown-timer: 900
       event-name: '§c床自毁'
       actions:
-        - '[editgens] emerald:20'
-        - '[title] §c;_;§2绿宝石资源点§f已升级至III;_;10;_;40;_;10'
-        - '[sound] GHAST_MOAN,10,1.0'
+        - '[editgens]emerald:20:3'
+        - '[title]§a§l资源点升级;_;§2绿宝石资源点§f已升级至III;_;10;_;40;_;10'
+        - '[chat]§2§l绿宝石资源点 §f已升级至III级'
+        - '[sound]GHAST_MOAN,10,1.0'
     bedbreak:
       game-timer: 900
       countdown-timer: 300
       event-name: '§c死亡模式'
       actions:
-        - '[event] bedbreak'
-        - '[title] §c;_;§2绿宝石资源点§f已升级至III;_;10;_;40;_;10'
-        - '[sound] GHAST_MOAN,10,1.0'
+        - '[event]bedbreak'
+        - '[title]§c§l床自毁;_;§f所有队伍的床都消失了!;_;10;_;40;_;10'
+        - '[chat]§c§l床自毁! 所有队伍的床都消失了!'
+        - '[sound]ENDERDRAGON_GROWL,10,1.0'
     deathmode:
       game-timer: 600
       countdown-timer: 600
       event-name: '§e游戏结束'
       actions:
-        - '[event] deathmode'
-        - '[title] §c;_;§2绿宝石资源点§f已升级至III;_;10;_;40;_;10'
-        - '[sound] GHAST_MOAN,10,1.0'
+        - '[event]deathmode'
+        - '[title]§c§l绝杀模式;_;§f末影龙已经出现!;_;10;_;40;_;10'
+        - '[chat]§c§l绝杀模式, 末影龙已经出现!'
+        - '[sound]ENDERDRAGON_WINGS,10,1.0'
 
 
 
@@ -766,7 +772,7 @@ language:
   game-end-chat:
     - '§a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
     - ''
-    - '§f                          §l起床战争'
+    - '§f                       §a§lCreeper§e§lStar§f§lBedwars'
     - '§f                    §7胜利队伍: {team_color}{team_name}'
     - ''
     - '§f              §e§l击杀第一名 §7- §7{killer_1}  '
@@ -816,6 +822,7 @@ language:
   bed-destroy-me-subtitle: '§f你现在可以淘汰该队伍玩家了!'
   bed-destroy-all-title: '{bed_color}{bed_name} 床已被摧毁!'
   bed-destroy-all-subtitle: '§f你现在可以淘汰该队伍玩家了!'
+  bed-destroy-unknow-team: '§c无效的队伍, 可能是这个队伍已被淘汰或不存在 '
   bed-respawn-chat: "§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n \n §f§l回春床 > {TeamChatColor}{TeamName} §f使用了回春床！ \n \n§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
   bed-respawn-team-title: '§a§l床已恢复!'
   bed-respawn-team-subtitle: '§f现在你们队伍可以重生!'
@@ -919,7 +926,7 @@ language:
   game-end-loser-title: '§c游戏结束!'
   game-end-loser-subtitle: '§7你没有获得胜利:('
   game-end-stalemate-title: '§c§l游戏结束'
-  game-end-Stalemate-subtitle: '§7没有人获得胜利'
+  game-end-stalemate-subtitle: '§7任何人都没有获得胜利:('
   # 重生部分
   respawn-respawning-title: '§e{time}'
   respawn-respawning-subtitle: '§7你死了, 将在稍后重生'
@@ -1092,10 +1099,6 @@ sound:
     volume: 10
     pitch: 2
   # 回春床部分
-  respawnbed-me:
-    type: LEVEL_UP
-    volume: 10
-    pitch: 2
   respawnbed-team:
     type: LEVEL_UP
     volume: 10

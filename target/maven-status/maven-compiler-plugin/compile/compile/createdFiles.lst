@@ -1,6 +1,7 @@
 cn\comicalpixel\creeperstarbedwars\Fix\ComboFix.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Task\GameLobby_Actionbar_Task$1.class
+cn\comicalpixel\creeperstarbedwars\Items\RespawnBed_Item.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\TimerEvent_DeathMode.class
 cn\comicalpixel\creeperstarbedwars\Utils\NoAIUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\GameTimerEvent_Main$1.class

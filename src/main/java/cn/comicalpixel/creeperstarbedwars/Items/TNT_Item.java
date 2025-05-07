@@ -38,6 +38,8 @@ public class TNT_Item implements Listener {
 
         if (GameStats.get() != 2 && GameStats.get() != 3) {return;}
 
+        if (!GamePlayers.players.contains(e.getPlayer())) return;
+
         Player p = e.getPlayer();
 
         if (e.getBlock().getType() == null) return;
