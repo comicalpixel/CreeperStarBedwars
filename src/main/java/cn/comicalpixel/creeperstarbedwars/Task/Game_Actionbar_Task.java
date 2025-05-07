@@ -22,18 +22,10 @@ public class Game_Actionbar_Task {
                 if (GameStats.get() == 2 || GameStats.get() == 3) {
 
                     for (Player p : GamePlayers.players) {
-                        if (ConfigData.ItemsInGame_compass_enabled && (p.getItemInHand().getType() != null || p.getItemInHand().getType() != Material.COMPASS)) {
-                            String s = ConfigData.language_team_tracking_actionbar;
-                            s = s
-                                    .replace("{team_color}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)))
-                                    .replace("{team_name}", TeamManager.getTeamName(TeamManager.player_teams.get(p)))
-                            ;
-                            if (Objects.equals(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p)).getWorld().getName(), p.getLocation().getWorld().getName())) {
-                                s = s.replace("{tracking}", ((int) p.getLocation().distance(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p))))+"");
-                            } else {
-                                s = s.replace("{tracking}", "-1");
-                            }
-                            ActionBarUtils.sendActionBar(p, s);
+                        if (ConfigData.ItemsInGame_compass_enabled && p.getItemInHand().getType() != Material.COMPASS) {
+                            send(p);
+                        } else if (!ConfigData.ItemsInGame_compass_enabled) {
+                            send(p);
                         }
                     }
 
@@ -41,4 +33,19 @@ public class Game_Actionbar_Task {
             }
         }, 0, 7L); // 参数分别为：延迟执行的时间（tick），重复执行的时间间隔（tick），20 ticks = 1秒
     }
+
+    public void send (Player p) {
+        String s = ConfigData.language_team_tracking_actionbar;
+        s = s
+                .replace("{team_color}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p)))
+                .replace("{team_name}", TeamManager.getTeamName(TeamManager.player_teams.get(p)))
+        ;
+        if (Objects.equals(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p)).getWorld().getName(), p.getLocation().getWorld().getName())) {
+            s = s.replace("{tracking}", ((int) p.getLocation().distance(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p))))+"");
+        } else {
+            s = s.replace("{tracking}", "-");
+        }
+        ActionBarUtils.sendActionBar(p, s);
+    }
+
 }

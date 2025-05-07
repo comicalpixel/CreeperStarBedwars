@@ -27,6 +27,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Dia
 cn\comicalpixel\creeperstarbedwars\GUI\BwimSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
+cn\comicalpixel\creeperstarbedwars\Items\Compass_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond$1.class
 cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$1.class
@@ -47,6 +48,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\GameData_cfg.class
 cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic.class
+cn\comicalpixel\creeperstarbedwars\Items\Compass_Item.class
 cn\comicalpixel\creeperstarbedwars\Utils\HolographicAPI.class
 cn\comicalpixel\creeperstarbedwars\Task\Sidebar_Scoreboard_Task$1.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class

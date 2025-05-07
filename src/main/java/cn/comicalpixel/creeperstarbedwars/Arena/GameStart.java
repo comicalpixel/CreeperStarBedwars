@@ -9,6 +9,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Items.Compass_Item;
 import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
@@ -88,6 +89,8 @@ public class GameStart {
         Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
             new Game_Actionbar_Task();
         },90);
+        // 玩家追踪指南针
+        new Compass_Item();
 
     }
 

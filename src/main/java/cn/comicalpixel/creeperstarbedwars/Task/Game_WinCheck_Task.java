@@ -45,6 +45,7 @@ public class Game_WinCheck_Task {
                     Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
                         GameStats.set(3);
                     },1);
+                    gameend_统计(true);
                     win();
                 }
 
@@ -59,8 +60,6 @@ public class Game_WinCheck_Task {
 
         wins = GamePlayers.players;
         specs = GamePlayers.specs;
-
-        gameend_统计(true);
 
         Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
             for (Player p : wins) {
@@ -143,17 +142,18 @@ public class Game_WinCheck_Task {
         String finalWin_team_color = win_team_color;
         String finalWin_team_name = win_team_name;
         Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                for (String s : message_list) {
-                    s = s.replace("{team_color}", finalWin_team_color).replace("{team_name}", finalWin_team_name);
-                    s = s
-                            .replace("{killer_1}", killers_top3.get(0))
-                            .replace("{killer_2}", killers_top3.get(1))
-                            .replace("{killer_3}", killers_top3.get(2))
-                    ;
+            for (String s : message_list) {
+                s = s.replace("{team_color}", finalWin_team_color).replace("{team_name}", finalWin_team_name);
+                s = s
+                        .replace("{killer_1}", killers_top3.get(0))
+                        .replace("{killer_2}", killers_top3.get(1))
+                        .replace("{killer_3}", killers_top3.get(2))
+                ;
+                for (Player p : Bukkit.getOnlinePlayers()) {
                     p.sendMessage(s);
                 }
             }
+
         },30);
 
     }

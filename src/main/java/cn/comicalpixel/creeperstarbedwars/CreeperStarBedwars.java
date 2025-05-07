@@ -145,6 +145,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerBlocks(), this);
         getServer().getPluginManager().registerEvents(new BedBlockListener(), this);
+        getServer().getPluginManager().registerEvents(new BedSleep_Listener(), this);
 
         getServer().getPluginManager().registerEvents(new DeathMove(), this);
 
