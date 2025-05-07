@@ -405,9 +405,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.ItemsInGame_silverfish_cooldown = ConfigUtils.getInt(config, "items.silverfish.cooldown");
         ConfigData.ItemsInGame_silverfish_cooldown_chat = ConfigUtils.getString(config, "items.silverfish.cooldown-chat");
 
-        ConfigData.ItemsInGame_bridge_egg_enabled = ConfigUtils.getBoolean(config, "items.bridge-eggs.enable");
-        ConfigData.ItemsInGame_bridge_egg_cooldown = ConfigUtils.getInt(config, "items.bridge-eggs.cooldown");
-        ConfigData.ItemsInGame_bridge_egg_cooldown_chat = ConfigUtils.getString(config, "items.bridge-eggs.cooldown-chat");
+        ConfigData.ItemsInGame_bridge_egg_enabled = ConfigUtils.getBoolean(config, "items.bridgeegg.enable");
+        ConfigData.ItemsInGame_bridge_egg_cooldown = ConfigUtils.getInt(config, "items.bridgeegg.cooldown");
+        ConfigData.ItemsInGame_bridge_egg_cooldown_chat = ConfigUtils.getString(config, "items.bridgeegg.cooldown-chat");
 
         ConfigData.ItemsInGame_safetower_enabled = ConfigUtils.getBoolean(config, "items.safetower.enable");
         ConfigData.ItemsInGame_safetower_cooldown = ConfigUtils.getInt(config, "items.safetower.cooldown");
