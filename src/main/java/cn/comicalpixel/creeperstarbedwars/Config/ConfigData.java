@@ -226,10 +226,14 @@ public class ConfigData {
     public static boolean ItemsInGame_dreamguard_enabled;
     public static int ItemsInGame_dreamguard_cooldown;
     public static String  ItemsInGame_dreamguard_cooldown_chat;
+    public static int ItemsInGame_dreamguard_survival_time;
+    public static int ItemsInGame_dreamguard_maxHealth;
     // 蠹虫
     public static boolean ItemsInGame_silverfish_enabled;
     public static int ItemsInGame_silverfish_cooldown;
     public static String  ItemsInGame_silverfish_cooldown_chat;
+    public static int ItemsInGame_silverfish_survival_time;
+//    public static int ItemsInGame_silverfish_maxHealth; 弃用
     // 搭桥蛋
     public static boolean ItemsInGame_bridge_egg_enabled;
     public static int ItemsInGame_bridge_egg_cooldown;

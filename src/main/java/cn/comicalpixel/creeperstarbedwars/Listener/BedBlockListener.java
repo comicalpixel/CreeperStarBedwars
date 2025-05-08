@@ -27,7 +27,8 @@ public class BedBlockListener implements Listener {
     @EventHandler
     public void BedBlockBreak(BlockBreakEvent e) {
 
-        if (GameStats.get() != 2) return;
+        if (GameStats.get() != 2 && GameStats.get() != 3) return;
+        if (!GamePlayers.players.contains(e.getPlayer())) return;
 
         if (e.isCancelled()) return;
         if (e.getBlock().getType() != Material.BED_BLOCK) return;

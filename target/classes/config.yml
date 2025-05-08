@@ -556,7 +556,7 @@ items:
   Compass:
     # 是否启用
     enable: true
-  # 梦幻守卫 DreamGuard
+  # 梦幻守卫 DreamGuard (MONSTER_EGG)
   dreamguard:
     # 是否启用
     enable: true
@@ -564,7 +564,11 @@ items:
     cooldown: 5
     # 语言部分
     cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
-  # 蠹虫(雪球)
+    # 存活时间s
+    entity-survival-time: 100
+    # 血量
+    entity-maxhealth: 50
+  # 蠹虫 Silverfish (SNOW_BALL)
   silverfish:
     # 是否启用
     enable: true
@@ -572,6 +576,8 @@ items:
     cooldown: 1
     # 语言部分
     cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+    # 存活时间s
+    entity-survival-time: 40
   # 搭桥蛋
   bridgeegg:
     # 是否启用
@@ -971,8 +977,8 @@ language:
   shop-item-name: '§e§l物品商店'
   shop-update-name: '§b§l队伍升级'
   # 蠹虫/梦幻守卫 NameTag
-  entity-silverfish-nametag: '{team_color}{team_name} 蠹虫 §7- §e{timer_sec}{timer_progress}'
-  entity-dreamguard-nametag: '{team_color}{team_name} 梦幻守卫 §e{timer_sec}{timer_progress}'
+  entity-silverfish-nametag: '{team_color}{team_name} 蠹虫 §7- §e{timer_sec}s'
+  entity-dreamguard-nametag: '{team_color}{team_name} 梦幻守卫 §e{timer_sec}s'
   # 指令部分
   command-notin-whitelist: "§c在游戏中你不能执行该指令! "
   command-bwstart-done: "§e你已缩短游戏倒计时, 祝君游戏愉快!"

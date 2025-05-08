@@ -13,10 +13,7 @@ import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
-import cn.comicalpixel.creeperstarbedwars.Items.BridgeEgg_Item;
-import cn.comicalpixel.creeperstarbedwars.Items.FIREBALL_Item;
-import cn.comicalpixel.creeperstarbedwars.Items.RespawnBed_Item;
-import cn.comicalpixel.creeperstarbedwars.Items.TNT_Item;
+import cn.comicalpixel.creeperstarbedwars.Items.*;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
@@ -164,6 +161,12 @@ public final class CreeperStarBedwars extends JavaPlugin {
         }
         if (ConfigData.ItemsInGame_respawn_bed_enabled) {
             getServer().getPluginManager().registerEvents(new RespawnBed_Item(), this);
+        }
+        if (ConfigData.ItemsInGame_dreamguard_enabled) {
+            getServer().getPluginManager().registerEvents(new DreamGuard_EntityItem(), this);
+        }
+        if (ConfigData.ItemsInGame_silverfish_enabled) {
+            getServer().getPluginManager().registerEvents(new Silverfish_EntityItem(), this);
         }
 
     }
@@ -404,10 +407,14 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.ItemsInGame_dreamguard_enabled = ConfigUtils.getBoolean(config, "items.dreamguard.enable");
         ConfigData.ItemsInGame_dreamguard_cooldown = ConfigUtils.getInt(config, "items.dreamguard.cooldown");
         ConfigData.ItemsInGame_dreamguard_cooldown_chat = ConfigUtils.getString(config, "items.dreamguard.cooldown-chat");
+        ConfigData.ItemsInGame_dreamguard_survival_time = ConfigUtils.getInt(config, "items.dreamguard.entity-survival-time");
+        ConfigData.ItemsInGame_dreamguard_maxHealth = ConfigUtils.getInt(config, "items.dreamguard.entity-maxhealth");
 
         ConfigData.ItemsInGame_silverfish_enabled = ConfigUtils.getBoolean(config, "items.silverfish.enable");
         ConfigData.ItemsInGame_silverfish_cooldown = ConfigUtils.getInt(config, "items.silverfish.cooldown");
         ConfigData.ItemsInGame_silverfish_cooldown_chat = ConfigUtils.getString(config, "items.silverfish.cooldown-chat");
+        ConfigData.ItemsInGame_silverfish_survival_time = ConfigUtils.getInt(config, "items.silverfish.entity-survival-time");
+        // ConfigData.ItemsInGame_silverfish_maxHealth = ConfigUtils.getInt(config, "items.silverfish.entity-maxhealth");
 
         ConfigData.ItemsInGame_bridge_egg_enabled = ConfigUtils.getBoolean(config, "items.bridgeegg.enable");
         ConfigData.ItemsInGame_bridge_egg_cooldown = ConfigUtils.getInt(config, "items.bridgeegg.cooldown");
