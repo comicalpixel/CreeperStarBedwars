@@ -143,7 +143,7 @@ public class TNT_Item implements Listener {
                     }
                     p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.BLOCK_EXPLOSION, ConfigData.ItemsInGame_tnt_damage));
                 }
-                Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), 0.9).multiply(ConfigData.ItemsInGame_tnt_vlocity_multiply);
+                Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), ConfigData.ItemsInGame_tnt_vlocity_y).multiply(ConfigData.ItemsInGame_tnt_vlocity_multiply);
                 p.setVelocity(v.setY(ConfigData.ItemsInGame_tnt_vlocity_y));
             }
         }

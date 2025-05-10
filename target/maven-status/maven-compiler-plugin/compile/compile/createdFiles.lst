@@ -29,11 +29,14 @@ cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task.class
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item$2.class
 cn\comicalpixel\creeperstarbedwars\Listener\EnderDragon_Block.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\GUI\TeamSel_GUI.class
+cn\comicalpixel\creeperstarbedwars\Items\RescuePlatform_Item.class
+cn\comicalpixel\creeperstarbedwars\Items\Safewall_Item.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond.class
 cn\comicalpixel\creeperstarbedwars\GUI\BwimSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Items\WarpPowder_Item$2.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
+cn\comicalpixel\creeperstarbedwars\Items\RescuePlatform_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Items\Compass_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Items\BridgeEgg_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond$1.class
@@ -55,6 +58,7 @@ cn\comicalpixel\creeperstarbedwars\Items\DreamGuard_EntityItem.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameTools.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameData_cfg.class
+cn\comicalpixel\creeperstarbedwars\Items\FireworkSit_Item.class
 cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils.class
 cn\comicalpixel\creeperstarbedwars\Items\BridgeEgg_Item.class
@@ -81,6 +85,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\MessageVariableUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\TimerEvent_BedBreak.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerFoodLevel.class
+cn\comicalpixel\creeperstarbedwars\Items\Safewall_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Items\Silverfish_EntityItem$2.class
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item$5.class
 cn\comicalpixel\creeperstarbedwars\Task\GameTeamEliminated_Task$1.class

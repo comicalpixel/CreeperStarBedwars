@@ -174,6 +174,15 @@ public final class CreeperStarBedwars extends JavaPlugin {
         if (ConfigData.ItemsInGame_warp_powder_enabled) {
             getServer().getPluginManager().registerEvents(new WarpPowder_Item(), this);
         }
+        if (ConfigData.ItemsInGame_safewall_enabled) {
+            getServer().getPluginManager().registerEvents(new Safewall_Item(), this);
+        }
+        if (ConfigData.ItemsInGame_rescue_platform_enabled) {
+            getServer().getPluginManager().registerEvents(new RescuePlatform_Item(), this);
+        }
+        if (ConfigData.ItemsInGame_firework_enabled) {
+            getServer().getPluginManager().registerEvents(new FireworkSit_Item(), this);
+        }
 
     }
 
@@ -440,19 +449,19 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.ItemsInGame_safewall_cooldown = ConfigUtils.getInt(config, "items.safewall.cooldown");
         ConfigData.ItemsInGame_safewall_cooldown_chat = ConfigUtils.getString(config, "items.safewall.cooldown-chat");
 
-        ConfigData.ItemsInGame_rescue_platform_enabled = ConfigUtils.getBoolean(config, "items.rescue.rescue-platform.enable");
-        ConfigData.ItemsInGame_rescue_platform_cooldown = ConfigUtils.getInt(config, "items.rescue.platform.cooldown");
-        ConfigData.ItemsInGame_rescue_platform_disappear = ConfigUtils.getInt(config, "items.rescue.platform.disappear");
-        ConfigData.ItemsInGame_rescue_platform_can_break = ConfigUtils.getBoolean(config, "items.rescue.platform.can-break");
-        ConfigData.ItemsInGame_rescue_platform_cooldown_chat = ConfigUtils.getString(config, "items.rescue.platform.cooldown-chat");
-        ConfigData.ItemsInGame_rescue_platform_insufficient_space_chat = ConfigUtils.getString(config, "items.rescue.platform.insufficient-space-chat");
+        ConfigData.ItemsInGame_rescue_platform_enabled = ConfigUtils.getBoolean(config, "items.rescue-platform.enable");
+        ConfigData.ItemsInGame_rescue_platform_cooldown = ConfigUtils.getInt(config, "items.rescue-platform.cooldown");
+        ConfigData.ItemsInGame_rescue_platform_disappear = ConfigUtils.getInt(config, "items.rescue-platform.disappear");
+        ConfigData.ItemsInGame_rescue_platform_can_break = ConfigUtils.getBoolean(config, "items.rescue-platform.can-break");
+        ConfigData.ItemsInGame_rescue_platform_cooldown_chat = ConfigUtils.getString(config, "items.rescue-platform.cooldown-chat");
+        ConfigData.ItemsInGame_rescue_platform_insufficient_space_chat = ConfigUtils.getString(config, "items.rescue-platform.insufficient-space-chat");
 
-        ConfigData.ItemsInGame_firework_enabled = ConfigUtils.getBoolean(config, "items.firework.enabled");
-        ConfigData.ItemsInGame_firework_cooldown = ConfigUtils.getInt(config, "items.firework.cooldown");
-        ConfigData.ItemsInGame_firework_cooldown_chat = ConfigUtils.getString(config, "items.firework.cooldown-chat");
-        ConfigData.ItemsInGame_firework_subtitle = ConfigUtils.getString(config, "items.firework.subtitle");
+        ConfigData.ItemsInGame_firework_enabled = ConfigUtils.getBoolean(config, "items.firework-sit.enable");
+        ConfigData.ItemsInGame_firework_cooldown = ConfigUtils.getInt(config, "items.firework-sit.cooldown");
+        ConfigData.ItemsInGame_firework_cooldown_chat = ConfigUtils.getString(config, "items.firework-sit.cooldown-chat");
+        ConfigData.ItemsInGame_firework_subtitle = ConfigUtils.getString(config, "items.firework-sit.subtitle");
 
-        ConfigData.beddanger_enabled = ConfigUtils.getBoolean(config, "beddanger-title.enabled");
+        ConfigData.beddanger_enabled = ConfigUtils.getBoolean(config, "beddanger-title.enable");
         ConfigData.beddanger_subtitle = ConfigUtils.getString(config, "beddanger-title.subtitle");
 
         ConfigData.bed_invincibility_enabled = ConfigUtils.getBoolean(config, "bed-invincibility.enable");

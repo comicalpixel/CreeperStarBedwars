@@ -603,6 +603,7 @@ items:
     # 语言部分
     tpcountdown-chat: "§e将在 §c{countdown} §e秒后传送到你队伍的重生点, 请不要移动! "
     move-cancel-chat: "§c你移动了, 已取消传送! "
+    cancel-chat: "§c你已手动取消本次传送! "
   # 防护墙
   safewall:
     # 是否启用

@@ -44,8 +44,6 @@ public class WarpPowder_Item implements Listener {
             return;
         }
 
-        if (e.isCancelled()) return;
-
         if (e.getItem() == null) return;
 
         if (e.getItem().getType() != Material.SULPHUR) return;
@@ -140,26 +138,6 @@ public class WarpPowder_Item implements Listener {
 
     private void drawCircle(Location location, double add) {
 
-// 旧代码有点毛病
-//        ParticleEffects type = ParticleEffects.ARROW_TRAIL;
-//
-//        double x = location.getX();
-//        double y = location.getY() + add;
-//        double z = location.getZ();
-//
-//        for(int i = 0; i <= 360; i += max_y) {
-//            double x1 = x + 1 * Math.sin((double)i * Math.PI / 180.0);
-//            //y轴是竖轴，z才是纵轴!
-//            double z1 = z + 1 * Math.cos((double)i * Math.PI / 180.0);
-//
-//            Location particle = new Location(location.getWorld(), x1, y+0.05, z1);
-//            type.display(0, 0, 0, 0, 1, particle, 2);
-//
-//
-//
-//        }
-
-
         double x = location.getX();
         double y = location.getY() + add;
         double z = location.getZ();
@@ -175,7 +153,7 @@ public class WarpPowder_Item implements Listener {
 
             PacketContainer packet = new PacketContainer(PacketType.Play.Server.WORLD_PARTICLES);
             packet.getParticles().write(0, EnumWrappers.Particle.FIREWORKS_SPARK);
-            packet.getFloat().write(0, (float) ploc.getX());     
+            packet.getFloat().write(0, (float) ploc.getX());
             packet.getFloat().write(1, (float) ploc.getY());
             packet.getFloat().write(2, (float) ploc.getZ());
             packet.getFloat().write(3, 0f);
