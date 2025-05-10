@@ -247,6 +247,7 @@ public class ConfigData {
     public static int ItemsInGame_warp_powder_tpcountdown;
     public static String  ItemsInGame_warp_powder_tpcountdown_chat;
     public static String  ItemsInGame_warp_powder_move_cancel_chat;
+    public static String ItemsInGame_warp_powder_cancel_chat;
     // 防护墙
     public static boolean ItemsInGame_safewall_enabled;
     public static int ItemsInGame_safewall_cooldown;

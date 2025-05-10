@@ -168,6 +168,12 @@ public final class CreeperStarBedwars extends JavaPlugin {
         if (ConfigData.ItemsInGame_silverfish_enabled) {
             getServer().getPluginManager().registerEvents(new Silverfish_EntityItem(), this);
         }
+        if (ConfigData.ItemsInGame_safetower_enabled) {
+            getServer().getPluginManager().registerEvents(new Safetower_Item(), this);
+        }
+        if (ConfigData.ItemsInGame_warp_powder_enabled) {
+            getServer().getPluginManager().registerEvents(new WarpPowder_Item(), this);
+        }
 
     }
 
@@ -425,9 +431,10 @@ public final class CreeperStarBedwars extends JavaPlugin {
         ConfigData.ItemsInGame_safetower_cooldown_chat = ConfigUtils.getString(config, "items.safetower.cooldown-chat");
 
         ConfigData.ItemsInGame_warp_powder_enabled = ConfigUtils.getBoolean(config, "items.warp-powder.enable");
-        ConfigData.ItemsInGame_warp_powder_tpcountdown = ConfigUtils.getInt(config, "items.warp-powder.tpcountdown");
+        ConfigData.ItemsInGame_warp_powder_tpcountdown = ConfigUtils.getInt(config, "items.warp-powder.tp-timer");
         ConfigData.ItemsInGame_warp_powder_tpcountdown_chat = ConfigUtils.getString(config, "items.warp-powder.tpcountdown-chat");
         ConfigData.ItemsInGame_warp_powder_move_cancel_chat = ConfigUtils.getString(config, "items.warp-powder.move-cancel-chat");
+        ConfigData.ItemsInGame_warp_powder_cancel_chat = ConfigUtils.getString(config, "items.warp-powder.cancel-chat");
 
         ConfigData.ItemsInGame_safewall_enabled = ConfigUtils.getBoolean(config, "items.safewall.enable");
         ConfigData.ItemsInGame_safewall_cooldown = ConfigUtils.getInt(config, "items.safewall.cooldown");
