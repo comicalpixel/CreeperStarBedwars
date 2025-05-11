@@ -78,6 +78,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils.class
 cn\comicalpixel\creeperstarbedwars\Items\DreamGuard_EntityItem.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameTools.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic$1.class
+cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\TeamShop_NPC$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameData_cfg.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_RED$2.class
 cn\comicalpixel\creeperstarbedwars\Items\FireworkSit_Item.class
@@ -103,6 +104,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$2.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupListener.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent$1.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task$1.class
+cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\TeamShop_NPC.class
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item$6.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_AQUA.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic$3.class

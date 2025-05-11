@@ -96,6 +96,7 @@ public class GameStart {
 
         // 商店NPC
         ShopNPC_Manager.spawn_all_ItemShop();
+        ShopNPC_Manager.spawn_all_UpdateShop();
 
     }
 

@@ -14,4 +14,11 @@ public class ShopNPC_Manager {
         }
     }
 
+    public static void spawn_all_UpdateShop() {
+        for (String s : GameData_cfg.shopNPC_team_locs) {
+            Location loc = ConfigUtils.getLocation(s);
+            TeamShop_NPC.spawn(loc);
+        }
+    }
+
 }
