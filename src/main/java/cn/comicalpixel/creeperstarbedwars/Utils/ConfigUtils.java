@@ -146,6 +146,15 @@ public class ConfigUtils {
         }
         return null;
     }
+    public static Location getLocation(String loc_str) {
+        World world = Bukkit.getWorld(loc_str.split(", ")[0]);
+        double x = Double.parseDouble(loc_str.split(", ")[1]);
+        double y = Double.parseDouble(loc_str.split(", ")[2]);
+        double z = Double.parseDouble(loc_str.split(", ")[3]);
+        double yaw = Double.parseDouble(loc_str.split(", ")[4]);
+        double pitch = Double.parseDouble(loc_str.split(", ")[5]);
+        return new Location(world, x, y, z, (float) yaw, (float) pitch);
+    }
 
     // 获取Block的Location, 没有方向
     // 给xy轴添加0.5实现出现原版的位置偏差(不加0.5就是方块的边缘的角落, 加了0.5就是在方块的中心)

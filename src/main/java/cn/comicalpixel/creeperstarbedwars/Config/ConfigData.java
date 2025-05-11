@@ -372,8 +372,8 @@ public class ConfigData {
 
     public static String language_teamchest_notismyteam = "§c该队伍未被淘汰, 你不能打开这个队伍的箱子! ";
 
-    public static String language_shopgui_item_name;
-    public static String language_shopgui_update_name;
+    public static String language_shopgui_item_NPCname;
+    public static String language_shopgui_update_NPCname;
 
     public static String language_entity_silverfish_nametag;
     public static String language_entity_dreamguard_nametag;

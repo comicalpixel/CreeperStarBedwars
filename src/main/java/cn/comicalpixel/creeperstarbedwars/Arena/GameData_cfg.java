@@ -34,6 +34,10 @@ public class GameData_cfg {
     // 队伍玩家数量
     public static int team_players = 1;
 
+    // 商店NPC 获取Location用ConfigUtil
+    public static List<String> shopNPC_item_locs = new ArrayList<>();
+    public static List<String> shopNPC_team_locs = new ArrayList<>();
+
     /*
         所有的队伍的设置
         如果不在teams_list那可以忽略

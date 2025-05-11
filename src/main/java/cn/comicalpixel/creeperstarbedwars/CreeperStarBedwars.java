@@ -8,6 +8,7 @@ import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
 import cn.comicalpixel.creeperstarbedwars.Entity.AntiMobs;
+import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.ItemShop_NPC;
 import cn.comicalpixel.creeperstarbedwars.Fix.ComboFix;
 import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
@@ -183,6 +184,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         if (ConfigData.ItemsInGame_firework_enabled) {
             getServer().getPluginManager().registerEvents(new FireworkSit_Item(), this);
         }
+
+
+        getServer().getPluginManager().registerEvents(new ItemShop_NPC(), this);
 
     }
 
@@ -572,8 +576,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         ConfigData.language_teamchest_notismyteam = ConfigUtils.getString(config, "language.team-chast-notismyteam");
 
-        ConfigData.language_shopgui_item_name = ConfigUtils.getString(config, "language.shop-item-name");
-        ConfigData.language_shopgui_update_name = ConfigUtils.getString(config, "language.shop-update-name");
+        ConfigData.language_shopgui_item_NPCname = ConfigUtils.getString(config, "language.shop-item-name");
+        ConfigData.language_shopgui_update_NPCname = ConfigUtils.getString(config, "language.shop-update-name");
 
         ConfigData.language_entity_silverfish_nametag = ConfigUtils.getString(config, "language.entity-silverfish-nametag");
         ConfigData.language_entity_dreamguard_nametag = ConfigUtils.getString(config, "language.entity-dreamguard-nametag");
@@ -640,6 +644,20 @@ public final class CreeperStarBedwars extends JavaPlugin {
             }
         } else {
             Bukkit.getLogger().warning("GameConfig game.yml, generator.emerald == null !!");
+        }
+        if (gameConfig.getStringList("shop.item") != null) {
+            for (String s : ConfigUtils.getStringList(gameConfig, "shop.item")) {
+                GameData_cfg.shopNPC_item_locs.add(s);
+            }
+        } else {
+            Bukkit.getLogger().warning("GameConfig game.yml, shop.item == null !!");
+        }
+        if (gameConfig.getStringList("shop.team") != null) {
+            for (String s : ConfigUtils.getStringList(gameConfig, "shop.team")) {
+                GameData_cfg.shopNPC_team_locs.add(s);
+            }
+        } else {
+            Bukkit.getLogger().warning("GameConfig game.yml, shop.team == null !!");
         }
         if (gameConfig.getStringList("teams") != null) {
             for (String s : ConfigUtils.getStringList(gameConfig, "teams")) {

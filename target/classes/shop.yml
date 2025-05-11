@@ -155,58 +155,49 @@ GUI:
 # 所有物品
 # 添加到菜单中仅需要将物品编号写到gui的items中即可
 Items:
-   # 示例
-   # 物品编号
-#    test:
-#      # 商店菜单显示的
-#      gui-item:
-#        # 普通资源模式显示的
-#        i:
-#          - ==: org.bukkit.inventory.ItemStack
-#            type: WOOL
-#            damage: 0
-#            amount: 16
-#            meta:
-#              ==: ItemMeta
-#              meta-type: UNSPECIFIC
-#              display-name: '§3羊毛'
-#              lore:
-#                - '§7物品:'
-#                - '§8● 羊毛'
-#                - ' '
-#                - '§7花费:§3 4铁'
-#        # 经验资源模式显示的
-#        xp:
-#          - ==: org.bukkit.inventory.ItemStack
-#            type: WOOL
-#            damage: 0
-#            amount: 16
-#            meta:
-#              ==: ItemMeta
-#              meta-type: UNSPECIFIC
-#              display-name: '§3羊毛'
-#              lore:
-#                - '§7物品:'
-#                - '§8● 羊毛'
-#                - ' '
-#                - '§7花费:§3 4级'
-#      # 花费
-#      cost:
-#        # 普通模式
-#        type: IRON
-#        amount: 4
-#        # 经验模式
-#        xp: 4
-#      # 购买后得到的物品
-#      buy-item:
-#        - ==: org.bukkit.inventory.ItemStack
-#          type: WOOL
-#          damage: 0
-#          amount: 16
-#          meta:
-#            ==: ItemMeta
-#            meta-type: UNSPECIFIC
-#            display-name: '§a羊毛'
-#            lore:
-#              - '§e单击打开'
+  test:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: WOOL
+          damage: 0
+          amount: 16
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3羊毛'
+            lore:
+              - '§7物品:'
+              - '§8● 羊毛'
+              - ' '
+              - '§7花费:§3 4铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: WOOL
+          damage: 0
+          amount: 16
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3羊毛'
+            lore:
+              - '§7物品:'
+              - '§8● 羊毛'
+              - ' '
+              - '§7花费:§3 4级'
+    cost:
+      type: IRON_INGOT
+      amount: 4
+      xp: 4
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: WOOL
+        damage: 0
+        amount: 16
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§a羊毛'
+          lore:
+            - '§e单击打开'
 
