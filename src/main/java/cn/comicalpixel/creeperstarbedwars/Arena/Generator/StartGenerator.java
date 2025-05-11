@@ -4,6 +4,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.Holo.Diamondholog
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.Holo.Emeraldholographic;
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.ItemSpawn.Generators_Diamond;
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Game.ItemSpawn.Generators_Emerald;
+import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Team.Holo.TeamGenerators_holographic;
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Team.Manager.*;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
@@ -43,6 +44,8 @@ public class StartGenerator {
         if (TeamManager.teams.contains("GRAY")) {
             TeamGenerator_GRAY.set(ConfigData.generator_team_l0_iron, ConfigData.generator_team_l0_gold, ConfigData.generator_team_l0_emerald);
         }
+
+        new TeamGenerators_holographic();
 
 
     }

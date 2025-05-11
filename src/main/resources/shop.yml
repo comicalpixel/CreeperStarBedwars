@@ -5,6 +5,13 @@
 # Shop.yml ItemShop
 
 GUI:
+  # 玻璃板
+  glass-pane-settings:
+    not-selected-data: 7
+    selected-data: 5
+    name: '§c§l↑类别 '
+    lore:
+      - '§7§l↓物品 '
   # 快捷购买
   gui-quickshop:
     title: '§7物品商店 - 快捷购买'
@@ -22,6 +29,7 @@ GUI:
     # 默认的物品
     def-items:
       - null
+  # GUI 2-9页 不支持多和少
   gui-1:
     title: '§7物品商店 - 方块商店'
     icon:
@@ -155,7 +163,7 @@ GUI:
 # 所有物品
 # 添加到菜单中仅需要将物品编号写到gui的items中即可
 Items:
-  test:
+  01:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack

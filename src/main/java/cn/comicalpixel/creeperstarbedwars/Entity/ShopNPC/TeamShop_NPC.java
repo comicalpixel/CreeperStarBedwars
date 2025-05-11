@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -54,7 +55,7 @@ public class TeamShop_NPC implements Listener {
 
         if (GameStats.get() != 2 && GameStats.get() != 3) return;
 
-        if (GamePlayers.players.contains(e.getPlayer())) {
+        if (!GamePlayers.players.contains(e.getPlayer())) {
             return;
         }
 
@@ -75,6 +76,13 @@ public class TeamShop_NPC implements Listener {
             e.setCancelled(true);
         }
 
+    }
+
+    @EventHandler
+    public void EntityAntiDamage(EntityDamageEvent e) {
+        if (e.getEntity() != null && e.getEntity() instanceof Villager && e.getEntity().getCustomName().endsWith("§e§k§l§2")) {
+            e.setCancelled(true);
+        }
     }
 
 }

@@ -50,6 +50,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GRAY$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GREEN$2.class
 cn\comicalpixel\creeperstarbedwars\Items\WarpPowder_Item$2.class
+cn\comicalpixel\creeperstarbedwars\Shop\Item\ItemShop_GUI.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
 cn\comicalpixel\creeperstarbedwars\Items\RescuePlatform_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Items\Compass_Item$1.class
@@ -75,6 +76,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\HolographicAPI$1.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task.class
 cn\comicalpixel\creeperstarbedwars\Fix\LadderFix.class
 cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Holo\TeamGenerators_holographic$3.class
 cn\comicalpixel\creeperstarbedwars\Items\DreamGuard_EntityItem.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameTools.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic$1.class
@@ -102,6 +104,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\LocationUtil.class
 cn\comicalpixel\creeperstarbedwars\Task\GameLobby_Actionbar_Task.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$2.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupListener.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Holo\TeamGenerators_holographic$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent$1.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\TeamShop_NPC.class
@@ -120,6 +123,8 @@ cn\comicalpixel\creeperstarbedwars\Listener\PlayerFoodLevel.class
 cn\comicalpixel\creeperstarbedwars\Items\Safewall_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_WHITE$1.class
 cn\comicalpixel\creeperstarbedwars\Items\Silverfish_EntityItem$2.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Holo\TeamGenerators_holographic$2.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Holo\TeamGenerators_holographic.class
 cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\ShopNPC_Manager.class
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item$5.class
 cn\comicalpixel\creeperstarbedwars\Task\GameTeamEliminated_Task$1.class

@@ -4,6 +4,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Utils.EntityTypes;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
@@ -13,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -55,7 +57,7 @@ public class ItemShop_NPC implements Listener {
 
         if (GameStats.get() != 2 && GameStats.get() != 3) return;
 
-        if (GamePlayers.players.contains(e.getPlayer())) {
+        if (!GamePlayers.players.contains(e.getPlayer())) {
             return;
         }
 
@@ -74,8 +76,16 @@ public class ItemShop_NPC implements Listener {
 
         if (e.getRightClicked().getCustomName().endsWith("§e§k§l§a")) {
             e.setCancelled(true);
+            ItemShop_GUI.open(e.getPlayer(), 0);
         }
 
+    }
+
+    @EventHandler
+    public void EntityAntiDamage(EntityDamageEvent e) {
+        if (e.getEntity() != null && e.getEntity() instanceof Villager && e.getEntity().getCustomName().endsWith("§e§k§l§a")) {
+            e.setCancelled(true);
+        }
     }
 
 }

@@ -155,7 +155,7 @@ GUI:
 # 所有物品
 # 添加到菜单中仅需要将物品编号写到gui的items中即可
 Items:
-  test:
+  01:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack

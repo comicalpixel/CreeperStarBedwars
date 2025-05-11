@@ -7,8 +7,10 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamChest;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
+import cn.comicalpixel.creeperstarbedwars.Config.ShopConfig;
 import cn.comicalpixel.creeperstarbedwars.Entity.AntiMobs;
 import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.ItemShop_NPC;
+import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.TeamShop_NPC;
 import cn.comicalpixel.creeperstarbedwars.Fix.ComboFix;
 import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
@@ -16,6 +18,7 @@ import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Items.*;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
+import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
@@ -41,6 +44,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
     private GameConfig gameConfig;
     public GameConfig getGameConfig() {return gameConfig;}
 
+    private ShopConfig shopConfig;
+    public ShopConfig getShopConfig() {return shopConfig;}
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -57,7 +63,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
                 "\n " +
                 "\n " +
                 "CreeperStarBedwars Plugin.\n" +
-                " Author: Xiaol789zxc\n" +
+                " Author: Xiaol789zxc    -- EnderCreeper(ComicalPixel) Network \n" +
                 " Version: " + this.getDescription().getVersion() + "\n" +
                 "\n " +
                 "Minecraft Version: " + Bukkit.getVersion() + "\n " +
@@ -97,6 +103,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // 加载游戏配置文件
         gameConfig = new GameConfig(this,"game.yml");
         startGameCfgRead();
+
+        // 加载商店配置文件
+        shopConfig = new ShopConfig(this, "shop.yml");
 
 
         /**/
@@ -187,6 +196,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
 
         getServer().getPluginManager().registerEvents(new ItemShop_NPC(), this);
+        getServer().getPluginManager().registerEvents(new TeamShop_NPC(), this);
+
+        getServer().getPluginManager().registerEvents(new ItemShop_GUI(), this);
 
     }
 
