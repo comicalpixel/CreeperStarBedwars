@@ -5,6 +5,13 @@
 # Shop.yml ItemShop
 
 GUI:
+  # 玻璃板
+  glass-pane-settings:
+    not-selected-data: 7
+    selected-data: 5
+    name: '§c§l↑类别 '
+    lore:
+      - '§7§l↓物品 '
   # 快捷购买
   gui-quickshop:
     title: '§7物品商店 - 快捷购买'
@@ -22,6 +29,7 @@ GUI:
     # 默认的物品
     def-items:
       - null
+  # GUI 2-9页 不支持多和少
   gui-1:
     title: '§7物品商店 - 方块商店'
     icon:

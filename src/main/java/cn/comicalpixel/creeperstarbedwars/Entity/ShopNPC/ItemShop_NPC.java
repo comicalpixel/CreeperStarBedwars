@@ -76,7 +76,7 @@ public class ItemShop_NPC implements Listener {
 
         if (e.getRightClicked().getCustomName().endsWith("§e§k§l§a")) {
             e.setCancelled(true);
-            ItemShop_GUI.open(e.getPlayer(), 0);
+            ItemShop_GUI.open(e.getPlayer());
         }
 
     }

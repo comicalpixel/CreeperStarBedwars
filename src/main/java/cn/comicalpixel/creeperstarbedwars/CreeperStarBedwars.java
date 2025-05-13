@@ -19,6 +19,7 @@ import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Items.*;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
+import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Listener;
 import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
@@ -199,6 +200,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new TeamShop_NPC(), this);
 
         getServer().getPluginManager().registerEvents(new ItemShop_GUI(), this);
+        getServer().getPluginManager().registerEvents(new ItemShop_Listener(), this);
 
     }
 

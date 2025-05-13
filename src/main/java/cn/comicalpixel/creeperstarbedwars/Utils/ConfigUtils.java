@@ -18,11 +18,11 @@ public class ConfigUtils {
             for (Object obj : itemList) {
                 if (obj instanceof ItemStack) {
                     ItemStack item = (ItemStack) obj;
-                    return item;
+                    return item.clone();
                 }
             }
         }
-        return new ItemStack(Material.BEDROCK);
+        return new ItemStack(Material.BEDROCK).clone();
     }
 
     // 播放声音
@@ -142,7 +142,7 @@ public class ConfigUtils {
             double z = Double.parseDouble(locationString.split(", ")[3]);
             double yaw = Double.parseDouble(locationString.split(", ")[4]);
             double pitch = Double.parseDouble(locationString.split(", ")[5]);
-            return new Location(world, x, y, z, (float) yaw, (float) pitch);
+            return new Location(world, x, y, z, (float) yaw, (float) pitch).clone();
         }
         return null;
     }
@@ -153,7 +153,7 @@ public class ConfigUtils {
         double z = Double.parseDouble(loc_str.split(", ")[3]);
         double yaw = Double.parseDouble(loc_str.split(", ")[4]);
         double pitch = Double.parseDouble(loc_str.split(", ")[5]);
-        return new Location(world, x, y, z, (float) yaw, (float) pitch);
+        return new Location(world, x, y, z, (float) yaw, (float) pitch).clone();
     }
 
     // 获取Block的Location, 没有方向
@@ -165,7 +165,7 @@ public class ConfigUtils {
             int x = (int) Double.parseDouble(locationString.split(", ")[1]);
             int y = (int) Double.parseDouble(locationString.split(", ")[2]);
             int z = (int) Double.parseDouble(locationString.split(", ")[3]);
-            return new Location(world, x +0.5, y, z +0.5); /**/
+            return new Location(world, x +0.5, y, z +0.5).clone(); /**/
         }
         return null;
     }
@@ -175,7 +175,7 @@ public class ConfigUtils {
         int x = (int) Double.parseDouble(message_loc.split(", ")[1]);
         int y = (int) Double.parseDouble(message_loc.split(", ")[2]);
         int z = (int) Double.parseDouble(message_loc.split(", ")[3]);
-        return new Location(world, x +0.5, y, z +0.5); /**/
+        return new Location(world, x +0.5, y, z +0.5).clone(); /**/
 
     }
 
@@ -186,7 +186,7 @@ public class ConfigUtils {
         List<Location> locs = new ArrayList<>();
 
         for (String s : list) {
-            locs.add(getBlockLocation(s));
+            locs.add(getBlockLocation(s).clone());
         }
 
         return locs;

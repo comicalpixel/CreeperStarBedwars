@@ -2,6 +2,7 @@ package cn.comicalpixel.creeperstarbedwars.Shop.Item;
 
 import cn.comicalpixel.creeperstarbedwars.Config.ShopConfig;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -22,11 +23,11 @@ public class ItemShop_GUI implements Listener {
 
     public static ShopConfig shopConfig = CreeperStarBedwars.getPlugin().getShopConfig();
 
-    public static void open(Player p, int page) {
+    public static void open(Player p) {
 
-        if (page == 0) {
-            ItemShop_GUI.gui_op0(p);
-        }
+        ItemShop_GUI.gui_op0(p);
+
+        ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-open");
 
     }
 
@@ -54,23 +55,279 @@ public class ItemShop_GUI implements Listener {
 
 
 
-        ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-open");
+        p.openInventory(gui);
+
+    }
+    public static void gui_op1(Player p) {
+
+        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, ConfigUtils.getString(shopConfig, "GUI.gui-1.title") + "§2§e§b§k§a§5§e§a");
+        setGUIItems(gui, 1);
+        int[] solts = new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 };
+
+        List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-1.items");
+        for (int i = 0; i < items.size(); i++) {
+            ItemStack item = new ItemStack(Material.BEDROCK);
+            ItemMeta meta = item.getItemMeta();
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
+            }
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
+            }
+            meta = item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+            item.setItemMeta(meta);
+
+            gui.setItem((solts[i]) - 1, item);
+        }
+
+        p.openInventory(gui);
+
+    }
+    public static void gui_op2(Player p) {
+
+        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, ConfigUtils.getString(shopConfig, "GUI.gui-2.title") + "§2§e§b§k§a§5§e§2");
+        setGUIItems(gui, 2);
+        int[] solts = new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 };
+
+        List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-2.items");
+        for (int i = 0; i < items.size(); i++) {
+            ItemStack item = new ItemStack(Material.BEDROCK);
+            ItemMeta meta = item.getItemMeta();
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
+            }
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
+            }
+            meta = item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+            item.setItemMeta(meta);
+
+            gui.setItem((solts[i]) - 1, item);
+        }
+
+
+        p.openInventory(gui);
+
+    }
+    public static void gui_op3(Player p) {
+
+        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, ConfigUtils.getString(shopConfig, "GUI.gui-3.title") + "§2§e§b§k§a§5§e§3");
+        setGUIItems(gui, 3);
+        int[] solts = new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 };
+
+        List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-3.items");
+        for (int i = 0; i < items.size(); i++) {
+            ItemStack item = new ItemStack(Material.BEDROCK);
+            ItemMeta meta = item.getItemMeta();
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
+            }
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
+            }
+            meta = item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+            item.setItemMeta(meta);
+
+            gui.setItem((solts[i]) - 1, item);
+        }
+
+        p.openInventory(gui);
+
+    }
+    public static void gui_op4(Player p) {
+
+        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, ConfigUtils.getString(shopConfig, "GUI.gui-4.title") + "§2§e§b§k§a§5§e§4");
+        setGUIItems(gui, 4);
+        int[] solts = new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 };
+
+        List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-4.items");
+        for (int i = 0; i < items.size(); i++) {
+            ItemStack item = new ItemStack(Material.BEDROCK);
+            ItemMeta meta = item.getItemMeta();
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
+            }
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
+            }
+            meta = item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+            item.setItemMeta(meta);
+
+            gui.setItem((solts[i]) - 1, item);
+        }
+
+        p.openInventory(gui);
+
+    }
+    public static void gui_op5(Player p) {
+
+        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, ConfigUtils.getString(shopConfig, "GUI.gui-5.title") + "§2§e§b§k§a§5§e§5");
+        setGUIItems(gui, 5);
+        int[] solts = new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 };
+
+        List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-5.items");
+        for (int i = 0; i < items.size(); i++) {
+            ItemStack item = new ItemStack(Material.BEDROCK);
+            ItemMeta meta = item.getItemMeta();
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
+            }
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
+            }
+            meta = item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+            item.setItemMeta(meta);
+
+            gui.setItem((solts[i]) - 1, item);
+        }
+
+        p.openInventory(gui);
+
+    }
+    public static void gui_op6(Player p) {
+
+        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, ConfigUtils.getString(shopConfig, "GUI.gui-6.title") + "§2§e§b§k§a§5§e§6");
+        setGUIItems(gui, 6);
+        int[] solts = new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 };
+
+        List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-6.items");
+        for (int i = 0; i < items.size(); i++) {
+            ItemStack item = new ItemStack(Material.BEDROCK);
+            ItemMeta meta = item.getItemMeta();
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
+            }
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
+            }
+            meta = item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+            item.setItemMeta(meta);
+
+            gui.setItem((solts[i]) - 1, item);
+        }
+
+        p.openInventory(gui);
+
+    }
+    public static void gui_op7(Player p) {
+
+        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, ConfigUtils.getString(shopConfig, "GUI.gui-7.title") + "§2§e§b§k§a§5§e§7");
+        setGUIItems(gui, 7);
+        int[] solts = new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 };
+
+        List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-7.items");
+        for (int i = 0; i < items.size(); i++) {
+            ItemStack item = new ItemStack(Material.BEDROCK);
+            ItemMeta meta = item.getItemMeta();
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
+            }
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
+            }
+            meta = item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+            item.setItemMeta(meta);
+
+            gui.setItem((solts[i]) - 1, item);
+        }
+
+        p.openInventory(gui);
+
+    }
+    public static void gui_op8(Player p) {
+
+        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, ConfigUtils.getString(shopConfig, "GUI.gui-8.title") + "§2§e§b§k§a§5§e§8");
+        setGUIItems(gui, 8);
+        int[] solts = new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 };
+
+        List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-8.items");
+        for (int i = 0; i < items.size(); i++) {
+            ItemStack item = new ItemStack(Material.BEDROCK);
+            ItemMeta meta = item.getItemMeta();
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
+            }
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
+            }
+            meta = item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+            item.setItemMeta(meta);
+
+            gui.setItem((solts[i]) - 1, item);
+        }
+
         p.openInventory(gui);
 
     }
 
+
     public static void setGUIItems(Inventory gui, int page) {
 
         // 物品
-        gui.setItem(0, ConfigUtils.getItemStack(shopConfig, "GUI.gui-quickshop.icon"));
-        gui.setItem(1, ConfigUtils.getItemStack(shopConfig, "GUI.gui-1.icon"));
-        gui.setItem(2, ConfigUtils.getItemStack(shopConfig, "GUI.gui-2.icon"));
-        gui.setItem(3, ConfigUtils.getItemStack(shopConfig, "GUI.gui-3.icon"));
-        gui.setItem(4, ConfigUtils.getItemStack(shopConfig, "GUI.gui-4.icon"));
-        gui.setItem(5, ConfigUtils.getItemStack(shopConfig, "GUI.gui-5.icon"));
-        gui.setItem(6, ConfigUtils.getItemStack(shopConfig, "GUI.gui-6.icon"));
-        gui.setItem(7, ConfigUtils.getItemStack(shopConfig, "GUI.gui-7.icon"));
-        gui.setItem(8, ConfigUtils.getItemStack(shopConfig, "GUI.gui-8.icon"));
+        /*
+            0:§2§e§b§8§a§5§e§0
+            1:§2§e§b§8§a§5§e§a
+            2:§2§e§b§8§a§5§e§2
+            3:§2§e§b§8§a§5§e§e
+            4:§2§e§b§8§a§5§e§4
+            5:§2§e§b§8§a§5§e§5
+            6:§2§e§b§8§a§5§e§6
+            7:§2§e§b§8§a§5§e§7
+            8:§2§e§b§8§a§5§e§8
+        */
+        ItemStack pi0 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-quickshop.icon");
+        ItemStack pi1 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-1.icon");
+        ItemStack pi2 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-2.icon");
+        ItemStack pi3 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-3.icon");
+        ItemStack pi4 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-4.icon");
+        ItemStack pi5 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-5.icon");
+        ItemStack pi6 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-6.icon");
+        ItemStack pi7 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-7.icon");
+        ItemStack pi8 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-8.icon");
+        ItemMeta pi0m = pi0.getItemMeta();
+        ItemMeta pi1m = pi1.getItemMeta();
+        ItemMeta pi2m = pi2.getItemMeta();
+        ItemMeta pi3m = pi3.getItemMeta();
+        ItemMeta pi4m = pi4.getItemMeta();
+        ItemMeta pi5m = pi5.getItemMeta();
+        ItemMeta pi6m = pi6.getItemMeta();
+        ItemMeta pi7m = pi7.getItemMeta();
+        ItemMeta pi8m = pi8.getItemMeta();
+        pi0m.setDisplayName(pi0.getItemMeta().getDisplayName() + "§2§e§b§8§a§5§e§0");
+        pi1m.setDisplayName(pi1.getItemMeta().getDisplayName() + "§2§e§b§8§a§5§e§a");
+        pi2m.setDisplayName(pi2.getItemMeta().getDisplayName() + "§2§e§b§8§a§5§e§2");
+        pi3m.setDisplayName(pi3.getItemMeta().getDisplayName() + "§2§e§b§8§a§5§e§3");
+        pi4m.setDisplayName(pi4.getItemMeta().getDisplayName() + "§2§e§b§8§a§5§e§4");
+        pi5m.setDisplayName(pi5.getItemMeta().getDisplayName() + "§2§e§b§8§a§5§e§5");
+        pi6m.setDisplayName(pi6.getItemMeta().getDisplayName() + "§2§e§b§8§a§5§e§6");
+        pi7m.setDisplayName(pi7.getItemMeta().getDisplayName() + "§2§e§b§8§a§5§e§7");
+        pi8m.setDisplayName(pi8.getItemMeta().getDisplayName() + "§2§e§b§8§a§5§e§8");
+        pi0.setItemMeta(pi0m);
+        pi1.setItemMeta(pi1m);
+        pi2.setItemMeta(pi2m);
+        pi3.setItemMeta(pi3m);
+        pi4.setItemMeta(pi4m);
+        pi5.setItemMeta(pi5m);
+        pi6.setItemMeta(pi6m);
+        pi7.setItemMeta(pi7m);
+        pi8.setItemMeta(pi8m);
+        gui.setItem(0, pi0);
+        gui.setItem(1, pi1);
+        gui.setItem(2, pi2);
+        gui.setItem(3, pi3);
+        gui.setItem(4, pi4);
+        gui.setItem(5, pi5);
+        gui.setItem(6, pi6);
+        gui.setItem(7, pi7);
+        gui.setItem(8, pi8);
 
         // 未设置的
         ItemStack notset = new ItemStack(Material.STAINED_GLASS_PANE);
@@ -98,19 +355,6 @@ public class ItemShop_GUI implements Listener {
         gui.setItem(8 +9, notset);
         gui.setItem(page+9, seted);
         /**/
-    }
-
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
-
-        if (e.getClickedInventory().getType() == InventoryType.CHEST && e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§0")) {
-
-            e.setCancelled(true);
-
-            /**/
-
-        }
-
     }
 
 }

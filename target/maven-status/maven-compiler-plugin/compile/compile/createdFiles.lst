@@ -61,6 +61,7 @@ cn\comicalpixel\creeperstarbedwars\Items\WarpPowder_Item$1.class
 cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_BLUE$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_YELLOW.class
+cn\comicalpixel\creeperstarbedwars\Shop\Item\ItemShop_Manager.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$1.class
 cn\comicalpixel\creeperstarbedwars\Items\TNT_Item.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_WinCheck_Task.class
@@ -143,6 +144,7 @@ cn\comicalpixel\creeperstarbedwars\Items\Silverfish_EntityItem$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\DeathMove$1.class
 cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\ItemShop_NPC.class
+cn\comicalpixel\creeperstarbedwars\Shop\Item\ItemShop_Listener.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic$2.class
 cn\comicalpixel\creeperstarbedwars\Items\DreamGuard_EntityItem$2.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_YELLOW$3.class
