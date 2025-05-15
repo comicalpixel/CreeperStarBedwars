@@ -56,7 +56,7 @@ public class ItemShop_Manager {
                     ItemMeta buy_meta = buy_item.getItemMeta();
                     boolean is普通处理 = true;
                     if (  buy_meta.hasLore() && (
-                            buy_meta.getLore().get(0).startsWith("§e§m§o§l§c§o§l§o§r") || // 彩色羊毛
+                            buy_meta.getLore().get(0).startsWith("§e§a§m§c§o§l§o§r") || // 彩色羊毛
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§1") || // 锁链套
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§2") || // 铁套
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§3") || // 钻套
@@ -73,7 +73,7 @@ public class ItemShop_Manager {
                         ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-yes");
                         p.getInventory().addItem(buy_item.clone());
                     } else {
-                        if (buy_meta.getLore().get(0).startsWith("§e§m§o§l§c§o§l§o§r")) {
+                        if (buy_meta.getLore().get(0).startsWith("§e§a§m§c§o§l§o§r")) {
                             /* WOOL Item color data */
                             switch (TeamManager.player_teams.get(p)) {
                                 case "RED":
@@ -148,12 +148,49 @@ public class ItemShop_Manager {
     }
 
     public static void b_deduction(Player p, ItemStack type, int amount, int xp_level) {
+//        if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+//            PlayerInventory inventory = p.getInventory();
+//            int remaining = amount;
+//            for (ItemStack item : inventory.getContents()) {
+//                if (item != null && item.getType() == type.getType()) {
+//                    int toRemove = Math.min(item.getAmount(), remaining);
+//                    item.setAmount(item.getAmount() - toRemove);
+//                    remaining -= toRemove;
+//                    if (remaining <= 0) break;
+//                }
+//            }
+//        }
         if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-            p.getInventory().addItem(new ItemStack(type.getType(), -amount));
+            PlayerInventory inventory = p.getInventory();
+            int remaining = amount;
+            for (int i = 0; i < inventory.getSize(); i++) {
+                ItemStack item = inventory.getItem(i);
+                if (item != null && item.getType() == type.getType()) {
+                    int toRemove = Math.min(item.getAmount(), remaining);
+                    item.setAmount(item.getAmount() - toRemove);
+                    remaining -= toRemove;
+                    if (item.getAmount() <= 0) {
+                        inventory.setItem(i, null); // 如果物品数量为0，移除该物品
+                    }
+                    if (remaining <= 0) break;
+                }
+            }
         }
         if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
             p.setLevel(p.getLevel() - xp_level);
         }
     }
+
+//    public static void b_deduction(Player p, ItemStack type, int amount, int xp_level) {
+//        if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+//           //  p.getInventory().addItem(new ItemStack(type.getType(), -amount));
+//            PlayerInventory inventory = p.getInventory();
+//            inventory.addItem(new ItemStack(type.getType(),-amount));
+//        }
+//        if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+//            p.setLevel(p.getLevel() - xp_level);
+//        }
+//    }
+
 
 }
