@@ -7,6 +7,7 @@ import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -431,11 +432,20 @@ public class SetupCommand implements CommandExecutor {
                                 break;
 
 
-
+                            // SETUP Tool
+                            case "toolgetitemstring":
+                                if (p.getItemInHand() != null && p.getItemInHand().getType() != Material.AIR) {
+                                    p.sendMessage("§r \n§6" + p.getItemInHand().toString());
+                                    Bukkit.getLogger().info(p.getName() + "'s ItemInHand(toString): \n" + p.getItemInHand().toString());
+                                } else {
+                                    p.sendMessage("§c请先拿着物品再使用该指令! ");
+                                }
+                                break;
 
 
                             default:
                                 sender.sendMessage("§aCreeper§eStar§fBedwars §7" + CreeperStarBedwars.getPlugin().getDescription().getVersion() + " §c请谨慎操作!操作不支持undo和redo!!\n" +
+                                        // "§f/setup toolGetItemString §eSETUP配置文件工具:获取物品配置文件格式(复制可以到控制台) \n" +
                                         "§f/setup setlobby §e设置等待大厅位置 \n" +
                                         "§f/setup setspec §e设置旁观者位置 \n" +
                                         "§f/setup setcenter §e设置地图中心 \n" +
@@ -459,6 +469,7 @@ public class SetupCommand implements CommandExecutor {
                         }
                     } else {
                         sender.sendMessage("§aCreeper§eStar§fBedwars §7" + CreeperStarBedwars.getPlugin().getDescription().getVersion() + " §c请谨慎操作!操作不支持undo和redo!!\n" +
+                                // "§f/setup toolGetItemString §eSETUP配置文件工具:获取物品配置文件格式(复制可以到控制台) \n" +
                                 "§f/setup setlobby §e设置等待大厅位置 \n" +
                                 "§f/setup setspec §e设置旁观者位置 \n" +
                                 "§f/setup setcenter §e设置地图中心 \n" +

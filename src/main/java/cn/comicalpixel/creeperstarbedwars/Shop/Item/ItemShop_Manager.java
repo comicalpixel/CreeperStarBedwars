@@ -61,8 +61,14 @@ public class ItemShop_Manager {
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§2") || // 铁套
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§3") || // 钻套
                             buy_meta.getLore().get(0).startsWith("§o§o§l§d") || // 剪刀
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e") || // 稿子
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e") // 斧头
+                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§1") || // 稿子l1
+                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§2") || // 稿子l2
+                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§3") || // 稿子l3
+                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§4") || // 稿子l4
+                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§1") || // 斧头l1
+                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§2") || // 斧头l2
+                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§3") || // 斧头l3
+                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§4") // 斧头l4
                     )) {
                         is普通处理 = false;
                     }
