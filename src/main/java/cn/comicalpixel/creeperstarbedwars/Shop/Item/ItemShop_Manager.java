@@ -56,7 +56,7 @@ public class ItemShop_Manager {
                     ItemMeta buy_meta = buy_item.getItemMeta();
                     boolean is普通处理 = true;
                     if (  buy_meta.hasLore() && (
-                            buy_meta.getLore().get(0).startsWith("§e§a§m§c§o§l§o§r") || // 彩色羊毛
+                            buy_meta.getLore().get(0).startsWith("§e§a§m§c§o§l§o§r") || // 队伍颜色data
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§1") || // 锁链套
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§2") || // 铁套
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§3") || // 钻套

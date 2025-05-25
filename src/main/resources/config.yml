@@ -1,5 +1,5 @@
 # CreeperStarBedwars by Xiaol789zxc. https://comicalpixel.github.io
-# ComicalPixel Network 2023-2025
+# EnderCreeper(ComicalPixel) Network 2023-2025
 
 # 不要修改此项!!
 author: Xiaol789zxc
@@ -798,7 +798,7 @@ language:
     - '§e将在§c{timer}§e秒后刷新'
   generatorholo-team-list:
     - '§b附近方块人都能吸到捏 §6{rywz}'
-  # 颜文字(仅可用于generatorholo-team-list，变量{rywz})
+  # 颜文字(仅可用于generatorholo-team-list，变量{rywz} )
   generatorholo-ywz:
     - "(๑¯ω¯๑)"
     - "(⌒ω⌒)"
@@ -880,7 +880,7 @@ language:
         - '§f模式 §bSolo '
         - '§f版本 §73.0'
         - '§r§r§r§r§r'
-        - '§ehttp://comicalpixel.github.io '
+        - '§emc.enderklp.top '
       countdown:
         - '§b§l起床战争'
         - '§7{date} #CSBW'
@@ -896,7 +896,7 @@ language:
         - '§f模式 §bSolo '
         - '§f版本 §73.0'
         - '§r§r§r§r§r'
-        - '§ehttp://comicalpixel.github.io '
+        - '§emc.enderklp.top '
     game:
       player:
         - '§b§l起床战争'
@@ -912,7 +912,7 @@ language:
         - '§f我的队伍: {myteam_color}{myteam_name}队 '
         - '§f击杀:§a{kills}§f/摧床:§a{beds}§f/最击:§a{fkills}'
         - '     '
-        - '§ehttp://comicalpixel.github.io '
+        - '§emc.enderklp.top '
       spec:
         - '§b§l起床战争'
         - '§7{date} #CSBW'
@@ -926,7 +926,7 @@ language:
         - '   '
         - '§d旁观中... '
         - '     '
-        - '§ehttp://comicalpixel.github.io '
+        - '§emc.enderklp.top '
   # 游戏结束
   game-end-winner-title: '§6§l获胜!'
   game-end-winner-subtitle: '§7你获得了最终的胜利!'
@@ -975,7 +975,7 @@ language:
   # 队伍箱子提示
   team-chast-notismyteam: "§c该队伍未被淘汰, 你不能打开这个队伍的箱子! "
   # 商店名字
-  shop-item-name: '§e§l物品商店'
+  shop-item-name: '§e§l物品商店'  
   shop-update-name: '§b§l队伍升级'
   # 蠹虫/梦幻守卫 NameTag
   entity-silverfish-nametag: '{team_color}{team_name} 蠹虫 §7- §e{timer_sec}s'
