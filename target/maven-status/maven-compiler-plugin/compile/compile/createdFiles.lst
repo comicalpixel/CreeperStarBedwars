@@ -63,6 +63,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_BL
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_YELLOW.class
 cn\comicalpixel\creeperstarbedwars\Shop\Item\ItemShop_Manager.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$1.class
+cn\comicalpixel\creeperstarbedwars\Shop\Item\PlayerArmor\PlayerArmorManager.class
 cn\comicalpixel\creeperstarbedwars\Items\TNT_Item.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_WinCheck_Task.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$1.class

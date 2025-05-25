@@ -1,10 +1,12 @@
 package cn.comicalpixel.creeperstarbedwars.Shop.Item;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.GameTools;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.ShopConfig;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
+import cn.comicalpixel.creeperstarbedwars.Shop.Item.PlayerArmor.PlayerArmorManager;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -115,6 +117,42 @@ public class ItemShop_Manager {
                             ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-yes");
                             p.getInventory().addItem(buy_item.clone());
                             /**/
+                        } else if (buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§1")) {
+                            if (PlayerArmorManager.get(p) < 1) {
+                                PlayerArmorManager.set(p, 1);
+                                GameTools.refresh_PlayerArmorInv(p);
+
+                                b_deduction(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"));
+                                p.sendMessage(ConfigData.language_shop_buy_yes.replace("{item}", shopConfig.getString("Items." + item_bh + ".name")));
+                                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-yes");
+                            } else {
+                                p.sendMessage(ConfigData.language_shop_buy_ed);
+                                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-no");
+                            }
+                        } else if (buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§2")) {
+                            if (PlayerArmorManager.get(p) < 2) {
+                                PlayerArmorManager.set(p, 2);
+                                GameTools.refresh_PlayerArmorInv(p);
+
+                                b_deduction(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"));
+                                p.sendMessage(ConfigData.language_shop_buy_yes.replace("{item}", shopConfig.getString("Items." + item_bh + ".name")));
+                                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-yes");
+                            } else {
+                                p.sendMessage(ConfigData.language_shop_buy_ed);
+                                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-no");
+                            }
+                        } else if (buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§3")) {
+                            if (PlayerArmorManager.get(p) < 3) {
+                                PlayerArmorManager.set(p, 3);
+                                GameTools.refresh_PlayerArmorInv(p);
+
+                                b_deduction(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"));
+                                p.sendMessage(ConfigData.language_shop_buy_yes.replace("{item}", shopConfig.getString("Items." + item_bh + ".name")));
+                                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-yes");
+                            } else {
+                                p.sendMessage(ConfigData.language_shop_buy_ed);
+                                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-no");
+                            }
                         }
                     }
 

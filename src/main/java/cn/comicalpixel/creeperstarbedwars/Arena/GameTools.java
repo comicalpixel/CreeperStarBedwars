@@ -1,6 +1,8 @@
 package cn.comicalpixel.creeperstarbedwars.Arena;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
+import cn.comicalpixel.creeperstarbedwars.Shop.Item.PlayerArmor.PlayerArmorManager;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -16,7 +18,7 @@ import java.util.List;
 public class GameTools {
 
     // 记录玩家的护甲模式 0:默认皮革 1:锁链 2:铁 3:钻石
-    public static HashMap<Player, Integer> playerChestPlate = new HashMap<>();
+    // PlayerArmorManager
 
     public static void InitializationInventory(Player p) {
 
@@ -33,9 +35,15 @@ public class GameTools {
         p.getInventory().setItem(0, sword_item);
 
 
-        if (!playerChestPlate.containsKey(p)) {
-            playerChestPlate.put(p, 0);
+        if (!PlayerArmorManager.playersArmorLevel_HashMap.containsKey(p)) {
+            PlayerArmorManager.reset(p);
         }
+
+        refresh_PlayerArmorInv(p);
+
+    }
+
+    public static void refresh_PlayerArmorInv(Player p) {
 
         p.getInventory().setHelmet(null);
         p.getInventory().setChestplate(null);
@@ -59,7 +67,7 @@ public class GameTools {
                     chestplate.setItemMeta(meta);
                     p.getInventory().setHelmet(helmet);
                     p.getInventory().setChestplate(chestplate);
-                    if (playerChestPlate.get(p) == 0) {
+                    if (PlayerArmorManager.get(p) == 0) {
                         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
                         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
                         leggings.setItemMeta(meta);
@@ -75,7 +83,7 @@ public class GameTools {
                     chestplate.setItemMeta(meta);
                     p.getInventory().setHelmet(helmet);
                     p.getInventory().setChestplate(chestplate);
-                    if (playerChestPlate.get(p) == 0) {
+                    if (PlayerArmorManager.get(p) == 0) {
                         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
                         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
                         leggings.setItemMeta(meta);
@@ -91,7 +99,7 @@ public class GameTools {
                     chestplate.setItemMeta(meta);
                     p.getInventory().setHelmet(helmet);
                     p.getInventory().setChestplate(chestplate);
-                    if (playerChestPlate.get(p) == 0) {
+                    if (PlayerArmorManager.get(p) == 0) {
                         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
                         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
                         leggings.setItemMeta(meta);
@@ -107,7 +115,7 @@ public class GameTools {
                     chestplate.setItemMeta(meta);
                     p.getInventory().setHelmet(helmet);
                     p.getInventory().setChestplate(chestplate);
-                    if (playerChestPlate.get(p) == 0) {
+                    if (PlayerArmorManager.get(p) == 0) {
                         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
                         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
                         leggings.setItemMeta(meta);
@@ -123,7 +131,7 @@ public class GameTools {
                     chestplate.setItemMeta(meta);
                     p.getInventory().setHelmet(helmet);
                     p.getInventory().setChestplate(chestplate);
-                    if (playerChestPlate.get(p) == 0) {
+                    if (PlayerArmorManager.get(p) == 0) {
                         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
                         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
                         leggings.setItemMeta(meta);
@@ -139,7 +147,7 @@ public class GameTools {
                     chestplate.setItemMeta(meta);
                     p.getInventory().setHelmet(helmet);
                     p.getInventory().setChestplate(chestplate);
-                    if (playerChestPlate.get(p) == 0) {
+                    if (PlayerArmorManager.get(p) == 0) {
                         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
                         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
                         leggings.setItemMeta(meta);
@@ -155,7 +163,7 @@ public class GameTools {
                     chestplate.setItemMeta(meta);
                     p.getInventory().setHelmet(helmet);
                     p.getInventory().setChestplate(chestplate);
-                    if (playerChestPlate.get(p) == 0) {
+                    if (PlayerArmorManager.get(p) == 0) {
                         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
                         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
                         leggings.setItemMeta(meta);
@@ -171,7 +179,7 @@ public class GameTools {
                     chestplate.setItemMeta(meta);
                     p.getInventory().setHelmet(helmet);
                     p.getInventory().setChestplate(chestplate);
-                    if (playerChestPlate.get(p) == 0) {
+                    if (PlayerArmorManager.get(p) == 0) {
                         ItemStack leggings = new ItemStack(Material.LEATHER_LEGGINGS);
                         ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
                         leggings.setItemMeta(meta);
@@ -180,10 +188,13 @@ public class GameTools {
                         p.getInventory().setBoots(boots);
                     }
                     break;
+                default:
+                    Bukkit.getLogger().warning("[Error] Unknown team " + TeamManager.player_teams.get(p) + " : " + p.getName());
             }
 
 
-            if (playerChestPlate.get(p) == 1) {
+            // 皮革写在了队伍 (这里的上面)
+            if (PlayerArmorManager.get(p) == 1) {
                 ItemStack leggings = new ItemStack(Material.CHAINMAIL_LEGGINGS);
                 ItemStack boots = new ItemStack(Material.CHAINMAIL_BOOTS);
                 ItemMeta leggingMeta = leggings.getItemMeta();
@@ -192,10 +203,10 @@ public class GameTools {
                 bootMeta.spigot().setUnbreakable(true);
                 leggings.setItemMeta(leggingMeta);
                 boots.setItemMeta(bootMeta);
-                p.getInventory().setHelmet(helmet);
-                p.getInventory().setChestplate(chestplate);
+                p.getInventory().setLeggings(leggings);
+                p.getInventory().setBoots(boots);
             }
-            if (playerChestPlate.get(p) == 2) {
+            if (PlayerArmorManager.get(p) == 2) {
                 ItemStack leggings = new ItemStack(Material.IRON_LEGGINGS);
                 ItemStack boots = new ItemStack(Material.IRON_BOOTS);
                 ItemMeta leggingMeta = leggings.getItemMeta();
@@ -204,10 +215,10 @@ public class GameTools {
                 bootMeta.spigot().setUnbreakable(true);
                 leggings.setItemMeta(leggingMeta);
                 boots.setItemMeta(bootMeta);
-                p.getInventory().setHelmet(helmet);
-                p.getInventory().setChestplate(chestplate);
+                p.getInventory().setLeggings(leggings);
+                p.getInventory().setBoots(boots);
             }
-            if (playerChestPlate.get(p) == 3) {
+            if (PlayerArmorManager.get(p) == 3) {
                 ItemStack leggings = new ItemStack(Material.DIAMOND_LEGGINGS);
                 ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
                 ItemMeta leggingMeta = leggings.getItemMeta();
@@ -216,11 +227,9 @@ public class GameTools {
                 bootMeta.spigot().setUnbreakable(true);
                 leggings.setItemMeta(leggingMeta);
                 boots.setItemMeta(bootMeta);
-                p.getInventory().setHelmet(helmet);
-                p.getInventory().setChestplate(chestplate);
+                p.getInventory().setLeggings(leggings);
+                p.getInventory().setBoots(boots);
             }
-
-
         }
 
     }
