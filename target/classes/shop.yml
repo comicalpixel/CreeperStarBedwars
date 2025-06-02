@@ -9,7 +9,7 @@ GUI:
     not-selected-data: 7
     selected-data: 5
     name: '§c§l↑类别 '
-    lore: 
+    lore:
       - '§7§l↓物品 '
   # 快捷购买
   gui-quickshop:
@@ -87,7 +87,9 @@ GUI:
             - '§e单击打开'
     # 该分区的所有物品
     items:
-      - null
+      - c01
+      - c02
+      - c03
   gui-4:
     title: '§7物品商店 - 工具商店'
     icon:
@@ -119,10 +121,10 @@ GUI:
             - '§e单击打开'
     # 该分区的所有物品
     items:
-      - d01
-      - d02
-      - d03
-      - d04
+      - e01
+      - e02
+      - e03
+      - e04
   gui-6:
     title: '§7物品商店 - 药水商店'
     icon:
@@ -138,7 +140,9 @@ GUI:
             - '§e单击打开'
     # 该分区的所有物品
     items:
-      - null
+      - f01
+      - f02
+      - f03
   gui-7:
     title: '§7物品商店 - 食物商店'
     icon:
@@ -154,7 +158,8 @@ GUI:
             - '§e单击打开'
     # 该分区的所有物品
     items:
-      - null
+      - g01
+      - g02
   gui-8:
     title: '§7物品商店 - 道具商店'
     icon:
@@ -170,7 +175,20 @@ GUI:
             - '§e单击打开'
     # 该分区的所有物品
     items:
-      - null
+      - h01
+      - h02
+      - h03
+      - h04
+      - h05
+      - h06
+      - h07
+      - h09
+      - h010
+      - h011
+      - h012
+      - h013
+      - h014
+      - h015
 
 
 # 所有物品
@@ -310,7 +328,7 @@ Items:
           ==: ItemMeta
           meta-type: UNSPECIFIC
           lore:
-            - '§e§a§m§c§o§l§o§r'  
+            - '§e§a§m§c§o§l§o§r'
   a04:
     gui-item:
       i:
@@ -748,8 +766,143 @@ Items:
           meta-type: UNSPECIFIC
           enchants:
             KNOCKBACK: 1
-  # 工具还没写 c**
-  d01:
+  c01:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: CHAINMAIL_LEGGINGS
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3永久的锁链套'
+            lore:
+              - '§7物品:'
+              - '§8● 锁链套(永久)'
+              - ' '
+              - '§7花费:§3 40铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: CHAINMAIL_LEGGINGS
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3永久的锁链套'
+            lore:
+              - '§7物品:'
+              - '§8● 锁链套(永久)'
+              - ' '
+              - '§7花费:§3 40级'
+    cost:
+      type: IRON_INGOT
+      amount: 40
+      xp_level: 40
+    name: '永久的锁链套'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: CHAINMAIL_LEGGINGS
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          lore:
+            - '§a§r§m§o§r§0§1'
+  c02:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: IRON_LEGGINGS
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3永久的铁套'
+            lore:
+              - '§7物品:'
+              - '§8● 铁套(永久)'
+              - ' '
+              - '§7花费:§3 12金'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: IRON_LEGGINGS
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3永久的铁套'
+            lore:
+              - '§7物品:'
+              - '§8● 铁套(永久)'
+              - ' '
+              - '§7花费:§3 70级'
+    cost:
+      type: GOLD_INGOT
+      amount: 12
+      xp_level: 70
+    name: '永久的铁套'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: IRON_LEGGINGS
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          lore:
+            - '§a§r§m§o§r§0§2'
+  c03:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: DIAMOND_LEGGINGS
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3永久的钻套'
+            lore:
+              - '§7物品:'
+              - '§8● 钻套(永久)'
+              - ' '
+              - '§7花费:§3 6绿宝石'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: DIAMOND_LEGGINGS
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3永久的钻套'
+            lore:
+              - '§7物品:'
+              - '§8● 钻套(永久)'
+              - ' '
+              - '§7花费:§3 600级'
+    cost:
+      type: EMERALD
+      amount: 6
+      xp_level: 600
+    name: '永久的钻套'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: DIAMOND_LEGGINGS
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          lore:
+            - '§a§r§m§o§r§0§3'
+  # 工具还没写 d**
+  e01:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -792,7 +945,7 @@ Items:
         meta:
           ==: ItemMeta
           meta-type: UNSPECIFIC
-  d02:
+  e02:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -835,7 +988,7 @@ Items:
         meta:
           ==: ItemMeta
           meta-type: UNSPECIFIC
-  d03:
+  e03:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -852,7 +1005,7 @@ Items:
               - ' '
               - '§7花费:§3 12金'
             enchants:
-              ARROW_DAMAGE: 1    
+              ARROW_DAMAGE: 1
       xp:
         - ==: org.bukkit.inventory.ItemStack
           type: BOW
@@ -868,7 +1021,7 @@ Items:
               - ' '
               - '§7花费:§3 120级'
             enchants:
-              ARROW_DAMAGE: 1    
+              ARROW_DAMAGE: 1
     cost:
       type: GOLD_INGOT
       amount: 24
@@ -883,8 +1036,8 @@ Items:
           ==: ItemMeta
           meta-type: UNSPECIFIC
           enchants:
-            ARROW_DAMAGE: 1    
-  d04:
+            ARROW_DAMAGE: 1
+  e04:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -901,8 +1054,8 @@ Items:
               - ' '
               - '§7花费:§3 12金'
             enchants:
-              ARROW_DAMAGE: 1   
-              ARROW_KNOCKBACK: 1   
+              ARROW_DAMAGE: 1
+              ARROW_KNOCKBACK: 1
       xp:
         - ==: org.bukkit.inventory.ItemStack
           type: BOW
@@ -918,8 +1071,8 @@ Items:
               - ' '
               - '§7花费:§3 120级'
             enchants:
-              ARROW_DAMAGE: 1   
-              ARROW_KNOCKBACK: 1   
+              ARROW_DAMAGE: 1
+              ARROW_KNOCKBACK: 1
     cost:
       type: EMERALD
       amount: 4
@@ -932,7 +1085,897 @@ Items:
         amount: 1
         meta:
           ==: ItemMeta
-          meta-type: UNSPECIFIC   
+          meta-type: UNSPECIFIC
           enchants:
-            ARROW_DAMAGE: 1   
-            ARROW_KNOCKBACK: 1    
+            ARROW_DAMAGE: 1
+            ARROW_KNOCKBACK: 1
+  f01:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: POTION
+          damage: 8194
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3速度药水'
+            lore:
+              - '§7物品:'
+              - '§8● 速度药水(速度II 45s)'
+              - ' '
+              - '§7花费:§3 1绿宝石'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: POTION
+          damage: 8194
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3速度药水'
+            lore:
+              - '§7物品:'
+              - '§8● 速度药水(速度II 45s)'
+              - ' '
+              - '§7花费:§3 100级'
+    cost:
+      type: EMERALD
+      amount: 1
+      xp_level: 100
+    name: '速度药水'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: POTION
+        damage: 8194
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: POTION
+          custom-effects:
+            - ==: PotionEffect
+              effect: 1
+              duration: 900
+              amplifier: 1
+              ambient: false
+              has-particles: true
+  f02:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: POTION
+          damage: 8203
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3跳跃药水'
+            lore:
+              - '§7物品:'
+              - '§8● 跳跃药水(跳跃V 45s)'
+              - ' '
+              - '§7花费:§3 1绿宝石'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: POTION
+          damage: 8203
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3跳跃药水'
+            lore:
+              - '§7物品:'
+              - '§8● 跳跃药水(跳跃V 45s)'
+              - ' '
+              - '§7花费:§3 100级'
+    cost:
+      type: EMERALD
+      amount: 1
+      xp_level: 100
+    name: '跳跃药水'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: POTION
+        damage: 8203
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: POTION
+          custom-effects:
+            - ==: PotionEffect
+              effect: 8
+              duration: 900
+              amplifier: 4
+              ambient: false
+              has-particles: true
+  f03:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: POTION
+          damage: 8238
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3隐身药水'
+            lore:
+              - '§7物品:'
+              - '§8● 隐身药水(隐身30s)'
+              - ' '
+              - '§7花费:§3 2绿宝石'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: POTION
+          damage: 8238
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3隐身药水'
+            lore:
+              - '§7物品:'
+              - '§8● 隐身药水(隐身30s)'
+              - ' '
+              - '§7花费:§3 200级'
+    cost:
+      type: EMERALD
+      amount: 2
+      xp_level: 200
+    name: '隐身药水'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: POTION
+        damage: 8238
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: POTION
+          custom-effects:
+            - ==: PotionEffect
+              effect: 14
+              duration: 600
+              amplifier: 0
+              ambient: true
+              has-particles: false
+  g01:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: GOLDEN_APPLE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3金苹果'
+            lore:
+              - '§7物品:'
+              - '§8● 金苹果'
+              - ' '
+              - '§7花费:§3 3金'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: GOLDEN_APPLE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3金苹果'
+            lore:
+              - '§7物品:'
+              - '§8● 金苹果'
+              - ' '
+              - '§7花费:§3 15级'
+    cost:
+      type: GOLDEN_APPLE
+      amount: 3
+      xp_level: 15
+    name: '金苹果'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: GOLDEN_APPLE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+  g02:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: COOKED_BEEF
+          damage: 0
+          amount: 2
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3牛排'
+            lore:
+              - '§7物品:'
+              - '§8● 牛排'
+              - ' '
+              - '§7花费:§3 10铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: COOKED_BEEF
+          damage: 0
+          amount: 2
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3牛排'
+            lore:
+              - '§7物品:'
+              - '§8● 牛排'
+              - ' '
+              - '§7花费:§3 10级'
+    cost:
+      type: IRON_INGOT
+      amount: 10
+      xp_level: 10
+    name: '牛排'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: COOKED_BEEF
+        damage: 0
+        amount: 2
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+  h01:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: SNOW_BALL
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3蠹虫弹'
+            lore:
+              - '§7物品:'
+              - '§8● 蠹虫雪球'
+              - ' '
+              - '§7花费:§3 50铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: SNOW_BALL
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3蠹虫弹'
+            lore:
+              - '§7物品:'
+              - '§8● 蠹虫雪球'
+              - ' '
+              - '§7花费:§3 50级'
+    cost:
+      type: IRON_INGOT
+      amount: 50
+      xp_level: 50
+    name: '蠹虫弹'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: SNOW_BALL
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§f蠹虫弹'
+  h02:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: MONSTER_EGG
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3梦幻守卫生成蛋'
+            lore:
+              - '§7物品:'
+              - '§8● 梦幻守卫生成蛋'
+              - ' '
+              - '§7花费:§3 50铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: MONSTER_EGG
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3梦幻守卫生成蛋'
+            lore:
+              - '§7物品:'
+              - '§8● 梦幻守卫生成蛋'
+              - ' '
+              - '§7花费:§3 50级'
+    cost:
+      type: IRON_INGOT
+      amount: 128
+      xp_level: 200
+    name: '梦幻守卫生成蛋'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: MONSTER_EGG
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§f梦幻守卫生成蛋'
+  h03:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FIREBALL
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3火球'
+            lore:
+              - '§7物品:'
+              - '§8● 火球'
+              - ' '
+              - '§7花费:§3 40铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FIREBALL
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3火球'
+            lore:
+              - '§7物品:'
+              - '§8● 火球'
+              - ' '
+              - '§7花费:§3 40级'
+    cost:
+      type: IRON_INGOT
+      amount: 40
+      xp_level: 40
+    name: '火球'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: FIREBALL
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+  h04:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: TNT
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3TNT'
+            lore:
+              - '§7物品:'
+              - '§8● TNT'
+              - ' '
+              - '§7花费:§3 5金'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: TNT
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3TNT'
+            lore:
+              - '§7物品:'
+              - '§8● TNT'
+              - ' '
+              - '§7花费:§3 50级'
+    cost:
+      type: GOLD_INGOT
+      amount: 5
+      xp_level: 50
+    name: 'TNT'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: TNT
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+  h05:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: ENDER_PEARL
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3末影珍珠'
+            lore:
+              - '§7物品:'
+              - '§8● 末影珍珠'
+              - ' '
+              - '§7花费:§3 4绿宝石'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: ENDER_PEARL
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3末影珍珠'
+            lore:
+              - '§7物品:'
+              - '§8● 末影珍珠'
+              - ' '
+              - '§7花费:§3 400级'
+    cost:
+      type: EMERALD
+      amount: 4
+      xp_level: 400
+    name: '末影珍珠'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: ENDER_PEARL
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+  h06:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: COMPASS
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3追踪针'
+            lore:
+              - '§7物品:'
+              - '§8● 追踪针'
+              - ' '
+              - '§7花费:§3 1绿宝石'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: COMPASS
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3追踪针'
+            lore:
+              - '§7物品:'
+              - '§8● 追踪针'
+              - ' '
+              - '§7花费:§3 100级'
+    cost:
+      type: EMERALD
+      amount: 1
+      xp_level: 100
+    name: '追踪针'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: COMPASS
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§c追踪针'
+  h07:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: WATER_BUCKET
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3水桶'
+            lore:
+              - '§7物品:'
+              - '§8● 水桶'
+              - ' '
+              - '§7花费:§3 6金'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: WATER_BUCKET
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3水桶'
+            lore:
+              - '§7物品:'
+              - '§8● 水桶'
+              - ' '
+              - '§7花费:§3 100级'
+    cost:
+      type: GOLD_INGOT
+      amount: 6
+      xp_level: 60
+    name: '水桶'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: WATER_BUCKET
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+  h08:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: EGG
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3搭桥蛋'
+            lore:
+              - '§7物品:'
+              - '§8● 搭桥蛋'
+              - ' '
+              - '§7花费:§3 1绿宝石'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: EGG
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3搭桥蛋'
+            lore:
+              - '§7物品:'
+              - '§8● 搭桥蛋'
+              - ' '
+              - '§7花费:§3 100级'
+    cost:
+      type: EMERALD
+      amount: 1
+      xp_level: 100
+    name: '搭桥蛋'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: EGG
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+  h09:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: EGG
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3搭桥蛋'
+            lore:
+              - '§7物品:'
+              - '§8● 搭桥蛋'
+              - ' '
+              - '§7花费:§3 1绿宝石'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: EGG
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3搭桥蛋'
+            lore:
+              - '§7物品:'
+              - '§8● 搭桥蛋'
+              - ' '
+              - '§7花费:§3 100级'
+    cost:
+      type: EMERALD
+      amount: 1
+      xp_level: 100
+    name: '搭桥蛋'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: EGG
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+  h010:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: SPONGE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3吸水海绵'
+            lore:
+              - '§7物品:'
+              - '§8● 吸水海绵'
+              - ' '
+              - '§7花费:§3 4金'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: SPONGE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3吸水海绵'
+            lore:
+              - '§7物品:'
+              - '§8● 吸水海绵'
+              - ' '
+              - '§7花费:§3 40级'
+    cost:
+      type: GOLD_INGOT
+      amount: 4
+      xp_level: 40
+    name: '吸水海绵'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: SPONGE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+  h011:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: CHEST
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3紧凑型防御塔'
+            lore:
+              - '§7物品:'
+              - '§8● 紧凑型防御塔'
+              - ' '
+              - '§7花费:§3 30铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: CHEST
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3紧凑型防御塔'
+            lore:
+              - '§7物品:'
+              - '§8● 紧凑型防御塔'
+              - ' '
+              - '§7花费:§3 50级'
+    cost:
+      type: IRON_INGOT
+      amount: 30
+      xp_level: 50
+    name: '紧凑型防御塔'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: CHEST
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§f紧凑型防御塔'
+  h012:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: BLAZE_ROD
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3救援平台'
+            lore:
+              - '§7物品:'
+              - '§8● 救援平台'
+              - ' '
+              - '§7花费:§3 9金'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: BLAZE_ROD
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3救援平台'
+            lore:
+              - '§7物品:'
+              - '§8● 救援平台'
+              - ' '
+              - '§7花费:§3 90级'
+    cost:
+      type: GOLD_INGOT
+      amount: 9
+      xp_level: 90
+    name: '救援平台'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: BLAZE_ROD
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§f救援平台'
+  h013:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: SULPHUR
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3回城卷轴'
+            lore:
+              - '§7物品:'
+              - '§8● 回城卷轴'
+              - ' '
+              - '§7花费:§3 10金'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: SULPHUR
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3回城卷轴'
+            lore:
+              - '§7物品:'
+              - '§8● 回城卷轴'
+              - ' '
+              - '§7花费:§3 100级'
+    cost:
+      type: GOLD_INGOT
+      amount: 10
+      xp_level: 100
+    name: '回城卷轴'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: SULPHUR
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§f回城卷轴'
+  h014:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FIREWORK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3屁眼烟花'
+            lore:
+              - '§7物品:'
+              - '§8● 屁眼烟花'
+              - ' '
+              - '§7花费:§3 12金'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FIREWORK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3屁眼烟花'
+            lore:
+              - '§7物品:'
+              - '§8● 屁眼烟花'
+              - ' '
+              - '§7花费:§3 120级'
+    cost:
+      type: GOLD_INGOT
+      amount: 12
+      xp_level: 120
+    name: '屁眼烟花'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: FIREWORK
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§f屁眼烟花'
+  h015:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: BRICK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3防护墙'
+            lore:
+              - '§7物品:'
+              - '§8● 防护墙'
+              - ' '
+              - '§7花费:§3 80铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: BRICK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3防护墙'
+            lore:
+              - '§7物品:'
+              - '§8● 防护墙'
+              - ' '
+              - '§7花费:§3 80级'
+    cost:
+      type: IRON_INGOT
+      amount: 80
+      xp_level: 80
+    name: '防护墙'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: BRICK
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§f生成防护墙'
+

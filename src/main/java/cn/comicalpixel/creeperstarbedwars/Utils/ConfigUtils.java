@@ -4,7 +4,9 @@ import org.bukkit.*;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,11 @@ public class ConfigUtils {
             for (Object obj : itemList) {
                 if (obj instanceof ItemStack) {
                     ItemStack item = (ItemStack) obj;
+                    ItemMeta meta = item.getItemMeta();
+                    for (ItemFlag flags : meta.getItemFlags()) {
+                        meta.removeItemFlags(flags);
+                    }
+                    item.setItemMeta(meta.clone());
                     return item.clone();
                 }
             }
