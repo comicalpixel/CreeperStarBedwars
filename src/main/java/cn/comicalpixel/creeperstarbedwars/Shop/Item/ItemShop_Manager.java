@@ -51,6 +51,26 @@ public class ItemShop_Manager {
 
         */
 
+        // 超级特殊:工具
+        // 谁会帮我优化一下代码qwq
+        if (
+                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0101) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0201) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0202) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0203) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0204) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0301) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0302) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0303) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0304) ")
+
+        ) {
+
+
+
+            return;
+        }
+
         for (String item_bh : items) {
             if (gui_item.getItemMeta().getDisplayName().endsWith("#" + item_bh + "§8) ")) {
                 if (isEnough(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"))) {
@@ -62,18 +82,10 @@ public class ItemShop_Manager {
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§1") || // 锁链套
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§2") || // 铁套
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§3") // 钻套
-//                            buy_meta.getLore().get(0).startsWith("§o§o§l§d") || // 剪刀
-//                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§1") || // 稿子l1
-//                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§2") || // 稿子l2
-//                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§3") || // 稿子l3
-//                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§4") || // 稿子l4
-//                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§1") || // 斧头l1
-//                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§2") || // 斧头l2
-//                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§3") || // 斧头l3
-//                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§4") // 斧头l4
                     )) {
                         is普通处理 = false;
                     }
+
 
                     if (is普通处理) {
                         b_deduction(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"));

@@ -18,6 +18,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemShop_GUI implements Listener {
@@ -96,6 +97,7 @@ public class ItemShop_GUI implements Listener {
                     }
                     meta = item.getItemMeta();
                     meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0201" + "§8) ");
+
                 }
                 if (ToolItemsManager.players_toolLevel_稿子.get(p) == 1) {
                     if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
