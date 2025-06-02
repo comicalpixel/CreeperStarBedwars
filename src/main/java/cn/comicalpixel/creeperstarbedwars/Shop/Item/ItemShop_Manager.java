@@ -54,23 +54,23 @@ public class ItemShop_Manager {
         for (String item_bh : items) {
             if (gui_item.getItemMeta().getDisplayName().endsWith("#" + item_bh + "§8) ")) {
                 if (isEnough(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"))) {
-                    ItemStack buy_item = ConfigUtils.getItemStack(shopConfig, "Items." + item_bh + ".buy-item");
+                    ItemStack buy_item = ConfigUtils.getItemStack(shopConfig, "Items." + item_bh + ".buy-item", false);
                     ItemMeta buy_meta = buy_item.getItemMeta();
                     boolean is普通处理 = true;
                     if (  buy_meta.hasLore() && (
                             buy_meta.getLore().get(0).startsWith("§e§a§m§c§o§l§o§r") || // 队伍颜色data
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§1") || // 锁链套
                             buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§2") || // 铁套
-                            buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§3") || // 钻套
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§d") || // 剪刀
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§1") || // 稿子l1
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§2") || // 稿子l2
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§3") || // 稿子l3
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§4") || // 稿子l4
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§1") || // 斧头l1
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§2") || // 斧头l2
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§3") || // 斧头l3
-                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§4") // 斧头l4
+                            buy_meta.getLore().get(0).startsWith("§a§r§m§o§r§0§3") // 钻套
+//                            buy_meta.getLore().get(0).startsWith("§o§o§l§d") || // 剪刀
+//                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§1") || // 稿子l1
+//                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§2") || // 稿子l2
+//                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§3") || // 稿子l3
+//                            buy_meta.getLore().get(0).startsWith("§o§o§l§c§a§e§4") || // 稿子l4
+//                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§1") || // 斧头l1
+//                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§2") || // 斧头l2
+//                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§3") || // 斧头l3
+//                            buy_meta.getLore().get(0).startsWith("§o§o§l§a§e§4") // 斧头l4
                     )) {
                         is普通处理 = false;
                     }

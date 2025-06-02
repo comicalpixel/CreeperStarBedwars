@@ -11,6 +11,7 @@ import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.ShopNPC_Manager;
 import cn.comicalpixel.creeperstarbedwars.Items.Compass_Item;
+import cn.comicalpixel.creeperstarbedwars.Items.ToolsItem.ToolItemsManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.PlayerArmor.PlayerArmorManager;
 import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
@@ -48,6 +49,9 @@ public class GameStart {
             PlayerUtils.clear_effects(p);
             GameTools.InitializationInventory(p);
             p.setGameMode(GameMode.SURVIVAL);
+
+            ToolItemsManager.reset_all(p);
+            ToolItemsManager.giveItems(p);
 
             p.getEnderChest().clear();
 

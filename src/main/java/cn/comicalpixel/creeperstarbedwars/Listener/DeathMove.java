@@ -8,6 +8,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Items.ToolsItem.ToolItemsManager;
 import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
@@ -140,6 +141,8 @@ public class DeathMove implements Listener {
         p.setLevel(0);
         p.setExp(0);
         GameTools.InitializationInventory(p);
+
+        ToolItemsManager.giveItems(p);
 
         p.teleport(GameData_cfg.spec_loc);
 

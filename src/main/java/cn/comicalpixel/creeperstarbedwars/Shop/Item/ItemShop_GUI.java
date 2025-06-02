@@ -2,6 +2,7 @@ package cn.comicalpixel.creeperstarbedwars.Shop.Item;
 
 import cn.comicalpixel.creeperstarbedwars.Config.ShopConfig;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Items.ToolsItem.ToolItemsManager;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
@@ -66,19 +67,139 @@ public class ItemShop_GUI implements Listener {
 
         List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-1.items");
         for (int i = 0; i < items.size(); i++) {
-            ItemStack item = new ItemStack(Material.BEDROCK);
-            ItemMeta meta = item.getItemMeta();
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
-            }
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
-            }
-            meta = item.getItemMeta();
-            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
-            item.setItemMeta(meta);
+            // 特殊物品处理 如工具
+            if (items.get(i).equalsIgnoreCase("shears_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0101" + "§8) ");
+                item.setItemMeta(meta);
 
-            gui.setItem((solts[i]) - 1, item);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("pickaxe_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0201" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0202" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0203" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0204" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("axe_")) {
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) <= 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0301" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0302" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0303" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0304" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else {
+
+                // 常规物品处理
+
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+                item.setItemMeta(meta);
+
+
+                gui.setItem((solts[i]) - 1, item);
+
+            }
         }
 
         p.openInventory(gui);
@@ -92,19 +213,139 @@ public class ItemShop_GUI implements Listener {
 
         List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-2.items");
         for (int i = 0; i < items.size(); i++) {
-            ItemStack item = new ItemStack(Material.BEDROCK);
-            ItemMeta meta = item.getItemMeta();
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
-            }
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
-            }
-            meta = item.getItemMeta();
-            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
-            item.setItemMeta(meta);
+            // 特殊物品处理 如工具
+            if (items.get(i).equalsIgnoreCase("shears_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0101" + "§8) ");
+                item.setItemMeta(meta);
 
-            gui.setItem((solts[i]) - 1, item);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("pickaxe_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0201" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0202" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0203" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0204" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("axe_")) {
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) <= 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0301" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0302" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0303" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0304" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else {
+
+                // 常规物品处理
+
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+                item.setItemMeta(meta);
+
+
+                gui.setItem((solts[i]) - 1, item);
+
+            }
         }
 
 
@@ -119,19 +360,139 @@ public class ItemShop_GUI implements Listener {
 
         List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-3.items");
         for (int i = 0; i < items.size(); i++) {
-            ItemStack item = new ItemStack(Material.BEDROCK);
-            ItemMeta meta = item.getItemMeta();
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
-            }
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
-            }
-            meta = item.getItemMeta();
-            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
-            item.setItemMeta(meta);
+            // 特殊物品处理 如工具
+            if (items.get(i).equalsIgnoreCase("shears_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0101" + "§8) ");
+                item.setItemMeta(meta);
 
-            gui.setItem((solts[i]) - 1, item);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("pickaxe_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0201" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0202" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0203" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0204" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("axe_")) {
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) <= 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0301" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0302" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0303" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0304" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else {
+
+                // 常规物品处理
+
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+                item.setItemMeta(meta);
+
+
+                gui.setItem((solts[i]) - 1, item);
+
+            }
         }
 
         p.openInventory(gui);
@@ -145,19 +506,140 @@ public class ItemShop_GUI implements Listener {
 
         List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-4.items");
         for (int i = 0; i < items.size(); i++) {
-            ItemStack item = new ItemStack(Material.BEDROCK);
-            ItemMeta meta = item.getItemMeta();
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
-            }
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
-            }
-            meta = item.getItemMeta();
-            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
-            item.setItemMeta(meta);
+            // 特殊物品处理 如工具
+            if (items.get(i).equalsIgnoreCase("shears_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0101" + "§8) ");
+                item.setItemMeta(meta);
 
-            gui.setItem((solts[i]) - 1, item);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("pickaxe_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0201" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0202" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0203" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0204" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("axe_")) {
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) <= 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0301" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0302" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0303" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0304" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else {
+
+                // 常规物品处理
+
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+                item.setItemMeta(meta);
+
+
+                gui.setItem((solts[i]) - 1, item);
+
+            }
+
         }
 
         p.openInventory(gui);
@@ -171,19 +653,139 @@ public class ItemShop_GUI implements Listener {
 
         List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-5.items");
         for (int i = 0; i < items.size(); i++) {
-            ItemStack item = new ItemStack(Material.BEDROCK);
-            ItemMeta meta = item.getItemMeta();
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
-            }
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
-            }
-            meta = item.getItemMeta();
-            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
-            item.setItemMeta(meta);
+            // 特殊物品处理 如工具
+            if (items.get(i).equalsIgnoreCase("shears_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0101" + "§8) ");
+                item.setItemMeta(meta);
 
-            gui.setItem((solts[i]) - 1, item);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("pickaxe_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0201" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0202" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0203" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0204" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("axe_")) {
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) <= 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0301" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0302" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0303" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0304" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else {
+
+                // 常规物品处理
+
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+                item.setItemMeta(meta);
+
+
+                gui.setItem((solts[i]) - 1, item);
+
+            }
         }
 
         p.openInventory(gui);
@@ -197,19 +799,139 @@ public class ItemShop_GUI implements Listener {
 
         List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-6.items");
         for (int i = 0; i < items.size(); i++) {
-            ItemStack item = new ItemStack(Material.BEDROCK);
-            ItemMeta meta = item.getItemMeta();
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
-            }
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
-            }
-            meta = item.getItemMeta();
-            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
-            item.setItemMeta(meta);
+            // 特殊物品处理 如工具
+            if (items.get(i).equalsIgnoreCase("shears_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0101" + "§8) ");
+                item.setItemMeta(meta);
 
-            gui.setItem((solts[i]) - 1, item);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("pickaxe_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0201" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0202" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0203" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0204" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("axe_")) {
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) <= 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0301" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0302" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0303" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0304" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else {
+
+                // 常规物品处理
+
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+                item.setItemMeta(meta);
+
+
+                gui.setItem((solts[i]) - 1, item);
+
+            }
         }
 
         p.openInventory(gui);
@@ -223,19 +945,139 @@ public class ItemShop_GUI implements Listener {
 
         List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-7.items");
         for (int i = 0; i < items.size(); i++) {
-            ItemStack item = new ItemStack(Material.BEDROCK);
-            ItemMeta meta = item.getItemMeta();
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
-            }
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
-            }
-            meta = item.getItemMeta();
-            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
-            item.setItemMeta(meta);
+            // 特殊物品处理 如工具
+            if (items.get(i).equalsIgnoreCase("shears_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0101" + "§8) ");
+                item.setItemMeta(meta);
 
-            gui.setItem((solts[i]) - 1, item);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("pickaxe_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0201" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0202" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0203" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0204" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("axe_")) {
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) <= 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0301" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0302" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0303" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0304" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else {
+
+                // 常规物品处理
+
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+                item.setItemMeta(meta);
+
+
+                gui.setItem((solts[i]) - 1, item);
+
+            }
         }
 
         p.openInventory(gui);
@@ -249,19 +1091,152 @@ public class ItemShop_GUI implements Listener {
 
         List<String> items = ConfigUtils.getStringList(shopConfig, "GUI.gui-8.items");
         for (int i = 0; i < items.size(); i++) {
-            ItemStack item = new ItemStack(Material.BEDROCK);
-            ItemMeta meta = item.getItemMeta();
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i").clone();
-            }
-            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
-                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp").clone();
-            }
-            meta = item.getItemMeta();
-            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
-            item.setItemMeta(meta);
+            // 特殊物品处理 如工具
+            if (items.get(i).equalsIgnoreCase("shears_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.shears"+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0101" + "§8) ");
+                item.setItemMeta(meta);
 
-            gui.setItem((solts[i]) - 1, item);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("pickaxe_")) {
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0201" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0202" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0203" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_稿子.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.pickaxe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0204" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else if (items.get(i).equalsIgnoreCase("axe_")) {
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) <= 0) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) <= 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L1"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0301" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 1) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L2"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0302" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) == 2) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L3"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0303" + "§8) ");
+                }
+                if (ToolItemsManager.players_toolLevel_斧头.get(p) >= 3) {
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.i", true).clone();
+                    }
+                    if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                        item = ConfigUtils.getItemStack(shopConfig, "Tool-Items.axe.L4"+".gui-item.xp", true).clone();
+                    }
+                    meta = item.getItemMeta();
+                    meta.setDisplayName(meta.getDisplayName() + "§8 (#tools_0304" + "§8) ");
+                }
+                item.setItemMeta(meta);
+
+                gui.setItem((solts[i]) - 1, item);
+
+            } else {
+
+                // 常规物品处理
+
+
+                ItemStack item = new ItemStack(Material.BEDROCK);
+                ItemMeta meta = item.getItemMeta();
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i", true).clone();
+                }
+                if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                    item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp", true).clone();
+                }
+                meta = item.getItemMeta();
+                meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+                item.setItemMeta(meta);
+
+
+                gui.setItem((solts[i]) - 1, item);
+
+            }
+//            ItemStack item = new ItemStack(Material.BEDROCK);
+//            ItemMeta meta = item.getItemMeta();
+//            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+//                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.i", true).clone();
+//            }
+//            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+//                item = ConfigUtils.getItemStack(shopConfig, "Items."+items.get(i)+".gui-item.xp", true).clone();
+//            }
+//            meta = item.getItemMeta();
+//            meta.setDisplayName(meta.getDisplayName() + "§8 (#" + items.get(i) + "§8) ");
+//            item.setItemMeta(meta);
+//
+//            gui.setItem((solts[i]) - 1, item);
         }
 
         p.openInventory(gui);
@@ -283,15 +1258,15 @@ public class ItemShop_GUI implements Listener {
             7:§2§e§b§8§a§5§e§7
             8:§2§e§b§8§a§5§e§8
         */
-        ItemStack pi0 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-quickshop.icon");
-        ItemStack pi1 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-1.icon");
-        ItemStack pi2 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-2.icon");
-        ItemStack pi3 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-3.icon");
-        ItemStack pi4 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-4.icon");
-        ItemStack pi5 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-5.icon");
-        ItemStack pi6 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-6.icon");
-        ItemStack pi7 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-7.icon");
-        ItemStack pi8 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-8.icon");
+        ItemStack pi0 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-quickshop.icon", true);
+        ItemStack pi1 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-1.icon", true);
+        ItemStack pi2 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-2.icon", true);
+        ItemStack pi3 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-3.icon", true);
+        ItemStack pi4 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-4.icon", true);
+        ItemStack pi5 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-5.icon", true);
+        ItemStack pi6 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-6.icon", true);
+        ItemStack pi7 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-7.icon", true);
+        ItemStack pi8 = ConfigUtils.getItemStack(shopConfig, "GUI.gui-8.icon", true);
         ItemMeta pi0m = pi0.getItemMeta();
         ItemMeta pi1m = pi1.getItemMeta();
         ItemMeta pi2m = pi2.getItemMeta();
@@ -356,5 +1331,7 @@ public class ItemShop_GUI implements Listener {
         gui.setItem(page+9, seted);
         /**/
     }
+
+
 
 }

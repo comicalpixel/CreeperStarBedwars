@@ -14,15 +14,18 @@ import java.util.List;
 public class ConfigUtils {
 
     // 获取物品
-    public static ItemStack getItemStack(FileConfiguration config, String path) {
+    public static ItemStack getItemStack(FileConfiguration config, String path, boolean hide_Flag) {
         List<?> itemList = config.getList(path);
         if (itemList != null) {
             for (Object obj : itemList) {
                 if (obj instanceof ItemStack) {
                     ItemStack item = (ItemStack) obj;
                     ItemMeta meta = item.getItemMeta();
-                    for (ItemFlag flags : meta.getItemFlags()) {
-                        meta.removeItemFlags(flags);
+                    if (hide_Flag) {
+                        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+                        meta.addItemFlags(ItemFlag.HIDE_DESTROYS);
+                        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
                     }
                     item.setItemMeta(meta.clone());
                     return item.clone();
