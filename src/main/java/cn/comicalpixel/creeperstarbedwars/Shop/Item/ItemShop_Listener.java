@@ -32,20 +32,17 @@ public class ItemShop_Listener implements Listener {
         if (e.getCurrentItem() == null) {
             return;
         }
-        if (e.getClickedInventory().getType() != InventoryType.CHEST) {
-            return;
-        }
 
         // 选择卡图标
-        if (       e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§0")
-                || e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§a")
-                || e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§2")
-                || e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§3")
-                || e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§4")
-                || e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§5")
-                || e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§6")
-                || e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§7")
-                || e.getClickedInventory().getTitle().endsWith("§2§e§b§k§a§5§e§8")) {
+        if (       e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§0")
+                || e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§a")
+                || e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§2")
+                || e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§3")
+                || e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§4")
+                || e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§5")
+                || e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§6")
+                || e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§7")
+                || e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§8")) {
 
             e.setCancelled(true);
 
@@ -93,9 +90,36 @@ public class ItemShop_Listener implements Listener {
         /* */
 
         if (buy_solts.contains(e.getSlot())) {
+
+            /* 购买&快捷购买 部分 */
             if (e.getAction() == InventoryAction.PICKUP_ALL || e.getAction() == InventoryAction.PICKUP_HALF) {
                 ItemShop_Manager.buy(((Player) e.getWhoClicked()).getPlayer(), e.getCurrentItem());
             }
+            if (e.getAction() ==  InventoryAction.)
+            /**/
+
+            /* 刷新GUI */
+            if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§0")) {
+                ItemShop_GUI.gui_op0((Player) e.getWhoClicked());
+            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§a")) {
+                ItemShop_GUI.gui_op1((Player) e.getWhoClicked());
+            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§2")) {
+                ItemShop_GUI.gui_op2((Player) e.getWhoClicked());
+            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§3")) {
+                ItemShop_GUI.gui_op3((Player) e.getWhoClicked());
+            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§4")) {
+                ItemShop_GUI.gui_op4((Player) e.getWhoClicked());
+            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§5")) {
+                ItemShop_GUI.gui_op5((Player) e.getWhoClicked());
+            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§6")) {
+                ItemShop_GUI.gui_op6((Player) e.getWhoClicked());
+            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§7")) {
+                ItemShop_GUI.gui_op7((Player) e.getWhoClicked());
+            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§8")) {
+                ItemShop_GUI.gui_op8((Player) e.getWhoClicked());
+            }
+            /**/
+
         }
 
     }

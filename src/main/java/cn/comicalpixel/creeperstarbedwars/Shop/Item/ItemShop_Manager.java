@@ -5,9 +5,12 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.ShopConfig;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Items.ToolsItem.ToolItemsManager;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.PlayerArmor.PlayerArmorManager;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -54,23 +57,177 @@ public class ItemShop_Manager {
         // 超级特殊:工具
         // 谁会帮我优化一下代码qwq
         if (
-                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0101) ") ||
-                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0201) ") ||
-                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0202) ") ||
-                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0203) ") ||
-                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0204) ") ||
-                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0301) ") ||
-                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0302) ") ||
-                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0303) ") ||
-                gui_item.getItemMeta().getDisplayName().endsWith("#tools_0304) ")
+                gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0101§8) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0201§8) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0202§8) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0203§8) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0204§8) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0301§8) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0302§8) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0303§8) ") ||
+                gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0304§8) ")
 
-        ) {
+        ) { // 添加 §r§o§o§1§m§r§8 防止用户故意设置同样的编号导致冲突而出错!!
 
+            String buy_type = "0000";
 
+            ItemStack cost_type = new ItemStack(Material.AIR, Integer.MAX_VALUE);
+            int cost_amount = 0;
+            int cost_xplevel = 0;
+            String buy_item_str = "null";
+
+            int level_buy = -1;
+            int level_player = 0;
+//            int level_max = -2; 没啥实际意义 :(
+
+            if (gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0101§8) ")) {
+                buy_type = "0101";
+                cost_type = new ItemStack(Material.valueOf(shopConfig.getString("Tool-Items.shears.cost.type")));
+                cost_amount = shopConfig.getInt("Tool-Items.shears.cost.amount");
+                cost_xplevel = shopConfig.getInt("Tool-Items.shears.cost.xp_level");
+                buy_item_str = ConfigUtils.getString(shopConfig, "Tool-Items.shears.name");
+                level_buy = 1;
+                level_player = ToolItemsManager.players_toolLevel_剪刀.get(p);
+            } else if (gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0201§8) ")) {
+                buy_type = "0201";
+                cost_type = new ItemStack(Material.valueOf(shopConfig.getString("Tool-Items.pickaxe.L1.cost.type")));
+                cost_amount = shopConfig.getInt("Tool-Items.pickaxe.L1.cost.amount");
+                cost_xplevel = shopConfig.getInt("Tool-Items.pickaxe.L1.cost.xp_level");
+                buy_item_str = ConfigUtils.getString(shopConfig, "Tool-Items.pickaxe.name");
+                level_buy = 1;
+                level_player = ToolItemsManager.players_toolLevel_稿子.get(p);
+            } else if (gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0202§8) ")) {
+                buy_type = "0202";
+                cost_type = new ItemStack(Material.valueOf(shopConfig.getString("Tool-Items.pickaxe.L2.cost.type")));
+                cost_amount = shopConfig.getInt("Tool-Items.pickaxe.L2.cost.amount");
+                cost_xplevel = shopConfig.getInt("Tool-Items.pickaxe.L2.cost.xp_level");
+                buy_item_str = ConfigUtils.getString(shopConfig, "Tool-Items.pickaxe.name");
+                level_buy = 2;
+                level_player = ToolItemsManager.players_toolLevel_稿子.get(p);
+            } else if (gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0203§8) ")) {
+                buy_type = "0203";
+                cost_type = new ItemStack(Material.valueOf(shopConfig.getString("Tool-Items.pickaxe.L3.cost.type")));
+                cost_amount = shopConfig.getInt("Tool-Items.pickaxe.L3.cost.amount");
+                cost_xplevel = shopConfig.getInt("Tool-Items.pickaxe.L3.cost.xp_level");
+                buy_item_str = ConfigUtils.getString(shopConfig, "Tool-Items.pickaxe.name");
+                level_buy = 3;
+                level_player = ToolItemsManager.players_toolLevel_稿子.get(p);
+            } else if (gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0204§8) ")) {
+                buy_type = "0204";
+                cost_type = new ItemStack(Material.valueOf(shopConfig.getString("Tool-Items.pickaxe.L4.cost.type")));
+                cost_amount = shopConfig.getInt("Tool-Items.pickaxe.L4.cost.amount");
+                cost_xplevel = shopConfig.getInt("Tool-Items.pickaxe.L4.cost.xp_level");
+                buy_item_str = ConfigUtils.getString(shopConfig, "Tool-Items.pickaxe.name");
+                level_buy = 4;
+                level_player = ToolItemsManager.players_toolLevel_稿子.get(p);
+            } else if (gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0301§8) ")) {
+                buy_type = "0301";
+                cost_type = new ItemStack(Material.valueOf(shopConfig.getString("Tool-Items.axe.L1.cost.type")));
+                cost_amount = shopConfig.getInt("Tool-Items.axe.L1.cost.amount");
+                cost_xplevel = shopConfig.getInt("Tool-Items.axe.L1.cost.xp_level");
+                buy_item_str = ConfigUtils.getString(shopConfig, "Tool-Items.axe.name");
+                level_buy = 1;
+                level_player = ToolItemsManager.players_toolLevel_斧头.get(p);
+            } else if (gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0302§8) ")) {
+                buy_type = "0302";
+                cost_type = new ItemStack(Material.valueOf(shopConfig.getString("Tool-Items.axe.L1.cost.type")));
+                cost_amount = shopConfig.getInt("Tool-Items.axe.L2.cost.amount");
+                cost_xplevel = shopConfig.getInt("Tool-Items.axe.L2.cost.xp_level");
+                buy_item_str = ConfigUtils.getString(shopConfig, "Tool-Items.axe.name");
+                level_buy = 2;
+                level_player = ToolItemsManager.players_toolLevel_斧头.get(p);
+            } else if (gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0303§8) ")) {
+                buy_type = "0303";
+                cost_type = new ItemStack(Material.valueOf(shopConfig.getString("Tool-Items.axe.L1.cost.type")));
+                cost_amount = shopConfig.getInt("Tool-Items.axe.L3.cost.amount");
+                cost_xplevel = shopConfig.getInt("Tool-Items.axe.L3.cost.xp_level");
+                buy_item_str = ConfigUtils.getString(shopConfig, "Tool-Items.axe.name");
+                level_buy = 3;
+                level_player = ToolItemsManager.players_toolLevel_斧头.get(p);
+            } else if (gui_item.getItemMeta().getDisplayName().endsWith("#§r§o§o§1§m§r§8tools_0304§8) ")) {
+                buy_type = "0304";
+                cost_type = new ItemStack(Material.valueOf(shopConfig.getString("Tool-Items.axe.L1.cost.type")));
+                cost_amount = shopConfig.getInt("Tool-Items.axe.L4.cost.amount");
+                cost_xplevel = shopConfig.getInt("Tool-Items.axe.L4.cost.xp_level");
+                buy_item_str = ConfigUtils.getString(shopConfig, "Tool-Items.axe.name");
+                level_buy = 4;
+                level_player = ToolItemsManager.players_toolLevel_斧头.get(p);
+            } else {
+                Bukkit.getLogger().warning("BedwarsError!! at ItemShop_manager.java:tools_**** tools_buy if_else=else ");
+                return;
+            }
+
+            boolean isBuyed = false;
+
+            if (!(level_player >= level_buy)) {
+                if (isEnough(p, cost_type, cost_amount, cost_xplevel)) {
+                    isBuyed = true;
+                    b_deduction(p, cost_type, cost_amount, cost_xplevel);
+                    p.sendMessage(ConfigData.language_shop_buy_yes.replace("{item}", buy_item_str));
+                    ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-yes");
+                } else {
+                    p.sendMessage(ConfigData.language_shop_buy_no);
+                    ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-no");
+                }
+            } else {
+                p.sendMessage(ConfigData.language_shop_buy_ed);
+                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-no");
+            }
+
+            if (isBuyed) {
+                switch (buy_type) {
+                    case "0101":
+                        ToolItemsManager.players_toolLevel_剪刀.put(p, 1);
+                        ToolItemsManager.buy_regive_01(p);
+                        break;
+                    case "0201":
+                        ToolItemsManager.players_toolLevel_稿子.put(p, 1);
+                        ToolItemsManager.buy_regive_02(p);
+                        break;
+                    case "0202":
+                        ToolItemsManager.players_toolLevel_稿子.put(p, 2);
+                        ToolItemsManager.buy_regive_02(p);
+                        break;
+                    case "0203":
+                        ToolItemsManager.players_toolLevel_稿子.put(p, 3);
+                        ToolItemsManager.buy_regive_02(p);
+                        break;
+                    case "0204":
+                        ToolItemsManager.players_toolLevel_稿子.put(p, 4);
+                        ToolItemsManager.buy_regive_02(p);
+                        break;
+                    case "0301":
+                        ToolItemsManager.players_toolLevel_斧头.put(p, 1);
+                        ToolItemsManager.buy_regive_03(p);
+                        break;
+                    case "0302":
+                        ToolItemsManager.players_toolLevel_斧头.put(p, 2);
+                        ToolItemsManager.buy_regive_03(p);
+                        break;
+                    case "0303":
+                        ToolItemsManager.players_toolLevel_斧头.put(p, 3);
+                        ToolItemsManager.buy_regive_03(p);
+                        break;
+                    case "0304":
+                        ToolItemsManager.players_toolLevel_斧头.put(p, 4);
+                        ToolItemsManager.buy_regive_03(p);
+                        break;
+                    default:
+                        p.sendMessage(ChatColor.RED + "出现了严重性错误!! 请立即报告给开发者(错误信息见控制台, 请将此错误信息报告给开发者)");
+                        Bukkit.getLogger().warning("BedwarsError!! at ItemShop_manager.java:tools_**** tools_buy(switch:case) = default ");
+                        break;
+                }
+            }
 
             return;
         }
 
+        /*
+
+            非特殊性常规物品
+            Shop.yml Items
+
+         */
         for (String item_bh : items) {
             if (gui_item.getItemMeta().getDisplayName().endsWith("#" + item_bh + "§8) ")) {
                 if (isEnough(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"))) {
