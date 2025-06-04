@@ -27,7 +27,30 @@ GUI:
             - '§e单击打开'
     # 默认的物品
     def-items:
-      - null
+      - a01
+      - b01
+      - c01
+      - g01
+      - e02
+      - f01
+      - h04
+      - a07
+      - b02
+      - c02
+      - shears_
+      - e01
+      - f02
+      - h07
+      - none
+      - none
+      - none
+      - none
+      - none
+      - none
+      - none
+      - none
+      - none
+      - h012
   # GUI 2-9页 不支持多和少
   gui-1:
     title: '§7物品商店 - 方块商店'
@@ -2298,4 +2321,3 @@ Items:
           meta-type: UNSPECIFIC
           display-name: '§f生成防护墙'
 
-  

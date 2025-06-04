@@ -86,6 +86,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic$
 cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\TeamShop_NPC$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameData_cfg.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_RED$2.class
+cn\comicalpixel\creeperstarbedwars\Config\PlayerShopDataConfig.class
 cn\comicalpixel\creeperstarbedwars\Items\FireworkSit_Item.class
 cn\comicalpixel\creeperstarbedwars\Utils\PlayerUtils$1.class
 cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\EntityVillagerBedWars.class
@@ -140,6 +141,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\ActionBarUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamSpawn.class
 cn\comicalpixel\creeperstarbedwars\Items\BridgeEgg_Item$1$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_WHITE.class
+cn\comicalpixel\creeperstarbedwars\Shop\Item\QuickShop\QuickShop_Add_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\BedBlockUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GRAY$3.class
 cn\comicalpixel\creeperstarbedwars\Items\Silverfish_EntityItem$1.class

@@ -7,6 +7,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamChest;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
+import cn.comicalpixel.creeperstarbedwars.Config.PlayerShopDataConfig;
 import cn.comicalpixel.creeperstarbedwars.Config.ShopConfig;
 import cn.comicalpixel.creeperstarbedwars.Entity.AntiMobs;
 import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.ItemShop_NPC;
@@ -20,6 +21,7 @@ import cn.comicalpixel.creeperstarbedwars.Items.*;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Listener;
+import cn.comicalpixel.creeperstarbedwars.Shop.Item.QuickShop.QuickShop_Add_GUI;
 import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
@@ -48,6 +50,11 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
     private ShopConfig shopConfig;
     public ShopConfig getShopConfig() {return shopConfig;}
+
+    private PlayerShopDataConfig shopDataConfig;
+    public PlayerShopDataConfig getShopDataConfig() {
+        return shopDataConfig;
+    }
 
     @Override
     public void onEnable() {
@@ -108,6 +115,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         // 加载商店配置文件
         shopConfig = new ShopConfig(this, "shop.yml");
+
+        // 玩家数据(商店-快捷购买)
+        shopDataConfig = new PlayerShopDataConfig(this, "shop_data.yml");
 
 
         /**/
@@ -202,6 +212,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ItemShop_GUI(), this);
         getServer().getPluginManager().registerEvents(new ItemShop_Listener(), this);
+        getServer().getPluginManager().registerEvents(new QuickShop_Add_GUI(), this);
 
     }
 

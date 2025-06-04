@@ -2,6 +2,7 @@ package cn.comicalpixel.creeperstarbedwars.Shop.Item;
 
 import cn.comicalpixel.creeperstarbedwars.Config.ShopConfig;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Shop.Item.QuickShop.QuickShop_Add_GUI;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -79,46 +80,65 @@ public class ItemShop_Listener implements Listener {
                     ItemShop_GUI.gui_op8(p);
                 }
             }
-        }
 
-        /**/
 
-        List<Integer> buy_solts = new ArrayList<>();
-        for (int i : new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 }) {
-            buy_solts.add(i-1);
-        }
-        /* */
 
-        if (buy_solts.contains(e.getSlot())) {
 
-            /* 购买&快捷购买 部分 */
-            if (e.getAction() == InventoryAction.PICKUP_ALL || e.getAction() == InventoryAction.PICKUP_HALF) {
-                ItemShop_Manager.buy(((Player) e.getWhoClicked()).getPlayer(), e.getCurrentItem());
-            }
-            if (e.getAction() ==  InventoryAction.)
+
             /**/
 
-            /* 刷新GUI */
-            if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§0")) {
-                ItemShop_GUI.gui_op0((Player) e.getWhoClicked());
-            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§a")) {
-                ItemShop_GUI.gui_op1((Player) e.getWhoClicked());
-            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§2")) {
-                ItemShop_GUI.gui_op2((Player) e.getWhoClicked());
-            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§3")) {
-                ItemShop_GUI.gui_op3((Player) e.getWhoClicked());
-            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§4")) {
-                ItemShop_GUI.gui_op4((Player) e.getWhoClicked());
-            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§5")) {
-                ItemShop_GUI.gui_op5((Player) e.getWhoClicked());
-            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§6")) {
-                ItemShop_GUI.gui_op6((Player) e.getWhoClicked());
-            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§7")) {
-                ItemShop_GUI.gui_op7((Player) e.getWhoClicked());
-            } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§8")) {
-                ItemShop_GUI.gui_op8((Player) e.getWhoClicked());
+            List<Integer> buy_solts = new ArrayList<>();
+            for (int i : new int[]{20,21,22,23,24,25,26  ,29,30,31,32,33,34,35   ,38,39,40,41,42,43,44 }) {
+                buy_solts.add(i-1);
             }
-            /**/
+            /* */
+
+            if (buy_solts.contains(e.getSlot())) {
+
+                /* 购买部分 */
+                if (e.getAction() == InventoryAction.PICKUP_ALL || e.getAction() == InventoryAction.PICKUP_HALF) {
+                    ItemShop_Manager.buy(((Player) e.getWhoClicked()).getPlayer(), e.getCurrentItem());
+
+
+                    /* 刷新GUI */
+                    if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§0")) {
+                        ItemShop_GUI.gui_op0((Player) e.getWhoClicked());
+                    } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§a")) {
+                        ItemShop_GUI.gui_op1((Player) e.getWhoClicked());
+                    } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§2")) {
+                        ItemShop_GUI.gui_op2((Player) e.getWhoClicked());
+                    } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§3")) {
+                        ItemShop_GUI.gui_op3((Player) e.getWhoClicked());
+                    } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§4")) {
+                        ItemShop_GUI.gui_op4((Player) e.getWhoClicked());
+                    } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§5")) {
+                        ItemShop_GUI.gui_op5((Player) e.getWhoClicked());
+                    } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§6")) {
+                        ItemShop_GUI.gui_op6((Player) e.getWhoClicked());
+                    } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§7")) {
+                        ItemShop_GUI.gui_op7((Player) e.getWhoClicked());
+                    } else if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§8")) {
+                        ItemShop_GUI.gui_op8((Player) e.getWhoClicked());
+                    }
+                    /**/
+
+                }
+                /**/
+
+
+                /* 快捷购买部分 */
+                if (e.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
+                    if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§0")) {
+
+                    } else {
+                        QuickShop_Add_GUI.open(p, e.getCurrentItem());
+                    }
+                }
+                /**/
+
+            }
+
+
 
         }
 
