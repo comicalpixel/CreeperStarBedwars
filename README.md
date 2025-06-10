@@ -4,7 +4,13 @@
 
 # CreeperStarBedwars
 
-这是一个由EnderCreeper(ComicalPixel) Network开发的一款起床战争插件，主要开发者为Xiaol789zxc(GodGold_Xiaol789zxc)
+这是一个由EnderCreeper(ComicalPixel) Network开发的一款起床战争插件
+
+主要开发者:
+
+- GodGold_Xiaol789zxc
+
+- TheGoodBoys
 
 
 # 环境要求
