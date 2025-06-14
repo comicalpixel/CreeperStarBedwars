@@ -118,6 +118,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         // 玩家数据(商店-快捷购买)
         shopDataConfig = new PlayerShopDataConfig(this, "shop_data.yml");
+        PlayerShopDataConfig.auto_reload();
+
 
 
         /**/
