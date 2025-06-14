@@ -18,6 +18,7 @@ import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ActionBarUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
+import cn.comicalpixel.creeperstarbedwars.Utils.MessageUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -78,11 +79,11 @@ public class GameStart {
         new GameTimerEvent_Main();
 
         // 游戏开始chat
-        for (Player p : GamePlayers.players) {
-            for (String s : ConfigData.language_game_start_chat) {
-                p.sendMessage(s);
-            }
+
+        for (String s : ConfigData.language_game_start_chat) {
+            MessageUtils.broadcastMessage(s);
         }
+
 
         // 淘汰队伍检测Task
         new GameTeamEliminated_Task();

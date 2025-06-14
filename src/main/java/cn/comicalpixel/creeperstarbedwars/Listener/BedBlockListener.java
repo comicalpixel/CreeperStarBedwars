@@ -75,6 +75,7 @@ public class BedBlockListener implements Listener {
             bed_team_chatColor = TeamManager.getTeamChatColor("RED");
             bed_team_name = GameData_cfg.team_red_name;
         }
+
         else if (GameData_cfg.team_blue_bed_f.distance(loc) < 2.5 && GameData_cfg.teams_list.contains("BLUE")) {
             bed_TEAM = "BLUE";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
@@ -89,6 +90,7 @@ public class BedBlockListener implements Listener {
             bed_team_chatColor = TeamManager.getTeamChatColor("BLUE");
             bed_team_name = GameData_cfg.team_blue_name;
         }
+
         else if (GameData_cfg.team_green_bed_f.distance(loc) < 2.5 && GameData_cfg.teams_list.contains("GREEN")) {
             bed_TEAM = "GREEN";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
@@ -103,6 +105,7 @@ public class BedBlockListener implements Listener {
             bed_team_chatColor = TeamManager.getTeamChatColor("GREEN");
             bed_team_name = GameData_cfg.team_green_name;
         }
+
         else if (GameData_cfg.team_yellow_bed_f.distance(loc) < 2.5 && GameData_cfg.teams_list.contains("YELLOW")) {
             bed_TEAM = "YELLOW";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
@@ -117,6 +120,7 @@ public class BedBlockListener implements Listener {
             bed_team_chatColor = TeamManager.getTeamChatColor("YELLOW");
             bed_team_name = GameData_cfg.team_yellow_name;
         }
+
         else if (GameData_cfg.team_pink_bed_f.distance(loc) < 2.5 && GameData_cfg.teams_list.contains("PINK")) {
             bed_TEAM = "PINK";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
@@ -131,6 +135,7 @@ public class BedBlockListener implements Listener {
             bed_team_chatColor = TeamManager.getTeamChatColor("PINK");
             bed_team_name = GameData_cfg.team_pink_name;
         }
+
         else if (GameData_cfg.team_aqua_bed_f.distance(loc) < 2.5 && GameData_cfg.teams_list.contains("AQUA")) {
             bed_TEAM = "AQUA";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
@@ -145,6 +150,7 @@ public class BedBlockListener implements Listener {
             bed_team_chatColor = TeamManager.getTeamChatColor("AQUA");
             bed_team_name = GameData_cfg.team_aqua_name;
         }
+
         else if (GameData_cfg.team_gray_bed_f.distance(loc) < 2.5 && GameData_cfg.teams_list.contains("GRAY")) {
             bed_TEAM = "GRAY";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
@@ -159,6 +165,7 @@ public class BedBlockListener implements Listener {
             bed_team_chatColor = TeamManager.getTeamChatColor("GRAY");
             bed_team_name = GameData_cfg.team_gray_name;
         }
+
         else if (GameData_cfg.team_white_bed_f.distance(loc) < 2.5 && GameData_cfg.teams_list.contains("WHITE")) {
             bed_TEAM = "WHITE";
             if (TeamManager.player_teams.get(p).equals(bed_TEAM)) {
