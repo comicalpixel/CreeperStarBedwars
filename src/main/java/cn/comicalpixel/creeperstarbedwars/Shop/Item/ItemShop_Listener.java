@@ -16,6 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class ItemShop_Listener implements Listener {
@@ -129,6 +130,37 @@ public class ItemShop_Listener implements Listener {
                 /* 快捷购买部分 */
                 if (e.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) {
                     if (e.getInventory().getTitle().endsWith("§2§e§b§k§a§5§e§0")) {
+
+                        HashMap<Integer, Integer> quick_solts = new HashMap<>();
+                        quick_solts.put(20, 1);
+                        quick_solts.put(21, 2);
+                        quick_solts.put(22, 3);
+                        quick_solts.put(23, 4);
+                        quick_solts.put(24, 5);
+                        quick_solts.put(25, 6);
+                        quick_solts.put(26, 7);
+
+                        quick_solts.put(29, 8);
+                        quick_solts.put(30, 9);
+                        quick_solts.put(31, 10);
+                        quick_solts.put(32, 11);
+                        quick_solts.put(33, 12);
+                        quick_solts.put(34, 13);
+                        quick_solts.put(35, 14);
+
+                        quick_solts.put(38, 15);
+                        quick_solts.put(39, 16);
+                        quick_solts.put(40, 17);
+                        quick_solts.put(41, 18);
+                        quick_solts.put(42, 19);
+                        quick_solts.put(43, 20);
+                        quick_solts.put(44, 21);
+
+                        if (quick_solts.containsKey(e.getRawSlot()+1)) {
+                            CreeperStarBedwars.getInstance().getShopDataConfig().set(p.getName()+".solt"+(quick_solts.get(e.getRawSlot()+1)), "none");
+                            CreeperStarBedwars.getInstance().getShopDataConfig().save();
+                        }
+                        ItemShop_GUI.gui_op0(p);
 
                     } else {
                         QuickShop_Add_GUI.open(p, e.getCurrentItem());

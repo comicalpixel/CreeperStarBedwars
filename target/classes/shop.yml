@@ -25,33 +25,42 @@ GUI:
           display-name: '§a快捷购买'
           lore:
             - '§e单击打开'
+    # 空槽物品
+    air-solt-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: STAINED_GLASS_PANE
+        damage: 14
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§c§l空槽'
+          lore:
+            - '§f使用§bRSHIFT+LCLICK§f添加或移除至槽位'
     # 默认的物品
     def-items:
-      - a01
-      - b01
-      - c01
-      - g01
-      - e02
-      - f01
-      - h04
-      - a07
-      - b02
-      - c02
-      - shears_
-      - e01
-      - f02
-      - h07
-      - none
-      - none
-      - none
-      - none
-      - none
-      - none
-      - none
-      - none
-      - none
-      - h012
-  # GUI 2-9页 不支持多和少
+      solt01: a01
+      solt02: b01
+      solt03: c01
+      solt04: g01
+      solt05: e02
+      solt06: f01
+      solt07: h04
+      solt08: a07
+      solt09: b02
+      solt10: c02
+      solt11: shears_
+      solt12: e01
+      solt13: f02
+      solt14: h07
+      solt15: none
+      solt16: none
+      solt17: none
+      solt18: none
+      solt19: none
+      solt20: none
+      solt21: h012
+  # GUI 2-9页 不支持添加和移除(移除可以尝试将icon的type改为AIR)
   gui-1:
     title: '§7物品商店 - 方块商店'
     icon:

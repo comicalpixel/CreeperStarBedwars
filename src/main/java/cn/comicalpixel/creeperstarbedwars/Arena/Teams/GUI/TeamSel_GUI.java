@@ -17,6 +17,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
@@ -231,6 +232,11 @@ public class TeamSel_GUI implements Listener {
                 }
             }
         }
+    }
+
+    @EventHandler
+    public void LeaveClear(PlayerQuitEvent e) {
+        TeamManager.clear(e.getPlayer());
     }
 
 }

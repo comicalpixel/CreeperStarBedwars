@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -33,6 +34,18 @@ public class InventoryListener implements Listener {
 
             if (e.getCurrentItem().getType().toString().endsWith("_BOOTS") || e.getCurrentItem().getType().toString().endsWith("_LEGGINGS") || e.getCurrentItem().getType().toString().endsWith("_CHESTPLATE") || e.getCurrentItem().getType().toString().endsWith("_HELMET")) {
                 e.setCancelled(true);
+            }
+
+            ItemStack item = e.getCurrentItem();
+            ItemMeta meta = item.getItemMeta();
+            if (meta.hasLore()) {
+                for (String s : meta.getLore()) {
+                    if (s.contains("Fixed set items")) {
+                        if (e.getClickedInventory().getType() != InventoryType.PLAYER) {
+                            e.setCancelled(true);
+                        }
+                    }
+                }
             }
 
         }
