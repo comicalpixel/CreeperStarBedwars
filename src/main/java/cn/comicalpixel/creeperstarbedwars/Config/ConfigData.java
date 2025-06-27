@@ -21,20 +21,20 @@ public class ConfigData {
     public static String nametag_suffix;
     // 快速重生
     public static boolean fast_respawn_enabled;
-    // 定时任务：指令
-    public static boolean timer_command_enabled;
-    public static List<String> timer_command_start = new ArrayList<>();
-    public static List<String> timer_command_end = new ArrayList<>();
-    public static HashMap<Integer, List<String>> timer_command_cmds = new HashMap<>();
-    // 事件触发指令
-    public static boolean event_command_enabled;
-    public static List<String> event_command_game_start = new ArrayList<>();
-    public static List<String> event_command_game_end = new ArrayList<>();
-    public static List<String> event_command_player_death = new ArrayList<>();
-    public static List<String> event_command_player_kill = new ArrayList<>();
-    public static List<String> event_command_player_win = new ArrayList<>();
-    public static List<String> event_command_player_lost = new ArrayList<>();
-    public static List<String> event_command_player_dbed = new ArrayList<>();
+//    // 定时任务：指令
+//    public static boolean timer_command_enabled;
+//    public static List<String> timer_command_start = new ArrayList<>();
+//    public static List<String> timer_command_end = new ArrayList<>();
+//    public static HashMap<Integer, List<String>> timer_command_cmds = new HashMap<>();
+//    // 事件触发指令
+//    public static boolean event_command_enabled;
+//    public static List<String> event_command_game_start = new ArrayList<>();
+//    public static List<String> event_command_game_end = new ArrayList<>();
+//    public static List<String> event_command_player_death = new ArrayList<>();
+//    public static List<String> event_command_player_kill = new ArrayList<>();
+//    public static List<String> event_command_player_win = new ArrayList<>();
+//    public static List<String> event_command_player_lost = new ArrayList<>();
+//    public static List<String> event_command_player_dbed = new ArrayList<>();
     // 白名单指令(仅限制玩家不限制op)
     public static List<String> whitelist_cmds = new ArrayList<>();
     // 队伍选择器
@@ -90,19 +90,20 @@ public class ConfigData {
     public static boolean lock_foodlevel_enabled = false;
     // 游戏开始标题
     public static boolean gamestart_title_enabled;
-    public static List<String> gamestart_title_title;
-    public static String gamestart_title_subtitle;
-    public static boolean gamestart_title_countdown_enabled;
-    public static String gamestart_title_countdown_5s_title;
-    public static String gamestart_title_countdown_5s_subtitle;
-    public static String gamestart_title_countdown_4s_title;
-    public static String gamestart_title_countdown_4s_subtitle;
-    public static String gamestart_title_countdown_3s_title;
-    public static String gamestart_title_countdown_3s_subtitle;
-    public static String gamestart_title_countdown_2s_title;
-    public static String gamestart_title_countdown_2s_subtitle;
-    public static String gamestart_title_countdown_1s_title;
-    public static String gamestart_title_countdown_1s_subtitle;
+    public static List<String> gamestart_title_actions = new ArrayList<>();
+//    public static List<String> gamestart_title_title;
+//    public static String gamestart_title_subtitle;
+//    public static boolean gamestart_title_countdown_enabled;
+//    public static String gamestart_title_countdown_5s_title;
+//    public static String gamestart_title_countdown_5s_subtitle;
+//    public static String gamestart_title_countdown_4s_title;
+//    public static String gamestart_title_countdown_4s_subtitle;
+//    public static String gamestart_title_countdown_3s_title;
+//    public static String gamestart_title_countdown_3s_subtitle;
+//    public static String gamestart_title_countdown_2s_title;
+//    public static String gamestart_title_countdown_2s_subtitle;
+//    public static String gamestart_title_countdown_1s_title;
+//    public static String gamestart_title_countdown_1s_subtitle;
     // 经验条倒计时
     public static boolean xpbar_countdown;
     // 保护范围

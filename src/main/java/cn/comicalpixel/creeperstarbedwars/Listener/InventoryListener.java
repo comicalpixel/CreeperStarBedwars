@@ -8,10 +8,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -37,19 +39,17 @@ public class InventoryListener implements Listener {
             }
 
             ItemStack item = e.getCurrentItem();
-            ItemMeta meta = item.getItemMeta();
-            if (meta.hasLore()) {
-                for (String s : meta.getLore()) {
-                    if (s.contains("Fixed set items")) {
-                        if (e.getClickedInventory().getType() != InventoryType.PLAYER) {
-                            e.setCancelled(true);
-                        }
-                    }
+            if (item != null && (item.getType() == Material.WOOD_SWORD ||
+                    item.getType() == Material.SHEARS ||
+                    item.getType().toString().endsWith("_AXE") ||
+                    item.getType().toString().endsWith("_PICKAXE"))) {
+
+                if (e.getInventory().getType() == InventoryType.CHEST || e.getInventory().getType() == InventoryType.ENDER_CHEST) {
+                    e.setCancelled(true);
                 }
             }
 
         }
-
     }
 
     @EventHandler

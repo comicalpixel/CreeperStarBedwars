@@ -31,7 +31,7 @@ public class MainCommand implements CommandExecutor {
                     case "help":
                         if (p.isOp() || p.hasPermission("bedwars.admin")) {
                             sender.sendMessage("§aCreeper§eStar§fBedwars §7v" + CreeperStarBedwars.getPlugin().getDescription().getVersion());
-                            sender.sendMessage("§fpowered by §6Xiaol789zxc §7- §bComical§ePixel §fNetwork ");
+                            sender.sendMessage("§fpowered by §6Xiaol789zxc §e& §bTheGoodBoys §7- §5Ender§2Creeper §fNetwork ");
                             sender.sendMessage("§f/bw start §aShorten the game countdown");
                             sender.sendMessage("§f/bw setup §aSETUP Commands");
                             // sender.sendMessage("§f/bw debug §aTest game instructions (developer debugging)");

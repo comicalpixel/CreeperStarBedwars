@@ -19,6 +19,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\GameStart.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerBlocks.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GREEN.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$2.class
+cn\comicalpixel\creeperstarbedwars\Listener\PlayerCommand.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\GameTimerEvent_Main.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic.class

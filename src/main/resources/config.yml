@@ -15,16 +15,10 @@ bungeecord:
   restart-command: 'minecraft:stop'
 
 # 数据保存设置
-data:
-  # 由于不会数据库只能用配置文件了
-  # 想要数据库的可以自行拿源码改
-
-  # 玩家游玩数据储存路径(目录名称不可以带空格和特殊符号) player_data.yml
-  # 空即在插件默认配置文件储存目录
-  player-data: ''
-  # 玩家商店数据储存路径(目录名称不可以带空格和特殊符号) shop_data.yml
-  # 空即在插件默认配置文件储存目录
-  shop-data: ''
+# 因能力原因插件不支持数据库, 有需要使用数据库的可以自行修改插件代码
+# 多子服数据同步数据可以使用硬链接(mklink /h ; 仅限Windows, 其他系统请自行查询)
+# shop_data.yml 玩家快捷购买的数据
+# player_dat.yml 玩家部分游玩数据
 
 # 玩家NameTag的血量显示(玩家头顶上的+tab玩家列表的)
 nametag-health: true
@@ -39,62 +33,6 @@ player-nametag:
 # 不是市面上的直接 p.spigot.respawn();
 # 写扩展的时候不要监听玩家PlayerRespawnEvent!!因为这无法监听玩家重生事件的
 fast-respawn: true
-
-
-# 定时指令
-# 执行由控制台执行
-# 这玩意写不明白有bug, 如果会的话可以自行修
-timer-command:
-  # 是否启用
-  enable: true
-  # 游戏开始执行的指令
-  game-start:
-    - ''
-  game-end:
-    - ''
-  # 定时任务
-  # 时间单位为's'
-  # 写了game-timer部分别忘了game-timer-bh!!
-  game-timer-bh:
-    - cmd1
-  game-timer:
-    # 格式
-    #    cmd1:
-    #      # 当游戏剩余多少时间时执行命令
-    #      gametime: 3000
-    #      # 执行的命令(不带/)
-    #      commands:
-    #        - ''
-    cmd1:
-      # 当游戏剩余多少时间时执行命令
-      gametime: 3000
-      # 执行的命令(不带/)
-      commands:
-        - ''
-
-
-# 时间指令
-# 执行由控制台执行
-# 这玩意写不明白有bug, 如果会的话可以自行修
-# 玩家变量{player}
-event-command:
-  # 是否启用
-  enable: true
-  # 所有时间
-  game-start:
-    - null
-  game-end:
-    - null
-  player-death:
-    - null
-  player-kill:
-    - null
-  player-win:
-    - null
-  player-lost:
-    - null
-  destroy-bed:
-    - null
 
 
 # 玩家指令白名单
@@ -214,7 +152,7 @@ damage-holo:
 combo-fix: true
 
 # 梯子修复 (治标不治本,还是建议把空心的地图填满)
-# 开启后将可以修复部分原版的梯子穿墙bug
+# 开启后将可以修复90%的原版的梯子穿墙bug
 ladder-fix: true
 
 # 是否锁定玩家饥饿值
@@ -222,91 +160,147 @@ ladder-fix: true
 lock-foodlevel: false
 
 # 游戏开始标题
-# 动态标题的时间不是用原版mc的tick而是ms
+# 动态标题的时间每21ms刷新一次 1s=1000ms 可制作高流畅度标题
 start-title:
   # 是否启用
   enable: true
-  # 主标题(支持动态)
-  title:
-    - "§c§l战              斗              开             始             !"
-    - "§c§l战              斗              开             始             !"
-    - "§c§l战              斗              开             始             !"
-    - "§c§l战             斗             开            始            !"
-    - "§c§l战             斗             开            始            !"
-    - "§c§l战             斗             开            始            !"
-    - "§c§l战            斗            开           始           !"
-    - "§c§l战            斗            开           始           !"
-    - "§c§l战            斗            开           始           !"
-    - "§c§l战           斗           开           始           !"
-    - "§c§l战           斗           开           始           !"
-    - "§c§l战          斗          开          始          !"
-    - "§c§l战          斗          开          始          !"
-    - "§c§l战         斗         开         始         !"
-    - "§c§l战         斗         开         始         !"
-    - "§c§l战        斗        开        始        !"
-    - "§c§l战        斗        开        始        !"
-    - "§c§l战       斗       开       始       !"
-    - "§c§l战       斗       开       始       !"
-    - "§c§l战      斗      开      始      !"
-    - "§c§l战      斗      开      始      !"
-    - "§c§l战     斗     开     始     !"
-    - "§c§l战     斗     开     始     !"
-    - "§c§l战    斗    开    始    !"
-    - "§c§l战   斗   开   始   !"
-    - "§c§l战   斗   开   始   !"
-    - "§c§l战  斗  开  始  !"
-    - "§c§l战  斗  开  始  !"
-    - "§c§l战  斗  开  始  !"
-    - "§c§l战 斗 开 始 !"
-    - "§c§l战斗开始!"
-    - "§c§l战斗开始!"
-    - "§c§l战§e§l斗§c§l开始§c§l!"
-    - "§c§l战§e§l斗§c§l开始§c§l!"
-    - "§c§l战§e§l斗§c§l开始§c§l!"
-    - "§c§l战§e§l斗§c§l开始§c§l!"
-    - "§c§l战斗§e§l开§c§l始§c§l!"
-    - "§c§l战斗§e§l开§c§l始§c§l!"
-    - "§c§l战斗§e§l开§c§l始§c§l!"
-    - "§c§l战斗§e§l开§c§l始§c§l!"
-    - "§c§l战斗开§e§l始§c§l!"
-    - "§c§l战斗开§e§l始§c§l!"
-    - "§c§l战斗开§e§l始§c§l!"
-    - "§c§l战斗开§e§l始§c§l!"
-    - "§c§l战斗开§c§l始§e§l!"
-    - "§c§l战斗开§c§l始§e§l!"
-    - "§c§l战斗开§c§l始§e§l!"
-    - "§c§l战斗开§c§l始§e§l!"
-    - "§c§l战斗开始!"
-    - "§c§l战斗开始!"
-  # 副标题(不支持动态)
-  subtitle: '§7活到最后取得胜利!'
-  # 5s倒计时
-  countdown-title:
-    # 是否启用
-    enable: true
-    # 内容设置
-    s5:
-      title: '§a§l游戏即将开始'
-      subtitle: '§f§l5'
-    s4:
-      title: '§a§l游戏即将开始'
-      subtitle: '§f§l4'
-    s3:
-      title: '§a§l游戏即将开始'
-      subtitle: '§f§l3'
-    s2:
-      title: '§a§l游戏即将开始'
-      subtitle: '§f§l2'
-    s1:
-      title: '§a§l游戏即将开始'
-      subtitle: '§f§l1'
+  action:
+    a1:
+      title: "§c§l战              斗              开             始             !"
+      subtitle: "§7活到最后取得胜利!"
+    a2:
+      title: "§c§l战              斗              开             始             !"
+      subtitle: "§7活到最后取得胜利!"
+    a3:
+      title: "§c§l战              斗              开             始             !"
+      subtitle: "§7活到最后取得胜利!"
+    a4:
+      title: "§c§l战             斗             开            始            !"
+      subtitle: "§7活到最后取得胜利!"
+    a5:
+      title: "§c§l战             斗             开            始            !"
+      subtitle: "§7活到最后取得胜利!"
+    a6:
+      title: "§c§l战             斗             开            始            !"
+      subtitle: "§7活到最后取得胜利!"
+    a7:
+      title: "§c§l战            斗            开           始           !"
+      subtitle: "§7活到最后取得胜利!"
+    a8:
+      title: "§c§l战            斗            开           始           !"
+      subtitle: "§7活到最后取得胜利!"
+    a9:
+      title: "§c§l战            斗            开           始           !"
+      subtitle: "§7活到最后取得胜利!"
+    a10:
+      title: "§c§l战           斗           开           始           !"
+      subtitle: "§7活到最后取得胜利!"
+    a11:
+      title: "§c§l战           斗           开           始           !"
+      subtitle: "§7活到最后取得胜利!"
+    a12:
+      title: "§c§l战          斗          开          始          !"
+      subtitle: "§7活到最后取得胜利!"
+    a13:
+      title: "§c§l战          斗          开          始          !"
+      subtitle: "§7活到最后取得胜利!"
+    a14:
+      title: "§c§l战         斗         开         始         !"
+      subtitle: "§7活到最后取得胜利!"
+    a15:
+      title: "§c§l战         斗         开         始         !"
+      subtitle: "§7活到最后取得胜利!"
+    a16:
+      title: "§c§l战        斗        开        始        !"
+      subtitle: "§7活到最后取得胜利!"
+    a17:
+      title: "§c§l战        斗        开        始        !"
+      subtitle: "§7活到最后取得胜利!"
+    a18:
+      title: "§c§l战       斗       开       始       !"
+      subtitle: "§7活到最后取得胜利!"
+    a19:
+      title: "§c§l战       斗       开       始       !"
+      subtitle: "§7活到最后取得胜利!"
+    a20:
+      title: "§c§l战      斗      开      始      !"
+      subtitle: "§7活到最后取得胜利!"
+    a21:
+      title: "§c§l战      斗      开      始      !"
+      subtitle: "§7活到最后取得胜利!"
+    a22:
+      title: "§c§l战     斗     开     始     !"
+      subtitle: "§7活到最后取得胜利!"
+    a23:
+      title: "§c§l战     斗     开     始     !"
+      subtitle: "§7活到最后取得胜利!"
+    a24:
+      title: "§c§l战    斗    开    始    !"
+      subtitle: "§7活到最后取得胜利!"
+    a25:
+      title: "§c§l战    斗    开    始    !"
+      subtitle: "§7活到最后取得胜利!"
+    a26:
+      title: "§c§l战   斗   开   始   !"
+      subtitle: "§7活到最后取得胜利!"
+    a27:
+      title: "§c§l战   斗   开   始   !"
+      subtitle: "§7活到最后取得胜利!"
+    a28:
+      title: "§c§l战  斗  开  始  !"
+      subtitle: "§7活到最后取得胜利!"
+    a29:
+      title: "§c§l战  斗  开  始  !"
+      subtitle: "§7活到最后取得胜利!"
+    a30:
+      title: "§c§l战 斗 开 始 !"
+      subtitle: "§7活到最后取得胜利!"
+    a31:
+      title: "§c§l战斗开 始!"
+      subtitle: "§7活到最后取得胜利!"
+    a32:
+      title: "§c§l战斗开始!"
+      subtitle: "§7活到最后取得胜利!"
+  actions:
+    - a1
+    - a2
+    - a3
+    - a4
+    - a5
+    - a6
+    - a7
+    - a8
+    - a9
+    - a10
+    - a11
+    - a12
+    - a13
+    - a14
+    - a15
+    - a16
+    - a17
+    - a18
+    - a19
+    - a20
+    - a21
+    - a22
+    - a23
+    - a24
+    - a25
+    - a26
+    - a27
+    - a28
+    - a29
+    - a30
+    - a31
+    - a32
 
 # 经验条倒计时
 countdown-xpbar: true
 
 # 保护范围
 safe-region:
-  map-generators: 3
+  map-generators: 4
   team-generators: 5
   team-spawn: 7
 
@@ -975,7 +969,7 @@ language:
   # 队伍箱子提示
   team-chast-notismyteam: "§c该队伍未被淘汰, 你不能打开这个队伍的箱子! "
   # 商店名字
-  shop-item-name: '§e§l物品商店'  
+  shop-item-name: '§e§l物品商店'
   shop-update-name: '§b§l队伍升级'
   # 蠹虫/梦幻守卫 NameTag
   entity-silverfish-nametag: '{team_color}{team_name} 蠹虫 §7- §e{timer_sec}s'

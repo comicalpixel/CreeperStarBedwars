@@ -174,6 +174,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new TeamChest(), this);
 
+        getServer().getPluginManager().registerEvents(new PlayerCommand(), this);
+
         if (ConfigData.ItemsInGame_fireball_enabled) {
             getServer().getPluginManager().registerEvents(new FIREBALL_Item(), this);
         }
@@ -259,25 +261,26 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
             ConfigData.fast_respawn_enabled = ConfigUtils.getBoolean(config, "fast-respawn");
 
-            ConfigData.timer_command_enabled = ConfigUtils.getBoolean(config, "timer-command.enable");
-            ConfigData.timer_command_start = ConfigUtils.getStringList(config, "timer-command.game-start");
-            ConfigData.timer_command_end = ConfigUtils.getStringList(config, "timer-command.game-end");
-
-            if (config.get("timer-command.game-timer-bh") != null) {
-                for (String cmds : ConfigUtils.getStringList(config, "timer-command.game-timer-bh")) {
-                    ConfigData.timer_command_cmds.put(ConfigUtils.getInt(config, "timer-command.game-timer."+cmds+".gametime") , ConfigUtils.getStringList(config, "timer-command.game-timer."+cmds+".commands"));
-                }
-                // JoinPluginCheck.plugins.add(ConfigData.timer_command_cmds.toString()); 仅用于测试请勿恢复这行代码!!
-            }
-
-            ConfigData.event_command_enabled = ConfigUtils.getBoolean(config, "event-command.enable");
-            ConfigData.event_command_game_start = ConfigUtils.getStringList(config, "event-command.game-start");
-            ConfigData.event_command_game_start = ConfigUtils.getStringList(config, "event-command.game-end");
-            ConfigData.event_command_player_death = ConfigUtils.getStringList(config, "event-command.player-death");
-            ConfigData.event_command_player_kill = ConfigUtils.getStringList(config, "event-command.player-kill");
-            ConfigData.event_command_player_win = ConfigUtils.getStringList(config, "event-command.player-win");
-            ConfigData.event_command_player_lost = ConfigUtils.getStringList(config, "event-command.player-lost");
-            ConfigData.event_command_player_dbed = ConfigUtils.getStringList(config, "event-command.player-bed");
+            // 放弃
+//            ConfigData.timer_command_enabled = ConfigUtils.getBoolean(config, "timer-command.enable");
+//            ConfigData.timer_command_start = ConfigUtils.getStringList(config, "timer-command.game-start");
+//            ConfigData.timer_command_end = ConfigUtils.getStringList(config, "timer-command.game-end");
+//
+//            if (config.get("timer-command.game-timer-bh") != null) {
+//                for (String cmds : ConfigUtils.getStringList(config, "timer-command.game-timer-bh")) {
+//                    ConfigData.timer_command_cmds.put(ConfigUtils.getInt(config, "timer-command.game-timer."+cmds+".gametime") , ConfigUtils.getStringList(config, "timer-command.game-timer."+cmds+".commands"));
+//                }
+//                // JoinPluginCheck.plugins.add(ConfigData.timer_command_cmds.toString()); 仅用于测试请勿恢复这行代码!!
+//            }
+//
+//            ConfigData.event_command_enabled = ConfigUtils.getBoolean(config, "event-command.enable");
+//            ConfigData.event_command_game_start = ConfigUtils.getStringList(config, "event-command.game-start");
+//            ConfigData.event_command_game_start = ConfigUtils.getStringList(config, "event-command.game-end");
+//            ConfigData.event_command_player_death = ConfigUtils.getStringList(config, "event-command.player-death");
+//            ConfigData.event_command_player_kill = ConfigUtils.getStringList(config, "event-command.player-kill");
+//            ConfigData.event_command_player_win = ConfigUtils.getStringList(config, "event-command.player-win");
+//            ConfigData.event_command_player_lost = ConfigUtils.getStringList(config, "event-command.player-lost");
+//            ConfigData.event_command_player_dbed = ConfigUtils.getStringList(config, "event-command.player-bed");
 
             ConfigData.whitelist_cmds = ConfigUtils.getStringList(config, "command-whitelist");
 
@@ -325,19 +328,20 @@ public final class CreeperStarBedwars extends JavaPlugin {
             ConfigData.lock_foodlevel_enabled = ConfigUtils.getBoolean(config, "lock-foodlevel");
 
             ConfigData.gamestart_title_enabled = ConfigUtils.getBoolean(config, "start-title.enable");
-            ConfigData.gamestart_title_title = ConfigUtils.getStringList(config, "start-title.title");
-            ConfigData.gamestart_title_subtitle = ConfigUtils.getString(config, "start-title.subtitle");
-            ConfigData.gamestart_title_countdown_enabled = ConfigUtils.getBoolean(config, "start-title.countdown-title.enable");
-            ConfigData.gamestart_title_countdown_5s_title = ConfigUtils.getString(config, "start-title.countdown-5s.title");
-            ConfigData.gamestart_title_countdown_5s_subtitle = ConfigUtils.getString(config, "start-title.countdown-5s.subtitle");
-            ConfigData.gamestart_title_countdown_4s_title = ConfigUtils.getString(config, "start-title.countdown-4s.title");
-            ConfigData.gamestart_title_countdown_4s_subtitle = ConfigUtils.getString(config, "start-title.countdown-4s.subtitle");
-            ConfigData.gamestart_title_countdown_3s_title = ConfigUtils.getString(config, "start-title.countdown-3s.title");
-            ConfigData.gamestart_title_countdown_3s_subtitle = ConfigUtils.getString(config, "start-title.countdown-3s.subtitle");
-            ConfigData.gamestart_title_countdown_2s_title = ConfigUtils.getString(config, "start-title.countdown-2s.title");
-            ConfigData.gamestart_title_countdown_2s_subtitle = ConfigUtils.getString(config, "start-title.countdown-2s.subtitle");
-            ConfigData.gamestart_title_countdown_1s_title = ConfigUtils.getString(config, "start-title.countdown-1s.title");
-            ConfigData.gamestart_title_countdown_1s_subtitle = ConfigUtils.getString(config, "start-title.countdown-1s.subtitle");
+            ConfigData.gamestart_title_actions = ConfigUtils.getStringList(config, "start-title.actions");
+//            ConfigData.gamestart_title_title = ConfigUtils.getStringList(config, "start-title.title");
+//            ConfigData.gamestart_title_subtitle = ConfigUtils.getString(config, "start-title.subtitle");
+//            ConfigData.gamestart_title_countdown_enabled = ConfigUtils.getBoolean(config, "start-title.countdown-title.enable");
+//            ConfigData.gamestart_title_countdown_5s_title = ConfigUtils.getString(config, "start-title.countdown-5s.title");
+//            ConfigData.gamestart_title_countdown_5s_subtitle = ConfigUtils.getString(config, "start-title.countdown-5s.subtitle");
+//            ConfigData.gamestart_title_countdown_4s_title = ConfigUtils.getString(config, "start-title.countdown-4s.title");
+//            ConfigData.gamestart_title_countdown_4s_subtitle = ConfigUtils.getString(config, "start-title.countdown-4s.subtitle");
+//            ConfigData.gamestart_title_countdown_3s_title = ConfigUtils.getString(config, "start-title.countdown-3s.title");
+//            ConfigData.gamestart_title_countdown_3s_subtitle = ConfigUtils.getString(config, "start-title.countdown-3s.subtitle");
+//            ConfigData.gamestart_title_countdown_2s_title = ConfigUtils.getString(config, "start-title.countdown-2s.title");
+//            ConfigData.gamestart_title_countdown_2s_subtitle = ConfigUtils.getString(config, "start-title.countdown-2s.subtitle");
+//            ConfigData.gamestart_title_countdown_1s_title = ConfigUtils.getString(config, "start-title.countdown-1s.title");
+//            ConfigData.gamestart_title_countdown_1s_subtitle = ConfigUtils.getString(config, "start-title.countdown-1s.subtitle");
 
             ConfigData.xpbar_countdown = ConfigUtils.getBoolean(config, "countdown-xpbar");
 

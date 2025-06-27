@@ -12,9 +12,9 @@ import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.ShopNPC_Manager;
 import cn.comicalpixel.creeperstarbedwars.Items.Compass_Item;
 import cn.comicalpixel.creeperstarbedwars.Items.ToolsItem.ToolItemsManager;
+import cn.comicalpixel.creeperstarbedwars.Listener.PlayerBlocks;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.PlayerArmor.PlayerArmorManager;
 import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
-import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ActionBarUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
@@ -101,6 +101,8 @@ public class GameStart {
         // 玩家追踪指南针
         new Compass_Item();
 
+        // SafeRegion
+        PlayerBlocks.readSafeRegion();
 
         // 商店NPC
         ShopNPC_Manager.spawn_all_ItemShop();

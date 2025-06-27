@@ -26,6 +26,10 @@ public class PlayerFoodLevel implements Listener {
 
         Player p = (Player) e.getEntity();
 
+        if (e.getFoodLevel() > p.getFoodLevel()) {
+            return;
+        }
+
         if (!pf.containsKey(p)) {
             pf.put(p, 0);
         }
