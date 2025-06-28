@@ -294,6 +294,7 @@ start-title:
     - a30
     - a31
     - a32
+  timer-ms: 15
 
 # 经验条倒计时
 countdown-xpbar: true
@@ -1056,33 +1057,12 @@ sound:
     type: LEVEL_UP
     volume: 10
     pitch: 10
-  # 游戏开始
+  # 游戏开始 顺序game-countdown-start->game-start
   game-countdown-start:
     type: LEVEL_UP
     volume: 10
     pitch: 1.0
-  # 游戏即将开始部分(如果开启了即将开始倒计时标题，倒计时完毕会先播放game-countdown-start再播放game-start-ts0音效)
-  game-start-ts5:
-    type: SUCCESSFUL_HIT
-    volume: 10
-    pitch: 2.0
-  game-start-ts4:
-    type: SUCCESSFUL_HIT
-    volume: 10
-    pitch: 1.9
-  game-start-ts3:
-    type: SUCCESSFUL_HIT
-    volume: 10
-    pitch: 1.8
-  game-start-ts2:
-    type: SUCCESSFUL_HIT
-    volume: 10
-    pitch: 1.7
-  game-start-ts1:
-    type: SUCCESSFUL_HIT
-    volume: 10
-    pitch: 1.6
-  game-start-ts0:
+  game-start:
     type: ENDERDRAGON_GROWL
     volume: 10
     pitch: 1

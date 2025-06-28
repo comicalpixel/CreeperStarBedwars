@@ -16,15 +16,19 @@ import cn.comicalpixel.creeperstarbedwars.Listener.PlayerBlocks;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.PlayerArmor.PlayerArmorManager;
 import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
-import cn.comicalpixel.creeperstarbedwars.Utils.ActionBarUtils;
-import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
-import cn.comicalpixel.creeperstarbedwars.Utils.MessageUtils;
-import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
+import cn.comicalpixel.creeperstarbedwars.Utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class GameStart {
 
@@ -63,6 +67,17 @@ public class GameStart {
             p.setAllowFlight(false);
 
             PlayerArmorManager.reset(p);
+
+            Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.game-countdown-start");
+            },5);
+            Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.game-start");
+            },7);
+
+            Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+                startTitle(p);
+            },3);
 
         }
 
@@ -107,6 +122,30 @@ public class GameStart {
         // 商店NPC
         ShopNPC_Manager.spawn_all_ItemShop();
         ShopNPC_Manager.spawn_all_UpdateShop();
+
+    }
+
+
+    public static void startTitle(Player p) {
+
+        if (!ConfigData.gamestart_title_enabled) return;
+
+        FileConfiguration config = CreeperStarBedwars.getPlugin().getConfig();
+
+        List<String> actions = ConfigData.gamestart_title_actions;
+
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+        for (int i = 0; i < actions.size(); i++) {
+            int finalI = i;
+            scheduler.schedule(() -> {
+                if (finalI > actions.size()) {
+                    scheduler.shutdown();
+                    return;
+                }
+                NMSTitleUntils.Title.send(p, ConfigUtils.getString(config, "start-title.action."+actions.get(finalI)+".title"), ConfigUtils.getString(config,"start-title.action."+actions.get(finalI)+".subtitle"), 0, 40, 10);
+            }, i * ConfigUtils.getInt(config, "start-title.timer-ms") + 1L, TimeUnit.MILLISECONDS);
+        }
 
     }
 

@@ -18,6 +18,7 @@ import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Items.*;
+import cn.comicalpixel.creeperstarbedwars.Items.BedDamagerTitle.BedDangeTitle;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Listener;
@@ -209,6 +210,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         if (ConfigData.ItemsInGame_firework_enabled) {
             getServer().getPluginManager().registerEvents(new FireworkSit_Item(), this);
         }
+
+        getServer().getPluginManager().registerEvents(new BedDangeTitle(), this);
 
 
         getServer().getPluginManager().registerEvents(new ItemShop_NPC(), this);

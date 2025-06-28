@@ -27,6 +27,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecManager.class
 cn\comicalpixel\creeperstarbedwars\Items\Silverfish_EntityItem.class
 cn\comicalpixel\creeperstarbedwars\Utils\EntityTypes.class
 cn\comicalpixel\creeperstarbedwars\Task\GameTeamEliminated_Task.class
+cn\comicalpixel\creeperstarbedwars\Items\BedDamagerTitle\BedDangeTitle$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_PINK$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$2.class
 cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecListener.class
@@ -106,6 +107,7 @@ cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_WHITE$2.class
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_AQUA$1.class
+cn\comicalpixel\creeperstarbedwars\Items\BedDamagerTitle\BedDangeTitle.class
 cn\comicalpixel\creeperstarbedwars\Items\DreamGuard_EntityItem$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\LocationUtil.class
 cn\comicalpixel\creeperstarbedwars\Task\GameLobby_Actionbar_Task.class

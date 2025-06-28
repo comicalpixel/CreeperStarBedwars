@@ -1621,7 +1621,7 @@ Items:
               - ' '
               - '§7花费:§3 15级'
     cost:
-      type: GOLDEN_APPLE
+      type: GOLD_INGOT
       amount: 3
       xp_level: 15
     name: '金苹果'
