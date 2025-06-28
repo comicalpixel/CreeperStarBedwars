@@ -17,7 +17,7 @@ class ServerMotdListener : Listener {
             return
         }
 
-        e.maxPlayers = -(GameData_cfg.maxPlayers)
+        e.maxPlayers = (GameData_cfg.maxPlayers)
         if (GameStats.get() == 1) {
             if (Game_Countdown_Task.countdown <= 5) {
                 e.motd = ConfigData.bungeecord_motd_playing

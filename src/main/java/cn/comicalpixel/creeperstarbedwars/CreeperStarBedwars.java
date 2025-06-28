@@ -28,6 +28,7 @@ import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Sidebar_Scoreboard_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import com.comphenix.protocol.metrics.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -61,6 +62,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         Instance = this;
+
+        bstat();
 
         Bukkit.getLogger().info(" ");
         Bukkit.getLogger().info("\n" +
@@ -220,6 +223,16 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ItemShop_GUI(), this);
         getServer().getPluginManager().registerEvents(new ItemShop_Listener(), this);
         getServer().getPluginManager().registerEvents(new QuickShop_Add_GUI(), this);
+
+    }
+
+    public void bstat() {
+
+//        int pluginId = 1234; // <-- Replace with the id of your plugin!
+//        Metrics metrics = new Metrics(this, pluginId);
+//
+//        // Optional: Add custom charts
+//        metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> "My value"));
 
     }
 
