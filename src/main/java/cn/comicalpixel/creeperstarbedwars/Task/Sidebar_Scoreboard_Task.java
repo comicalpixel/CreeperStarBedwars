@@ -70,6 +70,7 @@ public class Sidebar_Scoreboard_Task {
             s = MessageVariableUtils.gameMapInformation_p_s(s);
             s = s.replace("{countdown}", Game_Countdown_Task.countdown+"");
             s = s.replace("{bwim}", BwimResItemManager.Companion.getModeName(p));
+            s = MessageVariableUtils.toPAPI(s, p);
 
 
             if (s.length() > 40) {
@@ -109,6 +110,8 @@ public class Sidebar_Scoreboard_Task {
             s = s.replace("{bwim}", BwimResItemManager.Companion.getModeName(p));
 
             s = MessageVariableUtils.getTeamMessageToSidebar(s, p);
+
+            s = MessageVariableUtils.toPAPI(s, p);
 
             s = s
                     .replace("{events_name}", GameTimerEvent_Main.event_name)

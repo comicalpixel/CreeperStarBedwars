@@ -45,7 +45,7 @@ public class Game_Actionbar_Task {
         } else {
             s = s.replace("{tracking}", "-");
         }
-        ActionBarUtils.sendActionBar(p, s);
+        ActionBarUtils.sendActionBar(p, MessageVariableUtils.toPAPI(s, p));
     }
 
 }

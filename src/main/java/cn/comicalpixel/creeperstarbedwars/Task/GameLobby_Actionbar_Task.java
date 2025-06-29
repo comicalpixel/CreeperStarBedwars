@@ -24,7 +24,7 @@ public class GameLobby_Actionbar_Task {
                     lobby_actionbar_meeage = MessageVariableUtils.gameMapInformation_p_s(lobby_actionbar_meeage);
 
                     for (Player p : GamePlayers.players) {
-                        ActionBarUtils.sendActionBar(p, MessageVariableUtils.gameMapInformation_p_s(lobby_actionbar_meeage));
+                        ActionBarUtils.sendActionBar(p, MessageVariableUtils.toPAPI(MessageVariableUtils.gameMapInformation_p_s(lobby_actionbar_meeage), p));
                     }
                 }
 
