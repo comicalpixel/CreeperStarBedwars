@@ -133,6 +133,13 @@
           <systemPath>${project.basedir}/lib/ProtocolLib.jar</systemPath>
       </dependency>
       <dependency>
+          <groupId>com.comphenix</groupId>
+          <artifactId>PlaceholderAPI</artifactId>
+          <version>4.7.0</version>
+          <scope>system</scope>
+          <systemPath>${project.basedir}/lib/PlaceholderAPI.jar</systemPath>
+      </dependency>
+      <dependency>
           <groupId>org.jetbrains</groupId>
           <artifactId>annotations</artifactId>
           <version>24.1.0</version>

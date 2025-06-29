@@ -6,6 +6,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 
 import java.text.SimpleDateFormat;
@@ -339,6 +340,11 @@ public class MessageVariableUtils {
         }
 
         return s;
+    }
+
+
+    public static String toPAPI(String s, Player p) {
+        return PlaceholderAPI.setPlaceholders(p, s);
     }
 
 }

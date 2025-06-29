@@ -20,6 +20,7 @@ import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Items.*;
 import cn.comicalpixel.creeperstarbedwars.Items.BedDamagerTitle.BedDangeTitle;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
+import cn.comicalpixel.creeperstarbedwars.NameTag.NameTagManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Listener;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.QuickShop.QuickShop_Add_GUI;
@@ -28,7 +29,6 @@ import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Sidebar_Scoreboard_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
-import com.comphenix.protocol.metrics.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -124,6 +124,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         shopDataConfig = new PlayerShopDataConfig(this, "shop_data.yml");
         PlayerShopDataConfig.auto_reload();
 
+        // NameTag
+        NameTagManager.NameTagManager_Main();
 
 
         /**/
@@ -273,8 +275,10 @@ public final class CreeperStarBedwars extends JavaPlugin {
             ConfigData.bungeecord_restart_command = ConfigUtils.getString(config, "bungeecord.restart-command");
 
             ConfigData.nametag_health_enabled = ConfigUtils.getBoolean(config, "nametag-health");
-            ConfigData.nametag_prefix = ConfigUtils.getString(config, "player-nametag.prefix");
-            ConfigData.nametag_suffix = ConfigUtils.getString(config, "player-nametag.suffix");
+            ConfigData.nametag_player_prefix = ConfigUtils.getString(config, "nametag.player.prefix");
+            ConfigData.nametag_player_suffix = ConfigUtils.getString(config, "nametag.player.suffix");
+            ConfigData.nametag_spec_prefix = ConfigUtils.getString(config, "nametag.spec.prefix");
+            ConfigData.nametag_spec_suffix = ConfigUtils.getString(config, "nametag.spec.suffix");
 
             ConfigData.fast_respawn_enabled = ConfigUtils.getBoolean(config, "fast-respawn");
 

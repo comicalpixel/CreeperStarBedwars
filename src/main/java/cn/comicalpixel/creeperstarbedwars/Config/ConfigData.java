@@ -18,8 +18,10 @@ public class ConfigData {
     // 血量显示
     public static boolean nametag_health_enabled;
     // 玩家NameTag
-    public static String nametag_prefix;
-    public static String nametag_suffix;
+    public static String nametag_player_prefix;
+    public static String nametag_player_suffix;
+    public static String nametag_spec_prefix;
+    public static String nametag_spec_suffix;
     // 快速重生
     public static boolean fast_respawn_enabled;
 //    // 定时任务：指令

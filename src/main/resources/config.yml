@@ -25,9 +25,14 @@ bungeecord:
 nametag-health: true
 
 # 玩家名称前后缀设置
-player-nametag:
-  prefix: "{team_color}{team_name} "
-  suffix: " "
+nametag:
+  lobby-nick: true
+  player:
+    prefix: "§r {team_color}§l{team_name} §f"
+    suffix: " "
+  spec:
+    prefix: "§r §7§l旁§r§7 "
+    suffix: " "
 
 # 无缝重生
 # 我们优化了重生逻辑，不会再出现死亡界面
