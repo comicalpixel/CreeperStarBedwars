@@ -7,6 +7,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -51,6 +52,12 @@ public class PlayerJoinLeave implements Listener {
                     p.teleport(GameData_cfg.lobby_loc);
                 }
             }.runTaskLater(CreeperStarBedwars.getPlugin(), 3);
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    NMSTitleUntils.Title.send(p, ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.joinHolo-title"), ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.joinHolo-subtitle"), 7, 40, 7);
+                }
+            }.runTaskLater(CreeperStarBedwars.getPlugin(), 10);
 
             p.setGameMode(GameMode.ADVENTURE);
 

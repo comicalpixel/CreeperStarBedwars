@@ -754,6 +754,9 @@ timer-event:
 language:
   # 日期格式{date}
   date: 'MM/dd/yyyy'
+  # 加入游戏标题(自己的)
+  joinHolo-title: '§e§l起床战争'
+  joinHolo-subtitle: '§b游戏地址: §emc.enderklp.top'
   # 加入游戏
   joingame-chat: '§7{player}§e加入了游戏§e(§a{players}§f/§c{maxplayers}§e) '
   # 离开游戏
