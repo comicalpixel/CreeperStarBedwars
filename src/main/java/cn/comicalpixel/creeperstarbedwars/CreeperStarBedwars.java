@@ -267,6 +267,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
             ConfigData.bungeecord_lobby = ConfigUtils.getString(config, "bungeecord.lobby-server");
             ConfigData.bungeecord_motd_waiting = ConfigUtils.getString(config, "bungeecord.motd-waiting");
+            ConfigData.bungeecord_motd_waiting_max = ConfigUtils.getString(config, "bungeecord.motd-waiting-max");
             ConfigData.bungeecord_motd_playing = ConfigUtils.getString(config, "bungeecord.motd-playing");
             ConfigData.bungeecord_motd_end = ConfigUtils.getString(config, "bungeecord.motd-end");
             ConfigData.bungeecord_restart_command = ConfigUtils.getString(config, "bungeecord.restart-command");

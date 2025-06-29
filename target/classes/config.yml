@@ -10,6 +10,7 @@ author: Xiaol789zxc
 bungeecord:
   lobby-server: lobby
   motd-waiting: '§a等待中...'
+  motd-waiting-max: '§6已满人...'
   motd-playing: '§6游戏中...'
   moyd-end: '§c游戏结束'
   restart-command: 'minecraft:stop'

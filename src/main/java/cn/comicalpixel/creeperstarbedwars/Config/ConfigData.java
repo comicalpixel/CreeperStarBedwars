@@ -10,6 +10,7 @@ public class ConfigData {
     // BC设置
     public static String bungeecord_lobby;
     public static String bungeecord_motd_waiting;
+    public static String bungeecord_motd_waiting_max;
     public static String bungeecord_motd_playing;
     public static String bungeecord_motd_end;
     // 重启指令
