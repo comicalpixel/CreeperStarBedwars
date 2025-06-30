@@ -1,11 +1,157 @@
 # CreeperStarBedwars by Xiaol789zxc. https://comicalpixel.github.io
-# ComicalPixel Network 2023-2025
-# LanternMC Network 2021-2025
+# EnderCreeper(ComicalPixel) Network 2023-2025
 #
 # update.yml TeamShop
+# §
 
 GUI:
-  sharpness:
-    levels:
-      - 1
-      - 2
+  title: "§7队伍升级与陷阱"
+  frame-icon:
+    name: ""
+    lore:
+      - ""
+  icon-solts:
+    updrade:
+      sword_sharpness: 10
+    frames:
+      - 36
+      - 37
+      - 38
+      - 39
+      - 40
+      - 41
+      - 42
+      - 43
+      - 44
+
+
+updrade:
+  sword_sharpness:
+    levels: 2
+    def-level: 0
+    settings:
+      level-0:
+        icon:
+          i:
+            - ==: org.bukkit.inventory.ItemStack
+              type: DIAMOND_SWORD
+              damage: 0
+              amount: 1
+              meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: '§a磨刀石 §f'
+                lore:
+                  - "§7升级你队伍所有人的武器获得锋利附魔"
+                  - ""
+                  - " §f§l锋利I: §3§l4钻石"
+                  - " §f§l锋利II: §3§l8钻石"
+                  - ""
+                  - " §f§l花费: §3§l4钻石"
+                  - ""
+          xp:
+            - ==: org.bukkit.inventory.ItemStack
+              type: DIAMOND_SWORD
+              damage: 0
+              amount: 1
+              meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: '§a磨刀石 §f'
+                lore:
+                  - "§7升级你队伍所有人的武器获得锋利附魔"
+                  - ""
+                  - " §f§l锋利I: §3§l400级"
+                  - " §f§l锋利II: §3§l800级"
+                  - ""
+                  - " §f§l花费: §3§l400级"
+                  - ""
+        cost:
+          type: DIAMOND
+          cost: 4
+          xp-level: 400
+      level-1:
+        icon:
+          i:
+            - ==: org.bukkit.inventory.ItemStack
+              type: DIAMOND_SWORD
+              damage: 0
+              amount: 1
+              meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: '§a磨刀石 §fI'
+                lore:
+                  - "§7升级你队伍所有人的武器获得锋利附魔"
+                  - ""
+                  - " §f§l锋利I: §3§l4钻石"
+                  - " §f§l锋利II: §3§l8钻石"
+                  - ""
+                  - " §f§l花费: §3§l8钻石"
+                  - ""
+          xp:
+            - ==: org.bukkit.inventory.ItemStack
+              type: DIAMOND_SWORD
+              damage: 0
+              amount: 1
+              meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: '§a磨刀石 §fI'
+                lore:
+                  - "§7升级你队伍所有人的武器获得锋利附魔"
+                  - ""
+                  - " §f§l锋利I: §3§l400级"
+                  - " §f§l锋利II: §3§l800级"
+                  - ""
+                  - " §f§l花费: §3§l800级"
+                  - ""
+        cost:
+          type: DIAMOND
+          cost: 8
+          xp-level: 800
+      level-2:
+        icon:
+          i:
+            - ==: org.bukkit.inventory.ItemStack
+              type: DIAMOND_SWORD
+              damage: 0
+              amount: 1
+              meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: '§a磨刀石 §fI'
+                lore:
+                  - "§7升级你队伍所有人的武器获得锋利附魔"
+                  - ""
+                  - " §f§l锋利I: §3§l4钻石"
+                  - " §f§l锋利II: §3§l8钻石"
+                  - ""
+                  - " §f§l花费: §3§l8钻石"
+                  - ""
+          xp:
+            - ==: org.bukkit.inventory.ItemStack
+              type: DIAMOND_SWORD
+              damage: 0
+              amount: 1
+              meta:
+                ==: ItemMeta
+                meta-type: UNSPECIFIC
+                display-name: '§a磨刀石 §fI'
+                lore:
+                  - "§7升级你队伍所有人的武器获得锋利附魔"
+                  - ""
+                  - " §f§l锋利I: §3§l400级"
+                  - " §f§l锋利II: §3§l800级"
+                  - ""
+                  - " §f§l花费: §3§l800级"
+                  - ""
+        cost:
+          type: DIAMOND
+          cost: 8
+          xp-level: 800
+
+
+
+
+
