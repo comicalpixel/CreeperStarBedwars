@@ -5,10 +5,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.GUI.TeamSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamChest;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
-import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
-import cn.comicalpixel.creeperstarbedwars.Config.GameConfig;
-import cn.comicalpixel.creeperstarbedwars.Config.PlayerShopDataConfig;
-import cn.comicalpixel.creeperstarbedwars.Config.ShopConfig;
+import cn.comicalpixel.creeperstarbedwars.Config.*;
 import cn.comicalpixel.creeperstarbedwars.Entity.AntiMobs;
 import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.ItemShop_NPC;
 import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.TeamShop_NPC;
@@ -56,6 +53,11 @@ public final class CreeperStarBedwars extends JavaPlugin {
     private PlayerShopDataConfig shopDataConfig;
     public PlayerShopDataConfig getShopDataConfig() {
         return shopDataConfig;
+    }
+
+    private UpdradeConfig updradeConfig;
+    public UpdradeConfig getUpdradeConfig() {
+        return updradeConfig;
     }
 
     @Override
@@ -123,6 +125,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // 玩家数据(商店-快捷购买)
         shopDataConfig = new PlayerShopDataConfig(this, "shop_data.yml");
         PlayerShopDataConfig.auto_reload();
+
+        // 队伍升级
+        updradeConfig = new UpdradeConfig(this, "updrade.yml");
 
         // NameTag
         NameTagManager.NameTagManager_Main();
