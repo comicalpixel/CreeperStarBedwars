@@ -150,13 +150,13 @@ public class MainCommand implements CommandExecutor {
                         break;
                     default:
                         sender.sendMessage("§aCreeper§eStar§fBedwars §7v" + CreeperStarBedwars.getInstance().getDescription().getVersion());
-                        sender.sendMessage("§epowered by §aXiaol789zxc §f- §bComical§ePixel §fNetwork");
+                        sender.sendMessage("§epowered by §aXiaol789zxc §f- §2Ender§5Creeper §fNetwork");
                         sender.sendMessage("§c未知指令! §f请使用 /bw help 查看指令列表");
                         break;
                 }
             } else {
                 sender.sendMessage("§aCreeper§eStar§fBedwars §7v" + CreeperStarBedwars.getInstance().getDescription().getVersion());
-                sender.sendMessage("§epowered by §aXiaol789zxc §f- §bComical§ePixel §fNetwork");
+                sender.sendMessage("§epowered by §aXiaol789zxc §f- §2Ender§5Creeper §fNetwork");
                 sender.sendMessage("§f请使用 /bw help 查看指令列表");
             }
         } else {

@@ -238,8 +238,26 @@ public class SetupCommand implements CommandExecutor {
                                     p.sendMessage(ChatColor.RED + "缺少了参数, arg2:String(TEAM), arg3:String(TeamName)");
                                 }
                                 break;
+                            case "teamplayers":
+                                if (args.length == 2) {
+                                    int player_size = Integer.parseInt(args[1]);
+                                    if (player_size >= 1) {
+                                        CreeperStarBedwars.getPlugin().getGameConfig().set("team-players", player_size);
+                                        CreeperStarBedwars.getPlugin().getGameConfig().save();
+                                        p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2);
+                                        NMSTitleUntils.Title.send(p, "§r ", "§a已将队伍玩家数量设置为 §e" + player_size + " §a人", 5, 40, 5);
+                                        p.sendMessage("§a已将队伍玩家数量设置为§e" + player_size+" §a人");
+                                    } else {
+                                        p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                        p.sendMessage(ChatColor.RED + "队伍玩家数量过小! int >= 1 !!");
+                                    }
+                                } else {
+                                    p.playSound(p.getLocation(), Sound.ENDERMAN_TELEPORT, 10, 1);
+                                    p.sendMessage(ChatColor.RED + "缺少了参数, arg2:Int(players size)");
+                                }
+                                break;
                             case "teams":
-                                sender.sendMessage("§a已创建的队伍: ");
+                                sender.sendMessage("§a已创建的队伍, 每一个队伍玩家量 §e " + CreeperStarBedwars.getPlugin().getGameConfig().getInt("team-players") + " §a人 ");
                                 for (String s : CreeperStarBedwars.getPlugin().getGameConfig().getStringList("teams")) {
                                     sender.sendMessage("§7▎ " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+s.toLowerCase()+".color") + s + " §7-§7 " + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+s.toLowerCase()+".color") + CreeperStarBedwars.getPlugin().getGameConfig().getString("team-"+s.toLowerCase()+".name"));                                }
                                 break;
@@ -457,6 +475,7 @@ public class SetupCommand implements CommandExecutor {
                                         "§f/setup addteam §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §e添加队伍 \n" +
                                         "§f/setup teamName §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §f<message> §e修改队伍名称 \n" +
                                         "§f/setup delteam §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §e删除队伍 \n" +
+                                        "§f/setup teamplayers <int> §e设置队伍玩家数量" +
                                         "§f/setup teams §e查看所有队伍 \n" +
                                         "§f/setup setBed §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §e设置队伍床(请先使用斧头选择床头床尾) \n" +
                                         "§f/setup setspawn §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §e设置队伍出生点(站在要设置的位置) \n" +
@@ -481,6 +500,7 @@ public class SetupCommand implements CommandExecutor {
                                 "§f/setup addteam §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §e添加队伍 \n" +
                                 "§f/setup teamName §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §f<message> §e修改队伍名称 \n" +
                                 "§f/setup delteam §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §e删除队伍 \n" +
+                                "§f/setup teamplayers <int> §e设置队伍玩家数量" +
                                 "§f/setup teams §e查看所有队伍 \n" +
                                 "§f/setup setBed §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §e设置队伍床(请先使用斧头选择床头床尾) \n" +
                                 "§f/setup setspawn §f<§cRED§f/§9BLUE§a/GREEN§f/§eYELLOW§f/§dPINK§f/§3AQUA§f/§8GRAY§f/§fWHITE§f> §e设置队伍出生点(站在要设置的位置) \n" +
