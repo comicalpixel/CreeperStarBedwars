@@ -594,6 +594,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
             ConfigData.language_teamsel_join_full = ConfigUtils.getString(config, "language.teamsel-join-full");
             ConfigData.language_teamsel_join_done = ConfigUtils.getString(config, "language.teamsel-join-done");
             ConfigData.language_teamsel_leave = ConfigUtils.getString(config, "language.teamsel-leave");
+            ConfigData.language_teamsel_join_unbalanced = ConfigUtils.getString(config, "language.teamsel-unbalanced");
 
             ConfigData.language_bwim_i_name = ConfigUtils.getString(config, "language.game-bwim-i");
             ConfigData.language_bwim_xp_name = ConfigUtils.getString(config, "language.game-bwim-xp");

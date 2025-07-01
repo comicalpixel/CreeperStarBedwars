@@ -38,7 +38,9 @@ public class Game_WinCheck_Task {
 
                 for (Player gp : GamePlayers.players) {
                     if (gp.isOnline() && TeamManager.player_teams.get(gp) != null) {
-                        teams.add(TeamManager.player_teams.get(gp));
+                        if (!teams.contains(TeamManager.player_teams.get(gp))) {
+                            teams.add(TeamManager.player_teams.get(gp));
+                        }
                     }
                 }
                 if (teams.size() == 1) {

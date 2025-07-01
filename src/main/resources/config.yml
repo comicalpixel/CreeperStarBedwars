@@ -53,6 +53,8 @@ command-whitelist:
 select_team:
   # 是否启用
   enable: true
+  # 我们是非常推荐你开启这个选项, 这可以防止出现游戏开始时 只有一个队伍有玩家 的问题!!
+  balance-fix: true
   # 队伍选择器语言部分
   gui-name: '§7队伍选择器'
   status-select: '§e§l单击加入队伍 '

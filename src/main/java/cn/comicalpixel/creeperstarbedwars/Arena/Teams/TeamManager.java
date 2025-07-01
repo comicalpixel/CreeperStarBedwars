@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class TeamManager {
@@ -103,6 +104,9 @@ public class TeamManager {
             ConfigUtils.playSound(p, CreeperStarBedwars.getInstance().getConfig(), "sound.teamsel-full");
             return;
         }
+
+        // 强制队伍均衡
+        // 学Rel吧, 干脆不跑倒计时
 
         player_teams.put(p, team);
         // p.sendMessage("你已成功加入 " + team + " 队伍！");
@@ -373,5 +377,31 @@ public class TeamManager {
     }
 
 
+
+
+    public static int getSelectedTeamsCount() {
+        if (player_teams.isEmpty()) {
+            return 0;
+        }
+
+        HashSet<String> uniqueTeams = new HashSet<>();
+        for (String team : player_teams.values()) {
+            uniqueTeams.add(team);
+        }
+        return uniqueTeams.size();
+    }
+
+    public static boolean allPlayersHaveTeam() {
+        if (GamePlayers.players.isEmpty()) {
+            return false;
+        }
+
+        for (Player p : GamePlayers.players) {
+            if (!player_teams.containsKey(p)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

@@ -4,6 +4,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.GameStart;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
@@ -55,6 +56,23 @@ public class Game_Countdown_Task {
                     countdown_running = false;
                     countdown = ConfigData.countdown_settings_seconds;
                     return;
+                }
+
+                // 强制队伍均衡
+                if (CreeperStarBedwars.getPlugin().getConfig().getBoolean("select_team.balance-fix")) {
+
+                    if (TeamManager.getSelectedTeamsCount() == 1 && TeamManager.allPlayersHaveTeam()) {
+                        if (countdown_running) {
+                            for (Player p : GamePlayers.players) {
+                                NMSTitleUntils.Title.send(p, MessageVariableUtils.gameCountdown_p_s(ConfigData.language_game_countdown_InsufficientPlayers_title), MessageVariableUtils.gameCountdown_p_s(ConfigData.language_game_countdown_InsufficientPlayers_subtitle), 7, 40, 7);
+                                p.sendMessage(MessageVariableUtils.gameCountdown_p_s(ConfigData.language_game_countdown_InsufficientPlayers_chat));
+                            }
+                        }
+                        countdown_running = false;
+                        countdown = ConfigData.countdown_settings_seconds;
+
+                        return;
+                    }
                 }
 
                 if (ConfigData.countdown_settings_trigger_seconds.contains(countdown)) {
