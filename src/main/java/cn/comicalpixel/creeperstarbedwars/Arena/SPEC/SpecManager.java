@@ -60,7 +60,7 @@ public class SpecManager {
 
     public static void open_tplist_gui(Player p) {
 
-        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 4 * 9, ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "Spec-Settings.tplist.gui.title") + " §3§a§c§k§a§e§f");
+        Inventory gui = Bukkit.createInventory((InventoryHolder) null, 4 * 9, ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "Spec-Settings.tplist.gui.title") + " §7§a§c§k§a§e§f");
 
         for (int i = 0; i < gui.getSize()-1 && i < GamePlayers.players.size(); i++) {
             ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3).clone();

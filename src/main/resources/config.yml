@@ -1058,9 +1058,10 @@ language:
   bed-invincibility-end-subtitle: "§f保护你队伍的床, 现在你可以摧毁敌人的床了 "
   bed-invincibility-break-setCancelled: "§c床无敌时间内不可以摧毁床! "
   # 旁观者部分
-  bed-spec-watch-title: ""
-  bed-spec-watch-subtitle: ""
-  bed-spec-: 1
+  spectator-first-person-enter-title: "§a正在旁观 §e{target}"
+  spectator-first-person-enter-subtitle: "§c使用潜行退出旁观者模式!"
+  spectator-first-person-quit-title: "§e已退出旁观者模式!"
+  spectator-first-person-quit-subtitle: "§r "
 
 
 # 音效设置
