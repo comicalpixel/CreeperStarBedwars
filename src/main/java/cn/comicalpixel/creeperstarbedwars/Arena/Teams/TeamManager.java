@@ -4,6 +4,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import org.bukkit.Bukkit;
@@ -87,6 +88,10 @@ public class TeamManager {
         if (!teams.contains(team)) {
             p.sendMessage("§cInvalid team! ");
             ConfigUtils.playSound(p, CreeperStarBedwars.getInstance().getConfig(), "sound.teamsel-full");
+            return;
+        }
+
+        if (Game_Countdown_Task.countdown <= 2) {
             return;
         }
 

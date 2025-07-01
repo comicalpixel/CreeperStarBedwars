@@ -104,6 +104,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getCommand("csbw").setExecutor(new MainCommand());
         getCommand("cbw").setExecutor(new MainCommand());
         getCommand("creeperstarbedwars").setExecutor(new MainCommand());
+        getCommand("comicalbedwars").setExecutor(new MainCommand());
+        getCommand("bedwars2025").setExecutor(new MainCommand());
+        getCommand("klpbw").setExecutor(new MainCommand());
 
         // 检查必要的前置是否齐全
         // 不齐全会阻止加入且提示缺失哪些必要前置(仅op提示插件详情)

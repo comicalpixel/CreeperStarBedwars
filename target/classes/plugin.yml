@@ -18,5 +18,11 @@ commands:
     description: CreeperStarBedwars Main Command.
   creeperstarbedwars:
     description: CreeperStarBedwars Main Command.
+  comicalbedwars:
+    description: CreeperStarBedwars Main Command.
+  bedwars2025:
+    description: CreeperStarBedwars Main Command.
+  klpbw:
+    description: CreeperStarBedwars Main Command.
   setup:
     description: CreeperStarBedwars game setup command.
