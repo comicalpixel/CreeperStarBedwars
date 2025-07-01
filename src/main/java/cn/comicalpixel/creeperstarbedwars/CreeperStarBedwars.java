@@ -700,6 +700,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         GameData_cfg.mapCenter_loc = ConfigUtils.getBlockLocation(gameConfig, "map-center");
         GameData_cfg.mapCenter_radius = gameConfig.getInt("map-radius");
         GameData_cfg.teamChest_radius = gameConfig.getInt("teamchest-radius");
+        GameData_cfg.team_players = gameConfig.getInt("team-players");
         if (gameConfig.getStringList("generator.diamond") != null) {
             for (String s : ConfigUtils.getStringList(gameConfig, "generator.diamond")) {
                 GameData_cfg.gameGenerator_diamond_locs.add(s);
