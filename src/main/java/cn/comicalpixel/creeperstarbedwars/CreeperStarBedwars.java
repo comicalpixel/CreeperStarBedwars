@@ -1,6 +1,7 @@
 package cn.comicalpixel.creeperstarbedwars;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
+import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecListener;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.GUI.TeamSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamChest;
@@ -21,6 +22,7 @@ import cn.comicalpixel.creeperstarbedwars.NameTag.NameTagManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Listener;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.QuickShop.QuickShop_Add_GUI;
+import cn.comicalpixel.creeperstarbedwars.Shop.Update.TeamShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
@@ -223,6 +225,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new BedDangeTitle(), this);
 
+        // Spec
+        getServer().getPluginManager().registerEvents(new SpecListener(), this);
 
         getServer().getPluginManager().registerEvents(new ItemShop_NPC(), this);
         getServer().getPluginManager().registerEvents(new TeamShop_NPC(), this);
@@ -230,6 +234,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ItemShop_GUI(), this);
         getServer().getPluginManager().registerEvents(new ItemShop_Listener(), this);
         getServer().getPluginManager().registerEvents(new QuickShop_Add_GUI(), this);
+
+        getServer().getPluginManager().registerEvents(new TeamShop_GUI(), this);
 
     }
 

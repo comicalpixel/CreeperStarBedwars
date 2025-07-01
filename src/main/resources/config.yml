@@ -472,6 +472,54 @@ lobby-items:
           lore:
             - '§8等待大厅物品'
 
+# 旁观者部分
+Spec-Settings:
+  # 传送菜单
+  tplist:
+    inventory:
+      solt: 0
+      item:
+        - ==: org.bukkit.inventory.ItemStack
+          type: COMPASS
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a传送菜单 §7(右键单击)'
+            lore:
+              - '§8旁观者物品'
+    gui:
+      title: "§7传送菜单"
+      item-name: "{team_color}§l{team_name}§r §f{player_name}"
+      item-lore:
+        - "§r "
+        - "§e▶ 单击传送"
+  # 离开游戏
+  leave:
+    inventory:
+      solt: 8
+      item:
+        - ==: org.bukkit.inventory.ItemStack
+          type: SLIME_BALL
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§c离开游戏 §7(右键单击)'
+            lore:
+              - '§8旁观者物品'
+
+
+
+  spec-gui-tplist-title: "§7传送菜单"
+  spec-gui-tplist-item-name: "{team_color}§l{team_name}§r §f{player_name}"
+  spec-gui-tplist-item-lore:
+    - "§r "
+    - "§e▶ 单击传送"
+
+
 # 资源点设置
 # 不支持自定义等级
 # 时间单位为s
@@ -1009,6 +1057,10 @@ language:
   bed-invincibility-end-title: "§c§l床无敌结束!"
   bed-invincibility-end-subtitle: "§f保护你队伍的床, 现在你可以摧毁敌人的床了 "
   bed-invincibility-break-setCancelled: "§c床无敌时间内不可以摧毁床! "
+  # 旁观者部分
+  bed-spec-watch-title: ""
+  bed-spec-watch-subtitle: ""
+  bed-spec-: 1
 
 
 # 音效设置

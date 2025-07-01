@@ -1,5 +1,6 @@
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item$4.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_BLUE$2.class
+cn\comicalpixel\creeperstarbedwars\Shop\Update\TeamShop_GUI.class
 cn\comicalpixel\creeperstarbedwars\Items\RespawnBed_Item.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_WHITE$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\TimerEvent_DeathMode.class
@@ -65,6 +66,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_WH
 cn\comicalpixel\creeperstarbedwars\Shop\Item\QuickShop\QuickShop_Add_GUI.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GRAY$3.class
 cn\comicalpixel\creeperstarbedwars\Items\Silverfish_EntityItem$1.class
+cn\comicalpixel\creeperstarbedwars\Config\UpdradeConfig.class
 cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\ItemShop_NPC.class
 cn\comicalpixel\creeperstarbedwars\Shop\Item\ItemShop_Listener.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic$2.class

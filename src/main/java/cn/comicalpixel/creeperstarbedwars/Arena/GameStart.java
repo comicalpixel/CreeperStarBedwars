@@ -15,6 +15,7 @@ import cn.comicalpixel.creeperstarbedwars.Items.ToolsItem.ToolItemsManager;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerBlocks;
 import cn.comicalpixel.creeperstarbedwars.NameTag.NameTagManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.PlayerArmor.PlayerArmorManager;
+import cn.comicalpixel.creeperstarbedwars.Shop.Update.TeamShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.*;
@@ -123,6 +124,9 @@ public class GameStart {
         // 商店NPC
         ShopNPC_Manager.spawn_all_ItemShop();
         ShopNPC_Manager.spawn_all_UpdateShop();
+
+        // 初始化队伍升级部分
+        TeamShop_GUI.gamestart_reset();
 
     }
 
