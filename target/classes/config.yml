@@ -40,6 +40,16 @@ nametag:
 # 写扩展的时候不要监听玩家PlayerRespawnEvent!!因为这无法监听玩家重生事件的
 fast-respawn: true
 
+# 快速放资源到箱子内
+# 当玩家拿着白名单中的物品将会快速将手中的物品放进容器内
+rapid-resource-placement:
+  chest: true
+  ender-chest: true
+  items-list:
+    - IRON_INGOT
+    - GOLD_INGOT
+    - DIAMOND
+    - EMERALD
 
 # 玩家指令白名单
 command-whitelist:

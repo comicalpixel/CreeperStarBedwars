@@ -141,6 +141,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_WH
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_AQUA$1.class
 cn\comicalpixel\creeperstarbedwars\Items\BedDamagerTitle\BedDangeTitle.class
+cn\comicalpixel\creeperstarbedwars\Items\FastResChest\ChestResourcePlacement.class
 cn\comicalpixel\creeperstarbedwars\Utils\LocationUtil.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$2.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupListener.class

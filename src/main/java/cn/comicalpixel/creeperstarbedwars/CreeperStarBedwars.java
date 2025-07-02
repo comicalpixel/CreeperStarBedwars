@@ -17,6 +17,7 @@ import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Items.*;
 import cn.comicalpixel.creeperstarbedwars.Items.BedDamagerTitle.BedDangeTitle;
+import cn.comicalpixel.creeperstarbedwars.Items.FastResChest.ChestResourcePlacement;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.NameTag.NameTagManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
@@ -189,6 +190,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DeathMove(), this);
 
         getServer().getPluginManager().registerEvents(new TeamChest(), this);
+
+        getServer().getPluginManager().registerEvents(new ChestResourcePlacement(), this);
 
         getServer().getPluginManager().registerEvents(new PlayerCommand(), this);
 
