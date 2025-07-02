@@ -1,6 +1,7 @@
 package cn.comicalpixel.creeperstarbedwars;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
+import cn.comicalpixel.creeperstarbedwars.Arena.PlayerChat;
 import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecListener;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.GUI.TeamSel_GUI;
@@ -192,6 +193,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new TeamChest(), this);
 
         getServer().getPluginManager().registerEvents(new ChestResourcePlacement(), this);
+
+        getServer().getPluginManager().registerEvents(new PlayerChat(), this);
 
         getServer().getPluginManager().registerEvents(new PlayerCommand(), this);
 

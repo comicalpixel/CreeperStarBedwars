@@ -43,7 +43,7 @@ fast-respawn: true
 # 快速放资源到箱子内
 # 当玩家拿着白名单中的物品将会快速将手中的物品放进容器内
 rapid-resource-placement:
-  chest: true
+  chest: false
   ender-chest: true
   items-list:
     - IRON_INGOT
@@ -176,6 +176,16 @@ ladder-fix: true
 # 是否锁定玩家饥饿值
 # 反正你怎么设置掉饥饿值的速度都会比原版慢
 lock-foodlevel: false
+
+# 玩家的聊天有起床插件接管
+game-players-chat:
+  enable: true
+  # 旁观者的消息是否可以被玩家看见
+  spec-all: false
+  # 喊话内容前缀
+  shout-prefix:
+    - "!"
+    - "@"
 
 # 游戏开始标题
 # 动态标题的时间每21ms刷新一次 1s=1000ms 可制作高流畅度标题
@@ -922,6 +932,13 @@ language:
   # 资源模式名称
   game-bwim-i: '普通'
   game-bwim-xp: '经验'
+  # 玩家聊天格式
+  # 需要game-players-chat设置为true开启插件接管玩家的聊天
+  # {player}玩家名字 {message}聊天内容 {team_color}队伍颜色(仅游戏中且仅玩家) {team_name}队伍名字(仅游戏中仅玩家)
+  chat-lobby-waiting: "§3[等待大厅] §7{player}: §f{message}"
+  chat-playing-player-team: "§9[队伍]{team_color}[{team_name}] §7{player}: §f{message}"
+  chat-playing-player-shout: "§6[全局]{team_color}[{team_name}] §7{player}: §f{message}"
+  chat-playing-spec: "§7[旁观者] §7{player}: §f{message}"
   # 计分板
   sidebarboard:
     team-ismyteam: ''
