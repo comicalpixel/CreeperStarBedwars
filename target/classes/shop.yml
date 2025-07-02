@@ -1370,7 +1370,7 @@ Items:
               - '§7物品:'
               - '§8● 弓(力量I)'
               - ' '
-              - '§7花费:§3 120级'
+              - '§7花费:§3 240级'
             enchants:
               ARROW_DAMAGE: 1
     cost:
@@ -1420,7 +1420,7 @@ Items:
               - '§7物品:'
               - '§8● 弓(力量I 冲击I)'
               - ' '
-              - '§7花费:§3 120级'
+              - '§7花费:§3 350级'
             enchants:
               ARROW_DAMAGE: 1
               ARROW_KNOCKBACK: 1

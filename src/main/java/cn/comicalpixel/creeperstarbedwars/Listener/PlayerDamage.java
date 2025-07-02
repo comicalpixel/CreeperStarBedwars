@@ -2,9 +2,11 @@ package cn.comicalpixel.creeperstarbedwars.Listener;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
+import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -86,6 +88,28 @@ public class PlayerDamage implements Listener {
             if (!GamePlayers.players.contains(killer)) {return;}
             Playerkillers.put(p, killer);
         }
+    }
+    @EventHandler
+    public void setkiller_playerHitPlayer_projectile(EntityDamageByEntityEvent e) {
+
+        if (GameStats.get() != 2 && GameStats.get() != 3) {return;}
+
+        if (e.getCause() != EntityDamageEvent.DamageCause.PROJECTILE) return;
+
+        if (!(e.getEntity() instanceof Player) && !(e.getDamager() instanceof Arrow)) {return;}
+
+        if (e.isCancelled()) {return;}
+
+        Player p = (Player) e.getEntity();
+        Arrow arrow = (Arrow) e.getDamager();
+        Player damager = null;
+        if (arrow.getShooter() instanceof Player) {
+            damager = (Player) arrow.getShooter();
+        } else {
+            return;
+        }
+
+        Playerkillers.put(p, damager);
     }
     @EventHandler
     public void resetkiller_PlayerDeath(PlayerDeathEvent e) {

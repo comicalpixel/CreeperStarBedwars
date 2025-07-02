@@ -161,7 +161,7 @@ damage-holo:
   damage:
     enable: true
   # 投掷物(弓箭)伤害
-  bow:
+  projectile:
     enable: true
 
 # 连击修复 (这个问题似乎出自于原版, 它可能会在玩家死亡重生过快所触发)
@@ -833,11 +833,8 @@ language:
   leavegame-chat: '§7{player}§e离开了游戏§e(§a{players}§f/§c{maxplayers}§e) '
   # 伤害标题
   damageholo-damage-title: '§r '
-  damageholo-damage-subtitle: '§e伤害 - {damage}'
-  damageholo-damage-chat: "§e你对 §f{player} §e造成了 §f{damage} §e伤害!"
-  damageholo-bow-title: '§r '
-  damageholo-bow-subtitle: '§e伤害 - {damage}'
-  damageholo-bow-chat: "§e你对 §f{player} §e造成了 §f{damage} §e伤害!"
+  damageholo-damage-subtitle: '§e伤害 §7- §f{damage}'
+  damageholo-projectile-chat: "§e你对 §f{player} §e造成了 §f{damage} §e伤害!"
   # 游戏开始提示
   game-start-chat:
     - '§a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'

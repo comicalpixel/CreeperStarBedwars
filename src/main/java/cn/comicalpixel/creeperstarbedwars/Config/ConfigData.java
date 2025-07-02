@@ -80,11 +80,8 @@ public class ConfigData {
     public static boolean damageholo_damage_enabled;
     public static String damageholo_damage_title;
     public static String damageholo_damage_subtitle;
-    public static String damageholo_damage_chat;
-    public static boolean damageholo_bow_enabled;
-    public static String damageholo_bow_title;
-    public static String damageholo_bow_subtitle;
-    public static String damageholo_bow_chat;
+    public static boolean damageholo_projectile_enabled;
+    public static String damageholo_projectile_chat;
     // 连击修复
     public static boolean combo_fix_enabled = true;
     // 梯子修复

@@ -18,6 +18,7 @@ import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Items.*;
 import cn.comicalpixel.creeperstarbedwars.Items.BedDamagerTitle.BedDangeTitle;
+import cn.comicalpixel.creeperstarbedwars.Items.DamageHoloTitle.PlayerDamageHolo;
 import cn.comicalpixel.creeperstarbedwars.Items.FastResChest.ChestResourcePlacement;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.NameTag.NameTagManager;
@@ -246,6 +247,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new TeamShop_GUI(), this);
 
+        getServer().getPluginManager().registerEvents(new PlayerDamageHolo(), this);
+
     }
 
     public void bstat() {
@@ -360,7 +363,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
             ConfigData.bwim_conversion_diamond = ConfigUtils.getInt(config, "select-bwim.conversion.diamond");
 
             ConfigData.damageholo_damage_enabled = ConfigUtils.getBoolean(config, "damage-holo.damage.enable");
-            ConfigData.damageholo_bow_enabled = ConfigUtils.getBoolean(config, "damage-holo.bow.enable");
+            ConfigData.damageholo_projectile_enabled = ConfigUtils.getBoolean(config, "damage-holo.projectile.enable");
 
             ConfigData.combo_fix_enabled = ConfigUtils.getBoolean(config, "combo-fix");
 
@@ -558,10 +561,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
             ConfigData.damageholo_damage_title = ConfigUtils.getString(config, "language.damageholo-damage-title");
             ConfigData.damageholo_damage_subtitle = ConfigUtils.getString(config, "language.damageholo-damage-subtitle");
-            ConfigData.damageholo_damage_chat = ConfigUtils.getString(config, "language.damageholo-damage-chat");
-            ConfigData.damageholo_bow_title = ConfigUtils.getString(config, "language.damageholo-bow-title");
-            ConfigData.damageholo_bow_subtitle = ConfigUtils.getString(config, "language.damageholo-bow-subtitle");
-            ConfigData.damageholo_bow_chat = ConfigUtils.getString(config, "language.damageholo-bow-chat");
+            ConfigData.damageholo_projectile_chat = ConfigUtils.getString(config, "language.damageholo-projectile-chat");
 
             ConfigData.language_game_start_chat = ConfigUtils.getStringList(config, "language.game-start-chat");
 
