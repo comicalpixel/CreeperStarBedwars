@@ -8,6 +8,7 @@ import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Items.ToolsItem.ToolItemsManager;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.PlayerArmor.PlayerArmorManager;
+import cn.comicalpixel.creeperstarbedwars.Shop.ShopEnoughUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -160,7 +161,7 @@ public class ItemShop_Manager {
             boolean isBuyed = false;
 
             if (!(level_player >= level_buy)) {
-                if (isEnough(p, cost_type, cost_amount, cost_xplevel)) {
+                if (ShopEnoughUtils.isEnough(p, cost_type, cost_amount, cost_xplevel)) {
                     isBuyed = true;
                     b_deduction(p, cost_type, cost_amount, cost_xplevel);
                     p.sendMessage(ConfigData.language_shop_buy_yes.replace("{item}", buy_item_str));
@@ -230,7 +231,7 @@ public class ItemShop_Manager {
          */
         for (String item_bh : items) {
             if (gui_item.getItemMeta().getDisplayName().endsWith("#" + item_bh + "§8) ")) {
-                if (isEnough(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"))) {
+                if (ShopEnoughUtils.isEnough(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"))) {
                     ItemStack buy_item = ConfigUtils.getItemStack(shopConfig, "Items." + item_bh + ".buy-item", false);
                     ItemMeta buy_meta = buy_item.getItemMeta();
                     boolean is普通处理 = true;
@@ -343,29 +344,6 @@ public class ItemShop_Manager {
 //            }
         }
 
-    }
-
-    public static boolean isEnough(Player p, ItemStack type, int cost, int xp_level) {
-
-        if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
-            PlayerInventory inventory = p.getInventory();
-            int i = 0;
-            for (ItemStack item : inventory.getContents()) {
-                if (item != null && item.getType() == type.getType()) {
-                    i += item.getAmount();
-                }
-            }
-            if (i >= cost) {
-                return true;
-            }
-        }
-        if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
-            if (p.getLevel() >= xp_level) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     public static void b_deduction(Player p, ItemStack type, int amount, int xp_level) {

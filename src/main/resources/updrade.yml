@@ -24,132 +24,134 @@ GUI:
       - 33
       - 34
       - 35
+  # 各个购买项目的图标的设置
+  # level对应着当前等级的
+  # 缺漏某个等级会显示异常, 多出来的会被忽略!
+  updrade-icon:
+    sword_sharpness:
+      level-0:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: DIAMOND_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §f'
+              lore:
+                - "§7升级你队伍所有人的武器获得锋利附魔"
+                - ""
+                - " §f§l锋利I: §3§l4钻石"
+                - " §f§l锋利II: §3§l8钻石"
+                - ""
+                - " §f§l花费: §3§l4钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: DIAMOND_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §f'
+              lore:
+                - "§7升级你队伍所有人的武器获得锋利附魔"
+                - ""
+                - " §f§l锋利I: §3§l400级"
+                - " §f§l锋利II: §3§l800级"
+                - ""
+                - " §f§l花费: §3§l400级"
+                - ""
+      level-1:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: DIAMOND_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §fI'
+              lore:
+                - "§7升级你队伍所有人的武器获得锋利附魔"
+                - ""
+                - " §f§l锋利I: §3§l4钻石"
+                - " §f§l锋利II: §3§l8钻石"
+                - ""
+                - " §f§l花费: §3§l8钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: DIAMOND_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §fI'
+              lore:
+                - "§7升级你队伍所有人的武器获得锋利附魔"
+                - ""
+                - " §f§l锋利I: §3§l400级"
+                - " §f§l锋利II: §3§l800级"
+                - ""
+                - " §f§l花费: §3§l800级"
+                - ""
+      level-2:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: DIAMOND_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §fI'
+              lore:
+                - "§7升级你队伍所有人的武器获得锋利附魔"
+                - ""
+                - " §f§l锋利I: §3§l4钻石"
+                - " §f§l锋利II: §3§l8钻石"
+                - ""
+                - " §f§l花费: §3§l8钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: DIAMOND_SWORD
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a磨刀石 §fI'
+              lore:
+                - "§7升级你队伍所有人的武器获得锋利附魔"
+                - ""
+                - " §f§l锋利I: §3§l400级"
+                - " §f§l锋利II: §3§l800级"
+                - ""
+                - " §f§l花费: §3§l800级"
+                - ""
 
-
+# 队伍升级购买设置
 updrade:
   sword_sharpness:
     levels: 2
     def-level: 0
     settings:
-      level-0:
-        icon:
-          i:
-            - ==: org.bukkit.inventory.ItemStack
-              type: DIAMOND_SWORD
-              damage: 0
-              amount: 1
-              meta:
-                ==: ItemMeta
-                meta-type: UNSPECIFIC
-                display-name: '§a磨刀石 §f'
-                lore:
-                  - "§7升级你队伍所有人的武器获得锋利附魔"
-                  - ""
-                  - " §f§l锋利I: §3§l4钻石"
-                  - " §f§l锋利II: §3§l8钻石"
-                  - ""
-                  - " §f§l花费: §3§l4钻石"
-                  - ""
-          xp:
-            - ==: org.bukkit.inventory.ItemStack
-              type: DIAMOND_SWORD
-              damage: 0
-              amount: 1
-              meta:
-                ==: ItemMeta
-                meta-type: UNSPECIFIC
-                display-name: '§a磨刀石 §f'
-                lore:
-                  - "§7升级你队伍所有人的武器获得锋利附魔"
-                  - ""
-                  - " §f§l锋利I: §3§l400级"
-                  - " §f§l锋利II: §3§l800级"
-                  - ""
-                  - " §f§l花费: §3§l400级"
-                  - ""
-        cost:
-          type: DIAMOND
-          cost: 4
-          xp-level: 400
       level-1:
-        icon:
-          i:
-            - ==: org.bukkit.inventory.ItemStack
-              type: DIAMOND_SWORD
-              damage: 0
-              amount: 1
-              meta:
-                ==: ItemMeta
-                meta-type: UNSPECIFIC
-                display-name: '§a磨刀石 §fI'
-                lore:
-                  - "§7升级你队伍所有人的武器获得锋利附魔"
-                  - ""
-                  - " §f§l锋利I: §3§l4钻石"
-                  - " §f§l锋利II: §3§l8钻石"
-                  - ""
-                  - " §f§l花费: §3§l8钻石"
-                  - ""
-          xp:
-            - ==: org.bukkit.inventory.ItemStack
-              type: DIAMOND_SWORD
-              damage: 0
-              amount: 1
-              meta:
-                ==: ItemMeta
-                meta-type: UNSPECIFIC
-                display-name: '§a磨刀石 §fI'
-                lore:
-                  - "§7升级你队伍所有人的武器获得锋利附魔"
-                  - ""
-                  - " §f§l锋利I: §3§l400级"
-                  - " §f§l锋利II: §3§l800级"
-                  - ""
-                  - " §f§l花费: §3§l800级"
-                  - ""
+        name: "磨刀石I"
         cost:
           type: DIAMOND
-          cost: 8
-          xp-level: 800
+          amount: 4
+          xp-level: 400
       level-2:
-        icon:
-          i:
-            - ==: org.bukkit.inventory.ItemStack
-              type: DIAMOND_SWORD
-              damage: 0
-              amount: 1
-              meta:
-                ==: ItemMeta
-                meta-type: UNSPECIFIC
-                display-name: '§a磨刀石 §fI'
-                lore:
-                  - "§7升级你队伍所有人的武器获得锋利附魔"
-                  - ""
-                  - " §f§l锋利I: §3§l4钻石"
-                  - " §f§l锋利II: §3§l8钻石"
-                  - ""
-                  - " §f§l花费: §3§l8钻石"
-                  - ""
-          xp:
-            - ==: org.bukkit.inventory.ItemStack
-              type: DIAMOND_SWORD
-              damage: 0
-              amount: 1
-              meta:
-                ==: ItemMeta
-                meta-type: UNSPECIFIC
-                display-name: '§a磨刀石 §fI'
-                lore:
-                  - "§7升级你队伍所有人的武器获得锋利附魔"
-                  - ""
-                  - " §f§l锋利I: §3§l400级"
-                  - " §f§l锋利II: §3§l800级"
-                  - ""
-                  - " §f§l花费: §3§l800级"
-                  - ""
+        name: "磨刀石II"
         cost:
           type: DIAMOND
-          cost: 8
+          amount: 8
           xp-level: 800
 
 

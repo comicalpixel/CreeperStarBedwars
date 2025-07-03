@@ -26,7 +26,8 @@ nametag-health: true
 
 # 玩家名称前后缀设置
 nametag:
-  lobby-nick: true
+  # 是否开启大厅NameTag乱码
+  lobby-nick: false
   player:
     prefix: "§r {team_color}§l{team_name} §f"
     suffix: " "
@@ -289,6 +290,73 @@ start-title:
     a32:
       title: "§c§l战斗开始!"
       subtitle: "§7活到最后取得胜利!"
+    a33:
+      title: "§c§l战斗开始!"
+      subtitle: "§7活到最后取得胜利!"
+    a35:
+      title: "§e§l战§c§l斗开始!"
+      subtitle: "§7活到最后取得胜利!"
+    a36:
+      title: "§e§l战§c§l斗开始!"
+      subtitle: "§7活到最后取得胜利!"
+    a37:
+      title: "§e§l战§c§l斗开始!"
+      subtitle: "§7活到最后取得胜利!"
+    a38:
+      title: "§e§l战§c§l斗开始!"
+      subtitle: "§7活到最后取得胜利!"
+    a39:
+      title: "§c§l战§e§l斗§c§l开始!"
+      subtitle: "§7活到最后取得胜利!"
+    a40:
+      title: "§c§l战§e§l斗§c§l开始!"
+      subtitle: "§7活到最后取得胜利!"
+    a41:
+      title: "§c§l战§e§l斗§c§l开始!"
+      subtitle: "§7活到最后取得胜利!"
+    a42:
+      title: "§c§l战§e§l斗§c§l开始!"
+      subtitle: "§7活到最后取得胜利!"
+    a43:
+      title: "§c§l战斗§e§l开§c§l始!"
+      subtitle: "§7活到最后取得胜利!"
+    a44:
+      title: "§c§l战斗§e§l开§c§l始!"
+      subtitle: "§7活到最后取得胜利!"
+    a45:
+      title: "§c§l战斗§e§l开§c§l始!"
+      subtitle: "§7活到最后取得胜利!"
+    a46:
+      title: "§c§l战斗§e§l开§c§l始!"
+      subtitle: "§7活到最后取得胜利!"
+    a47:
+      title: "§c§l战斗开§e§l始§c§l!"
+      subtitle: "§7活到最后取得胜利!"
+    a48:
+      title: "§c§l战斗开§e§l始§c§l!"
+      subtitle: "§7活到最后取得胜利!"
+    a49:
+      title: "§c§l战斗开§e§l始§c§l!"
+      subtitle: "§7活到最后取得胜利!"
+    a50:
+      title: "§c§l战斗开§e§l始§c§l!"
+      subtitle: "§7活到最后取得胜利!"
+    a51:
+      title: "§c§l战斗开始§e§l!"
+      subtitle: "§7活到最后取得胜利!"
+    a52:
+      title: "§c§l战斗开始§e§l!"
+      subtitle: "§7活到最后取得胜利!"
+    a53:
+      title: "§c§l战斗开始§e§l!"
+      subtitle: "§7活到最后取得胜利!"
+    a54:
+      title: "§c§l战斗开始§e§l!"
+      subtitle: "§7活到最后取得胜利!"
+    a55:
+      title: "§c§l战斗开始!"
+      subtitle: "§7活到最后取得胜利!"
+
   actions:
     - a1
     - a2
@@ -322,6 +390,28 @@ start-title:
     - a30
     - a31
     - a32
+    - a33
+    - a35
+    - a36
+    - a37
+    - a38
+    - a39
+    - a40
+    - a41
+    - a42
+    - a43
+    - a44
+    - a45
+    - a46
+    - a47
+    - a48
+    - a49
+    - a50
+    - a51
+    - a52
+    - a53
+    - a54
+    - a55
   timer-ms: 15
 
 # 经验条倒计时
@@ -1068,8 +1158,8 @@ language:
   shop-buy-no: "§c你没有足够的资源购买该物品!"
   shop-buy-ed: "§c你已经购买过或者已经有更高级的了"
   # 队伍升级部分 购买类型{type} 购买玩家名称{player}
-  update-buy-me: "§a{player}购买了 §6{type} "
-  update-buy-team: "§a{player}购买了 §6{type} "
+  update-buy-me: "§a{player}购买了 {type} "
+  update-buy-team: "§a{player}购买了 {type} "
   update-buy-no: "§c你没有足够的资源购买!"
   update-buy-max: "§c{item} 已经满级了!"
   # 地图方块/方块区域保护

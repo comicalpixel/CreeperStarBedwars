@@ -1,4 +1,5 @@
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item$4.class
+cn\comicalpixel\creeperstarbedwars\Shop\ShopEnoughUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_BLUE$2.class
 cn\comicalpixel\creeperstarbedwars\Items\RespawnBed_Item.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_WHITE$3.class
@@ -22,6 +23,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Teams\GUI\TeamSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond.class
 cn\comicalpixel\creeperstarbedwars\Config\QuickShopListener\QuickShop_Listener.class
 cn\comicalpixel\creeperstarbedwars\Items\WarpPowder_Item$2.class
+cn\comicalpixel\creeperstarbedwars\Shop\Updrade\TeamShop_Manager.class
 cn\comicalpixel\creeperstarbedwars\Items\BridgeEgg_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond$1.class
 cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars$1.class
@@ -118,6 +120,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_YE
 cn\comicalpixel\creeperstarbedwars\Shop\Item\ItemShop_Manager.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$1.class
 cn\comicalpixel\creeperstarbedwars\Items\TNT_Item.class
+cn\comicalpixel\creeperstarbedwars\Shop\Updrade\TeamShop_Manager$1.class
 cn\comicalpixel\creeperstarbedwars\Items\ToolsItem\ToolItemsManager.class
 cn\comicalpixel\creeperstarbedwars\NameTag\NameTagManager$1.class
 cn\comicalpixel\creeperstarbedwars\Utils\MessageUtils.class

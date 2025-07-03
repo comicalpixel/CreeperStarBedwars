@@ -1,14 +1,18 @@
 package cn.comicalpixel.creeperstarbedwars.Shop.Updrade;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
+import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Manager;
+import cn.comicalpixel.creeperstarbedwars.Shop.ShopEnoughUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -79,16 +83,17 @@ public class TeamShop_GUI implements Listener {
 
         /**/
 
-        // 武器锋利附魔 §ad§a§3§e§0
+        // 武器锋利附魔 §a§d§a§3§e§0
         ItemStack icon_swordSharpness_item = new ItemStack(Material.BARRIER).clone();
-        if (ConfigUtils.getItemStack(updradeConfig, "updrade.sword_sharpness.settings.level-" + team_swordSharpness.get(TeamManager.player_teams.get(p)), true).getType() == Material.BEDROCK) {
+        int swordSharpness_now_level = team_swordSharpness.get(TeamManager.player_teams.get(p));
+        if (ConfigUtils.getItemStack(updradeConfig, "GUI.updrade-icon.sword_sharpness.level-" + swordSharpness_now_level + "." + prm, true).getType() == Material.BEDROCK) {
             ItemMeta meta = icon_swordSharpness_item.getItemMeta();
-            meta.setDisplayName("§c" + "updrade.sword_sharpness.settings.level-" + team_swordSharpness.get(TeamManager.player_teams.get(p)) + " is not found!");
+            meta.setDisplayName("§c" + "UpdradeShop updrade-icon.sword_sharpness icon(" + prm + ") is not found!");
             icon_swordSharpness_item.setItemMeta(meta);
         } else {
-            icon_swordSharpness_item = ConfigUtils.getItemStack(updradeConfig, "updrade.sword_sharpness.settings.level-" + team_swordSharpness.get(TeamManager.player_teams.get(p)), true);
+            icon_swordSharpness_item = ConfigUtils.getItemStack(updradeConfig, "GUI.updrade-icon.sword_sharpness.level-" + swordSharpness_now_level + "." + prm, true);
             ItemMeta meta = icon_swordSharpness_item.getItemMeta();
-            meta.setDisplayName(meta.getDisplayName() + "§ad§a§3§e§0");
+            meta.setDisplayName(meta.getDisplayName() + "§a§d§a§3§e§0");
             icon_swordSharpness_item.setItemMeta(meta);
         }
         gui.setItem(CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("GUI.icon-solts.updrade.sword_sharpness") ,icon_swordSharpness_item);
@@ -103,7 +108,9 @@ public class TeamShop_GUI implements Listener {
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
+    public void onInventoryClick_teamUpdrade(InventoryClickEvent e) {
+
+        // 这里的GUI物品单击是负责升级的 不是陷阱
 
         if (GameStats.get() != 2 && GameStats.get() != 3) {
             return;
@@ -114,6 +121,84 @@ public class TeamShop_GUI implements Listener {
         if (e.getInventory().getType() != InventoryType.CHEST) return;
 
         e.setCancelled(true);
+
+        if (e.getCurrentItem() == null || e.getCurrentItem().getType() == Material.AIR) return;
+
+        if (e.getRawSlot() > (6 * 9)-1) {
+            return;
+        }
+
+        FileConfiguration updradeConfig = CreeperStarBedwars.getPlugin().getUpdradeConfig();
+
+        Player p = (Player) e.getWhoClicked();
+
+        ItemStack item = e.getCurrentItem();
+        ItemMeta meta = item.getItemMeta();
+
+        // 初始化要购买的资源
+        ItemStack cost_type = new ItemStack(Material.BEDROCK).clone();
+        int cost_amount = 25565;
+        int cost_xpLevel = Integer.MAX_VALUE;
+
+        /*
+         *购买队伍升级的类型
+         后面购买成功后好分辨
+         0:锋利附魔
+         1:保护附魔
+         2:挖掘急迫效果
+         3:队伍资源点(炉子) 重要的!!
+         4:治愈池
+         5:队伍龙加倍(多一个!) 写较简单 个人觉得没啥必要买的...
+        */
+        int buyed_type = -1;
+
+        // 检查单击的物品是否是...
+        if (meta.getDisplayName().endsWith("§a§d§a§3§e§0")) {
+            if ((team_swordSharpness.get(TeamManager.player_teams.get(p))+1) > ConfigUtils.getInt(updradeConfig, "updrade.sword_sharpness.levels")) {
+                p.sendMessage(ConfigData.language_update_buy_max);
+                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-no");
+                return;
+            } else {
+                cost_type = new ItemStack(Material.getMaterial(ConfigUtils.getString(updradeConfig, "updrade.sword_sharpness.settings.level-" + (team_swordSharpness.get(TeamManager.player_teams.get(p))+1) + ".cost.type"))).clone();
+                cost_amount = ConfigUtils.getInt(updradeConfig, "updrade.sword_sharpness.settings.level-" + (team_swordSharpness.get(TeamManager.player_teams.get(p))+1) + ".cost.amount");
+                cost_xpLevel = ConfigUtils.getInt(updradeConfig, "updrade.sword_sharpness.settings.level-" + (team_swordSharpness.get(TeamManager.player_teams.get(p))+1) + ".cost.xp-level");
+                buyed_type = 0;
+            }
+        }
+
+
+        // 处理购买资源部分的
+        if (ShopEnoughUtils.isEnough(p, cost_type, cost_amount, cost_xpLevel)) {
+
+            String type_message = "null";
+
+            // 购买成功
+            // 这里应该判断玩家购买的东西的类型啦!
+            if (buyed_type == 0) {
+                type_message = ConfigUtils.getString(updradeConfig, "updrade.sword_sharpness.settings.level-"+(team_swordSharpness.get(TeamManager.player_teams.get(p))+1)+".name");
+                team_swordSharpness.put(TeamManager.player_teams.get(p), team_swordSharpness.get(TeamManager.player_teams.get(p))+1); // 添加 记得写在后面！
+            }
+
+            for (Player game_p : GamePlayers.players) {
+                if (TeamManager.player_teams.get(game_p).equals(TeamManager.player_teams.get(p))) {
+                    if (game_p == p) {
+                        game_p.sendMessage(ConfigData.language_update_buy_me.replace("{type}", type_message));
+                        ConfigUtils.playSound(game_p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-me");
+                    } else {
+                        game_p.sendMessage(ConfigData.language_update_buy_team.replace("{type}", type_message));
+                        ConfigUtils.playSound(game_p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-team");
+                    }
+                }
+            }
+
+            ItemShop_Manager.b_deduction(p, cost_type, cost_amount, cost_xpLevel);
+
+            open(p);
+        } else {
+            p.sendMessage(ConfigData.language_update_buy_no);
+            ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-no");
+            open(p);
+        }
 
     }
 
