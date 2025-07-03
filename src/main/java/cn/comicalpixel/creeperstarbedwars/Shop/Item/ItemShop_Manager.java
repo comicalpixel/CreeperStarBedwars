@@ -249,6 +249,13 @@ public class ItemShop_Manager {
                         p.sendMessage(ConfigData.language_shop_buy_yes.replace("{item}", shopConfig.getString("Items." + item_bh + ".name")));
                         ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-yes");
                         p.getInventory().addItem(buy_item.clone());
+
+                        if (buy_item.clone().getType().toString().endsWith("_SWORD")) {
+                            if (p.getInventory().contains(Material.WOOD_SWORD)) {
+                                p.getInventory().remove(Material.WOOD_SWORD);
+                            }
+                        }
+
                     } else {
                         if (buy_meta.getLore().get(0).startsWith("§e§a§m§c§o§l§o§r")) {
                             /* WOOL Item color data */
@@ -318,6 +325,7 @@ public class ItemShop_Manager {
                                 b_deduction(p, new ItemStack(Material.valueOf(shopConfig.getString("Items." + item_bh + ".cost.type"))), shopConfig.getInt("Items." + item_bh + ".cost.amount"), shopConfig.getInt("Items." + item_bh + ".cost.xp_level"));
                                 p.sendMessage(ConfigData.language_shop_buy_yes.replace("{item}", shopConfig.getString("Items." + item_bh + ".name")));
                                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-yes");
+
                             } else {
                                 p.sendMessage(ConfigData.language_shop_buy_ed);
                                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-no");

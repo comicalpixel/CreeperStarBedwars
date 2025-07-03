@@ -25,7 +25,7 @@ import cn.comicalpixel.creeperstarbedwars.NameTag.NameTagManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Listener;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.QuickShop.QuickShop_Add_GUI;
-import cn.comicalpixel.creeperstarbedwars.Shop.Update.TeamShop_GUI;
+import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;

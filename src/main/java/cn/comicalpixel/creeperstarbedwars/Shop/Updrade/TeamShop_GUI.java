@@ -1,12 +1,14 @@
-package cn.comicalpixel.creeperstarbedwars.Shop.Update;
+package cn.comicalpixel.creeperstarbedwars.Shop.Updrade;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
-import cn.comicalpixel.creeperstarbedwars.Config.UpdradeConfig;
+import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -43,24 +45,52 @@ public class TeamShop_GUI implements Listener {
 
         Inventory gui = Bukkit.createInventory((InventoryHolder) null, 6 * 9, ConfigUtils.getString(CreeperStarBedwars.getPlugin().getUpdradeConfig(), "GUI.title") + " §3§a§c§k§a§e§f");
 
+        String prm = "i";
+        if (ConfigData.bwimsel_enabled) {
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 0) {
+                prm = "i";
+            }
+            if (BwimResItemManager.Companion.getPlayerMode().get(p) == 1) {
+                prm = "xp";
+            }
+        } else {
+            if (ConfigData.bwimsel_default == 0) {
+                prm = "i";
+            }
+            if (ConfigData.bwimsel_default == 0) {
+                prm = "xp";
+            }
+        }
+
+        FileConfiguration updradeConfig = CreeperStarBedwars.getPlugin().getUpdradeConfig();
 
         /* GUI图标 */
 
         // 装饰玻璃板 frames
         ItemStack glass_item = new ItemStack(Material.STAINED_GLASS_PANE);
         ItemMeta glass_meta = glass_item.getItemMeta();
-        glass_meta.setDisplayName(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getUpdradeConfig(), "GUI.frame-icon.name"));
-        glass_meta.setLore(ConfigUtils.getStringList(CreeperStarBedwars.getPlugin().getUpdradeConfig(), "GUI.frame-icon.lore"));
+        glass_meta.setDisplayName(ConfigUtils.getString(updradeConfig, "GUI.frame-icon.name"));
+        glass_meta.setLore(ConfigUtils.getStringList(updradeConfig, "GUI.frame-icon.lore"));
         glass_item.setItemMeta(glass_meta);
-        glass_item.setDurability((short) ConfigUtils.getInt(CreeperStarBedwars.getPlugin().getUpdradeConfig(), "GUI.frame-icon.damage"));
-        for (int i : CreeperStarBedwars.getPlugin().getUpdradeConfig().getIntegerList("GUI.icon-solts.frames")) {
+        glass_item.setDurability((short) ConfigUtils.getInt(updradeConfig, "GUI.frame-icon.damage"));
+        for (int i : updradeConfig.getIntegerList("GUI.icon-solts.frames")) {
             gui.setItem(i, glass_item);
         }
 
         /**/
 
-        // 武器锋利附魔
-        ItemStack icon_swordSharpness_item = new ItemStack(Material.BARRIER);
+        // 武器锋利附魔 §ad§a§3§e§0
+        ItemStack icon_swordSharpness_item = new ItemStack(Material.BARRIER).clone();
+        if (ConfigUtils.getItemStack(updradeConfig, "updrade.sword_sharpness.settings.level-" + team_swordSharpness.get(TeamManager.player_teams.get(p)), true).getType() == Material.BEDROCK) {
+            ItemMeta meta = icon_swordSharpness_item.getItemMeta();
+            meta.setDisplayName("§c" + "updrade.sword_sharpness.settings.level-" + team_swordSharpness.get(TeamManager.player_teams.get(p)) + " is not found!");
+            icon_swordSharpness_item.setItemMeta(meta);
+        } else {
+            icon_swordSharpness_item = ConfigUtils.getItemStack(updradeConfig, "updrade.sword_sharpness.settings.level-" + team_swordSharpness.get(TeamManager.player_teams.get(p)), true);
+            ItemMeta meta = icon_swordSharpness_item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§ad§a§3§e§0");
+            icon_swordSharpness_item.setItemMeta(meta);
+        }
         gui.setItem(CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("GUI.icon-solts.updrade.sword_sharpness") ,icon_swordSharpness_item);
 
         /**/

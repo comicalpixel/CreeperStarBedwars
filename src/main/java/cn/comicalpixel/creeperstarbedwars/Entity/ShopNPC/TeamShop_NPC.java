@@ -4,7 +4,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
-import cn.comicalpixel.creeperstarbedwars.Shop.Update.TeamShop_GUI;
+import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Utils.EntityTypes;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
