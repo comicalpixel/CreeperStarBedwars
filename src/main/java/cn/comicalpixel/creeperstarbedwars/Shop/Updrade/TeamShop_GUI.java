@@ -41,6 +41,7 @@ public class TeamShop_GUI implements Listener {
         for (String team : TeamManager.teams) {
             team_swordSharpness.put(team, CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("updrade.sword_sharpness.def-level"));
             team_armorProtection.put(team, CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("updrade.sword_sharpness.def-level"));
+            team_fastDig.put(team, CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("updrade.fast_dig.def-level"));
 
             team_Traps.put(team, new ArrayList<Integer>());
         }
@@ -84,6 +85,8 @@ public class TeamShop_GUI implements Listener {
 
         /**/
 
+
+
         // 武器锋利附魔 §a§d§a§3§e§0
         ItemStack icon_swordSharpness_item = new ItemStack(Material.BARRIER).clone();
         int swordSharpness_now_level = team_swordSharpness.get(TeamManager.player_teams.get(p));
@@ -98,6 +101,8 @@ public class TeamShop_GUI implements Listener {
             icon_swordSharpness_item.setItemMeta(meta);
         }
         gui.setItem(CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("GUI.icon-solts.updrade.sword_sharpness") ,icon_swordSharpness_item);
+
+
 
         // 保护附魔 §a§d§a§3§e§1
         ItemStack icon_armorProtection_item = new ItemStack(Material.BARRIER).clone();
@@ -114,6 +119,22 @@ public class TeamShop_GUI implements Listener {
         }
         gui.setItem(CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("GUI.icon-solts.updrade.armor_protection") ,icon_armorProtection_item);
 
+
+
+        // 疯狂矿工 §a§d§a§3§e§2
+        ItemStack icon_fastDig_item = new ItemStack(Material.BARRIER).clone();
+        int fastDig_now_Level = team_fastDig.get(TeamManager.player_teams.get(p));
+        if (ConfigUtils.getItemStack(updradeConfig, "GUI.updrade-icon.fast_dig.level-" + fastDig_now_Level + "." + prm, true).getType() == Material.BEDROCK) {
+            ItemMeta meta = icon_fastDig_item.getItemMeta();
+            meta.setDisplayName("§c" + "UpdradeShop updrade-icon.fast_dig icon(" + prm + ") is not found!");
+            icon_fastDig_item.setItemMeta(meta);
+        } else {
+            icon_fastDig_item = ConfigUtils.getItemStack(updradeConfig, "GUI.updrade-icon.fast_dig.level-" + fastDig_now_Level + "." + prm, true);
+            ItemMeta meta = icon_fastDig_item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§a§d§a§3§e§2");
+            icon_fastDig_item.setItemMeta(meta);
+        }
+        gui.setItem(CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("GUI.icon-solts.updrade.fast_dig") ,icon_fastDig_item);
 
         /**/
 
@@ -179,7 +200,8 @@ public class TeamShop_GUI implements Listener {
                 cost_xpLevel = ConfigUtils.getInt(updradeConfig, "updrade.sword_sharpness.settings.level-" + (team_swordSharpness.get(TeamManager.player_teams.get(p))+1) + ".cost.xp-level");
                 buyed_type = 0;
             }
-        } else if (meta.getDisplayName().endsWith("§a§d§a§3§e§1")) {
+        }
+        else if (meta.getDisplayName().endsWith("§a§d§a§3§e§1")) {
             if ((team_armorProtection.get(TeamManager.player_teams.get(p))+1) > ConfigUtils.getInt(updradeConfig, "updrade.armor_protection.levels")) {
                 p.sendMessage(ConfigData.language_update_buy_max.replace("{type}", ConfigUtils.getString(updradeConfig, "updrade.armor_protection.settings.level-"+(team_armorProtection.get(TeamManager.player_teams.get(p)))+".name") ));
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-no");
@@ -189,6 +211,18 @@ public class TeamShop_GUI implements Listener {
                 cost_amount = ConfigUtils.getInt(updradeConfig, "updrade.armor_protection.settings.level-" + (team_armorProtection.get(TeamManager.player_teams.get(p))+1) + ".cost.amount");
                 cost_xpLevel = ConfigUtils.getInt(updradeConfig, "updrade.armor_protection.settings.level-" + (team_armorProtection.get(TeamManager.player_teams.get(p))+1) + ".cost.xp-level");
                 buyed_type = 1;
+            }
+        }
+        else if (meta.getDisplayName().endsWith("§a§d§a§3§e§2")) {
+            if ((team_fastDig.get(TeamManager.player_teams.get(p))+1) > ConfigUtils.getInt(updradeConfig, "updrade.fast_dig.levels")) {
+                p.sendMessage(ConfigData.language_update_buy_max.replace("{type}", ConfigUtils.getString(updradeConfig, "updrade.fast_dig.settings.level-"+(team_fastDig.get(TeamManager.player_teams.get(p)))+".name") ));
+                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-no");
+                return;
+            } else {
+                cost_type = new ItemStack(Material.getMaterial(ConfigUtils.getString(updradeConfig, "updrade.fast_dig.settings.level-" + (team_fastDig.get(TeamManager.player_teams.get(p))+1) + ".cost.type"))).clone();
+                cost_amount = ConfigUtils.getInt(updradeConfig, "updrade.fast_dig.settings.level-" + (team_fastDig.get(TeamManager.player_teams.get(p))+1) + ".cost.amount");
+                cost_xpLevel = ConfigUtils.getInt(updradeConfig, "updrade.fast_dig.settings.level-" + (team_fastDig.get(TeamManager.player_teams.get(p))+1) + ".cost.xp-level");
+                buyed_type = 2;
             }
         }
 
@@ -207,6 +241,10 @@ public class TeamShop_GUI implements Listener {
             if (buyed_type == 1) {
                 type_message = ConfigUtils.getString(updradeConfig, "updrade.armor_protection.settings.level-"+(team_armorProtection.get(TeamManager.player_teams.get(p))+1)+".name");
                 team_armorProtection.put(TeamManager.player_teams.get(p), team_armorProtection.get(TeamManager.player_teams.get(p))+1); // 添加 记得写在后面！
+            }
+            if (buyed_type == 2) {
+                type_message = ConfigUtils.getString(updradeConfig, "updrade.fast_dig.settings.level-"+(team_fastDig.get(TeamManager.player_teams.get(p))+1)+".name");
+                team_fastDig.put(TeamManager.player_teams.get(p), team_fastDig.get(TeamManager.player_teams.get(p))+1); // 添加 记得写在后面！
             }
 
             for (Player game_p : GamePlayers.players) {

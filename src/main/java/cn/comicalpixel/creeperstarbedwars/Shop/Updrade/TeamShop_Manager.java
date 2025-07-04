@@ -13,6 +13,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class TeamShop_Manager {
     public TeamShop_Manager() {
@@ -61,6 +63,13 @@ public class TeamShop_Manager {
                                 p_inv.getChestplate().setItemMeta(cm);
                                 p_inv.getLeggings().setItemMeta(lm);
                                 p_inv.getBoots().setItemMeta(bm);
+                            }
+                        }
+                    }
+                    if (TeamShop_GUI.team_fastDig.get(s) > 0) {
+                        for (Player p : GamePlayers.players) {
+                            if (TeamManager.player_teams.get(p).equals(s)) {
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 13, TeamShop_GUI.team_fastDig.get(s)-1), true);
                             }
                         }
                     }

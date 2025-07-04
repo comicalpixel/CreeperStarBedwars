@@ -15,6 +15,7 @@ GUI:
     updrade:
       sword_sharpness: 10
       armor_protection: 11
+      fast_dig: 12
     frames:
       - 27
       - 28
@@ -332,6 +333,112 @@ GUI:
                 - ""
                 - " §f§l花费: §3§l1200级"
                 - ""
+    fast_dig:
+      level-0:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §f'
+              lore:
+                - "§7让你队伍所有人获得永久的急迫效果"
+                - ""
+                - " §f§l急迫I: §3§l2钻石"
+                - " §f§l急迫II: §3§l4钻石"
+                - ""
+                - " §f§l花费: §3§l2钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §f'
+              lore:
+                - "§7让你队伍所有人获得永久的急迫效果"
+                - ""
+                - " §f§l急迫I: §3§l200级"
+                - " §f§l急迫II: §3§l400级"
+                - ""
+                - " §f§l花费: §3§l200级"
+                - ""
+      level-1:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §fI'
+              lore:
+                - "§7让你队伍所有人获得永久的急迫效果"
+                - ""
+                - " §f§l急迫I: §3§l2钻石"
+                - " §f§l急迫II: §3§l4钻石"
+                - ""
+                - " §f§l花费: §3§l4钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §fI'
+              lore:
+                - "§7让你队伍所有人获得永久的急迫效果"
+                - ""
+                - " §f§l急迫I: §3§l200级"
+                - " §f§l急迫II: §3§l400级"
+                - ""
+                - " §f§l花费: §3§l400级"
+                - ""
+      level-2:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §fII'
+              lore:
+                - "§7让你队伍所有人获得永久的急迫效果"
+                - ""
+                - " §f§l急迫I: §3§l2钻石"
+                - " §f§l急迫II: §3§l4钻石"
+                - ""
+                - " §f§l花费: §3§l4钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: GOLD_PICKAXE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a疯狂矿工 §fII'
+              lore:
+                - "§7让你队伍所有人获得永久的急迫效果"
+                - ""
+                - " §f§l急迫I: §3§l200级"
+                - " §f§l急迫II: §3§l400级"
+                - ""
+                - " §f§l花费: §3§l400级"
+                - ""
 
 # 队伍升级购买设置
 updrade:
@@ -379,7 +486,22 @@ updrade:
           type: DIAMOND
           amount: 12
           xp-level: 1200
-
+  fast_dig:
+    levels: 2
+    def-level: 0
+    settings:
+      level-1:
+        name: "疯狂矿工I"
+        cost:
+          type: DIAMOND
+          amount: 2
+          xp-level: 200
+      level-2:
+        name: "疯狂矿工II"
+        cost:
+          type: DIAMOND
+          amount: 4
+          xp-level: 400
 
 
 
