@@ -60,6 +60,8 @@ public class Safetower_Item implements Listener {
 
         cooldownMap.put(p, System.currentTimeMillis()); // 设置当前玩家的冷却时间
 
+        e.setCancelled(true);
+
         tower(TeamManager.player_teams.get(p), b.getLocation(), p);
 
     }

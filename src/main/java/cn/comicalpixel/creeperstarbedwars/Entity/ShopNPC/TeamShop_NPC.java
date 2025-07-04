@@ -5,6 +5,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_GUI;
+import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.EntityTypes;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
@@ -76,6 +77,7 @@ public class TeamShop_NPC implements Listener {
         if (e.getRightClicked().getCustomName().endsWith("§e§k§l§2")) {
             e.setCancelled(true);
             TeamShop_GUI.open(e.getPlayer());
+            ConfigUtils.playSound(e.getPlayer(),CreeperStarBedwars.getPlugin().getConfig(), "sound.update-open");
         }
 
     }

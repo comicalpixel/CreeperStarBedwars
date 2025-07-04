@@ -40,6 +40,7 @@ public class TeamShop_GUI implements Listener {
     public static void gamestart_reset() {
         for (String team : TeamManager.teams) {
             team_swordSharpness.put(team, CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("updrade.sword_sharpness.def-level"));
+            team_armorProtection.put(team, CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("updrade.sword_sharpness.def-level"));
 
             team_Traps.put(team, new ArrayList<Integer>());
         }
@@ -98,12 +99,26 @@ public class TeamShop_GUI implements Listener {
         }
         gui.setItem(CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("GUI.icon-solts.updrade.sword_sharpness") ,icon_swordSharpness_item);
 
+        // 保护附魔 §a§d§a§3§e§1
+        ItemStack icon_armorProtection_item = new ItemStack(Material.BARRIER).clone();
+        int armorProtection_now_level = team_armorProtection.get(TeamManager.player_teams.get(p));
+        if (ConfigUtils.getItemStack(updradeConfig, "GUI.updrade-icon.armor_protection.level-" + armorProtection_now_level + "." + prm, true).getType() == Material.BEDROCK) {
+            ItemMeta meta = icon_armorProtection_item.getItemMeta();
+            meta.setDisplayName("§c" + "UpdradeShop updrade-icon.armor_protection icon(" + prm + ") is not found!");
+            icon_armorProtection_item.setItemMeta(meta);
+        } else {
+            icon_armorProtection_item = ConfigUtils.getItemStack(updradeConfig, "GUI.updrade-icon.armor_protection.level-" + armorProtection_now_level + "." + prm, true);
+            ItemMeta meta = icon_armorProtection_item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§a§d§a§3§e§1");
+            icon_armorProtection_item.setItemMeta(meta);
+        }
+        gui.setItem(CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("GUI.icon-solts.updrade.armor_protection") ,icon_armorProtection_item);
+
+
         /**/
 
 
         p.openInventory(gui);
-
-        ConfigUtils.playSound(p,CreeperStarBedwars.getPlugin().getConfig(), "sound.update-open");
 
     }
 
@@ -155,7 +170,7 @@ public class TeamShop_GUI implements Listener {
         // 检查单击的物品是否是...
         if (meta.getDisplayName().endsWith("§a§d§a§3§e§0")) {
             if ((team_swordSharpness.get(TeamManager.player_teams.get(p))+1) > ConfigUtils.getInt(updradeConfig, "updrade.sword_sharpness.levels")) {
-                p.sendMessage(ConfigData.language_update_buy_max);
+                p.sendMessage(ConfigData.language_update_buy_max.replace("{type}", ConfigUtils.getString(updradeConfig, "updrade.sword_sharpness.settings.level-"+(team_swordSharpness.get(TeamManager.player_teams.get(p)))+".name") ));
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-no");
                 return;
             } else {
@@ -163,6 +178,17 @@ public class TeamShop_GUI implements Listener {
                 cost_amount = ConfigUtils.getInt(updradeConfig, "updrade.sword_sharpness.settings.level-" + (team_swordSharpness.get(TeamManager.player_teams.get(p))+1) + ".cost.amount");
                 cost_xpLevel = ConfigUtils.getInt(updradeConfig, "updrade.sword_sharpness.settings.level-" + (team_swordSharpness.get(TeamManager.player_teams.get(p))+1) + ".cost.xp-level");
                 buyed_type = 0;
+            }
+        } else if (meta.getDisplayName().endsWith("§a§d§a§3§e§1")) {
+            if ((team_armorProtection.get(TeamManager.player_teams.get(p))+1) > ConfigUtils.getInt(updradeConfig, "updrade.armor_protection.levels")) {
+                p.sendMessage(ConfigData.language_update_buy_max.replace("{type}", ConfigUtils.getString(updradeConfig, "updrade.armor_protection.settings.level-"+(team_armorProtection.get(TeamManager.player_teams.get(p)))+".name") ));
+                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-no");
+                return;
+            } else {
+                cost_type = new ItemStack(Material.getMaterial(ConfigUtils.getString(updradeConfig, "updrade.armor_protection.settings.level-" + (team_armorProtection.get(TeamManager.player_teams.get(p))+1) + ".cost.type"))).clone();
+                cost_amount = ConfigUtils.getInt(updradeConfig, "updrade.armor_protection.settings.level-" + (team_armorProtection.get(TeamManager.player_teams.get(p))+1) + ".cost.amount");
+                cost_xpLevel = ConfigUtils.getInt(updradeConfig, "updrade.armor_protection.settings.level-" + (team_armorProtection.get(TeamManager.player_teams.get(p))+1) + ".cost.xp-level");
+                buyed_type = 1;
             }
         }
 
@@ -178,14 +204,18 @@ public class TeamShop_GUI implements Listener {
                 type_message = ConfigUtils.getString(updradeConfig, "updrade.sword_sharpness.settings.level-"+(team_swordSharpness.get(TeamManager.player_teams.get(p))+1)+".name");
                 team_swordSharpness.put(TeamManager.player_teams.get(p), team_swordSharpness.get(TeamManager.player_teams.get(p))+1); // 添加 记得写在后面！
             }
+            if (buyed_type == 1) {
+                type_message = ConfigUtils.getString(updradeConfig, "updrade.armor_protection.settings.level-"+(team_armorProtection.get(TeamManager.player_teams.get(p))+1)+".name");
+                team_armorProtection.put(TeamManager.player_teams.get(p), team_armorProtection.get(TeamManager.player_teams.get(p))+1); // 添加 记得写在后面！
+            }
 
             for (Player game_p : GamePlayers.players) {
                 if (TeamManager.player_teams.get(game_p).equals(TeamManager.player_teams.get(p))) {
                     if (game_p == p) {
-                        game_p.sendMessage(ConfigData.language_update_buy_me.replace("{type}", type_message));
+                        game_p.sendMessage(ConfigData.language_update_buy_me.replace("{type}", type_message).replace("{player}", p.getName()));
                         ConfigUtils.playSound(game_p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-me");
                     } else {
-                        game_p.sendMessage(ConfigData.language_update_buy_team.replace("{type}", type_message));
+                        game_p.sendMessage(ConfigData.language_update_buy_team.replace("{type}", type_message).replace("{player}", p.getName()));
                         ConfigUtils.playSound(game_p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-team");
                     }
                 }

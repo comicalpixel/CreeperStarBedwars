@@ -11,6 +11,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class TeamShop_Manager {
     public TeamShop_Manager() {
@@ -34,9 +36,31 @@ public class TeamShop_Manager {
                                 for (int i = 0; i < p_inv.getSize(); i++) {
                                     ItemStack item = p_inv.getItem(i);
                                     if (item != null && item.getType().toString().endsWith("_SWORD")) {
-                                        item.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, TeamShop_GUI.team_swordSharpness.get(s));
+                                        ItemMeta meta = item.getItemMeta();
+                                        meta.addEnchant(Enchantment.DAMAGE_ALL, TeamShop_GUI.team_swordSharpness.get(s), true);
+                                        item.setItemMeta(meta);
                                     }
                                 }
+                            }
+                        }
+                    }
+                    if (TeamShop_GUI.team_armorProtection.get(s) > 0) {
+                        for (Player p : GamePlayers.players) {
+                            if (TeamManager.player_teams.get(p).equals(s)) {
+                                PlayerInventory p_inv = p.getInventory();
+                                ItemMeta hm = p_inv.getHelmet().getItemMeta();
+                                ItemMeta cm = p_inv.getChestplate().getItemMeta();
+                                ItemMeta lm = p_inv.getLeggings().getItemMeta();
+                                ItemMeta bm = p_inv.getBoots().getItemMeta();
+                                hm.addEnchant(Enchantment.WATER_WORKER, 1, true);
+                                hm.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, TeamShop_GUI.team_armorProtection.get(s), true);
+                                cm.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, TeamShop_GUI.team_armorProtection.get(s), true);
+                                lm.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, TeamShop_GUI.team_armorProtection.get(s), true);
+                                bm.addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, TeamShop_GUI.team_armorProtection.get(s), true);
+                                p_inv.getHelmet().setItemMeta(hm);
+                                p_inv.getChestplate().setItemMeta(cm);
+                                p_inv.getLeggings().setItemMeta(lm);
+                                p_inv.getBoots().setItemMeta(bm);
                             }
                         }
                     }

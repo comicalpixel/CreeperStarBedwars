@@ -14,6 +14,7 @@ GUI:
   icon-solts:
     updrade:
       sword_sharpness: 10
+      armor_protection: 11
     frames:
       - 27
       - 28
@@ -108,7 +109,7 @@ GUI:
             meta:
               ==: ItemMeta
               meta-type: UNSPECIFIC
-              display-name: '§a磨刀石 §fI'
+              display-name: '§a磨刀石 §fII'
               lore:
                 - "§7升级你队伍所有人的武器获得锋利附魔"
                 - ""
@@ -125,7 +126,7 @@ GUI:
             meta:
               ==: ItemMeta
               meta-type: UNSPECIFIC
-              display-name: '§a磨刀石 §fI'
+              display-name: '§a磨刀石 §fII'
               lore:
                 - "§7升级你队伍所有人的武器获得锋利附魔"
                 - ""
@@ -133,6 +134,203 @@ GUI:
                 - " §f§l锋利II: §3§l800级"
                 - ""
                 - " §f§l花费: §3§l800级"
+                - ""
+    armor_protection:
+      level-0:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §f'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l2钻石"
+                - " §f§l保护II: §3§l4钻石"
+                - " §f§l保护III: §3§l8钻石"
+                - " §f§l保护IV: §3§l12钻石"
+                - ""
+                - " §f§l花费: §3§l2钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §f'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l200级"
+                - " §f§l保护II: §3§l400级"
+                - " §f§l保护III: §3§l800级"
+                - " §f§l保护IV: §3§l1200级"
+                - ""
+                - " §f§l花费: §3§l200级"
+                - ""
+      level-1:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §fI'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l2钻石"
+                - " §f§l保护II: §3§l4钻石"
+                - " §f§l保护III: §3§l8钻石"
+                - " §f§l保护IV: §3§l12钻石"
+                - ""
+                - " §f§l花费: §3§l4钻石"
+                - ""
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §fI'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l200级"
+                - " §f§l保护II: §3§l400级"
+                - " §f§l保护III: §3§l800级"
+                - " §f§l保护IV: §3§l1200级"
+                - ""
+                - " §f§l花费: §3§l400级"
+                - ""
+      level-2:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §fII'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l2钻石"
+                - " §f§l保护II: §3§l4钻石"
+                - " §f§l保护III: §3§l8钻石"
+                - " §f§l保护IV: §3§l12钻石"
+                - ""
+                - " §f§l花费: §3§l8钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §fII'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l200级"
+                - " §f§l保护II: §3§l400级"
+                - " §f§l保护III: §3§l800级"
+                - " §f§l保护IV: §3§l1200级"
+                - ""
+                - " §f§l花费: §3§l800级"
+                - ""
+      level-3:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §fIII'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l2钻石"
+                - " §f§l保护II: §3§l4钻石"
+                - " §f§l保护III: §3§l8钻石"
+                - " §f§l保护IV: §3§l12钻石"
+                - ""
+                - " §f§l花费: §3§l12钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §fIII'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l200级"
+                - " §f§l保护II: §3§l400级"
+                - " §f§l保护III: §3§l800级"
+                - " §f§l保护IV: §3§l1200级"
+                - ""
+                - " §f§l花费: §3§l1200级"
+                - ""
+      level-4:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §fIV'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l2钻石"
+                - " §f§l保护II: §3§l4钻石"
+                - " §f§l保护III: §3§l8钻石"
+                - " §f§l保护IV: §3§l12钻石"
+                - ""
+                - " §f§l花费: §3§l12钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: IRON_CHESTPLATE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a精致护甲 §fIV'
+              lore:
+                - "§7升级你队伍所有人的护甲获得永久的保护附魔"
+                - ""
+                - " §f§l保护I: §3§l200级"
+                - " §f§l保护II: §3§l400级"
+                - " §f§l保护III: §3§l800级"
+                - " §f§l保护IV: §3§l1200级"
+                - ""
+                - " §f§l花费: §3§l1200级"
                 - ""
 
 # 队伍升级购买设置
@@ -153,6 +351,34 @@ updrade:
           type: DIAMOND
           amount: 8
           xp-level: 800
+  armor_protection:
+    levels: 4
+    def-level: 0
+    settings:
+      level-1:
+        name: "精致护甲I"
+        cost:
+          type: DIAMOND
+          amount: 2
+          xp-level: 200
+      level-2:
+        name: "精致护甲II"
+        cost:
+          type: DIAMOND
+          amount: 4
+          xp-level: 400
+      level-3:
+        name: "精致护甲III"
+        cost:
+          type: DIAMOND
+          amount: 8
+          xp-level: 800
+      level-4:
+        name: "精致护甲IV"
+        cost:
+          type: DIAMOND
+          amount: 12
+          xp-level: 1200
 
 
 

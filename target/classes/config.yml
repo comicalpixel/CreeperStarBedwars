@@ -1161,7 +1161,7 @@ language:
   update-buy-me: "§a{player}购买了 {type} "
   update-buy-team: "§a{player}购买了 {type} "
   update-buy-no: "§c你没有足够的资源购买!"
-  update-buy-max: "§c{item} 已经满级了!"
+  update-buy-max: "§c{type} 已经满级了!"
   # 地图方块/方块区域保护
   block-saferegion: "§c你不能在这里放置方块! "
   block-map-break: "§c你只能破坏玩家放置的方块! "
