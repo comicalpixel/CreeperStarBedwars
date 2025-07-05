@@ -442,21 +442,21 @@ public final class CreeperStarBedwars extends JavaPlugin {
             ConfigData.LobbyItems_i8_item = ConfigUtils.getItemStack(config, "lobby-items.i8.item", true);
 
 
-            ConfigData.generator_team_l0_iron = ConfigUtils.getDouble(config, "generator-level.team-0.iron");
-            ConfigData.generator_team_l0_gold = ConfigUtils.getDouble(config, "generator-level.team-0.gold");
-            ConfigData.generator_team_l0_emerald = ConfigUtils.getDouble(config, "generator-level.team-0.emerald");
-            ConfigData.generator_team_l1_iron = ConfigUtils.getDouble(config, "generator-level.team-1.iron");
-            ConfigData.generator_team_l1_gold = ConfigUtils.getDouble(config, "generator-level.team-1.gold");
-            ConfigData.generator_team_l1_emerald = ConfigUtils.getDouble(config, "generator-level.team-1.emerald");
-            ConfigData.generator_team_l2_iron = ConfigUtils.getDouble(config, "generator-level.team-2.iron");
-            ConfigData.generator_team_l2_gold = ConfigUtils.getDouble(config, "generator-level.team-2.gold");
-            ConfigData.generator_team_l2_emerald = ConfigUtils.getDouble(config, "generator-level.team-2.emerald");
-            ConfigData.generator_team_l3_iron = ConfigUtils.getDouble(config, "generator-level.team-3.iron");
-            ConfigData.generator_team_l3_gold = ConfigUtils.getDouble(config, "generator-level.team-3.gold");
-            ConfigData.generator_team_l3_emerald = ConfigUtils.getDouble(config, "generator-level.team-3.emerald");
-            ConfigData.generator_team_l4_iron = ConfigUtils.getDouble(config, "generator-level.team-4.iron");
-            ConfigData.generator_team_l4_gold = ConfigUtils.getDouble(config, "generator-level.team-4.gold");
-            ConfigData.generator_team_l4_emerald = ConfigUtils.getDouble(config, "generator-level.team-4.emerald");
+            ConfigData.generator_team_l0_iron = ConfigUtils.getDouble(config, "generator-level.team-iron");
+            ConfigData.generator_team_l0_gold = ConfigUtils.getDouble(config, "generator-level.team-gold");
+            ConfigData.generator_team_l0_emerald = ConfigUtils.getDouble(config, "generator-level.team-emerald");
+//            ConfigData.generator_team_l1_iron = ConfigUtils.getDouble(config, "generator-level.team-1.iron");
+//            ConfigData.generator_team_l1_gold = ConfigUtils.getDouble(config, "generator-level.team-1.gold");
+//            ConfigData.generator_team_l1_emerald = ConfigUtils.getDouble(config, "generator-level.team-1.emerald");
+//            ConfigData.generator_team_l2_iron = ConfigUtils.getDouble(config, "generator-level.team-2.iron");
+//            ConfigData.generator_team_l2_gold = ConfigUtils.getDouble(config, "generator-level.team-2.gold");
+//            ConfigData.generator_team_l2_emerald = ConfigUtils.getDouble(config, "generator-level.team-2.emerald");
+//            ConfigData.generator_team_l3_iron = ConfigUtils.getDouble(config, "generator-level.team-3.iron");
+//            ConfigData.generator_team_l3_gold = ConfigUtils.getDouble(config, "generator-level.team-3.gold");
+//            ConfigData.generator_team_l3_emerald = ConfigUtils.getDouble(config, "generator-level.team-3.emerald");
+//            ConfigData.generator_team_l4_iron = ConfigUtils.getDouble(config, "generator-level.team-4.iron");
+//            ConfigData.generator_team_l4_gold = ConfigUtils.getDouble(config, "generator-level.team-4.gold");
+//            ConfigData.generator_team_l4_emerald = ConfigUtils.getDouble(config, "generator-level.team-4.emerald");
 
             ConfigData.generator_game_diamond = ConfigUtils.getInt(config, "generator-level.diamond");
             ConfigData.generator_game_emerald = ConfigUtils.getInt(config, "generator-level.emerald");

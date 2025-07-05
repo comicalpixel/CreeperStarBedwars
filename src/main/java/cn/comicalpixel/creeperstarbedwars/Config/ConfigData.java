@@ -169,18 +169,6 @@ public class ConfigData {
     public static double generator_team_l0_iron = -1;
     public static double generator_team_l0_gold = -1;
     public static double generator_team_l0_emerald = -1;
-    public static double generator_team_l1_iron = -1;
-    public static double generator_team_l1_gold = -1;
-    public static double generator_team_l1_emerald = -1;
-    public static double generator_team_l2_iron = -1;
-    public static double generator_team_l2_gold = -1;
-    public static double generator_team_l2_emerald = -1;
-    public static double generator_team_l3_iron = -1;
-    public static double generator_team_l3_gold = -1;
-    public static double generator_team_l3_emerald = -1;
-    public static double generator_team_l4_iron = -1;
-    public static double generator_team_l4_gold = -1;
-    public static double generator_team_l4_emerald = -1;
     // 游戏资源点
     public static int generator_game_diamond = 30;
     public static int generator_game_emerald = 70;

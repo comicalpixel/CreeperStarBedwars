@@ -16,6 +16,7 @@ GUI:
       sword_sharpness: 10
       armor_protection: 11
       fast_dig: 12
+      team_resource: 19
     frames:
       - 27
       - 28
@@ -439,6 +440,204 @@ GUI:
                 - ""
                 - " §f§l花费: §3§l400级"
                 - ""
+    team_resource:
+      level-0:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §f'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l2钻石"
+                - " §f§l等级II: §3§l4钻石"
+                - " §f§l等级III: §3§l6钻石"
+                - " §f§l等级IV: §3§l8钻石"
+                - ""
+                - " §f§l花费: §3§l2钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §f'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l200级"
+                - " §f§l等级II: §3§l400级"
+                - " §f§l等级III: §3§l600级"
+                - " §f§l等级IV: §3§l800级"
+                - ""
+                - " §f§l花费: §3§l200级"
+                - ""
+      level-1:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fI'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l2钻石"
+                - " §f§l等级II: §3§l4钻石"
+                - " §f§l等级III: §3§l6钻石"
+                - " §f§l等级IV: §3§l8钻石"
+                - ""
+                - " §f§l花费: §3§l4钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fI'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l200级"
+                - " §f§l等级II: §3§l400级"
+                - " §f§l等级III: §3§l600级"
+                - " §f§l等级IV: §3§l800级"
+                - ""
+                - " §f§l花费: §3§l400级"
+                - ""
+      level-2:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fII'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l2钻石"
+                - " §f§l等级II: §3§l4钻石"
+                - " §f§l等级III: §3§l6钻石"
+                - " §f§l等级IV: §3§l8钻石"
+                - ""
+                - " §f§l花费: §3§l6钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fII'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l200级"
+                - " §f§l等级II: §3§l400级"
+                - " §f§l等级III: §3§l600级"
+                - " §f§l等级IV: §3§l800级"
+                - ""
+                - " §f§l花费: §3§l600级"
+                - ""
+      level-3:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fIII'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l2钻石"
+                - " §f§l等级II: §3§l4钻石"
+                - " §f§l等级III: §3§l6钻石"
+                - " §f§l等级IV: §3§l8钻石"
+                - ""
+                - " §f§l花费: §3§l8钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fIII'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l200级"
+                - " §f§l等级II: §3§l400级"
+                - " §f§l等级III: §3§l600级"
+                - " §f§l等级IV: §3§l800级"
+                - ""
+                - " §f§l花费: §3§l800级"
+                - ""
+      level-4:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fIV'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l2钻石"
+                - " §f§l等级II: §3§l4钻石"
+                - " §f§l等级III: §3§l6钻石"
+                - " §f§l等级IV: §3§l8钻石"
+                - ""
+                - " §f§l花费: §3§l8钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: FURNACE
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a熔炉锻造 §fIV'
+              lore:
+                - "§7升级你队伍的资源点, 提升刷新效率"
+                - ""
+                - " §f§l等级I: §3§l200级"
+                - " §f§l等级II: §3§l400级"
+                - " §f§l等级III: §3§l600级"
+                - " §f§l等级IV: §3§l800级"
+                - ""
+                - " §f§l花费: §3§l800级"
+                - ""
+
+
 
 # 队伍升级购买设置
 updrade:
@@ -502,6 +701,50 @@ updrade:
           type: DIAMOND
           amount: 4
           xp-level: 400
+  team_resource:
+    levels: 4
+    def-level: 0
+    settings:
+      level-1:
+        name: "熔炉锻造I"
+        res:
+          iron: 0.9
+          gold: 3.2
+          emerald: -1
+        cost:
+          type: DIAMOND
+          amount: 2
+          xp-level: 200
+      level-2:
+        name: "熔炉锻造II"
+        res:
+          iron: 0.7
+          gold: 2.7
+          emerald: -1
+        cost:
+          type: DIAMOND
+          amount: 4
+          xp-level: 400
+      level-3:
+        name: "熔炉锻造III"
+        res:
+          iron: 0.7
+          gold: 2.4
+          emerald: 12
+        cost:
+          type: DIAMOND
+          amount: 6
+          xp-level: 600
+      level-4:
+        name: "熔炉锻造IV"
+        res:
+          iron: 0.7
+          gold: 2.4
+          emerald: 9
+        cost:
+          type: DIAMOND
+          amount: 8
+          xp-level: 800
 
 
 

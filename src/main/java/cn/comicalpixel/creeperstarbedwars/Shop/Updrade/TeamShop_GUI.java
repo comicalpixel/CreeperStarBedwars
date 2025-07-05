@@ -12,7 +12,6 @@ import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -42,6 +41,7 @@ public class TeamShop_GUI implements Listener {
             team_swordSharpness.put(team, CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("updrade.sword_sharpness.def-level"));
             team_armorProtection.put(team, CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("updrade.sword_sharpness.def-level"));
             team_fastDig.put(team, CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("updrade.fast_dig.def-level"));
+            team_GenResLevel.put(team, CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("updrade.team_resource.def-level"));
 
             team_Traps.put(team, new ArrayList<Integer>());
         }
@@ -136,6 +136,23 @@ public class TeamShop_GUI implements Listener {
         }
         gui.setItem(CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("GUI.icon-solts.updrade.fast_dig") ,icon_fastDig_item);
 
+
+
+        // 锻造熔炉(炉子)  §a§d§a§3§e§3
+        ItemStack icon_team_resource_item = new ItemStack(Material.BARRIER).clone();
+        int team_resource_Level = team_GenResLevel.get(TeamManager.player_teams.get(p));
+        if (ConfigUtils.getItemStack(updradeConfig, "GUI.updrade-icon.team_resource.level-" + team_resource_Level + "." + prm, true).getType() == Material.BEDROCK) {
+            ItemMeta meta = icon_team_resource_item.getItemMeta();
+            meta.setDisplayName("§c" + "UpdradeShop updrade-icon.team_resource icon(" + prm + ") is not found!");
+            icon_team_resource_item.setItemMeta(meta);
+        } else {
+            icon_team_resource_item = ConfigUtils.getItemStack(updradeConfig, "GUI.updrade-icon.team_resource.level-" + team_resource_Level + "." + prm, true);
+            ItemMeta meta = icon_team_resource_item.getItemMeta();
+            meta.setDisplayName(meta.getDisplayName() + "§a§d§a§3§e§3");
+            icon_team_resource_item.setItemMeta(meta);
+        }
+        gui.setItem(CreeperStarBedwars.getPlugin().getUpdradeConfig().getInt("GUI.icon-solts.updrade.team_resource") ,icon_team_resource_item);
+
         /**/
 
 
@@ -225,6 +242,18 @@ public class TeamShop_GUI implements Listener {
                 buyed_type = 2;
             }
         }
+        else if (meta.getDisplayName().endsWith("§a§d§a§3§e§3")) {
+            if ((team_GenResLevel.get(TeamManager.player_teams.get(p))+1) > ConfigUtils.getInt(updradeConfig, "updrade.team_resource.levels")) {
+                p.sendMessage(ConfigData.language_update_buy_max.replace("{type}", ConfigUtils.getString(updradeConfig, "updrade.team_resource.settings.level-"+(team_GenResLevel.get(TeamManager.player_teams.get(p)))+".name") ));
+                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.update-buy-no");
+                return;
+            } else {
+                cost_type = new ItemStack(Material.getMaterial(ConfigUtils.getString(updradeConfig, "updrade.team_resource.settings.level-" + (team_GenResLevel.get(TeamManager.player_teams.get(p))+1) + ".cost.type"))).clone();
+                cost_amount = ConfigUtils.getInt(updradeConfig, "updrade.team_resource.settings.level-" + (team_GenResLevel.get(TeamManager.player_teams.get(p))+1) + ".cost.amount");
+                cost_xpLevel = ConfigUtils.getInt(updradeConfig, "updrade.team_resource.settings.level-" + (team_GenResLevel.get(TeamManager.player_teams.get(p))+1) + ".cost.xp-level");
+                buyed_type = 3;
+            }
+        }
 
 
         // 处理购买资源部分的
@@ -245,6 +274,11 @@ public class TeamShop_GUI implements Listener {
             if (buyed_type == 2) {
                 type_message = ConfigUtils.getString(updradeConfig, "updrade.fast_dig.settings.level-"+(team_fastDig.get(TeamManager.player_teams.get(p))+1)+".name");
                 team_fastDig.put(TeamManager.player_teams.get(p), team_fastDig.get(TeamManager.player_teams.get(p))+1); // 添加 记得写在后面！
+            }
+            if (buyed_type == 3) {
+                type_message = ConfigUtils.getString(updradeConfig, "updrade.team_resource.settings.level-"+(team_GenResLevel.get(TeamManager.player_teams.get(p))+1)+".name");
+                team_GenResLevel.put(TeamManager.player_teams.get(p), team_GenResLevel.get(TeamManager.player_teams.get(p))+1); // 添加 记得写在后面！
+                TeamShop_Manager.setTeamLevel_updrade(team_GenResLevel.get(TeamManager.player_teams.get(p)), TeamManager.player_teams.get(p));
             }
 
             for (Player game_p : GamePlayers.players) {

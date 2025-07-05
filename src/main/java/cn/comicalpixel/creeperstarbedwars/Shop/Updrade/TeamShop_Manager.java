@@ -1,12 +1,12 @@
 package cn.comicalpixel.creeperstarbedwars.Shop.Updrade;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
+import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Team.Manager.*;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
-import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -78,6 +78,45 @@ public class TeamShop_Manager {
 
             }
         }, 0, 7L);
+    }
+
+
+    public static void setTeamLevel_updrade(int i, String team) {
+
+        double iron = ConfigUtils.getDouble(CreeperStarBedwars.getPlugin().getUpdradeConfig(), "updrade.team_resource.settings.level-"+i+".res.iron");
+        double gold = ConfigUtils.getDouble(CreeperStarBedwars.getPlugin().getUpdradeConfig(), "updrade.team_resource.settings.level-"+i+".res.gold");
+        double emerald = ConfigUtils.getDouble(CreeperStarBedwars.getPlugin().getUpdradeConfig(), "updrade.team_resource.settings.level-"+i+".res.emerald");
+
+        switch (team) {
+            case "RED":
+                TeamGenerator_RED.set(iron, gold, emerald);
+                break;
+            case "BLUE":
+                TeamGenerator_BLUE.set(iron, gold, emerald);
+                break;
+            case "GREEN":
+                TeamGenerator_GREEN.set(iron, gold, emerald);
+                break;
+            case "YELLOW":
+                TeamGenerator_YELLOW.set(iron, gold, emerald);
+                break;
+            case "PINK":
+                TeamGenerator_PINK.set(iron, gold, emerald);
+                break;
+            case "AQUA":
+                TeamGenerator_AQUA.set(iron, gold, emerald);
+                break;
+            case "GRAY":
+                TeamGenerator_GRAY.set(iron, gold, emerald);
+                break;
+            case "WHITE":
+                TeamGenerator_WHITE.set(iron, gold, emerald);
+                break;
+            default:
+                break;
+        }
+
+
     }
 
 }
