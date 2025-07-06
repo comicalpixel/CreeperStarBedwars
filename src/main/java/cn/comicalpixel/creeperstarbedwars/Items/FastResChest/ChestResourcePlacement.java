@@ -51,18 +51,30 @@ public class ChestResourcePlacement implements Listener {
                 }
 
                 if (hasSameType || inventory.firstEmpty() != -1) {
-                    java.util.HashMap<Integer, org.bukkit.inventory.ItemStack> remaining = inventory.addItem(itemInHand);
+                    // 先计算箱子剩余容量
+                    int remainingSpace = calculateRemainingSpace(inventory, itemInHand);
+                    int amountToAdd = Math.min(itemInHand.getAmount(), remainingSpace);
 
-                    int placedAmount = itemInHand.getAmount() - (remaining.isEmpty() ? 0 : remaining.get(0).getAmount());
+                    if (amountToAdd > 0) {
+                        // 创建要放入的物品堆
+                        org.bukkit.inventory.ItemStack toAdd = itemInHand.clone();
+                        toAdd.setAmount(amountToAdd);
 
-                    if (placedAmount > 0) {
-                        if (e.getItem().getAmount() == placedAmount) {
-                            p.getInventory().setItemInHand(null);
-                        } else {
-                            e.getItem().setAmount(e.getItem().getAmount() - placedAmount);
+                        // 尝试放入物品
+                        java.util.HashMap<Integer, org.bukkit.inventory.ItemStack> remaining = inventory.addItem(toAdd);
+
+                        // 计算实际放入的数量
+                        int placedAmount = amountToAdd - (remaining.isEmpty() ? 0 : remaining.get(0).getAmount());
+
+                        if (placedAmount > 0) {
+                            if (e.getItem().getAmount() == placedAmount) {
+                                p.getInventory().setItemInHand(null);
+                            } else {
+                                e.getItem().setAmount(e.getItem().getAmount() - placedAmount);
+                            }
+                            e.setCancelled(true);
+                            p.playSound(p.getLocation(), Sound.CHEST_CLOSE, 10, 1);
                         }
-                        e.setCancelled(true);
-                        p.playSound(p.getLocation(), Sound.CHEST_CLOSE, 10, 1);
                     }
                 }
             }
@@ -87,18 +99,30 @@ public class ChestResourcePlacement implements Listener {
                 }
 
                 if (hasSameType || enderInventory.firstEmpty() != -1) {
-                    java.util.HashMap<Integer, org.bukkit.inventory.ItemStack> remaining = enderInventory.addItem(itemInHand);
+                    // 先计算箱子剩余容量
+                    int remainingSpace = calculateRemainingSpace(enderInventory, itemInHand);
+                    int amountToAdd = Math.min(itemInHand.getAmount(), remainingSpace);
 
-                    int placedAmount = itemInHand.getAmount() - (remaining.isEmpty() ? 0 : remaining.get(0).getAmount());
+                    if (amountToAdd > 0) {
+                        // 创建要放入的物品堆
+                        org.bukkit.inventory.ItemStack toAdd = itemInHand.clone();
+                        toAdd.setAmount(amountToAdd);
 
-                    if (placedAmount > 0) {
-                        if (e.getItem().getAmount() == placedAmount) {
-                            p.getInventory().setItemInHand(null);
-                        } else {
-                            e.getItem().setAmount(e.getItem().getAmount() - placedAmount);
+                        // 尝试放入物品
+                        java.util.HashMap<Integer, org.bukkit.inventory.ItemStack> remaining = enderInventory.addItem(toAdd);
+
+                        // 计算实际放入的数量
+                        int placedAmount = amountToAdd - (remaining.isEmpty() ? 0 : remaining.get(0).getAmount());
+
+                        if (placedAmount > 0) {
+                            if (e.getItem().getAmount() == placedAmount) {
+                                p.getInventory().setItemInHand(null);
+                            } else {
+                                e.getItem().setAmount(e.getItem().getAmount() - placedAmount);
+                            }
+                            e.setCancelled(true);
+                            p.playSound(p.getLocation(), Sound.CHEST_CLOSE, 10, 1);
                         }
-                        e.setCancelled(true);
-                        p.playSound(p.getLocation(), Sound.CHEST_CLOSE, 10, 1);
                     }
                 }
             }
@@ -109,6 +133,22 @@ public class ChestResourcePlacement implements Listener {
 
     }
 
+//    if (hasSameType || enderInventory.firstEmpty() != -1) {
+//        java.util.HashMap<Integer, org.bukkit.inventory.ItemStack> remaining = enderInventory.addItem(itemInHand);
+//
+//        int placedAmount = itemInHand.getAmount() - (remaining.isEmpty() ? 0 : remaining.get(0).getAmount());
+//
+//        if (placedAmount > 0) {
+//            if (e.getItem().getAmount() == placedAmount) {
+//                p.getInventory().setItemInHand(null);
+//            } else {
+//                e.getItem().setAmount(e.getItem().getAmount() - placedAmount);
+//            }
+//            e.setCancelled(true);
+//            p.playSound(p.getLocation(), Sound.CHEST_CLOSE, 10, 1);
+//        }
+//    }
+
     public boolean isContainerFull(org.bukkit.inventory.Inventory inventory) {
         for (org.bukkit.inventory.ItemStack item : inventory.getContents()) {
             if (item == null || item.getAmount() < item.getMaxStackSize()) {
@@ -116,6 +156,29 @@ public class ChestResourcePlacement implements Listener {
             }
         }
         return true;
+    }
+
+
+    private int calculateRemainingSpace(org.bukkit.inventory.Inventory inventory, org.bukkit.inventory.ItemStack item) {
+        int remainingSpace = 0;
+
+        // 计算相同类型物品的剩余空间
+        for (org.bukkit.inventory.ItemStack stack : inventory.getContents()) {
+            if (stack != null && stack.isSimilar(item)) {
+                remainingSpace += (stack.getMaxStackSize() - stack.getAmount());
+            }
+        }
+
+        // 计算空位的剩余空间
+        int emptySlots = 0;
+        for (org.bukkit.inventory.ItemStack stack : inventory.getContents()) {
+            if (stack == null) {
+                emptySlots++;
+            }
+        }
+        remainingSpace += emptySlots * item.getMaxStackSize();
+
+        return remainingSpace;
     }
 
 
