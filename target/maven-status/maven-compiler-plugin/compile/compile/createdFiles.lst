@@ -87,6 +87,7 @@ cn\comicalpixel\creeperstarbedwars\Utils\NoAIUtils.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\GameTimerEvent_Main$1.class
 cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\ItemShop_NPC$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\DeathMove.class
+cn\comicalpixel\creeperstarbedwars\Task\InvisibleUtil_Task.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_PINK.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GREEN.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$2.class
@@ -114,6 +115,7 @@ cn\comicalpixel\creeperstarbedwars\Shop\Item\ItemShop_GUI.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
 cn\comicalpixel\creeperstarbedwars\Items\RescuePlatform_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Items\Compass_Item$1.class
+cn\comicalpixel\creeperstarbedwars\Task\InvisibleUtil_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_AQUA$2.class
 cn\comicalpixel\creeperstarbedwars\Items\WarpPowder_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_YELLOW.class

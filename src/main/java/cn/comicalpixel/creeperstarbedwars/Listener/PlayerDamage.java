@@ -13,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,6 +88,10 @@ public class PlayerDamage implements Listener {
             Player killer = (Player) e.getDamager();
             if (!GamePlayers.players.contains(killer)) {return;}
             Playerkillers.put(p, killer);
+            // 收到伤害就移除隐身效果
+            if (p.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
+                p.removePotionEffect(PotionEffectType.INVISIBILITY);
+            }
         }
     }
     @EventHandler
@@ -105,6 +110,10 @@ public class PlayerDamage implements Listener {
         Player damager = null;
         if (arrow.getShooter() instanceof Player) {
             damager = (Player) arrow.getShooter();
+            // 收到伤害就移除隐身效果
+            if (p.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
+                p.removePotionEffect(PotionEffectType.INVISIBILITY);
+            }
         } else {
             return;
         }
