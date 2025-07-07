@@ -18,6 +18,7 @@ import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_Manager;
 import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
+import cn.comicalpixel.creeperstarbedwars.Task.InvisibleUtil_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -128,6 +129,9 @@ public class GameStart {
 
         // 队伍升级Task
         new TeamShop_Manager();
+
+        // 隐身Task
+        new InvisibleUtil_Task();
 
     }
 
