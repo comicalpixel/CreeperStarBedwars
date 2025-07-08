@@ -17,6 +17,7 @@ GUI:
       armor_protection: 11
       fast_dig: 12
       team_resource: 19
+      heal_pool: 21
     frames:
       - 27
       - 28
@@ -635,6 +636,73 @@ GUI:
                 - " §f§l等级IV: §3§l800级"
                 - ""
                 - " §f§l花费: §3§l800级"
+
+    heal_pool:
+      level-0:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: BEACON
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a治愈池 §f'
+              lore:
+                - "§7在你队伍附近生成一个治愈池且仅应用于你的队伍"
+                - ""
+                - " §f§l等级I: §3§l1钻石"
+                - ""
+                - " §f§l花费: §3§l1钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: BEACON
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a治愈池 §f'
+              lore:
+                - "§7在你队伍附近生成一个治愈池且仅应用于你的队伍"
+                - ""
+                - " §f§l等级I: §3§l100级"
+                - ""
+                - " §f§l等级I: §3§l100级"
+                - ""
+      level-1:
+        i:
+          - ==: org.bukkit.inventory.ItemStack
+            type: BEACON
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a治愈池 §fI'
+              lore:
+                - "§7在你队伍附近生成一个治愈池且仅应用于你的队伍"
+                - ""
+                - " §f§l等级I: §3§l1钻石"
+                - ""
+                - " §f§l花费: §3§l1钻石"
+                - ""
+        xp:
+          - ==: org.bukkit.inventory.ItemStack
+            type: BEACON
+            damage: 0
+            amount: 1
+            meta:
+              ==: ItemMeta
+              meta-type: UNSPECIFIC
+              display-name: '§a治愈池 §fI'
+              lore:
+                - "§7在你队伍附近生成一个治愈池且仅应用于你的队伍"
+                - ""
+                - " §f§l等级I: §3§l100级"
+                - ""
+                - " §f§l等级I: §3§l100级"
                 - ""
 
 
@@ -745,7 +813,17 @@ updrade:
           type: DIAMOND
           amount: 8
           xp-level: 800
-
+  heal_pool:
+    levels: 1
+    def-level: 0
+    radius: 20
+    settings:
+      level-1:
+        name: "治愈池I"
+        cost:
+          type: DIAMOND
+          amount: 1
+          xp-level: 100
 
 
 

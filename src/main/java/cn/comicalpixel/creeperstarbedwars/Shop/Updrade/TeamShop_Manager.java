@@ -4,6 +4,8 @@ import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Team.Manager.*;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
+import cn.comicalpixel.creeperstarbedwars.Config.UpdradeConfig;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
@@ -15,6 +17,8 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
+import java.util.HashMap;
 
 public class TeamShop_Manager {
     public TeamShop_Manager() {
@@ -69,15 +73,34 @@ public class TeamShop_Manager {
                     if (TeamShop_GUI.team_fastDig.get(s) > 0) {
                         for (Player p : GamePlayers.players) {
                             if (TeamManager.player_teams.get(p).equals(s)) {
-                                p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 13, TeamShop_GUI.team_fastDig.get(s)-1), true);
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20, TeamShop_GUI.team_fastDig.get(s)-1), true);
                             }
                         }
                     }
+
                 }
 
 
             }
         }, 0, 7L);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(CreeperStarBedwars.getPlugin(), new Runnable() {
+            @Override
+            public void run() {
+                if (GameStats.get() != 2 && GameStats.get() != 3) {
+                    return;
+                }
+
+                for (String s : TeamManager.teams) {
+                    if (TeamShop_GUI.team_HealPool.get(s) > 0) {
+                        for (Player p : GamePlayers.players) {
+                            if (p.getLocation().distance(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p))) <= ConfigUtils.getInt(CreeperStarBedwars.getPlugin().getUpdradeConfig(), "updrade.heal_pool.radius")) {
+                                p.setHealth(p.getHealth() + (0.3*TeamShop_GUI.team_HealPool.get(s)));
+                            }
+                        }
+                    }
+                }
+            }
+        }, 0, 20L);
     }
 
 

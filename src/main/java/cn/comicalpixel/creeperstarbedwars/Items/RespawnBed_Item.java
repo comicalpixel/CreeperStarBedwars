@@ -63,7 +63,7 @@ public class RespawnBed_Item implements Listener {
         }
 
         if (p.getLocation().getWorld().getName().equalsIgnoreCase(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p)).getWorld().getName()) &&
-            p.getLocation().distance(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p))) > 13)
+            p.getLocation().distance(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p))) > 9)
         {
             p.sendMessage(ConfigData.ItemInGame_respawn_bed_l_spawnloc_toofar);
             return;
