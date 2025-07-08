@@ -1,5 +1,6 @@
 package cn.comicalpixel.creeperstarbedwars.Listener;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
@@ -36,6 +37,9 @@ public class PlayerDamage implements Listener {
 
             if (GameStats.get() == 1) {
                 e.setCancelled(true);
+                if (e.getCause() != null && e.getCause() == EntityDamageEvent.DamageCause.VOID) {
+                    p.teleport(GameData_cfg.lobby_loc.clone().add(0, 0.1, 0));
+                }
             } else if (GameStats.get() == 2) {
                 if (GamePlayers.players.size() <= 1) {
                     e.setCancelled(true);
@@ -56,6 +60,9 @@ public class PlayerDamage implements Listener {
                 }
             } else if (GameStats.get() == 3) {
                 e.setCancelled(true);
+                if (e.getCause() != null && e.getCause() == EntityDamageEvent.DamageCause.VOID) {
+                    p.teleport(GameData_cfg.spec_loc.clone());
+                }
             }
 
         }
