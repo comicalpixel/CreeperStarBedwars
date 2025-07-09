@@ -70,6 +70,8 @@ public class TeamShop_Manager {
                             }
                         }
                     }
+
+
                     if (TeamShop_GUI.team_fastDig.get(s) > 0) {
                         for (Player p : GamePlayers.players) {
                             if (TeamManager.player_teams.get(p).equals(s)) {
@@ -94,13 +96,13 @@ public class TeamShop_Manager {
                     if (TeamShop_GUI.team_HealPool.get(s) > 0) {
                         for (Player p : GamePlayers.players) {
                             if (p.getLocation().distance(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p))) <= ConfigUtils.getInt(CreeperStarBedwars.getPlugin().getUpdradeConfig(), "updrade.heal_pool.radius")) {
-                                p.setHealth(p.getHealth() + (0.3*TeamShop_GUI.team_HealPool.get(s)));
+                                p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 40, TeamShop_GUI.team_HealPool.get(s)-1), true);
                             }
                         }
                     }
                 }
             }
-        }, 0, 20L);
+        }, 0, 30L);
     }
 
 

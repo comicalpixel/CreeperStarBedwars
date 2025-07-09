@@ -262,47 +262,48 @@ public class Diamondholographic {
         }
     }
 
+
+
 //    private void moveArmorStand(HolographicAPI holo) {
-//        // 检查并初始化位置和角度，如果需要的话
 //        if (!armor_locations.containsKey(holo)) {
 //            armor_locations.put(holo, holo.getLocation().clone());
 //        }
-//        if (!armor_algebra.containsKey(holo)) {
-//            armor_algebra.put(holo, 0); // 初始化角度
-//        }
-//
-//        // 检查并初始化移动方向标志，如果需要的话
 //        if (!armor_upward.containsKey(holo)) {
-//            armor_upward.put(holo, true); // 初始状态为向上移动
+//            armor_upward.put(holo, true);
 //        }
-//
+//        if (!armor_algebra.containsKey(holo)) {
+//            armor_algebra.put(holo, 0);
+//        }
 //        Location location = armor_locations.get(holo);
-//        boolean isUpward = armor_upward.get(holo); // 获取当前移动方向
-//
-//        // 定义上升和下降的位移
-//        double moveDistance = 2; // 2格方块的高度
-//
-//        // 更新位置
-//        if (isUpward) {
-//            // 如果当前是向上移动
-//            location.setY(location.getY() + moveDistance);
-//        } else {
-//            // 如果当前是向下移动
-//            location.setY(location.getY() - moveDistance);
+//        Integer algebra = armor_algebra.get(holo);
+//        boolean upward = armor_upward.get(holo);
+//        double turn = 1;
+//        if (!armor_upward.get(holo)) {
+//            turn = -turn;
 //        }
-//
-//        // 无论向上还是向下移动后，都切换移动方向
-//        armor_upward.put(holo, !isUpward);
-//
-//        // 更新角度，这里假设角度变化与盔甲架移动无关
-//        int algebra = armor_algebra.get(holo);
-//        algebra = (algebra + 1) % 360; // 更新角度并保持在0-359之间
-//        armor_algebra.put(holo, algebra);
-//
-//        // 更新盔甲架的位置和角度
-//        holo.teleport(location); // 将盔甲架传送到新位置
+//        double move_yaw = 0;
+//        double move_y = 0;
+//        if (algebra <= 30) {
+//            move_yaw += algebra * 0.62 * turn;
+//        } else {
+//            move_yaw += (59 - algebra) * 0.62 * turn;
+//        }
+//        if (algebra >= 9 && algebra <= 50) {
+//            move_y += 0.005 * turn;
+//        }
+//        location.setY(location.getY() + move_y);
+//        if (algebra >= 59) {
+//            armor_algebra.put(holo, 0);
+//            armor_upward.put(holo, !upward);
+//        }
+//        armor_algebra.put(holo, armor_algebra.get(holo) + 1);
+//        double yaw = location.getYaw();
+//        yaw += (move_yaw);
+//        yaw = yaw > 360 ? (yaw - 360) : yaw;
+//        yaw = yaw < -360 ? (yaw + 360) : yaw;
+//        location.setYaw((float) yaw);
+//        holo.teleport(location);
 //    }
-
 
     private void moveArmorStand(HolographicAPI holo) {
         if (!armor_locations.containsKey(holo)) {
@@ -323,16 +324,56 @@ public class Diamondholographic {
         }
         double move_yaw = 0;
         double move_y = 0;
-        if (algebra <= 30) {
-            move_yaw += algebra * 0.62 * turn;
-        } else {
-            move_yaw += (59 - algebra) * 0.62 * turn;
+
+        if (algebra <= 2) {
+            move_yaw += 0.5 * turn;
         }
-        if (algebra >= 9 && algebra <= 50) {
-            move_y += 0.005 * turn;
+        else if (algebra >= 3 && algebra <= 5+1) {
+            move_yaw += 1.3 * turn;
+        }
+        else if (algebra >= 7 && algebra <= 15) {
+            move_yaw += 1.9 * turn;
+        }
+        else if (algebra >= 16 && algebra <= 20) {
+            move_yaw += 2.8 * turn;
+        }
+        else if (algebra >= 21 && algebra <= 25) {
+            move_yaw += 3.5 * turn;
+        }
+        else if (algebra >= 26 && algebra <= 30) {
+            move_yaw += 4.7 * turn;
+        }
+        else if (algebra >= 251 && algebra <= 259) {
+            move_yaw += 3.2 * turn;
+        }
+        else if (algebra >= 260 && algebra <= 269) {
+            move_yaw += 2.5 * turn;
+        }
+        else if (algebra >= 270 && algebra <= 279) {
+            move_yaw += 1.8 * turn;
+        }
+        else if (algebra >= 280 && algebra <= 285) {
+            move_yaw += 1.3 * turn;
+        }
+        else if (algebra >= 286 && algebra <= 289) {
+            move_yaw += 0.7 * turn;
+        }
+        else if (algebra >= 290) {
+            move_yaw += 0.1 * turn;
+        }
+
+        else if (algebra >= 170 && algebra <= 210) {
+            move_yaw += 12 * turn;
+        }
+        else {
+            move_yaw += 7.7 * turn;
+        }
+
+        if (algebra >= 9 && algebra <= 280) {
+            move_y += 0.0002 * turn;
         }
         location.setY(location.getY() + move_y);
-        if (algebra >= 59) {
+        if (algebra >= 300) {
             armor_algebra.put(holo, 0);
             armor_upward.put(holo, !upward);
         }
@@ -344,4 +385,5 @@ public class Diamondholographic {
         location.setYaw((float) yaw);
         holo.teleport(location);
     }
+
 }

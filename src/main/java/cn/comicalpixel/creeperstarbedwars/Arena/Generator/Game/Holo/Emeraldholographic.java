@@ -304,6 +304,47 @@ public class Emeraldholographic {
 //    }
 
 
+//    private void moveArmorStand(HolographicAPI holo) {
+//        if (!armor_locations.containsKey(holo)) {
+//            armor_locations.put(holo, holo.getLocation().clone());
+//        }
+//        if (!armor_upward.containsKey(holo)) {
+//            armor_upward.put(holo, true);
+//        }
+//        if (!armor_algebra.containsKey(holo)) {
+//            armor_algebra.put(holo, 0);
+//        }
+//        Location location = armor_locations.get(holo);
+//        Integer algebra = armor_algebra.get(holo);
+//        boolean upward = armor_upward.get(holo);
+//        double turn = 1;
+//        if (!armor_upward.get(holo)) {
+//            turn = -turn;
+//        }
+//        double move_yaw = 0;
+//        double move_y = 0;
+//        if (algebra <= 30) {
+//            move_yaw += algebra * 0.62 * turn;
+//        } else {
+//            move_yaw += (59 - algebra) * 0.62 * turn;
+//        }
+//        if (algebra >= 9 && algebra <= 50) {
+//            move_y += 0.005 * turn;
+//        }
+//        location.setY(location.getY() + move_y);
+//        if (algebra >= 59) {
+//            armor_algebra.put(holo, 0);
+//            armor_upward.put(holo, !upward);
+//        }
+//        armor_algebra.put(holo, armor_algebra.get(holo) + 1);
+//        double yaw = location.getYaw();
+//        yaw += (move_yaw);
+//        yaw = yaw > 360 ? (yaw - 360) : yaw;
+//        yaw = yaw < -360 ? (yaw + 360) : yaw;
+//        location.setYaw((float) yaw);
+//        holo.teleport(location);
+//    }
+
     private void moveArmorStand(HolographicAPI holo) {
         if (!armor_locations.containsKey(holo)) {
             armor_locations.put(holo, holo.getLocation().clone());
@@ -323,16 +364,56 @@ public class Emeraldholographic {
         }
         double move_yaw = 0;
         double move_y = 0;
-        if (algebra <= 30) {
-            move_yaw += algebra * 0.62 * turn;
-        } else {
-            move_yaw += (59 - algebra) * 0.62 * turn;
+
+        if (algebra <= 2) {
+            move_yaw += 0.5 * turn;
         }
-        if (algebra >= 9 && algebra <= 50) {
-            move_y += 0.005 * turn;
+        else if (algebra >= 3 && algebra <= 5+1) {
+            move_yaw += 1.3 * turn;
+        }
+        else if (algebra >= 7 && algebra <= 15) {
+            move_yaw += 1.9 * turn;
+        }
+        else if (algebra >= 16 && algebra <= 20) {
+            move_yaw += 2.8 * turn;
+        }
+        else if (algebra >= 21 && algebra <= 25) {
+            move_yaw += 3.5 * turn;
+        }
+        else if (algebra >= 26 && algebra <= 30) {
+            move_yaw += 4.7 * turn;
+        }
+        else if (algebra >= 251 && algebra <= 259) {
+            move_yaw += 3.2 * turn;
+        }
+        else if (algebra >= 260 && algebra <= 269) {
+            move_yaw += 2.5 * turn;
+        }
+        else if (algebra >= 270 && algebra <= 279) {
+            move_yaw += 1.8 * turn;
+        }
+        else if (algebra >= 280 && algebra <= 285) {
+            move_yaw += 1.3 * turn;
+        }
+        else if (algebra >= 286 && algebra <= 289) {
+            move_yaw += 0.7 * turn;
+        }
+        else if (algebra >= 290) {
+            move_yaw += 0.1 * turn;
+        }
+
+        else if (algebra >= 170 && algebra <= 210) {
+            move_yaw += 12 * turn;
+        }
+        else {
+            move_yaw += 7.7 * turn;
+        }
+
+        if (algebra >= 9 && algebra <= 280) {
+            move_y += 0.0002 * turn;
         }
         location.setY(location.getY() + move_y);
-        if (algebra >= 59) {
+        if (algebra >= 300) {
             armor_algebra.put(holo, 0);
             armor_upward.put(holo, !upward);
         }
@@ -344,4 +425,5 @@ public class Emeraldholographic {
         location.setYaw((float) yaw);
         holo.teleport(location);
     }
+
 }
