@@ -716,10 +716,6 @@ items:
   silverfish:
     # 是否启用
     enable: true
-    # 冷却s
-    cooldown: 1
-    # 语言部分
-    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
     # 存活时间s
     entity-survival-time: 40
   # 搭桥蛋

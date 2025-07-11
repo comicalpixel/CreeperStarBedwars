@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftIronGolem;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSilverfish;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -32,13 +33,15 @@ public class Silverfish_EntityItem implements Listener {
 
     private Map<Player, Long> cooldownMap = new HashMap<>();
 
+    public HashMap<CraftSilverfish, String> EntityTeam = new HashMap<>();
+
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityChangeBlock(EntityChangeBlockEvent e) {
         if (e.getEntity() instanceof Silverfish) {
             e.setCancelled(true);
         }
     }
-    
+
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onProjectileHit(ProjectileHitEvent e) {
         Entity entity = e.getEntity();
@@ -65,6 +68,8 @@ public class Silverfish_EntityItem implements Listener {
     }
 
     public void entity_ai(Player player, String team, CraftSilverfish entity) {
+
+        EntityTeam.put(entity, team);
 
         new BukkitRunnable() {
             int i = ConfigData.ItemsInGame_silverfish_survival_time;
@@ -130,6 +135,13 @@ public class Silverfish_EntityItem implements Listener {
             if (GameStats.get() != 2) return;
             e.setDamage(0);
             e.setCancelled(true);
+        }
+
+        if ((e.getDamager() instanceof CraftSilverfish ||e.getDamager() instanceof org.bukkit.entity.Silverfish) && e.getEntity() instanceof Player) {
+            Player p = (Player) e.getEntity();
+            if (EntityTeam.get((CraftSilverfish) e.getDamager()).equalsIgnoreCase(TeamManager.player_teams.get(p))) {
+                e.setCancelled(true);
+            }
         }
 
     }

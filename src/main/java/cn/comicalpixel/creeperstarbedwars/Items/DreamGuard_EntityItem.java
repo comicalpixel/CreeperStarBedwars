@@ -10,6 +10,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftIronGolem;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSilverfish;
 import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -26,6 +27,8 @@ import java.util.Map;
 public class DreamGuard_EntityItem implements Listener {
 
     private Map<Player, Long> cooldownMap = new HashMap<>();
+
+    public HashMap<CraftIronGolem, String> EntityTeam = new HashMap<>();
 
     @EventHandler
     public void onDreamGuard(PlayerInteractEvent e) {
@@ -76,6 +79,8 @@ public class DreamGuard_EntityItem implements Listener {
     }
 
     public void entity(Player p, String team, CraftIronGolem entity) {
+
+        EntityTeam.put(entity, team);
 
         new BukkitRunnable() {
             int i = ConfigData.ItemsInGame_dreamguard_survival_time;
@@ -131,6 +136,18 @@ public class DreamGuard_EntityItem implements Listener {
         }
 
         return nearestPlayer;
+    }
+
+
+    @EventHandler
+    public void EntityDamage(EntityDamageByEntityEvent e) {
+
+        if ((e.getDamager() instanceof CraftIronGolem ||e.getDamager() instanceof org.bukkit.entity.IronGolem) && e.getEntity() instanceof Player) {
+            Player p = (Player) e.getEntity();
+            if (EntityTeam.get((CraftIronGolem) e.getDamager()).equalsIgnoreCase(TeamManager.player_teams.get(p))) {
+                e.setCancelled(true);
+            }
+        }
     }
 
 }
