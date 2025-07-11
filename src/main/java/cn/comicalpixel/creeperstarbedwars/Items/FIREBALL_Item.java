@@ -14,6 +14,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -84,6 +85,11 @@ public class FIREBALL_Item implements Listener {
     public void EntityExplode(EntityExplodeEvent e) {
 
         if (GameStats.get() != 2 && GameStats.get() != 3) return;
+
+        if (!(e.getEntity() instanceof Fireball)) {
+            return;
+        }
+
         if (e.getEntity() instanceof Fireball) {
             e.setCancelled(true);
 

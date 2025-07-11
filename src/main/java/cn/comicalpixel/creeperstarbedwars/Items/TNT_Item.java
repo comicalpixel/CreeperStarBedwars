@@ -82,6 +82,11 @@ public class TNT_Item implements Listener {
     public void EntityExplode(EntityExplodeEvent e) {
 
         if (GameStats.get() != 2 && GameStats.get() != 3) return;
+
+        if (!(e.getEntity() instanceof TNTPrimed)) {
+            return;
+        }
+
         if (e.getEntity() instanceof TNTPrimed) {
             e.setCancelled(true);
         }
