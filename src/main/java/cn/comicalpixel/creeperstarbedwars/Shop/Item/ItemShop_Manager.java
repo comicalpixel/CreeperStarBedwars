@@ -14,6 +14,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -155,6 +156,11 @@ public class ItemShop_Manager {
                 level_player = ToolItemsManager.players_toolLevel_斧头.get(p);
             } else {
                 Bukkit.getLogger().warning("BedwarsError!! at ItemShop_manager.java:tools_**** tools_buy if_else=else ");
+                return;
+            }
+
+            if (isInventoryFull(p)) {
+                ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.shop-buy-no");
                 return;
             }
 
@@ -390,6 +396,21 @@ public class ItemShop_Manager {
 //            p.setLevel(p.getLevel() - xp_level);
 //        }
 //    }
+
+
+    public static boolean isInventoryFull(Player player) {
+        Inventory inventory = player.getInventory();
+
+        // 检查主背包(0-35格)
+        for (int i = 0; i < 36; i++) {
+            ItemStack item = inventory.getItem(i);
+            if (item == null || item.getAmount() < item.getMaxStackSize()) {
+                return false; // 找到空位或可堆叠的位置
+            }
+        }
+
+        return true; // 所有格子都满了
+    }
 
 
 }

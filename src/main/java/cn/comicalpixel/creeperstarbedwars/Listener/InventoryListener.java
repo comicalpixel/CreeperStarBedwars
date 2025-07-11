@@ -3,9 +3,12 @@ package cn.comicalpixel.creeperstarbedwars.Listener;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryAction;
@@ -13,9 +16,13 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InventoryListener implements Listener {
 
@@ -52,8 +59,8 @@ public class InventoryListener implements Listener {
         }
     }
 
-    @EventHandler
-    public void onDrop(PlayerDropItemEvent e) {
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onDrop_gdwp(PlayerDropItemEvent e) {
 
         if (GameStats.get() == 1) {
             e.setCancelled(true);
@@ -85,6 +92,59 @@ public class InventoryListener implements Listener {
             }
         }
 
+    }
+
+
+    @EventHandler
+    public void onDrop_sword(PlayerDropItemEvent e) {
+        if (GameStats.get() != 2 && GameStats.get() != 3) {
+            return;
+        }
+        if (e.isCancelled()) return;
+
+        if (e.getItemDrop() == null) return;
+
+        if (e.getItemDrop().getItemStack().getType().toString().endsWith("_SWORD") && e.getItemDrop().getItemStack().getType() != Material.WOOD_SWORD) {
+            e.setCancelled(true);
+            ItemStack item = e.getItemDrop().getItemStack();
+            ItemMeta meta = item.getItemMeta();
+            if (meta.hasEnchant(Enchantment.DAMAGE_ALL)) {
+                meta.removeEnchant(Enchantment.DAMAGE_ALL);
+            }
+            e.getItemDrop().getItemStack().setItemMeta(meta);
+            e.setCancelled(false);
+            // 如果背包里面没有剑了就给予玩家一把木剑
+            int swords_size = 0;
+            for (ItemStack items : e.getPlayer().getInventory().getContents()) {
+                if (items != null && items.getType().toString().endsWith("_SWORD")) {
+                    swords_size += 1;
+                }
+            }
+            if (swords_size < 1 && !e.getPlayer().getInventory().contains(Material.WOOD_SWORD)) {
+                ItemStack sword_item = new ItemStack(Material.WOOD_SWORD);
+                ItemMeta sword_meta = sword_item.getItemMeta();
+                List<String> sword_lore = new ArrayList<>();
+                sword_lore.add(" ");
+                sword_lore.add(ChatColor.DARK_GRAY + "Fixed set items");
+                sword_meta.setLore(sword_lore);
+                sword_meta.spigot().setUnbreakable(true);
+                sword_item.setItemMeta(sword_meta);
+                e.getPlayer().getInventory().addItem(sword_item);
+            }
+        }
+    }
+    @EventHandler
+    public void onPickup_sword(PlayerPickupItemEvent e) {
+        if (GameStats.get() != 2 && GameStats.get() != 3) {
+            return;
+        }
+        if (e.isCancelled()) return;
+
+        if (e.getItem() == null) return;
+
+        if (e.getItem().getItemStack().getType().toString().endsWith("_SWORD")) {
+            e.getPlayer().getInventory().remove(Material.WOOD_SWORD);
+        }
     }
 
 
