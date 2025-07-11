@@ -18,6 +18,15 @@ GUI:
       fast_dig: 12
       team_resource: 19
       heal_pool: 21
+      EnderDragon: 25
+    traps:
+      ThisIsATrap: 14
+      UnAttack: 15
+      Warning: 16
+      AntiBreak: 23
+      TrapSolt-01: 39
+      TrapSolt-02: 40
+      TrapSolt-03: 41
     frames:
       - 27
       - 28
@@ -704,6 +713,265 @@ GUI:
                 - ""
                 - " §f§l等级I: §3§l100级"
                 - ""
+    EnderDragon:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: DRAGON_EGG
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a龙增益 §f'
+            lore:
+              - "§7在死亡决赛时让你的队伍多一末影龙 "
+              - "觉得真的没啥必要购买"
+              - ""
+              - ""
+              - " §f§l花费: §3§l1钻石"
+              - ""
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: DRAGON_EGG
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a龙增益 §f'
+            lore:
+              - "§7在死亡决赛时让你的队伍多一末影龙 "
+              - "觉得真的没啥必要购买"
+              - ""
+              - ""
+              - " §f§l花费: §3§l100级"
+              - ""
+  trap-icon:
+    ThisIsATrap:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: TRIPWIRE_HOOK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a这是个陷阱! '
+            lore:
+              - "§7造成失明和缓慢效果, 持续8s "
+              - ""
+              - ""
+              - " §f§l花费: §b§l1钻石/§b§l2钻石/§b§l4钻石"
+              - ""
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: TRIPWIRE_HOOK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a这是个陷阱! '
+            lore:
+              - "§7造成失明和缓慢效果, 持续8s "
+              - ""
+              - ""
+              - " §f§l花费: §b§l100级/§b§l200级/§b§l400级"
+              - ""
+    UnAttack:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FEATHER
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a反击陷阱 '
+            lore:
+              - "§7给予基地附近的队友速度II和跳跃II效果, 持续15s "
+              - ""
+              - ""
+              - " §f§l花费: §b§l1钻石/§b§l2钻石/§b§l4钻石"
+              - ""
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FEATHER
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a反击陷阱 '
+            lore:
+              - "§7给予基地附近的队友速度II和跳跃II效果, 持续15s "
+              - ""
+              - ""
+              - " §f§l花费: §b§l100级/§b§l200级/§b§l400级"
+              - ""
+    Warning:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: REDSTONE_TORCH_ON
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a报警陷阱 '
+            lore:
+              - "§7移除非队友的隐身效果 "
+              - ""
+              - ""
+              - " §f§l花费: §b§l1钻石/§b§l2钻石/§b§l4钻石"
+              - ""
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: REDSTONE_TORCH_ON
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a报警陷阱 '
+            lore:
+              - "§7移除非队友的隐身效果 "
+              - ""
+              - ""
+              - " §f§l花费: §b§l100级/§b§l200级/§b§l400级"
+              - ""
+    AntiBreak:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: IRON_PICKAXE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a挖掘疲劳陷阱 '
+            lore:
+              - "§7造成挖掘疲劳效果, 持续10s "
+              - ""
+              - ""
+              - " §f§l花费: §b§l1钻石/§b§l2钻石/§b§l4钻石"
+              - ""
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: IRON_PICKAXE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§a挖掘疲劳陷阱 '
+            lore:
+              - "§7造成挖掘疲劳效果, 持续10s "
+              - ""
+              - ""
+              - " §f§l花费: §b§l100级/§b§l200级/§b§l400级"
+              - ""
+    TrapSolt-01:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: STAINED_GLASS
+          damage: 8
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§c陷阱空槽 #1 '
+            lore:
+              - "§7当第一个敌人 "
+              - "§7进入己方的家后 "
+              - "§7会触发该陷阱!"
+              - ""
+              - " §7当前槽位价格: §b§l1钻石"
+              - ""
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: STAINED_GLASS
+          damage: 8
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§c陷阱空槽 #1 '
+            lore:
+              - "§7当第一个敌人 "
+              - "§7进入己方的家后 "
+              - "§7会触发该陷阱!"
+              - ""
+              - " §7当前槽位价格: §b§l100级"
+              - ""
+    TrapSolt-02:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: STAINED_GLASS
+          damage: 8
+          amount: 2
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§c陷阱空槽 #2 '
+            lore:
+              - "§7当第二个敌人 "
+              - "§7进入己方的家后 "
+              - "§7会触发该陷阱!"
+              - ""
+              - " §7当前槽位价格: §b§l2钻石"
+              - ""
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: STAINED_GLASS
+          damage: 8
+          amount: 2
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§c陷阱空槽 #2 '
+            lore:
+              - "§7当第二个敌人 "
+              - "§7进入己方的家后 "
+              - "§7会触发该陷阱!"
+              - ""
+              - " §7当前槽位价格: §b§l200级"
+              - ""
+    TrapSolt-03:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: STAINED_GLASS
+          damage: 8
+          amount: 3
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§c陷阱空槽 #3 '
+            lore:
+              - "§7当第三个敌人 "
+              - "§7进入己方的家后 "
+              - "§7会触发该陷阱!"
+              - ""
+              - " §7当前槽位价格: §b§l4钻石"
+              - ""
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: STAINED_GLASS
+          damage: 8
+          amount: 3
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§c陷阱空槽 #3 '
+            lore:
+              - "§7当第三个敌人 "
+              - "§7进入己方的家后 "
+              - "§7会触发该陷阱!"
+              - ""
+              - " §7当前槽位价格: §b§l400级"
+              - ""
+
+
 
 
 
@@ -824,6 +1092,37 @@ updrade:
           type: DIAMOND
           amount: 1
           xp-level: 100
+  EnderDragon:
+    name: "龙增益"
+    cost:
+      type: DIAMOND
+      amount: 5
+      xp-level: 350
+
+
+traps:
+  settings:
+    trap-1-cost:
+      type: DIAMOND
+      amount: 1
+      xp-level: 100
+    trap-2-cost:
+      type: DIAMOND
+      amount: 2
+      xp-level: 200
+    trap-3-cost:
+      type: DIAMOND
+      amount: 4
+      xp-level: 400
+  radius: 20
+  cooldown: 10
+  language:
+    title: "§c触发陷阱!"
+    subtitle: "§f{type} §b被触发!"
+    type-ThisIsATrap: "这是一个陷阱"
+    type-UnAttack: "反击陷阱"
+    type-Warning: "警报陷阱"
+    type-AntiBreak: "挖掘疲劳陷阱"
 
 
 

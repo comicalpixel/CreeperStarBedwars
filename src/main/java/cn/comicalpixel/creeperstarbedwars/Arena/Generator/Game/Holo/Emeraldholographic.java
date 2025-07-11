@@ -383,7 +383,10 @@ public class Emeraldholographic {
         else if (algebra >= 26 && algebra <= 30) {
             move_yaw += 4.7 * turn;
         }
-        else if (algebra >= 251 && algebra <= 259) {
+        else if (algebra >= 251 && algebra <= 255) {
+            move_yaw += 4.7 * turn;
+        }
+        else if (algebra >= 256 && algebra <= 259) {
             move_yaw += 3.2 * turn;
         }
         else if (algebra >= 260 && algebra <= 269) {

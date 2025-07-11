@@ -46,7 +46,7 @@ GUI:
       solt05: e02
       solt06: f01
       solt07: h04
-      solt08: a07
+      solt08: a02
       solt09: b02
       solt10: c02
       solt11: shears_
@@ -85,6 +85,7 @@ GUI:
       - a07
       - a08
       - a09
+      - a010
   gui-2:
     title: '§7物品商店 - 近战武器'
     icon:
@@ -594,6 +595,58 @@ Items:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
+          type: WOOL
+          damage: 0
+          amount: 2
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3魔力羊毛'
+            lore:
+              - '§7物品:'
+              - '§8● 魔力羊毛'
+              - ' '
+              - '§7花费:§3 8铁'
+            enchants:
+              KNOCKBACK: 0
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: WOOL
+          damage: 0
+          amount: 2
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3魔力羊毛'
+            lore:
+              - '§7物品:'
+              - '§8● 魔力羊毛'
+              - ' '
+              - '§7花费:§3 8级'
+            enchants:
+              KNOCKBACK: 0
+    cost:
+      type: IRON_INGOT
+      amount: 8
+      xp_level: 8
+    name: '魔力羊毛'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: WOOL
+        damage: 0
+        amount: 2
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          lore:
+            - '§e§a§m§c§o§l§o§r'
+          enchants:
+            KNOCKBACK: 0
+
+  a03:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
           type: STAINED_CLAY
           damage: 0
           amount: 16
@@ -635,7 +688,7 @@ Items:
           meta-type: UNSPECIFIC
           lore:
             - '§e§a§m§c§o§l§o§r'
-  a03:
+  a04:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -680,7 +733,7 @@ Items:
           meta-type: UNSPECIFIC
           lore:
             - '§e§a§m§c§o§l§o§r'
-  a04:
+  a05:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -723,7 +776,7 @@ Items:
         meta:
           ==: ItemMeta
           meta-type: UNSPECIFIC
-  a05:
+  a06:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -766,7 +819,7 @@ Items:
         meta:
           ==: ItemMeta
           meta-type: UNSPECIFIC
-  a06:
+  a07:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -809,7 +862,7 @@ Items:
         meta:
           ==: ItemMeta
           meta-type: UNSPECIFIC
-  a07:
+  a08:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -852,7 +905,7 @@ Items:
         meta:
           ==: ItemMeta
           meta-type: UNSPECIFIC
-  a08:
+  a09:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack
@@ -895,7 +948,7 @@ Items:
         meta:
           ==: ItemMeta
           meta-type: UNSPECIFIC
-  a09:
+  a010:
     gui-item:
       i:
         - ==: org.bukkit.inventory.ItemStack

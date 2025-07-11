@@ -10,6 +10,7 @@ import cn.comicalpixel.creeperstarbedwars.Utils.LocationUtil;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;

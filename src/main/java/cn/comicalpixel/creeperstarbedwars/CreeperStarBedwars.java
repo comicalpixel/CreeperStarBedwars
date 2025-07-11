@@ -16,6 +16,7 @@ import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
+import cn.comicalpixel.creeperstarbedwars.Item.RuchWool_Item;
 import cn.comicalpixel.creeperstarbedwars.Items.*;
 import cn.comicalpixel.creeperstarbedwars.Items.BedDamagerTitle.BedDangeTitle;
 import cn.comicalpixel.creeperstarbedwars.Items.DamageHoloTitle.PlayerDamageHolo;
@@ -26,10 +27,8 @@ import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Listener;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.QuickShop.QuickShop_Add_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_GUI;
-import cn.comicalpixel.creeperstarbedwars.Task.GameLobby_Actionbar_Task;
-import cn.comicalpixel.creeperstarbedwars.Task.Game_Countdown_Task;
-import cn.comicalpixel.creeperstarbedwars.Task.Game_WinCheck_Task;
-import cn.comicalpixel.creeperstarbedwars.Task.Sidebar_Scoreboard_Task;
+import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_TrapListener;
+import cn.comicalpixel.creeperstarbedwars.Task.*;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -161,6 +160,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // 计分板
         new Sidebar_Scoreboard_Task();
 
+        new WorldTimer_Task();
+
         // 修复
         getServer().getPluginManager().registerEvents(new ComboFix(), this);
         getServer().getPluginManager().registerEvents(new LadderFix(), this);
@@ -232,6 +233,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         if (ConfigData.ItemsInGame_firework_enabled) {
             getServer().getPluginManager().registerEvents(new FireworkSit_Item(), this);
         }
+        if (ConfigUtils.getBoolean(getConfig(), "items.rush-wool.enable")) {
+            getServer().getPluginManager().registerEvents(new RuchWool_Item(), this);
+        }
 
         getServer().getPluginManager().registerEvents(new BedDangeTitle(), this);
 
@@ -248,6 +252,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new TeamShop_GUI(), this);
 
         getServer().getPluginManager().registerEvents(new PlayerDamageHolo(), this);
+
+        getServer().getPluginManager().registerEvents(new TeamShop_TrapListener(), this);
 
     }
 

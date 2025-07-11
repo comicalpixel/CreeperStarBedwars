@@ -780,6 +780,17 @@ items:
     cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
     subtitle: '§c哎呀, 好疼!'
 
+  # 魔力羊毛
+  rush-wool:
+    # 是否启用
+    enable: true
+    # 冷却s
+    cooldown: 1
+    # 语言部分
+    cooldown-chat: "§c道具冷却中... "
+    # 延伸多少格
+    blocks: 5
+
 # 队友床危险警告
 # 触发方式: 抬头90°且潜行一下
 beddanger-title:
@@ -1145,6 +1156,7 @@ language:
   update-buy-team: "§a{player}购买了 {type} "
   update-buy-no: "§c你没有足够的资源购买!"
   update-buy-max: "§c{type} 已经满级了!"
+  update-buy-trap-max: "§c陷阱槽位已经满了! "
   # 地图方块/方块区域保护
   block-saferegion: "§c你不能在这里放置方块! "
   block-map-break: "§c你只能破坏玩家放置的方块! "
