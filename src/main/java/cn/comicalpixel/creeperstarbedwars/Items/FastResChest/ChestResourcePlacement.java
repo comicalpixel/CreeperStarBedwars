@@ -25,6 +25,8 @@ public class ChestResourcePlacement implements Listener {
 
         if (e.getClickedBlock() == null || e.getClickedBlock().getType() == Material.AIR) return;
 
+        if (e.getItem() == null || e.getItem().getType() == Material.AIR) return;
+
         if (!CreeperStarBedwars.getPlugin().getConfig().getStringList("rapid-resource-placement.items-list").contains(e.getItem().getType().toString())) {
             return;
         }

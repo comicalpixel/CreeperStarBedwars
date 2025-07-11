@@ -6,17 +6,18 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSilverfish;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.IronGolem;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Snowball;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -31,70 +32,35 @@ public class Silverfish_EntityItem implements Listener {
 
     private Map<Player, Long> cooldownMap = new HashMap<>();
 
-    @EventHandler
-    public void onPlayerInteractEvent(PlayerInteractEvent e) {
-
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onEntityChangeBlock(EntityChangeBlockEvent e) {
+        if (e.getEntity() instanceof Silverfish) {
+            e.setCancelled(true);
+        }
+    }
+    
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onProjectileHit(ProjectileHitEvent e) {
+        Entity entity = e.getEntity();
+        if (!(e.getEntity() instanceof Snowball)) {
+            return;
+        }
+        Snowball snowball = (Snowball) entity;
+        if (!(snowball.getShooter() instanceof Player)) {
+            return;
+        }
+        Player player = (Player) snowball.getShooter();
         if (GameStats.get() != 2 && GameStats.get() != 3) {
             return;
         }
-
-        if (!GamePlayers.players.contains(e.getPlayer())) {
-            return;
-        }
-
-        if (e.isCancelled()) return;
-
-        if (e.getItem() == null) return;
-
-        if (e.getItem().getType() != Material.SNOW_BALL) return;
-
-        if (e.getAction() != Action.RIGHT_CLICK_AIR && e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
-
-        Player p = e.getPlayer();
-
-        // 检查冷却时间
-        if (cooldownMap.containsKey(p) && System.currentTimeMillis() - cooldownMap.get(p) < (ConfigData.ItemsInGame_silverfish_cooldown * 1000)) {
-            int cooldms = (ConfigData.ItemsInGame_silverfish_cooldown * 1000) - (int) (System.currentTimeMillis() - cooldownMap.get(p));
-            int cooldms_s = MessageVariableUtils.convertMillisecondsToSeconds(cooldms);
-            String cooldmess = String.valueOf(cooldms_s); // String.valueOf(cooldownMap.containsKey(player)); //System.currentTimeMillis() -
-            e.setCancelled(true);
-            p.sendMessage(ConfigData.ItemsInGame_silverfish_cooldown_chat.replace("{cooldown}", cooldmess));
-            return;
-        }
-
-        cooldownMap.put(p, System.currentTimeMillis()); // 设置当前玩家的冷却时间
-
-        ItemStack itemInHand = e.getPlayer().getItemInHand();
-        if (itemInHand.getAmount() > 1) {
-            itemInHand.setAmount(itemInHand.getAmount() - 1);
-        } else {
-            e.getPlayer().getInventory().remove(itemInHand);
-        }
-
-        Snowball snowball = p.launchProjectile(Snowball.class);
-        snowball.setBounce(false);
-        snowball.setShooter(p);
-        snowball.setMetadata("EnderklpBW_Sliverfish", new FixedMetadataValue(CreeperStarBedwars.getPlugin(), null));
-
+        CraftSilverfish sf_entity = (CraftSilverfish) e.getEntity().getLocation().clone().getWorld().spawnEntity(e.getEntity().getLocation().clone().add(0, 1, 0), EntityType.SILVERFISH);
+        entity_ai(player, TeamManager.player_teams.get(player), sf_entity);
     }
 
-    @EventHandler
-    public void onProjectileHit(ProjectileHitEvent event) {
-
-        if (event.getEntity() instanceof Snowball) {
-            Snowball snowball = (Snowball) event.getEntity();
-
-            if (snowball.getShooter() != null && snowball.getShooter() instanceof Player) {
-
-                Player player = (Player) snowball.getShooter();
-
-                if (snowball.isDead() && snowball.hasMetadata("EnderklpBW_Sliverfish")) {
-                    Location locAbove = snowball.getLocation().add(0, 1.0, 0);
-                    CraftSilverfish craftSilverfish = (CraftSilverfish) locAbove.getWorld().spawnEntity(locAbove, EntityType.SILVERFISH);
-                    entity_ai(player, TeamManager.player_teams.get(player), craftSilverfish);
-                }
-
-            }
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onSpawn(CreatureSpawnEvent e) {
+        if (e.getEntity() instanceof Silverfish) {
+            e.setCancelled(false);
         }
     }
 
@@ -134,7 +100,7 @@ public class Silverfish_EntityItem implements Listener {
                 }
                 entity.setTarget(getNearestPlayer(entity.getLocation(), 14, team));
             }
-        }.runTaskTimer(CreeperStarBedwars.getPlugin(), 0,1);
+        }.runTaskTimer(CreeperStarBedwars.getPlugin(), 0,0);
 
     }
 

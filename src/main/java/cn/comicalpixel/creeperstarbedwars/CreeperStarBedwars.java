@@ -514,8 +514,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
             ConfigData.ItemsInGame_dreamguard_maxHealth = ConfigUtils.getInt(config, "items.dreamguard.entity-maxhealth");
 
             ConfigData.ItemsInGame_silverfish_enabled = ConfigUtils.getBoolean(config, "items.silverfish.enable");
-            ConfigData.ItemsInGame_silverfish_cooldown = ConfigUtils.getInt(config, "items.silverfish.cooldown");
-            ConfigData.ItemsInGame_silverfish_cooldown_chat = ConfigUtils.getString(config, "items.silverfish.cooldown-chat");
+//            ConfigData.ItemsInGame_silverfish_cooldown = ConfigUtils.getInt(config, "items.silverfish.cooldown");
+//            ConfigData.ItemsInGame_silverfish_cooldown_chat = ConfigUtils.getString(config, "items.silverfish.cooldown-chat");
             ConfigData.ItemsInGame_silverfish_survival_time = ConfigUtils.getInt(config, "items.silverfish.entity-survival-time");
             // ConfigData.ItemsInGame_silverfish_maxHealth = ConfigUtils.getInt(config, "items.silverfish.entity-maxhealth");
 
