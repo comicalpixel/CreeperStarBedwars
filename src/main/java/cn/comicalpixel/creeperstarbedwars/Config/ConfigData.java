@@ -13,6 +13,8 @@ public class ConfigData {
     public static String bungeecord_motd_waiting_max;
     public static String bungeecord_motd_playing;
     public static String bungeecord_motd_end;
+    // isLobbyMode
+    public static boolean lobby_mode = false;
     // 重启指令
     public static String bungeecord_restart_command = "stop";
     // 血量显示

@@ -22,6 +22,8 @@ import java.util.Map;
 
 public class Game_WinCheck_Task {
 
+    public static boolean isChecked = false;
+
     public Game_WinCheck_Task() {
         timer_task();
     }
@@ -60,6 +62,11 @@ public class Game_WinCheck_Task {
 
     public static void win() {
 
+        if (isChecked) {
+            return;
+        }
+        isChecked = true;
+
         wins = GamePlayers.players;
         specs = GamePlayers.specs;
 
@@ -67,6 +74,9 @@ public class Game_WinCheck_Task {
             for (Player p : wins) {
                 NMSTitleUntils.Title.send(p, ConfigData.language_game_end_winner_title, ConfigData.language_game_end_winner_subtitle, 5, 70, 5);
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.game-end-winner");
+                // PlayerData
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".wins",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".wins") + 1);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
             }
             for (Player p : specs) {
                 NMSTitleUntils.Title.send(p, ConfigData.language_game_end_loser_title, ConfigData.language_game_end_loser_subtitle, 5, 70, 5);

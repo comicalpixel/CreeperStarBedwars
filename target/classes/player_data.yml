@@ -1,7 +1,10 @@
-4f38274d-7041-3a3b-b0e9-38b7dcf3d7a2:
+testPlayer:
+  test: -1
   plays: 2
   wins: 1
   lost: 1
   kills: 1
   fkills: 1
   death: 4
+  beds: 0
+  bwim: 1

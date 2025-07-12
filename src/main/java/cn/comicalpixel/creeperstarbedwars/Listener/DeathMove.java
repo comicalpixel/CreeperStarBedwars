@@ -120,6 +120,15 @@ public class DeathMove implements Listener {
         }
 
 
+        if (PlayerDamage.Playerkillers.get(p) != null) {
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(PlayerDamage.getKiller(p).getName() + ".kills", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(PlayerDamage.getKiller(p).getName() + ".kills") + 1);
+            if (!TeamManager.getbed(TeamManager.player_teams.get(p))) {
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(PlayerDamage.getKiller(p).getName() + ".fkills", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(PlayerDamage.getKiller(p).getName() + ".fkills") + 1);
+            }
+        }
+        CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".death", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".death") + 1);
+        CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+
         // 是否开启快速重生
         if (ConfigData.fast_respawn_enabled) {
             p.setHealth(p.getMaxHealth());
@@ -180,6 +189,9 @@ public class DeathMove implements Listener {
                         p.setExp(0);
                         PlayerDamage.noDamageMode(p);
                         cancel();
+                        // PlayerData
+                        CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".lost",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".lost") + 1);
+                        CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
                     }
                     resapwn--;
                 }

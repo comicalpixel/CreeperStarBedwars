@@ -212,6 +212,21 @@ public class PlayerJoinLeave implements Listener {
         }
 
         e.setJoinMessage(null);
+
+        // PlayerData
+        if (CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".test") != -1) {
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".test", -1);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".plays", 0);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".wins", 0);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".lost", 0);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".kills", 0);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".fkills", 0);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".deaths", 0);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".beds", 0);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".bwim", 0);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+        }
+
     }
 
     @EventHandler

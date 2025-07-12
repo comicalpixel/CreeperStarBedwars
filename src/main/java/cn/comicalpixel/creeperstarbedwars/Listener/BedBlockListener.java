@@ -193,6 +193,9 @@ public class BedBlockListener implements Listener {
         // Player beds data
         PlayerInGameData.Companion.getBeds().put(p, PlayerInGameData.Companion.getBeds().getOrDefault(p, 0) + 1);
 
+        CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".beds", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".beds"));
+        CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+
 
         // 变量
         // {bed_color}床的队伍ChatColor

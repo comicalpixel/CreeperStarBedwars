@@ -51,6 +51,9 @@ public class GameStart {
         // 常规的玩家的操作
         for (Player p : GamePlayers.players) {
 
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".plays",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".plays") + 1);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+
             PlayerUtils.reset(p);
             PlayerUtils.clear_effects(p);
             GameTools.InitializationInventory(p);

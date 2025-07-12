@@ -22,6 +22,8 @@ import cn.comicalpixel.creeperstarbedwars.Items.BedDamagerTitle.BedDangeTitle;
 import cn.comicalpixel.creeperstarbedwars.Items.DamageHoloTitle.PlayerDamageHolo;
 import cn.comicalpixel.creeperstarbedwars.Items.FastResChest.ChestResourcePlacement;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
+import cn.comicalpixel.creeperstarbedwars.Lobby.LobbyCommand;
+import cn.comicalpixel.creeperstarbedwars.Lobby.LobbyPDataPAPI;
 import cn.comicalpixel.creeperstarbedwars.NameTag.NameTagManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Listener;
@@ -30,6 +32,8 @@ import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_TrapListener;
 import cn.comicalpixel.creeperstarbedwars.Task.*;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import com.nametagedit.plugin.api.data.PlayerData;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -62,6 +66,12 @@ public final class CreeperStarBedwars extends JavaPlugin {
     private UpdradeConfig updradeConfig;
     public UpdradeConfig getUpdradeConfig() {
         return updradeConfig;
+    }
+
+
+    private PlayerDataConfig playerConfig;
+    public PlayerDataConfig getPlayerDataConfig() {
+        return playerConfig;
     }
 
     @Override
@@ -101,19 +111,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 //        Bukkit.getLogger().info("Minecraft Version: " + Bukkit.getVersion());
 //        Bukkit.getLogger().info("");
 
-        // 指令部分
-        getCommand("bw").setExecutor(new MainCommand());
-        getCommand("csbw").setExecutor(new MainCommand());
-        getCommand("cbw").setExecutor(new MainCommand());
-        getCommand("creeperstarbedwars").setExecutor(new MainCommand());
-        getCommand("comicalbedwars").setExecutor(new MainCommand());
-        getCommand("bedwars2025").setExecutor(new MainCommand());
-        getCommand("klpbw").setExecutor(new MainCommand());
 
-        // 检查必要的前置是否齐全
-        // 不齐全会阻止加入且提示缺失哪些必要前置(仅op提示插件详情)
-        JoinPluginCheck.check();
-        getServer().getPluginManager().registerEvents(new JoinPluginCheck(), this);
 
         // Bungeecord频道
         getServer().getMessenger().registerOutgoingPluginChannel(CreeperStarBedwars.getInstance(), "BungeeCord");
@@ -135,6 +133,42 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         // 队伍升级
         updradeConfig = new UpdradeConfig(this, "updrade.yml");
+
+        // 玩家数据
+        playerConfig = new PlayerDataConfig(this, "player_data.yml");
+        PlayerDataConfig.auto_reload();
+
+
+        // 检查是否为大厅模式，如果是后面的都不执行
+        if (getConfig().getBoolean("lobby-mode")) {
+            // 设置为大厅模式
+            ConfigData.lobby_mode = true;
+
+            // 大厅指令
+            getCommand("bw").setExecutor(new LobbyCommand());
+            getCommand("klpbw").setExecutor(new LobbyCommand());
+
+            new LobbyPDataPAPI().register();
+
+            return;
+        }
+
+
+        // 指令部分
+        getCommand("bw").setExecutor(new MainCommand());
+        getCommand("csbw").setExecutor(new MainCommand());
+        getCommand("cbw").setExecutor(new MainCommand());
+        getCommand("creeperstarbedwars").setExecutor(new MainCommand());
+        getCommand("comicalbedwars").setExecutor(new MainCommand());
+        getCommand("bedwars2025").setExecutor(new MainCommand());
+        getCommand("klpbw").setExecutor(new MainCommand());
+        /**/
+
+
+        // 检查必要的前置是否齐全
+        // 不齐全会阻止加入且提示缺失哪些必要前置(仅op提示插件详情)
+        JoinPluginCheck.check();
+        getServer().getPluginManager().registerEvents(new JoinPluginCheck(), this);
 
         // NameTag
         NameTagManager.NameTagManager_Main();
@@ -259,11 +293,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
     public void bstat() {
 
-//        int pluginId = 1234; // <-- Replace with the id of your plugin!
-//        Metrics metrics = new Metrics(this, pluginId);
-//
-//        // Optional: Add custom charts
-//        metrics.addCustomChart(new Metrics.SimplePie("chart_id", () -> "My value"));
+        int pluginId = 26477; // <-- Replace with the id of your plugin!
+        Metrics metrics = new Metrics(this, pluginId);
 
     }
 

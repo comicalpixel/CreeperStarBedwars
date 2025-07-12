@@ -50,7 +50,11 @@ class BwimResItemManager : Listener {
 
         val p = e.player
 
-        BwimResItemManager.playerMode.put(p, 0)
+        BwimResItemManager.playerMode.put(p, CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.name + ".bwim"))
+        if (BwimResItemManager.playerMode.get(p) != 0 && BwimResItemManager.playerMode.get(p) != 1) {
+            BwimResItemManager.playerMode.put(p, 0)
+        }
+
 
     }
 

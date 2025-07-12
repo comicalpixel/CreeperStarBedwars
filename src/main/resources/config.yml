@@ -15,6 +15,17 @@ bungeecord:
   motd-end: '§c游戏结束'
   restart-command: 'minecraft:stop'
 
+# 是否为大厅模式
+# 开启以后游戏配置项都可以忽略
+# 玩家PAPI变量
+# %klpbw_plays% 玩家游玩总数
+# %klpbw_wins% 玩家总胜利数
+# %klpbw_lost% 玩家总失败数
+# %klpbw_kills% 玩家总击杀数
+# %klpbw_fkills% 玩家总最终击杀数
+# %klpbw_death% 玩家死亡数
+lobby-mode: false
+
 # 数据保存设置
 # 因能力原因插件不支持数据库, 有需要使用数据库的可以自行修改插件代码
 # 多子服数据同步数据可以使用硬链接(mklink /h ; 仅限Windows, 其他系统请自行查询)
