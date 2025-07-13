@@ -79,7 +79,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // Plugin startup logic
         Instance = this;
 
-        bstat();
+        // bstat();
 
         Bukkit.getLogger().info(" ");
         Bukkit.getLogger().info("\n" +
