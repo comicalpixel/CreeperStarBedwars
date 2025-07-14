@@ -23,7 +23,7 @@ import cn.comicalpixel.creeperstarbedwars.Items.DamageHoloTitle.PlayerDamageHolo
 import cn.comicalpixel.creeperstarbedwars.Items.FastResChest.ChestResourcePlacement;
 import cn.comicalpixel.creeperstarbedwars.Listener.*;
 import cn.comicalpixel.creeperstarbedwars.Lobby.LobbyCommand;
-import cn.comicalpixel.creeperstarbedwars.Lobby.LobbyPDataPAPI;
+import cn.comicalpixel.creeperstarbedwars.Lobby.PlayerDataPAPI;
 import cn.comicalpixel.creeperstarbedwars.NameTag.NameTagManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_Listener;
@@ -32,7 +32,6 @@ import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_TrapListener;
 import cn.comicalpixel.creeperstarbedwars.Task.*;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
-import com.nametagedit.plugin.api.data.PlayerData;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -138,6 +137,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
         playerConfig = new PlayerDataConfig(this, "player_data.yml");
         PlayerDataConfig.auto_reload();
 
+        //
+        new PlayerDataPAPI().register();
 
         // 检查是否为大厅模式，如果是后面的都不执行
         if (getConfig().getBoolean("lobby-mode")) {
@@ -147,8 +148,6 @@ public final class CreeperStarBedwars extends JavaPlugin {
             // 大厅指令
             getCommand("bw").setExecutor(new LobbyCommand());
             getCommand("klpbw").setExecutor(new LobbyCommand());
-
-            new LobbyPDataPAPI().register();
 
             return;
         }

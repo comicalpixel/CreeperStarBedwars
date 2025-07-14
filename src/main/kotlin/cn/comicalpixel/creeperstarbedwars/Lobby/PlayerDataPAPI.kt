@@ -1,11 +1,10 @@
 package cn.comicalpixel.creeperstarbedwars.Lobby
 
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars
-import me.clip.placeholderapi.PlaceholderAPI
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
 import org.bukkit.OfflinePlayer
 
-class LobbyPDataPAPI : PlaceholderExpansion() {
+class PlayerDataPAPI : PlaceholderExpansion() {
 
     override fun getIdentifier(): String {
         return "klpbw";

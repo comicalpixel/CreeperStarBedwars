@@ -126,7 +126,7 @@ public class DeathMove implements Listener {
                 CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(PlayerDamage.getKiller(p).getName() + ".fkills", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(PlayerDamage.getKiller(p).getName() + ".fkills") + 1);
             }
         }
-        CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".death", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".death") + 1);
+        CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".deaths", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".deaths") + 1);
         CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
 
         // 是否开启快速重生
@@ -189,9 +189,6 @@ public class DeathMove implements Listener {
                         p.setExp(0);
                         PlayerDamage.noDamageMode(p);
                         cancel();
-                        // PlayerData
-                        CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".lost",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".lost") + 1);
-                        CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
                     }
                     resapwn--;
                 }
@@ -200,6 +197,9 @@ public class DeathMove implements Listener {
             SpecManager.setSpec(p);
             NMSTitleUntils.Title.send(p, ConfigData.language_respawn_eliminated_title, ConfigData.language_respawn_eliminated_subtitle, 2, 40, 10);
             p.sendMessage(ConfigData.language_respawn_eliminated_chat);
+            // PlayerData
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".lost",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".lost") + 1);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
         }
 
     }

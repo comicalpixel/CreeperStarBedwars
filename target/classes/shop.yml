@@ -224,6 +224,7 @@ GUI:
       - h013
       - h014
       - h015
+      - h016
 
 # 工具物品
 # 除了GUI物品描述及价格, 其余不支持自定义:(
@@ -2382,4 +2383,48 @@ Items:
           ==: ItemMeta
           meta-type: UNSPECIFIC
           display-name: '§f生成防护墙'
+  h016:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: BED
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3回春床'
+            lore:
+              - '§7物品:'
+              - '§8● 回春床'
+              - ' '
+              - '§7花费:§3 80铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: BED
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3回春床'
+            lore:
+              - '§7物品:'
+              - '§8● 回春床'
+              - ' '
+              - '§7花费:§3 80级'
+    cost:
+      type: EMERALD
+      amount: 2
+      xp_level: 200
+    name: '回春床'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: BED
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§e回春床§7(右键单击)'
 
