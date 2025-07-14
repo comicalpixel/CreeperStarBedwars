@@ -667,7 +667,7 @@ public class TeamShop_GUI implements Listener {
             }
             if (buyed_type == 4) {
                 type_message = ConfigUtils.getString(updradeConfig, "traps.language.type-AntiBreak");
-                team_Traps.get(TeamManager.player_teams.get(p)).add(5);
+                team_Traps.get(TeamManager.player_teams.get(p)).add(4);
             }
 
             for (Player game_p : GamePlayers.players) {

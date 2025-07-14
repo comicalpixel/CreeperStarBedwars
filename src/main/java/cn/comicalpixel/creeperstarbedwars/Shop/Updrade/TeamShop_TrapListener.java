@@ -94,7 +94,7 @@ public class TeamShop_TrapListener implements Listener {
                 Teams_cooldownMap.put(p, System.currentTimeMillis());
                 TeamShop_GUI.team_Traps.get(team).remove(0);
                 break;
-            case 5:
+            case 4:
                 p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 200, 2), true);
                 for (Player gameplayer : GamePlayers.players) if (TeamManager.player_teams.get(gameplayer).equalsIgnoreCase(team))
                     NMSTitleUntils.Title.send(gameplayer, ConfigUtils.getString(updradeConfig, "traps.language.title"), ConfigUtils.getString(updradeConfig, "traps.language.subtitle").replace("{type}", ConfigUtils.getString(updradeConfig, "traps.language.type-AntiBreak")), 5, 40, 10);

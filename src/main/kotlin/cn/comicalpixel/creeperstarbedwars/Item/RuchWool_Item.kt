@@ -85,7 +85,7 @@ class RuchWool_Item : Listener {
                 loc.block.data = e.block.data as Byte
                 loc.block.state.update()
 
-                loc.world.playSound(loc, Sound.STEP_WOOL, 10f, 1f)
+                p.playSound(loc, Sound.STEP_WOOL, 10f, 1f)
 
                 PlayerBlocks.player_blocks.add(loc.block)
 
