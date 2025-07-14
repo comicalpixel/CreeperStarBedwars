@@ -81,8 +81,8 @@ public class TeamShop_TrapListener implements Listener {
                 break;
             case 2:
                 for (Player gameplayer : GamePlayers.players) { if (TeamManager.player_teams.get(gameplayer).equalsIgnoreCase(team)){
-                    gameplayer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 300, 2), true);
-                    gameplayer.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 300, 2), true);
+                    gameplayer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 300, 1), true);
+                    gameplayer.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 300, 1), true);
                     NMSTitleUntils.Title.send(gameplayer, ConfigUtils.getString(updradeConfig, "traps.language.title"), ConfigUtils.getString(updradeConfig, "traps.language.subtitle").replace("{type}", ConfigUtils.getString(updradeConfig, "traps.language.type-UnAttack")), 5, 40, 10);}}
                 Teams_cooldownMap.put(p, System.currentTimeMillis());
                 TeamShop_GUI.team_Traps.get(team).remove(0);
