@@ -8,6 +8,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class ChestResourcePlacement implements Listener {
@@ -25,10 +26,14 @@ public class ChestResourcePlacement implements Listener {
 
         if (e.getClickedBlock() == null || e.getClickedBlock().getType() == Material.AIR) return;
 
+        if (e.getAction() != Action.LEFT_CLICK_BLOCK) return;
+
         if (e.getItem() == null || e.getItem().getType() == Material.AIR) return;
 
-        if (!CreeperStarBedwars.getPlugin().getConfig().getStringList("rapid-resource-placement.items-list").contains(e.getItem().getType().toString())) {
-            return;
+        if (CreeperStarBedwars.getPlugin().getConfig().getBoolean("rapid-resource-placement.whitelist")) {
+            if (!CreeperStarBedwars.getPlugin().getConfig().getStringList("rapid-resource-placement.items-whitelist").contains(e.getItem().getType().toString())) {
+                return;
+            }
         }
 
         Player p = e.getPlayer();
