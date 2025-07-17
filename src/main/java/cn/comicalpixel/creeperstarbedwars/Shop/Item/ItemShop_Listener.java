@@ -4,6 +4,7 @@ import cn.comicalpixel.creeperstarbedwars.Config.ShopConfig;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.QuickShop.QuickShop_Add_GUI;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import cn.comicalpixel.creeperstarbedwars.mongodb.type.ShopStats;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -168,8 +169,13 @@ public class ItemShop_Listener implements Listener {
                         quick_solts.put(44, 21);
 
                         if (quick_solts.containsKey(e.getRawSlot()+1)) {
-                            CreeperStarBedwars.getInstance().getShopDataConfig().set(p.getName()+".solt"+(quick_solts.get(e.getRawSlot()+1)), "none");
-                            CreeperStarBedwars.getInstance().getShopDataConfig().save();
+                            if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                                ShopStats shopStats = CreeperStarBedwars.getPlugin().getMongoDBManager().shopStats;
+                                shopStats.setSlot(p.getUniqueId(), (quick_solts.get(e.getRawSlot()+1)), "none");
+                            } else {
+                                CreeperStarBedwars.getInstance().getShopDataConfig().set(p.getName()+".solt"+(quick_solts.get(e.getRawSlot()+1)), "none");
+                                CreeperStarBedwars.getInstance().getShopDataConfig().save();
+                            }
                         }
                         ItemShop_GUI.gui_op0(p);
 

@@ -15,6 +15,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Emeraldholographic.
 cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecManager.class
 cn\comicalpixel\creeperstarbedwars\Utils\EntityTypes.class
 cn\comicalpixel\creeperstarbedwars\Task\GameTeamEliminated_Task.class
+cn\comicalpixel\creeperstarbedwars\api\Events\PlayerJoinBedwarsEvent.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$2.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Emerald.class
@@ -25,11 +26,13 @@ cn\comicalpixel\creeperstarbedwars\Arena\Teams\GUI\TeamSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond.class
 cn\comicalpixel\creeperstarbedwars\Config\QuickShopListener\QuickShop_Listener.class
 cn\comicalpixel\creeperstarbedwars\Items\WarpPowder_Item$2.class
+cn\comicalpixel\creeperstarbedwars\api\Events\PlayerRespawnEvent.class
 cn\comicalpixel\creeperstarbedwars\Shop\Updrade\TeamShop_Manager.class
 cn\comicalpixel\creeperstarbedwars\Items\BridgeEgg_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\ItemSpawn\Generators_Diamond$1.class
 cn\comicalpixel\creeperstarbedwars\CreeperStarBedwars$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_BLUE$3.class
+cn\comicalpixel\creeperstarbedwars\api\Events\BedwarsGameStartEvent.class
 cn\comicalpixel\creeperstarbedwars\Shop\Item\PlayerArmor\PlayerArmorManager.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_WinCheck_Task.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$1.class
@@ -48,6 +51,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_BL
 cn\comicalpixel\creeperstarbedwars\Utils\HolographicAPI.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GRAY$2.class
 cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class
+cn\comicalpixel\creeperstarbedwars\api\Events\BedwarsGameEndEvent.class
 cn\comicalpixel\creeperstarbedwars\Items\DreamGuard_EntityItem$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$3.class
 cn\comicalpixel\creeperstarbedwars\Task\GameLobby_Actionbar_Task.class
@@ -96,6 +100,8 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GR
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$2.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerCommand.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar$3.class
+cn\comicalpixel\creeperstarbedwars\api\BedwarsAPI.class
+cn\comicalpixel\creeperstarbedwars\api\Events\PlayerDeathEvent.class
 cn\comicalpixel\creeperstarbedwars\Items\Silverfish_EntityItem.class
 cn\comicalpixel\creeperstarbedwars\Task\WorldTimer_Task.class
 cn\comicalpixel\creeperstarbedwars\Items\BedDamagerTitle\BedDangeTitle$1.class
@@ -103,6 +109,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_PI
 cn\comicalpixel\creeperstarbedwars\Arena\SPEC\SpecListener.class
 cn\comicalpixel\creeperstarbedwars\Items\WarpPowder_Item.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GREEN$1.class
+cn\comicalpixel\creeperstarbedwars\api\Events\PlayerEliminatedEvent.class
 cn\comicalpixel\creeperstarbedwars\Utils\FireballUtil.class
 cn\comicalpixel\creeperstarbedwars\Arena\GamePlayers.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Actionbar_Task.class
@@ -122,6 +129,7 @@ cn\comicalpixel\creeperstarbedwars\Items\Compass_Item$1.class
 cn\comicalpixel\creeperstarbedwars\Task\InvisibleUtil_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_AQUA$2.class
 cn\comicalpixel\creeperstarbedwars\Items\WarpPowder_Item$1.class
+cn\comicalpixel\creeperstarbedwars\api\Events\PlayerLeaveBedwarsEvent.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_YELLOW.class
 cn\comicalpixel\creeperstarbedwars\Shop\Item\ItemShop_Manager.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$1.class
@@ -162,6 +170,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\BedInvincibilityEvent$1.clas
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item$6.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\StartGenerator.class
 cn\comicalpixel\creeperstarbedwars\Items\Safetower_Item.class
+cn\comicalpixel\creeperstarbedwars\Fix\EnderDragonTargetFix.class
 cn\comicalpixel\creeperstarbedwars\Arena\GameEvents\TimerEvent\TimerEvent_BedBreak.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerFoodLevel.class
 cn\comicalpixel\creeperstarbedwars\Items\Safewall_Item$1.class

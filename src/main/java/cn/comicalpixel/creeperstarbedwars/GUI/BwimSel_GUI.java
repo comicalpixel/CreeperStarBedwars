@@ -5,6 +5,7 @@ import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import cn.comicalpixel.creeperstarbedwars.data.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -77,6 +78,7 @@ public class BwimSel_GUI implements Listener {
             e.setCancelled(true);
 
             Player p = (Player) e.getWhoClicked();
+            GamePlayer gamePlayer = GamePlayer.Companion.get(p.getUniqueId());
             ItemStack item = e.getCurrentItem();
             ItemMeta item_meta = item.getItemMeta();
 
@@ -85,8 +87,14 @@ public class BwimSel_GUI implements Listener {
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.bwim-set");
                 // open(p, false);
                 p.sendMessage(ConfigData.bwimsel_set_i_message);
-                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".bwim", 0);
-                CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+                if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                    if (gamePlayer == null) return;
+                    gamePlayer.setBwim_resmode(false);
+                    CreeperStarBedwars.getPlugin().getPlayerStats().update(p);
+                }else {
+                    CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".bwim", 0);
+                    CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+                }
                 p.closeInventory();
             }
             if (item_meta.getDisplayName().endsWith("§8§a§e§f§3§6§a")) {
@@ -94,8 +102,14 @@ public class BwimSel_GUI implements Listener {
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.bwim-set");
                 // open(p, false);
                 p.sendMessage(ConfigData.bwimsel_set_xp_message);
-                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".bwim", 1);
-                CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+                if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                    if (gamePlayer == null) return;
+                    gamePlayer.setBwim_resmode(true);
+                    CreeperStarBedwars.getPlugin().getPlayerStats().update(p);
+                }else {
+                    CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".bwim", 1);
+                    CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+                }
                 p.closeInventory();
             }
 

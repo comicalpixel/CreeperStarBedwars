@@ -12,6 +12,7 @@ import cn.comicalpixel.creeperstarbedwars.Entity.AntiMobs;
 import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.ItemShop_NPC;
 import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.TeamShop_NPC;
 import cn.comicalpixel.creeperstarbedwars.Fix.ComboFix;
+import cn.comicalpixel.creeperstarbedwars.Fix.EnderDragonTargetFix;
 import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
@@ -32,6 +33,9 @@ import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Shop.Updrade.TeamShop_TrapListener;
 import cn.comicalpixel.creeperstarbedwars.Task.*;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import cn.comicalpixel.creeperstarbedwars.mongodb.MongoDBManager;
+import cn.comicalpixel.creeperstarbedwars.mongodb.type.PlayerStats;
+import cn.comicalpixel.creeperstarbedwars.mongodb.type.ShopStats;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -71,6 +75,24 @@ public final class CreeperStarBedwars extends JavaPlugin {
     private PlayerDataConfig playerConfig;
     public PlayerDataConfig getPlayerDataConfig() {
         return playerConfig;
+    }
+
+    private MongoDBManager mongoDBManager;
+
+    public MongoDBManager getMongoDBManager() {
+        return mongoDBManager;
+    }
+
+    private PlayerStats playerStats;
+
+    public PlayerStats getPlayerStats() {
+        return playerStats;
+    }
+
+    private ShopStats shopStats;
+
+    public ShopStats getShopStats() {
+        return shopStats;
     }
 
     @Override
@@ -126,16 +148,27 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // 加载商店配置文件
         shopConfig = new ShopConfig(this, "shop.yml");
 
-        // 玩家数据(商店-快捷购买)
-        shopDataConfig = new PlayerShopDataConfig(this, "shop_data.yml");
-        PlayerShopDataConfig.auto_reload();
-
         // 队伍升级
         updradeConfig = new UpdradeConfig(this, "updrade.yml");
 
+        boolean isMongodb = false;
+
         // 玩家数据
-        playerConfig = new PlayerDataConfig(this, "player_data.yml");
-        PlayerDataConfig.auto_reload();
+        if (getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+            mongoDBManager = new MongoDBManager();
+            mongoDBManager.connect();
+            playerStats = new PlayerStats(mongoDBManager.database);
+            shopStats = new ShopStats(mongoDBManager.database);
+            isMongodb = true;
+        } else {
+            // 如果是config模式或者是啥也不是就用配置文件储存方式
+            // (商店-快捷购买)
+            shopDataConfig = new PlayerShopDataConfig(this, "shop_data.yml");
+            PlayerShopDataConfig.auto_reload();
+            // (玩家游玩数据)
+            playerConfig = new PlayerDataConfig(this, "player_data.yml");
+            PlayerDataConfig.auto_reload();
+        }
 
         //
         new PlayerDataPAPI().register();
@@ -233,6 +266,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerCommand(), this);
 
+        getServer().getPluginManager().registerEvents(new EnderDragonTargetFix(), this);
+
         if (ConfigData.ItemsInGame_fireball_enabled) {
             getServer().getPluginManager().registerEvents(new FIREBALL_Item(), this);
         }
@@ -310,6 +345,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        if (getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+            mongoDBManager.close();
+        }
         Bukkit.getLogger().info(" ");
         Bukkit.getLogger().info("CreeperStarBedwars Plugin Disable.");
         Bukkit.getLogger().info(" ");

@@ -9,6 +9,9 @@ import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
+import cn.comicalpixel.creeperstarbedwars.api.Events.BedwarsGameStartEvent;
+import cn.comicalpixel.creeperstarbedwars.api.Events.PlayerJoinBedwarsEvent;
+import cn.comicalpixel.creeperstarbedwars.data.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -39,6 +42,7 @@ public class PlayerJoinLeave implements Listener {
         }
 
         Player p = e.getPlayer();
+        GamePlayer gamePlayer = GamePlayer.Companion.create(p.getUniqueId(),p.getName());
 
         if (GameStats.get() == 1) {
             GamePlayers.players.add(p);
@@ -199,7 +203,7 @@ public class PlayerJoinLeave implements Listener {
                     }
 
                 }
-            }.runTaskLater(CreeperStarBedwars.getPlugin(), 10);
+            }.runTaskLater(CreeperStarBedwars.getPlugin(), 7);
 
 
             /* ------ */
@@ -212,20 +216,29 @@ public class PlayerJoinLeave implements Listener {
         }
 
         e.setJoinMessage(null);
-
         // PlayerData
-        if (CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".test") != -1) {
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".test", -1);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".plays", 0);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".wins", 0);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".lost", 0);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".kills", 0);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".fkills", 0);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".deaths", 0);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".beds", 0);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".bwim", 0);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+        if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+            // mongodb
+            Player player = e.getPlayer();
+            CreeperStarBedwars.Instance.getPlayerStats().update(gamePlayer.getPlayer());
+        } else {
+            // Config or null
+            if (CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".test") != -1) {
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".test", -1);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".plays", 0);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".wins", 0);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".lost", 0);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".kills", 0);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".fkills", 0);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".deaths", 0);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".beds", 0);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".bwim", 0);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+            }
         }
+
+        // API
+//        Bukkit.getPluginManager().callEvent(new PlayerJoinBedwarsEvent(p));
 
     }
 
@@ -242,6 +255,9 @@ public class PlayerJoinLeave implements Listener {
                 allgp.sendMessage(ConfigData.language_leavegame_chat.replace("{player}", p.getName()).replace("{players}", GamePlayers.players.size()+"").replace("{maxplayers}",GameData_cfg.maxPlayers+""));
             }
         }
+
+        // API
+        Bukkit.getPluginManager().callEvent(new PlayerJoinBedwarsEvent(p));
 
     }
 

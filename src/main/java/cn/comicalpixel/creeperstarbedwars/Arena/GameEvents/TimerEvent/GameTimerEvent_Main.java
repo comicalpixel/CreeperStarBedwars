@@ -20,6 +20,8 @@ import java.util.List;
 
 public class GameTimerEvent_Main {
 
+    public static GameTimerEvent_Main instance;
+
     public static int maxTimer = 3600;
     public static int gameNowTimer = -1;
 
@@ -28,6 +30,7 @@ public class GameTimerEvent_Main {
     public static int event_timer = -1;
 
     public GameTimerEvent_Main() {
+        instance = this;
         maxTimer = ConfigUtils.getInt(CreeperStarBedwars.getPlugin().getConfig(), "timer-event.game-timer");
         gameNowTimer = maxTimer;
         new BukkitRunnable() {

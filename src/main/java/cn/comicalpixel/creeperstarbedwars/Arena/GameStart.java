@@ -20,6 +20,8 @@ import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.InvisibleUtil_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.*;
+import cn.comicalpixel.creeperstarbedwars.api.Events.BedwarsGameStartEvent;
+import cn.comicalpixel.creeperstarbedwars.data.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -50,9 +52,15 @@ public class GameStart {
 
         // 常规的玩家的操作
         for (Player p : GamePlayers.players) {
-
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".plays",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".plays") + 1);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+            // PlayerData
+            if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                GamePlayer gamePlayer = GamePlayer.Companion.get(p.getUniqueId());
+                if (gamePlayer == null) return;
+                gamePlayer.setPlays(gamePlayer.getPlays() + 1);
+            } else {
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".plays",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".plays") + 1);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+            }
 
             PlayerUtils.reset(p);
             PlayerUtils.clear_effects(p);
@@ -83,6 +91,14 @@ public class GameStart {
                 startTitle(p);
             },3);
 
+            //实现通过异步来刷新玩家数据
+            if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                Bukkit.getScheduler().runTaskTimerAsynchronously(CreeperStarBedwars.getPlugin(),()->{
+                    GamePlayer gamePlayer = GamePlayer.Companion.get(p.getUniqueId());
+                    if (gamePlayer == null) return;
+                    CreeperStarBedwars.getPlugin().getPlayerStats().update(gamePlayer.getPlayer());
+                },0L,20L);
+            }
         }
 
         // 清除无效床
@@ -135,6 +151,11 @@ public class GameStart {
 
         // 隐身Task
         new InvisibleUtil_Task();
+
+        // API
+        Bukkit.getPluginManager().callEvent(new BedwarsGameStartEvent());
+
+
 
     }
 

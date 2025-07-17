@@ -70,6 +70,9 @@ public class TeamShop_TrapListener implements Listener {
         if (TeamManager.player_teams.get(p).equalsIgnoreCase(team)) {
             return;
         }
+        if (TeamShop_GUI.team_Traps.get(team).isEmpty()) {
+            return;
+        }
         switch (TeamShop_GUI.team_Traps.get(team).get(0)) {
             case 1:
                 p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 320, 2), true);

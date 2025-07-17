@@ -11,6 +11,7 @@ import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Utils.BedBlockUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
+import cn.comicalpixel.creeperstarbedwars.data.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -193,8 +194,15 @@ public class BedBlockListener implements Listener {
         // Player beds data
         PlayerInGameData.Companion.getBeds().put(p, PlayerInGameData.Companion.getBeds().getOrDefault(p, 0) + 1);
 
-        CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".beds", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".beds"));
-        CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+        // PlayerData
+        if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+            GamePlayer gamePlayer = GamePlayer.Companion.get(p.getUniqueId());
+            if (gamePlayer == null) return;
+            gamePlayer.setBeds(gamePlayer.getBeds() + 1);
+        } else {
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".beds", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".beds"));
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+        }
 
 
         // 变量

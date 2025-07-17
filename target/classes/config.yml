@@ -27,10 +27,19 @@ bungeecord:
 lobby-mode: false
 
 # 数据保存设置
-# 因能力原因插件不支持数据库, 有需要使用数据库的可以自行修改插件代码
-# 多子服数据同步数据可以使用硬链接(mklink /h ; 仅限Windows, 其他系统请自行查询)
+# config储存模式多子服数据同步数据可以使用mklink文件硬链接
 # shop_data.yml 玩家快捷购买的数据
 # player_dat.yml 玩家部分游玩数据
+# type为储存模式, 仅支持config和mongodb两种储存方式
+data:
+  type: config
+  # 如果选择了config模式这里可忽略！
+  mongodb:
+    host: localhost
+    port: 27017
+    datavas: klpbw
+    collection: player_stats
+
 
 # 玩家NameTag的血量显示(玩家头顶上的+tab玩家列表的)
 nametag-health: true

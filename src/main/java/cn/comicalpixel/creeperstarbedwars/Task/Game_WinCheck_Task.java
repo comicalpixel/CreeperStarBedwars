@@ -7,10 +7,14 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Listener.PlayerDamage;
 import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
+import cn.comicalpixel.creeperstarbedwars.api.Events.BedwarsGameEndEvent;
+import cn.comicalpixel.creeperstarbedwars.api.Events.BedwarsGameStartEvent;
+import cn.comicalpixel.creeperstarbedwars.data.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -51,6 +55,8 @@ public class Game_WinCheck_Task {
                     },1);
                     gameend_统计(true);
                     win();
+                    // API
+                    Bukkit.getPluginManager().callEvent(new BedwarsGameEndEvent());
                 }
 
             }
@@ -75,8 +81,14 @@ public class Game_WinCheck_Task {
                 NMSTitleUntils.Title.send(p, ConfigData.language_game_end_winner_title, ConfigData.language_game_end_winner_subtitle, 5, 70, 5);
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.game-end-winner");
                 // PlayerData
-                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".wins",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".wins") + 1);
-                CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+                if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                    GamePlayer gamePlayer = GamePlayer.Companion.get(p.getUniqueId());
+                    if (gamePlayer == null) return;
+                    gamePlayer.setWins(gamePlayer.getWins() + 1);
+                } else {
+                    CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".wins",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".wins") + 1);
+                    CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+                }
             }
             for (Player p : specs) {
                 NMSTitleUntils.Title.send(p, ConfigData.language_game_end_loser_title, ConfigData.language_game_end_loser_subtitle, 5, 70, 5);

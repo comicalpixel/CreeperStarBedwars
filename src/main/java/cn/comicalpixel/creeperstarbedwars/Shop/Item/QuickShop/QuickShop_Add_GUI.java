@@ -8,6 +8,9 @@ import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Shop.Item.ItemShop_GUI;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
+import cn.comicalpixel.creeperstarbedwars.mongodb.type.ShopStats;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -30,31 +33,72 @@ public class QuickShop_Add_GUI implements Listener {
     public static PlayerShopDataConfig shopDataConfig = CreeperStarBedwars.getPlugin().getShopDataConfig();
 
     public static void pbuquan(Player p) {
-        if (shopDataConfig.contains(p.getName())) {
-            return;
+
+        if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+            // MongoDB存储方式
+            MongoDatabase database = CreeperStarBedwars.getPlugin().getMongoDBManager().database;
+            Document filter = new Document("uuid", p.getUniqueId().toString());
+            Document existing = database.getCollection("Shop_Stats").find(filter).first();
+            
+            if (existing != null) {
+                return;
+            }
+
+            // 创建新文档
+            Document document = new Document()
+                .append("uuid", p.getUniqueId().toString())
+                .append("name", p.getName())
+                .append("solt1", shopConfig.getString("GUI.gui-quickshop.def-items.solt01"))
+                .append("solt2", shopConfig.getString("GUI.gui-quickshop.def-items.solt02"))
+                .append("solt3", shopConfig.getString("GUI.gui-quickshop.def-items.solt03"))
+                .append("solt4", shopConfig.getString("GUI.gui-quickshop.def-items.solt04"))
+                .append("solt5", shopConfig.getString("GUI.gui-quickshop.def-items.solt05"))
+                .append("solt6", shopConfig.getString("GUI.gui-quickshop.def-items.solt06"))
+                .append("solt7", shopConfig.getString("GUI.gui-quickshop.def-items.solt07"))
+                .append("solt8", shopConfig.getString("GUI.gui-quickshop.def-items.solt08"))
+                .append("solt9", shopConfig.getString("GUI.gui-quickshop.def-items.solt09"))
+                .append("solt10", shopConfig.getString("GUI.gui-quickshop.def-items.solt10"))
+                .append("solt11", shopConfig.getString("GUI.gui-quickshop.def-items.solt11"))
+                .append("solt12", shopConfig.getString("GUI.gui-quickshop.def-items.solt12"))
+                .append("solt13", shopConfig.getString("GUI.gui-quickshop.def-items.solt13"))
+                .append("solt14", shopConfig.getString("GUI.gui-quickshop.def-items.solt14"))
+                .append("solt15", shopConfig.getString("GUI.gui-quickshop.def-items.solt15"))
+                .append("solt16", shopConfig.getString("GUI.gui-quickshop.def-items.solt16"))
+                .append("solt17", shopConfig.getString("GUI.gui-quickshop.def-items.solt17"))
+                .append("solt18", shopConfig.getString("GUI.gui-quickshop.def-items.solt18"))
+                .append("solt19", shopConfig.getString("GUI.gui-quickshop.def-items.solt19"))
+                .append("solt20", shopConfig.getString("GUI.gui-quickshop.def-items.solt20"))
+                .append("solt21", shopConfig.getString("GUI.gui-quickshop.def-items.solt21"));
+            
+            database.getCollection("Shop_Stats").insertOne(document);
+        } else {
+            // 原有配置文件存储方式
+            if (shopDataConfig.contains(p.getName())) {
+                return;
+            }
+            shopDataConfig.set(p.getName() + ".solt1", shopConfig.getString("GUI.gui-quickshop.def-items.solt01"));
+            shopDataConfig.set(p.getName() + ".solt2", shopConfig.getString("GUI.gui-quickshop.def-items.solt02"));
+            shopDataConfig.set(p.getName() + ".solt3", shopConfig.getString("GUI.gui-quickshop.def-items.solt03"));
+            shopDataConfig.set(p.getName() + ".solt4", shopConfig.getString("GUI.gui-quickshop.def-items.solt04"));
+            shopDataConfig.set(p.getName() + ".solt5", shopConfig.getString("GUI.gui-quickshop.def-items.solt05"));
+            shopDataConfig.set(p.getName() + ".solt6", shopConfig.getString("GUI.gui-quickshop.def-items.solt06"));
+            shopDataConfig.set(p.getName() + ".solt7", shopConfig.getString("GUI.gui-quickshop.def-items.solt07"));
+            shopDataConfig.set(p.getName() + ".solt8", shopConfig.getString("GUI.gui-quickshop.def-items.solt08"));
+            shopDataConfig.set(p.getName() + ".solt9", shopConfig.getString("GUI.gui-quickshop.def-items.solt09"));
+            shopDataConfig.set(p.getName() + ".solt10", shopConfig.getString("GUI.gui-quickshop.def-items.solt10"));
+            shopDataConfig.set(p.getName() + ".solt11", shopConfig.getString("GUI.gui-quickshop.def-items.solt11"));
+            shopDataConfig.set(p.getName() + ".solt12", shopConfig.getString("GUI.gui-quickshop.def-items.solt12"));
+            shopDataConfig.set(p.getName() + ".solt13", shopConfig.getString("GUI.gui-quickshop.def-items.solt13"));
+            shopDataConfig.set(p.getName() + ".solt14", shopConfig.getString("GUI.gui-quickshop.def-items.solt14"));
+            shopDataConfig.set(p.getName() + ".solt15", shopConfig.getString("GUI.gui-quickshop.def-items.solt15"));
+            shopDataConfig.set(p.getName() + ".solt16", shopConfig.getString("GUI.gui-quickshop.def-items.solt16"));
+            shopDataConfig.set(p.getName() + ".solt17", shopConfig.getString("GUI.gui-quickshop.def-items.solt17"));
+            shopDataConfig.set(p.getName() + ".solt18", shopConfig.getString("GUI.gui-quickshop.def-items.solt18"));
+            shopDataConfig.set(p.getName() + ".solt19", shopConfig.getString("GUI.gui-quickshop.def-items.solt19"));
+            shopDataConfig.set(p.getName() + ".solt20", shopConfig.getString("GUI.gui-quickshop.def-items.solt20"));
+            shopDataConfig.set(p.getName() + ".solt21", shopConfig.getString("GUI.gui-quickshop.def-items.solt21"));
         }
 
-        shopDataConfig.set(p.getName() + ".solt1", shopConfig.getString("GUI.gui-quickshop.def-items.solt01"));
-        shopDataConfig.set(p.getName() + ".solt2", shopConfig.getString("GUI.gui-quickshop.def-items.solt02"));
-        shopDataConfig.set(p.getName() + ".solt3", shopConfig.getString("GUI.gui-quickshop.def-items.solt03"));
-        shopDataConfig.set(p.getName() + ".solt4", shopConfig.getString("GUI.gui-quickshop.def-items.solt04"));
-        shopDataConfig.set(p.getName() + ".solt5", shopConfig.getString("GUI.gui-quickshop.def-items.solt05"));
-        shopDataConfig.set(p.getName() + ".solt6", shopConfig.getString("GUI.gui-quickshop.def-items.solt06"));
-        shopDataConfig.set(p.getName() + ".solt7", shopConfig.getString("GUI.gui-quickshop.def-items.solt07"));
-        shopDataConfig.set(p.getName() + ".solt8", shopConfig.getString("GUI.gui-quickshop.def-items.solt08"));
-        shopDataConfig.set(p.getName() + ".solt9", shopConfig.getString("GUI.gui-quickshop.def-items.solt09"));
-        shopDataConfig.set(p.getName() + ".solt10", shopConfig.getString("GUI.gui-quickshop.def-items.solt10"));
-        shopDataConfig.set(p.getName() + ".solt11", shopConfig.getString("GUI.gui-quickshop.def-items.solt11"));
-        shopDataConfig.set(p.getName() + ".solt12", shopConfig.getString("GUI.gui-quickshop.def-items.solt12"));
-        shopDataConfig.set(p.getName() + ".solt13", shopConfig.getString("GUI.gui-quickshop.def-items.solt13"));
-        shopDataConfig.set(p.getName() + ".solt14", shopConfig.getString("GUI.gui-quickshop.def-items.solt14"));
-        shopDataConfig.set(p.getName() + ".solt15", shopConfig.getString("GUI.gui-quickshop.def-items.solt15"));
-        shopDataConfig.set(p.getName() + ".solt16", shopConfig.getString("GUI.gui-quickshop.def-items.solt16"));
-        shopDataConfig.set(p.getName() + ".solt17", shopConfig.getString("GUI.gui-quickshop.def-items.solt17"));
-        shopDataConfig.set(p.getName() + ".solt18", shopConfig.getString("GUI.gui-quickshop.def-items.solt18"));
-        shopDataConfig.set(p.getName() + ".solt19", shopConfig.getString("GUI.gui-quickshop.def-items.solt19"));
-        shopDataConfig.set(p.getName() + ".solt20", shopConfig.getString("GUI.gui-quickshop.def-items.solt20"));
-        shopDataConfig.set(p.getName() + ".solt21", shopConfig.getString("GUI.gui-quickshop.def-items.solt21"));
 
         shopDataConfig.save();
 
@@ -69,8 +113,17 @@ public class QuickShop_Add_GUI implements Listener {
         gui.setItem(4, add_item);
 
         List<String> items = new ArrayList<>();
-        for (int i = 1; i <= 21; i++) {
-            items.add(CreeperStarBedwars.getPlugin().getShopDataConfig().getString(p.getName() + ".solt"+i));
+        if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+            // MongoDB读取方式
+            ShopStats shopStats = CreeperStarBedwars.getPlugin().getMongoDBManager().shopStats;
+            for (int i = 1; i <= 21; i++) {
+                items.add(shopStats.getSlot(p.getUniqueId(), i));
+            }
+        } else {
+            // 原有配置文件读取方式
+            for (int i = 1; i <= 21; i++) {
+                items.add(CreeperStarBedwars.getPlugin().getShopDataConfig().getString(p.getName() + ".solt"+i));
+            }
         }
 
         for (int i = 0; i < items.size(); i++) {
@@ -329,9 +382,16 @@ public class QuickShop_Add_GUI implements Listener {
 
             }
             Player p = (Player) e.getWhoClicked();
-            CreeperStarBedwars.getInstance().getShopDataConfig().set(p.getName()+".solt"+(solts.get(e.getRawSlot()+1)), add_item);
+
+            if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                ShopStats shopStats = CreeperStarBedwars.getPlugin().getMongoDBManager().shopStats;
+                shopStats.setSlot(p.getUniqueId(), (solts.get(e.getRawSlot()+1)), add_item);
+            } else {
+                CreeperStarBedwars.getInstance().getShopDataConfig().set(p.getName()+".solt"+(solts.get(e.getRawSlot()+1)), add_item);
+                CreeperStarBedwars.getInstance().getShopDataConfig().save();
+            }
+
 //            p.sendMessage("solt" + solts.get(e.getRawSlot()+1) + ": " + add_item);
-            CreeperStarBedwars.getInstance().getShopDataConfig().save();
             Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
                 ItemShop_GUI.gui_op0(p);
             },1);

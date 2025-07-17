@@ -13,6 +13,10 @@ import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
+import cn.comicalpixel.creeperstarbedwars.api.Events.BedwarsGameStartEvent;
+import cn.comicalpixel.creeperstarbedwars.api.Events.PlayerEliminatedEvent;
+import cn.comicalpixel.creeperstarbedwars.api.Events.PlayerRespawnEvent;
+import cn.comicalpixel.creeperstarbedwars.data.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
@@ -23,10 +27,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 public class DeathMove implements Listener {
 
@@ -121,13 +122,35 @@ public class DeathMove implements Listener {
 
 
         if (PlayerDamage.Playerkillers.get(p) != null) {
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(PlayerDamage.getKiller(p).getName() + ".kills", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(PlayerDamage.getKiller(p).getName() + ".kills") + 1);
+            if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                if (PlayerDamage.getKiller(p) == null) return;
+                GamePlayer gamePlayer = GamePlayer.Companion.get(Objects.requireNonNull(PlayerDamage.getKiller(p)).getUniqueId());
+                if (gamePlayer == null) return;
+                gamePlayer.setKills(gamePlayer.getKills() + 1);
+            } else {
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(Objects.requireNonNull(PlayerDamage.getKiller(p)).getName() + ".kills", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(PlayerDamage.getKiller(p).getName() + ".kills") + 1);
+            }
+
             if (!TeamManager.getbed(TeamManager.player_teams.get(p))) {
-                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(PlayerDamage.getKiller(p).getName() + ".fkills", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(PlayerDamage.getKiller(p).getName() + ".fkills") + 1);
+                if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                    if (PlayerDamage.getKiller(p) == null) return;
+                    GamePlayer gamePlayer = GamePlayer.Companion.get(Objects.requireNonNull(PlayerDamage.getKiller(p)).getUniqueId());
+                    if (gamePlayer == null) return;
+                    gamePlayer.setFinal_kills(gamePlayer.getFinal_kills() + 1);
+                } else {
+                    CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(Objects.requireNonNull(PlayerDamage.getKiller(p)).getName() + ".fkills", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(PlayerDamage.getKiller(p).getName() + ".fkills") + 1);
+                }
             }
         }
-        CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".deaths", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".deaths") + 1);
-        CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+        if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+            GamePlayer gamePlayer = GamePlayer.Companion.get(p.getUniqueId());
+            if (gamePlayer == null) return;
+            gamePlayer.setDeaths(gamePlayer.getDeaths() + 1);
+        } else {
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".deaths", CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".deaths") + 1);
+            CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+        }
+
 
         // 是否开启快速重生
         if (ConfigData.fast_respawn_enabled) {
@@ -170,6 +193,8 @@ public class DeathMove implements Listener {
 
         if (!TeamManager.getbed(TeamManager.player_teams.get(p))) {
             p.setGameMode(GameMode.SPECTATOR);
+            // API
+//            Bukkit.getPluginManager().callEvent(new cn.comicalpixel.creeperstarbedwars.api.Events.PlayerDeathEvent(p));
             new BukkitRunnable() {
                 int resapwn = 5;
                 @Override
@@ -189,6 +214,8 @@ public class DeathMove implements Listener {
                         p.setExp(0);
                         PlayerDamage.noDamageMode(p);
                         cancel();
+                        // API
+                        Bukkit.getPluginManager().callEvent(new PlayerRespawnEvent(p));
                     }
                     resapwn--;
                 }
@@ -198,8 +225,16 @@ public class DeathMove implements Listener {
             NMSTitleUntils.Title.send(p, ConfigData.language_respawn_eliminated_title, ConfigData.language_respawn_eliminated_subtitle, 2, 40, 10);
             p.sendMessage(ConfigData.language_respawn_eliminated_chat);
             // PlayerData
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".lost",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".lost") + 1);
-            CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+            if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
+                GamePlayer gamePlayer = GamePlayer.Companion.get(p.getUniqueId());
+                if (gamePlayer == null) return;
+                gamePlayer.setLoser(gamePlayer.getLoser() + 1);
+            } else {
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".lost",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".lost") + 1);
+                CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
+            }
+            // API
+            Bukkit.getPluginManager().callEvent(new PlayerEliminatedEvent(p));
         }
 
     }

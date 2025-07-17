@@ -5,7 +5,8 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils
-import org.bukkit.ChatColor
+import cn.comicalpixel.creeperstarbedwars.data.GamePlayer
+import cn.comicalpixel.creeperstarbedwars.data.GamePlayer.Companion.get
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -24,14 +25,15 @@ class BwimResItemManager : Listener {
 
             var s = " "
 
-            if (playerMode.get(p) == 0) {
+            if (playerMode[p] == 0) {
                 s = CreeperStarBedwars.getPlugin().config.getString("select-bwim.name-i")
             }
-            if (playerMode.get(p) == 1) {
+            if (playerMode[p] == 1) {
                 s = CreeperStarBedwars.getPlugin().config.getString("select-bwim.name-xp")
             }
 
             return s
+
         }
 
     }
@@ -50,9 +52,31 @@ class BwimResItemManager : Listener {
 
         val p = e.player
 
-        BwimResItemManager.playerMode.put(p, CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.name + ".bwim"))
-        if (BwimResItemManager.playerMode.get(p) != 0 && BwimResItemManager.playerMode.get(p) != 1) {
-            BwimResItemManager.playerMode.put(p, 0)
+        if (ConfigData.bwimsel_enabled) {
+
+            if (CreeperStarBedwars.getPlugin().config.getString("data.type").equals("mongodb", ignoreCase = true)) {
+                val gamePlayer = get(p.uniqueId) ?: GamePlayer.create(p.uniqueId,p.name)
+                CreeperStarBedwars.getPlugin().getPlayerStats().update(p);
+                if (gamePlayer.bwim_resmode) {
+                    playerMode[p] = 1;
+                }
+                if (!gamePlayer.bwim_resmode) {
+                    playerMode[p] = 0;
+                }
+
+            } else {
+                playerMode[p] = CreeperStarBedwars.getPlugin().playerDataConfig.getInt(p.name + ".bwim")
+            }
+
+        } else {
+            playerMode[p] = ConfigData.bwimsel_default;
+        }
+
+//        BwimResItemManager.playerMode.put(p, CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.name + ".bwim"))
+
+        // 如果存在错误的模式
+        if (playerMode[p] != 0 && playerMode[p] != 1) {
+            playerMode[p] = 0
         }
 
 
@@ -72,7 +96,7 @@ class BwimResItemManager : Listener {
         if (e.isCancelled) return
 
         val p = e.player
-
+        val gamePlayer = get(p.uniqueId) ?: return
 
         /**/
 
@@ -89,7 +113,7 @@ class BwimResItemManager : Listener {
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().config, "sound.resitem-pickup-bwim0")
 
             }
-            else if (playerMode[p] == 1) {
+            else if (playerMode[p] == 1 || gamePlayer.bwim_resmode) {
 
                 e.isCancelled = true
                 var xp = 0
@@ -122,7 +146,7 @@ class BwimResItemManager : Listener {
             }
 
         } else {
-            if (ConfigData.bwimsel_default == 0) {
+            if (ConfigData.bwimsel_default == 0 || !gamePlayer.bwim_resmode) {
 
                 e.isCancelled = true
                 e.item.remove()
