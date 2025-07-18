@@ -56,4 +56,16 @@ class GamePlayer(val uuid: UUID,val name: String) {
     fun getPlayer(): Player {
         return Bukkit.getPlayer(uuid)
     }
+
+    fun refreshFromDatabase() {
+        val stats = CreeperStarBedwars.getInstance().playerStats.getPlayerStats(this.uuid)
+        this.plays = stats?.getInteger("plays") ?: 0
+        this.wins = stats?.getInteger("wins") ?: 0
+        this.loser = stats?.getInteger("loser") ?: 0
+        this.kills = stats?.getInteger("kills") ?: 0
+        this.final_kills = stats?.getInteger("final_kills") ?: 0
+        this.deaths = stats?.getInteger("deaths") ?: 0
+        this.beds = stats?.getInteger("beds") ?: 0
+    }
+
 }

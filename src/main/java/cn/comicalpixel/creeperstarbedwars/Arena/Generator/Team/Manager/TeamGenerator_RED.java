@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.Vector;
 
 import java.util.List;
 import java.util.Random;
@@ -76,6 +77,7 @@ public class TeamGenerator_RED {
                         Item item = resourceLocation.getWorld().dropItem(resourceLocation, itemStack);
                         item.setVelocity(resourceLocation.getWorld().getBlockAt(resourceLocation).getLocation().toVector().multiply(0)); // 设置速度为0，防止物品飞走
                         item.setPickupDelay(1);
+                        item.setVelocity(new Vector(0, 0.3, 0));
                     }
 
                     i = interval;
@@ -114,6 +116,7 @@ public class TeamGenerator_RED {
                         Item item = resourceLocation.getWorld().dropItem(resourceLocation, itemStack);
                         item.setVelocity(resourceLocation.getWorld().getBlockAt(resourceLocation).getLocation().toVector().multiply(0));
                         item.setPickupDelay(1);
+                        item.setVelocity(new Vector(0, 0.3, 0));
                     }
 
                     i = interval;
@@ -146,6 +149,7 @@ public class TeamGenerator_RED {
                         Item item = resourceLocation.getWorld().dropItem(resourceLocation, itemStack);
                         item.setVelocity(resourceLocation.getWorld().getBlockAt(resourceLocation).getLocation().toVector().multiply(0));
                         item.setPickupDelay(1);
+                        item.setVelocity(new Vector(0, 0.5, 0));
                     }
 
                     i = interval;

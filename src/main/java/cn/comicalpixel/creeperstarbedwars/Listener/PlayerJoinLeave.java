@@ -42,7 +42,6 @@ public class PlayerJoinLeave implements Listener {
         }
 
         Player p = e.getPlayer();
-        GamePlayer gamePlayer = GamePlayer.Companion.create(p.getUniqueId(),p.getName());
 
         if (GameStats.get() == 1) {
             GamePlayers.players.add(p);
@@ -219,6 +218,7 @@ public class PlayerJoinLeave implements Listener {
         // PlayerData
         if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
             // mongodb
+            GamePlayer gamePlayer = GamePlayer.Companion.create(p.getUniqueId(),p.getName());
             Player player = e.getPlayer();
             CreeperStarBedwars.Instance.getPlayerStats().update(gamePlayer.getPlayer());
         } else {

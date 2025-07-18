@@ -151,7 +151,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // 队伍升级
         updradeConfig = new UpdradeConfig(this, "updrade.yml");
 
-        boolean isMongodb = false;
+
 
         // 玩家数据
         if (getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
@@ -159,7 +159,6 @@ public final class CreeperStarBedwars extends JavaPlugin {
             mongoDBManager.connect();
             playerStats = new PlayerStats(mongoDBManager.database);
             shopStats = new ShopStats(mongoDBManager.database);
-            isMongodb = true;
         } else {
             // 如果是config模式或者是啥也不是就用配置文件储存方式
             // (商店-快捷购买)

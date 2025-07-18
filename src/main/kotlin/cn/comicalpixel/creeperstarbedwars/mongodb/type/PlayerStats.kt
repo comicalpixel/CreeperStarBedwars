@@ -120,4 +120,10 @@ class PlayerStats(private val mongoDatabase: MongoDatabase) {
         return result.getInteger(name, 0)
     }
 
+    fun getPlayerStats(uuid: UUID): Document? {
+        return mongoDatabase.getCollection("Player_Stats")
+            .find(Document("uuid", uuid.toString()))
+            .first()
+    }
+
 }

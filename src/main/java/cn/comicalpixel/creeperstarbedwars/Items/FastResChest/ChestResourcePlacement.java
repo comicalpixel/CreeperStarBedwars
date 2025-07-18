@@ -1,8 +1,12 @@
 package cn.comicalpixel.creeperstarbedwars.Items.FastResChest;
 
+import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -38,11 +42,16 @@ public class ChestResourcePlacement implements Listener {
 
         Player p = e.getPlayer();
 
-
+        if (e.getItem().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Fixed set items") ||
+            e.getItem().getType().toString().endsWith("_PICKAXE") || e.getItem().getType().toString().endsWith("_AXE") ||
+            e.getItem().getType() == Material.SHEARS) {
+            return;
+        }
 
         /**/
 
-        if (e.getClickedBlock().getType() == Material.CHEST && CreeperStarBedwars.getPlugin().getConfig().getBoolean("rapid-resource-placement.chest")) {
+        if (e.getClickedBlock().getType() == Material.CHEST && CreeperStarBedwars.getPlugin().getConfig().getBoolean("rapid-resource-placement.chest")
+        && e.getClickedBlock().getLocation().distance(TeamSpawn.getLocation(p, TeamManager.player_teams.get(p))) <= GameData_cfg.teamChest_radius) {
             org.bukkit.block.ContainerBlock container = (org.bukkit.block.ContainerBlock) e.getClickedBlock().getState();
             org.bukkit.inventory.Inventory inventory = container.getInventory();
 

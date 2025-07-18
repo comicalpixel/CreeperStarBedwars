@@ -96,7 +96,7 @@ class BwimResItemManager : Listener {
         if (e.isCancelled) return
 
         val p = e.player
-        val gamePlayer = get(p.uniqueId) ?: return
+//        val gamePlayer = get(p.uniqueId) ?: return
 
         /**/
 
@@ -113,7 +113,7 @@ class BwimResItemManager : Listener {
                 ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().config, "sound.resitem-pickup-bwim0")
 
             }
-            else if (playerMode[p] == 1 || gamePlayer.bwim_resmode) {
+            else if (playerMode[p] == 1) { // || gamePlayer.bwim_resmode
 
                 e.isCancelled = true
                 var xp = 0
@@ -146,7 +146,7 @@ class BwimResItemManager : Listener {
             }
 
         } else {
-            if (ConfigData.bwimsel_default == 0 || !gamePlayer.bwim_resmode) {
+            if (ConfigData.bwimsel_default == 0) { // || !gamePlayer.bwim_resmode
 
                 e.isCancelled = true
                 e.item.remove()

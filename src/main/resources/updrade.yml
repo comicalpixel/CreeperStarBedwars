@@ -728,7 +728,7 @@ GUI:
               - "觉得真的没啥必要购买"
               - ""
               - ""
-              - " §f§l花费: §3§l1钻石"
+              - " §f§l花费: §3§l5钻石"
               - ""
       xp:
         - ==: org.bukkit.inventory.ItemStack
@@ -744,7 +744,7 @@ GUI:
               - "觉得真的没啥必要购买"
               - ""
               - ""
-              - " §f§l花费: §3§l100级"
+              - " §f§l花费: §3§l350级"
               - ""
   trap-icon:
     ThisIsATrap:

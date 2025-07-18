@@ -46,18 +46,18 @@ public class JoinPluginCheck implements Listener {
 
                 String s = "";
 
-                s = s + ChatColor.RED + "该房间状态异常! 缺少了必要的前置: \n \n";
+                s = s + ChatColor.RED + "The room is in an abnormal state! Necessary pre-plugins are missing: \n \n";
                 for (String pls : plugins) {
                     s = s + pls + "\n";
                 }
-                s = s + ChatColor.RED + "\n 提示: 多世界插件必须使用My_Worlds且不可存在其他多世界插件";
+                s = s + ChatColor.RED + "\n Tip: Multi-world plug-ins must use My_Worlds and no other multi-world plug-ins exist";
 
                 p.sendMessage(s);
                 p.kickPlayer(s);
 
             } else {
-                p.sendMessage(ChatColor.RED + "该房间状态异常, 请立即报告给管理员! 原因: 缺少必要前置");
-                p.kickPlayer(ChatColor.RED + "该房间状态异常, 已将你送回大厅");
+                p.sendMessage(ChatColor.RED + "The status of this room is abnormal, please report it to the administrator immediately! Cause: Lack of necessary preemption");
+                p.kickPlayer(ChatColor.RED + "The room is in an abnormal state and has returned you to the lobby");
             }
         }
 
