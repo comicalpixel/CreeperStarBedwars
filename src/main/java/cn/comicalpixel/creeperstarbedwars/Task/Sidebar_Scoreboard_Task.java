@@ -10,6 +10,7 @@ import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -140,6 +141,18 @@ public class Sidebar_Scoreboard_Task {
             Score score = objective.getScore(s);
             score.setScore(message_list.size() - slot);
             slot++;
+        }
+
+        if (ConfigData.nametag_health_enabled) {
+            Objective hp = scoreboard.registerNewObjective("NAME_HEALTH", "health");
+            hp.setDisplaySlot(DisplaySlot.BELOW_NAME);
+            hp.setDisplayName(ChatColor.RED + "❤");
+            for (Player sb_health_allp : Bukkit.getOnlinePlayers()) {
+                // 设置玩家的计分板
+                p.setScoreboard(scoreboard);
+                // 更新玩家血量显示
+                hp.getScore(sb_health_allp).setScore((int) sb_health_allp.getHealth());
+            }
         }
 
         p.setScoreboard(scoreboard);
