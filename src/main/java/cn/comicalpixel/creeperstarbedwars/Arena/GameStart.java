@@ -107,9 +107,6 @@ public class GameStart {
         // 床无敌
         BedInvincibilityEvent.start();
 
-        // 启动资源点
-        new StartGenerator();
-
         // 启动游戏事件
         new GameTimerEvent_Main();
 
@@ -153,9 +150,10 @@ public class GameStart {
         new InvisibleUtil_Task();
 
         // API
-        Bukkit.getPluginManager().callEvent(new BedwarsGameStartEvent());
+        // Bukkit.getPluginManager().callEvent(new BedwarsGameStartEvent());
 
-
+        // 启动资源点
+        new StartGenerator();
 
     }
 

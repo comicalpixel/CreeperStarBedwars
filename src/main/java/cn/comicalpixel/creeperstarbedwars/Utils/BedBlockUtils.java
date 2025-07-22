@@ -138,28 +138,28 @@ public class BedBlockUtils {
 
     public static void clear_bed_GameStart() {
 
-        if (!TeamManager.teams.contains("RED") || TeamManager.getTeamPlayerSize("RED") <= 0) {
+        if (TeamManager.teams.contains("RED") && TeamManager.getTeamPlayerSize("RED") <= 0) {
             BedBlockUtils.clear(GameData_cfg.team_red_bed_f, GameData_cfg.team_red_bed_b);
         }
-        if (!TeamManager.teams.contains("BLUE") || TeamManager.getTeamPlayerSize("BLUE") <= 0) {
+        if (TeamManager.teams.contains("BLUE") && TeamManager.getTeamPlayerSize("BLUE") <= 0) {
             BedBlockUtils.clear(GameData_cfg.team_blue_bed_f, GameData_cfg.team_blue_bed_b);
         }
-        if (!TeamManager.teams.contains("GREEN") || TeamManager.getTeamPlayerSize("GREEN") <= 0) {
+        if (TeamManager.teams.contains("GREEN") && TeamManager.getTeamPlayerSize("GREEN") <= 0) {
             BedBlockUtils.clear(GameData_cfg.team_green_bed_f, GameData_cfg.team_green_bed_b);
         }
-        if (!TeamManager.teams.contains("YELLOW") || TeamManager.getTeamPlayerSize("YELLOW") <= 0) {
+        if (TeamManager.teams.contains("YELLOW") && TeamManager.getTeamPlayerSize("YELLOW") <= 0) {
             BedBlockUtils.clear(GameData_cfg.team_yellow_bed_f, GameData_cfg.team_yellow_bed_b);
         }
-        if (!TeamManager.teams.contains("PINK") || TeamManager.getTeamPlayerSize("PINK") <= 0) {
+        if (TeamManager.teams.contains("PINK") && TeamManager.getTeamPlayerSize("PINK") <= 0) {
             BedBlockUtils.clear(GameData_cfg.team_pink_bed_f, GameData_cfg.team_pink_bed_b);
         }
-        if (!TeamManager.teams.contains("AQUA") || TeamManager.getTeamPlayerSize("AQUA") <= 0) {
+        if (TeamManager.teams.contains("AQUA") && TeamManager.getTeamPlayerSize("AQUA") <= 0) {
             BedBlockUtils.clear(GameData_cfg.team_aqua_bed_f, GameData_cfg.team_aqua_bed_b);
         }
-        if (!TeamManager.teams.contains("GRAY") || TeamManager.getTeamPlayerSize("GRAY") <= 0) {
+        if (TeamManager.teams.contains("GRAY") && TeamManager.getTeamPlayerSize("GRAY") <= 0) {
             BedBlockUtils.clear(GameData_cfg.team_gray_bed_f, GameData_cfg.team_gray_bed_b);
         }
-        if (!TeamManager.teams.contains("WHITE") || TeamManager.getTeamPlayerSize("WHITE") <= 0) {
+        if (TeamManager.teams.contains("WHITE") && TeamManager.getTeamPlayerSize("WHITE") <= 0) {
             BedBlockUtils.clear(GameData_cfg.team_white_bed_f, GameData_cfg.team_white_bed_b);
         }
 

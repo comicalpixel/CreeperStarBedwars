@@ -8,6 +8,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Team.Holo.TeamGenerato
 import cn.comicalpixel.creeperstarbedwars.Arena.Generator.Team.Manager.*;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
+import org.bukkit.Bukkit;
 
 public class StartGenerator {
 
@@ -17,8 +18,6 @@ public class StartGenerator {
         Generators_Emerald.set(ConfigData.generator_game_emerald, 1);
         Generators_Diamond.start();
         Generators_Emerald.start();
-        new Diamondholographic();
-        new Emeraldholographic();
 
         if (TeamManager.teams.contains("RED")) {
             TeamGenerator_RED.set(ConfigData.generator_team_l0_iron, ConfigData.generator_team_l0_gold, ConfigData.generator_team_l0_emerald);
@@ -45,8 +44,14 @@ public class StartGenerator {
             TeamGenerator_GRAY.set(ConfigData.generator_team_l0_iron, ConfigData.generator_team_l0_gold, ConfigData.generator_team_l0_emerald);
         }
 
-        new TeamGenerators_holographic();
+        if(Bukkit.getPluginManager().getPlugin("ProtocolLib") == null) {
 
+            new Diamondholographic();
+            new Emeraldholographic();
+
+            new TeamGenerators_holographic();
+
+        }
 
     }
 

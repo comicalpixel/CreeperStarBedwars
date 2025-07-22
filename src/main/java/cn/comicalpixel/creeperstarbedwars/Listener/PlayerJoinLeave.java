@@ -257,7 +257,7 @@ public class PlayerJoinLeave implements Listener {
         }
 
         // API
-        Bukkit.getPluginManager().callEvent(new PlayerJoinBedwarsEvent(p));
+        // Bukkit.getPluginManager().callEvent(new PlayerJoinBedwarsEvent(p));
 
     }
 

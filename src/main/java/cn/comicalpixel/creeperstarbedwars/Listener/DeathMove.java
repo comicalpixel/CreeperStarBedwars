@@ -215,7 +215,7 @@ public class DeathMove implements Listener {
                         PlayerDamage.noDamageMode(p);
                         cancel();
                         // API
-                        Bukkit.getPluginManager().callEvent(new PlayerRespawnEvent(p));
+                        // Bukkit.getPluginManager().callEvent(new PlayerRespawnEvent(p));
                     }
                     resapwn--;
                 }
@@ -234,7 +234,7 @@ public class DeathMove implements Listener {
                 CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
             }
             // API
-            Bukkit.getPluginManager().callEvent(new PlayerEliminatedEvent(p));
+            // Bukkit.getPluginManager().callEvent(new PlayerEliminatedEvent(p));
         }
 
     }

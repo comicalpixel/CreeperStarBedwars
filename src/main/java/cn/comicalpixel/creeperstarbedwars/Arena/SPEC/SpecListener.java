@@ -106,15 +106,21 @@ public class SpecListener implements Listener {
     }
 
 
-    @EventHandler(priority = EventPriority.HIGH)
+    @EventHandler
     public void SpecItemClick(PlayerInteractEvent e) {
-        if (!GamePlayers.specs.contains(e.getPlayer())) return;
-        e.setCancelled(true);
-        if (e.getItem().getItemMeta().getDisplayName().endsWith("§3§c§e§c§e§1")) {
-            SpecManager.open_tplist_gui(e.getPlayer());
-        }
-        if (e.getItem().getItemMeta().getDisplayName().endsWith("§3§c§e§c§e§3")) {
-            PlayerUtils.leave_game(e.getPlayer());
+
+        try {
+            if (GamePlayers.specs.isEmpty()) return;
+            if (!GamePlayers.specs.contains(e.getPlayer())) return;
+            e.setCancelled(true);
+            if (e.getItem().getItemMeta().getDisplayName().endsWith("§3§c§e§c§e§1")) {
+                SpecManager.open_tplist_gui(e.getPlayer());
+            }
+            if (e.getItem().getItemMeta().getDisplayName().endsWith("§3§c§e§c§e§3")) {
+                PlayerUtils.leave_game(e.getPlayer());
+            }
+        } catch (Exception ex) {
+
         }
 
     }

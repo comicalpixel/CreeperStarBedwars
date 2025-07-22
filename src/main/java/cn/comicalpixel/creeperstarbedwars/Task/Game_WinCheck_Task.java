@@ -56,7 +56,7 @@ public class Game_WinCheck_Task {
                     gameend_统计(true);
                     win();
                     // API
-                    Bukkit.getPluginManager().callEvent(new BedwarsGameEndEvent());
+                    // Bukkit.getPluginManager().callEvent(new BedwarsGameEndEvent());
                 }
 
             }
