@@ -44,14 +44,10 @@ public class StartGenerator {
             TeamGenerator_GRAY.set(ConfigData.generator_team_l0_iron, ConfigData.generator_team_l0_gold, ConfigData.generator_team_l0_emerald);
         }
 
-        if(Bukkit.getPluginManager().getPlugin("ProtocolLib") == null) {
+        new Diamondholographic();
+        new Emeraldholographic();
 
-            new Diamondholographic();
-            new Emeraldholographic();
-
-            new TeamGenerators_holographic();
-
-        }
+        new TeamGenerators_holographic();
 
     }
 

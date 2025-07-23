@@ -3,6 +3,7 @@ package cn.comicalpixel.creeperstarbedwars.Listener;
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import org.bukkit.Bukkit;
@@ -93,6 +94,10 @@ public class PlayerDamage implements Listener {
         if (e.getEntity() instanceof Player && e.getDamager() instanceof Player && e.getEntity().getLastDamageCause() != null &&  e.getEntity().getLastDamageCause().getCause() != EntityDamageEvent.DamageCause.ENTITY_EXPLOSION) {
             Player p = (Player) e.getEntity();
             Player killer = (Player) e.getDamager();
+            if (TeamManager.player_teams.get(p).equalsIgnoreCase(TeamManager.player_teams.get(killer))) {
+                e.setCancelled(true);
+                return;
+            }
             if (!GamePlayers.players.contains(killer)) {return;}
             Playerkillers.put(p, killer);
             // 收到伤害就移除隐身效果
