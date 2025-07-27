@@ -15,6 +15,7 @@ import cn.comicalpixel.creeperstarbedwars.Fix.ComboFix;
 import cn.comicalpixel.creeperstarbedwars.Fix.EnderDragonTargetFix;
 import cn.comicalpixel.creeperstarbedwars.Fix.LadderFix;
 import cn.comicalpixel.creeperstarbedwars.GUI.BwimSel_GUI;
+import cn.comicalpixel.creeperstarbedwars.GameSetup.GUI.*;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupCommand;
 import cn.comicalpixel.creeperstarbedwars.GameSetup.SetupListener;
 import cn.comicalpixel.creeperstarbedwars.Item.RuchWool_Item;
@@ -123,14 +124,11 @@ public final class CreeperStarBedwars extends JavaPlugin {
             Bukkit.getLogger().warning("CreeperStarBedwars does not support folia, please use version 1.8.8 of CraftBukkit or Spigot or Paper server kernel!");
             this.getPluginLoader().disablePlugin(this);
         }
+        // 检查是否为Linux 如果是就会有警告
+        if (!System.getProperty("os.name").toLowerCase().contains("linux")) {
+            Bukkit.getLogger().warning("[CreeperStarBedwars] Non-Linux environments detected, some features may be limited or abnormally unavailable! ");
+        }
 
-//        Bukkit.getLogger().info(" ");
-//        Bukkit.getLogger().info("CreeperStarBedwars Plugin.");
-//        Bukkit.getLogger().info("Author: Xiaol789zxc");
-//        Bukkit.getLogger().info("Version: " + this.getDescription().getVersion());
-//        Bukkit.getLogger().info("");
-//        Bukkit.getLogger().info("Minecraft Version: " + Bukkit.getVersion());
-//        Bukkit.getLogger().info("");
 
 
 
@@ -169,8 +167,10 @@ public final class CreeperStarBedwars extends JavaPlugin {
             PlayerDataConfig.auto_reload();
         }
 
-        //
-        new PlayerDataPAPI().register();
+        // PAPI
+        if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            new PlayerDataPAPI().register();
+        }
 
         // 检查是否为大厅模式，如果是后面的都不执行
         if (getConfig().getBoolean("lobby-mode")) {
@@ -202,7 +202,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinPluginCheck(), this);
 
         // NameTag
-        NameTagManager.NameTagManager_Main();
+        if (getServer().getPluginManager().isPluginEnabled("NameTagEdit")) {
+            NameTagManager.NameTagManager_Main();
+        }
 
 
         /**/
@@ -211,6 +213,13 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // SETUP
         getServer().getPluginManager().registerEvents(new SetupListener(), this);
         getCommand("setup").setExecutor(new SetupCommand());
+        getServer().getPluginManager().registerEvents(new SetupGUI_Main(), this);
+        getServer().getPluginManager().registerEvents(new SetupGUI_Team(), this);
+        getServer().getPluginManager().registerEvents(new SetupGUI_TeamBed(), this);
+        getServer().getPluginManager().registerEvents(new SetupGUI_TeamGenerator(), this);
+        getServer().getPluginManager().registerEvents(new SetupGUI_ArenaGenerator(), this);
+        getServer().getPluginManager().registerEvents(new SetupGUI_Shop(), this);
+        getServer().getPluginManager().registerEvents(new SetupGUI_TeamSpawn(), this);
 
 
         // 游戏倒计时

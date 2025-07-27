@@ -67,6 +67,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$
 cn\comicalpixel\creeperstarbedwars\Items\Silverfish_EntityItem$2.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Holo\TeamGenerators_holographic.class
 cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\ShopNPC_Manager.class
+cn\comicalpixel\creeperstarbedwars\GameSetup\GUI\SetupGUI_Main.class
 cn\comicalpixel\creeperstarbedwars\Config\PlayerDataConfig.class
 cn\comicalpixel\creeperstarbedwars\Task\GameTeamEliminated_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Entity\AntiMobs$1.class

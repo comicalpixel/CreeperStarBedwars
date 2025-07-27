@@ -26,13 +26,20 @@ public class JoinPluginCheck implements Listener {
 
         Plugin pl_MyWorlds = Bukkit.getPluginManager().getPlugin("My_Worlds");
         if (pl_MyWorlds == null) {
-            plugins.add("My_Worlds (依赖: BKCommonLib)");
+            plugins.add("My_Worlds");
         }
 
-        Plugin pl_NameTagEdit = Bukkit.getPluginManager().getPlugin("NameTagEdit");
-        if (pl_NameTagEdit == null) {
-            plugins.add("NameTagEdit");
+
+        Plugin pl_BKCommonLib = Bukkit.getPluginManager().getPlugin("BKCommonLib");
+        if (pl_BKCommonLib == null) {
+            plugins.add("BKCommonLib");
         }
+
+        // 不再是强制的依赖项，不过如果没有就不加载NameTagEdit了
+//        Plugin pl_NameTagEdit = Bukkit.getPluginManager().getPlugin("NameTagEdit");
+//        if (pl_NameTagEdit == null) {
+//            plugins.add("NameTagEdit");
+//        }
 
     }
 
@@ -51,7 +58,10 @@ public class JoinPluginCheck implements Listener {
                     s = s + pls + "\n";
                 }
                 s = s + ChatColor.RED + "\n Tip: Multi-world plug-ins must use My_Worlds and no other multi-world plug-ins exist";
+                s = s + "\n \n";
 
+                p.sendMessage(s);
+                p.sendMessage("\n §2Creeper§eStar§fBedwars §3Plugin §cDependPlugin Manager. ");
                 p.sendMessage(s);
                 p.kickPlayer(s);
 

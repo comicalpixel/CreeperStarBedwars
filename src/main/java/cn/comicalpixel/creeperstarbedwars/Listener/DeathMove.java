@@ -186,7 +186,7 @@ public class DeathMove implements Listener {
                 if (sound.contains(p.getUniqueId())) {
                     respawn_sound_plays(p);
                     sound.remove(p.getUniqueId());
-                    i = 5;
+                    i = 1;
                 }
             }
         },1);
@@ -242,7 +242,7 @@ public class DeathMove implements Listener {
 
 
     private static final List<UUID> sound = new ArrayList<>();
-    static int i = 5;
+    static int i = 1;
 
     public static void respawn_sound_plays(Player player) {
         for (float f = 1.7F; f < 2; f += 0.1F) {

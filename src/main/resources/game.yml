@@ -10,24 +10,12 @@ map-center: 'world, 0, 0, 0, 0, 0'
 map-radius: 300
 teamchest-radius: 15
 generator:
-  emerald:
-    - null
-  diamond:
-    - null
+  emerald: {}
+  diamond: {}
 shop:
-  item:
-    - null
-  team:
-    - null
-teams:
-  - RED
-  - BLUE
-  - GREEN
-  - YELLOW
-  - PINK
-  - AQUA
-  - GRAY
-  - WHITE
+  item: {}
+  team: {}
+teams: {}
 team-players: 1
 team-red:
   name: '红'
