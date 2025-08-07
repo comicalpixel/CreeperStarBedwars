@@ -39,6 +39,7 @@ import cn.comicalpixel.creeperstarbedwars.mongodb.type.PlayerStats;
 import cn.comicalpixel.creeperstarbedwars.mongodb.type.ShopStats;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -46,6 +47,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 // git push -u origin main
@@ -55,6 +63,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
     public static CreeperStarBedwars Instance;
     public static CreeperStarBedwars getInstance() {return Instance;}
     public static CreeperStarBedwars getPlugin() {return Instance;}
+
+    private static final int CONFIG_VERSION = 2;
 
     private GameConfig gameConfig;
     public GameConfig getGameConfig() {return gameConfig;}
@@ -137,6 +147,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         // 加载配置文件
         saveDefaultConfig();
+        backupAndUpdateConfig();
         CreeperStarBedwars.Instance.load_config();
 
         // 加载游戏配置文件
@@ -333,11 +344,48 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
     }
 
-    public void bstat() {
+    private void backupAndUpdateConfig() {
+        File configFile = new File(getDataFolder(), "config.yml");
+        FileConfiguration config = getConfig();
 
-        int pluginId = 26477; // <-- Replace with the id of your plugin!
-        Metrics metrics = new Metrics(this, pluginId);
+        // 检查配置版本
+        int fileVersion = config.getInt("config-version", 0);
+        if (fileVersion < CONFIG_VERSION) {
+            try {
+                // 1. 备份旧配置文件
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MMdd-HHmmss");
+                String backupName = "config_backup_" + dateFormat.format(new Date()) + ".yml";
+                File backupFile = new File(getDataFolder(), backupName);
+                Files.copy(configFile.toPath(), backupFile.toPath());
 
+                getLogger().info("检测到旧版配置文件，已备份为: " + backupName);
+
+                Map<String, Object> oldValues = new HashMap<>();
+                for (String key : config.getKeys(true)) {
+                    if (!key.equals("config-version")) {
+                        oldValues.put(key, config.get(key));
+                    }
+                }
+
+                configFile.delete();
+
+                saveDefaultConfig();
+                reloadConfig();
+
+                // 将旧配置的值合并到新配置中
+                for (Map.Entry<String, Object> entry : oldValues.entrySet()) {
+                    config.set(entry.getKey(), entry.getValue());
+                }
+
+                // 更新版本号并保存
+                config.set("config-version", CONFIG_VERSION);
+                saveConfig();
+
+                getLogger().info("配置文件已更新至最新版本: " + CONFIG_VERSION);
+            } catch (IOException e) {
+                getLogger().warning("更新配置文件失败: " + e.getMessage());
+            }
+        }
     }
 
     public void startGameCfgRead() {

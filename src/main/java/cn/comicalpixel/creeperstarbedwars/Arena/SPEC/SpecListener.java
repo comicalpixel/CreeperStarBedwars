@@ -3,6 +3,7 @@ package cn.comicalpixel.creeperstarbedwars.Arena.SPEC;
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Utils.ActionBarUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
@@ -20,6 +21,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.meta.SkullMeta;
+
+import java.util.HashMap;
 
 public class SpecListener implements Listener {
 
@@ -87,6 +90,8 @@ public class SpecListener implements Listener {
         e.getPlayer().setSpectatorTarget(null);
         e.getPlayer().setGameMode(GameMode.ADVENTURE);
         NMSTitleUntils.Title.send(e.getPlayer(), ConfigUtils.getString(CreeperStarBedwars.Instance.getConfig(), "language.spectator-first-person-quit-title"), ConfigUtils.getString(CreeperStarBedwars.Instance.getConfig(), "language.spectator-first-person-quit-subtitle"), 1, 30, 1);
+        e.getPlayer().setAllowFlight(true);
+        e.getPlayer().setFlying(true);
     }
 
     @EventHandler(priority = EventPriority.HIGH)
@@ -105,6 +110,7 @@ public class SpecListener implements Listener {
         }
     }
 
+    public static HashMap<Player, Integer> spec_flySpeed = new HashMap<>();
 
     @EventHandler
     public void SpecItemClick(PlayerInteractEvent e) {
@@ -116,11 +122,40 @@ public class SpecListener implements Listener {
             if (e.getItem().getItemMeta().getDisplayName().endsWith("§3§c§e§c§e§1")) {
                 SpecManager.open_tplist_gui(e.getPlayer());
             }
+            if (e.getItem().getItemMeta().getDisplayName().endsWith("§3§c§e§c§e§2")) {
+                Player p = e.getPlayer();
+                switch (spec_flySpeed.get(p)) {
+                    case 0:
+                        SpecListener.spec_flySpeed.put(p, 1);
+                        p.setFlySpeed(0.2f);
+                        ActionBarUtils.sendActionBar(p, ConfigUtils.getString(CreeperStarBedwars.getInstance().getConfig(), "Spec-Settings.flySpeedSetting.settings.set-speed-1-actionbar"));
+                        break;
+                    case 1:
+                        SpecListener.spec_flySpeed.put(p, 2);
+                        p.setFlySpeed(0.3f);
+                        ActionBarUtils.sendActionBar(p, ConfigUtils.getString(CreeperStarBedwars.getInstance().getConfig(), "Spec-Settings.flySpeedSetting.settings.set-speed-2-actionbar"));
+                        break;
+                    case 2:
+                        SpecListener.spec_flySpeed.put(p, 3);
+                        p.setFlySpeed(0.4f);
+                        ActionBarUtils.sendActionBar(p, ConfigUtils.getString(CreeperStarBedwars.getInstance().getConfig(), "Spec-Settings.flySpeedSetting.settings.set-speed-3-actionbar"));
+                        break;
+                    case 3:
+                        SpecListener.spec_flySpeed.put(p, 4);
+                        p.setFlySpeed(0.5f);
+                        ActionBarUtils.sendActionBar(p, ConfigUtils.getString(CreeperStarBedwars.getInstance().getConfig(), "Spec-Settings.flySpeedSetting.settings.set-speed-4-actionbar"));
+                        break;
+                    case 4:
+                        SpecListener.spec_flySpeed.put(p, 0);
+                        p.setFlySpeed(0.1f);
+                        ActionBarUtils.sendActionBar(p, ConfigUtils.getString(CreeperStarBedwars.getInstance().getConfig(), "Spec-Settings.flySpeedSetting.settings.set-speed-0-actionbar"));
+                        break;
+                }
+            }
             if (e.getItem().getItemMeta().getDisplayName().endsWith("§3§c§e§c§e§3")) {
                 PlayerUtils.leave_game(e.getPlayer());
             }
-        } catch (Exception ex) {
-
+        } catch (Exception ignored) {
         }
 
     }

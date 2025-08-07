@@ -1,8 +1,11 @@
-# CreeperStarBedwars by Xiaol789zxc. https://comicalpixel.github.io
+# CreeperStarBedwars by Xiaol789zxc & TheGoodBoys. https://comicalpixel.github.io
 # EnderCreeper(ComicalPixel) Network 2023-2025
 
-# 不要修改此项!!
+# 插件主开发者, 不要修改此项!!
 author: Xiaol789zxc
+
+# 配置文件版本号, 不要修改此项!!
+config-version: 2
 
 # Bungeecord设置
 # lobby-server 大厅服务器子服
@@ -628,6 +631,27 @@ Spec-Settings:
       item-lore:
         - "§r "
         - "§e▶ 单击传送"
+  # 飞行速度设置
+  flySpeedSetting:
+    inventory:
+      solt: 4
+      item:
+        - ==: org.bukkit.inventory.ItemStack
+          type: REDSTONE_COMPARATOR
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§b飞行速度设置 §7(右键单击)'
+            lore:
+              - '§8旁观者物品'
+    settings:
+      set-speed-0-actionbar: '§r §aDEF §0| §7I §0| §7II §0| §7II §0| §7IV §r'
+      set-speed-1-actionbar: '§r §7DEF §0| §aI §0| §7II §0| §7II §0| §7IV §r'
+      set-speed-2-actionbar: '§r §7DEF §0| §7I §0| §aII §0| §7II §0| §7IV §r'
+      set-speed-3-actionbar: '§r §7DEF §0| §7I §0| §7II §0| §aII §0| §7IV §r'
+      set-speed-4-actionbar: '§r §7DEF §0| §7I §0| §7II §0| §7II §0| §aIV §r'
   # 离开游戏
   leave:
     inventory:
@@ -942,9 +966,9 @@ language:
     - ''
     - '§f                          §l起床战争'
     - ''
-    - '§e§l                    保护你的床并破坏敌人的床，'
-    - '§e§l                 从资源点收集铁锭、金锭、绿宝石和钻石，'
-    - '§e§l                 来购买强力装备和进行升级来使自己变强！'
+    - '§e§l               守护好你队伍的床并破坏敌人队伍的床，'
+    - '§e§l               从资源点收集资源来购买强力装备武器'
+    - '§e§l               和升级队伍附魔属性来使自己队伍变强！'
     - ''
     - '§a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
   # 游戏结束提示(结算)

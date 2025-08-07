@@ -48,11 +48,21 @@ public class SpecManager {
         tplist_item.setItemMeta(tplist_item_meta);
         p.getInventory().setItem(ConfigUtils.getInt(CreeperStarBedwars.getPlugin().getConfig(), "Spec-Settings.tplist.inventory.solt"), tplist_item);
 
+        ItemStack flySpeedSet_item = ConfigUtils.getItemStack(CreeperStarBedwars.getPlugin().getConfig(), "Spec-Settings.flySpeedSetting.inventory.item", true).clone();
+        ItemMeta flySpeedSet_item_meta = flySpeedSet_item.getItemMeta().clone();
+        flySpeedSet_item_meta.setDisplayName(flySpeedSet_item_meta.getDisplayName() + "§3§c§e§c§e§2");
+        flySpeedSet_item.setItemMeta(flySpeedSet_item_meta);
+        p.getInventory().setItem(ConfigUtils.getInt(CreeperStarBedwars.getPlugin().getConfig(), "Spec-Settings.flySpeedSetting.inventory.solt"), flySpeedSet_item);
+
         ItemStack leave_item = ConfigUtils.getItemStack(CreeperStarBedwars.getPlugin().getConfig(), "Spec-Settings.leave.inventory.item", true).clone();
         ItemMeta leave_item_meta = tplist_item.getItemMeta().clone();
         leave_item_meta.setDisplayName(leave_item_meta.getDisplayName() + "§3§c§e§c§e§3");
         leave_item.setItemMeta(leave_item_meta);
         p.getInventory().setItem(ConfigUtils.getInt(CreeperStarBedwars.getPlugin().getConfig(), "Spec-Settings.leave.inventory.solt"), leave_item);
+
+        // Fly Speed
+        SpecListener.spec_flySpeed.put(p, 0);
+        p.setFlySpeed(0.1f);
 
     }
 
