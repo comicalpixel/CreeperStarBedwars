@@ -111,7 +111,7 @@ public class RespawnBed_Item implements Listener {
         if (itemInHand.getAmount() > 1) {
             itemInHand.setAmount(itemInHand.getAmount() - 1);
         } else {
-            p.getInventory().remove(itemInHand);
+            p.getInventory().setItemInHand(null);
         }
 
         String chat_message = ConfigData.language_bed_respawn_chat;

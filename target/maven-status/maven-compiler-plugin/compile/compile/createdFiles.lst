@@ -54,6 +54,7 @@ cn\comicalpixel\creeperstarbedwars\GameSetup\SetupCommand.class
 cn\comicalpixel\creeperstarbedwars\api\Events\BedwarsGameEndEvent.class
 cn\comicalpixel\creeperstarbedwars\Items\DreamGuard_EntityItem$1.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerJoinLeave$3.class
+cn\comicalpixel\creeperstarbedwars\Listener\CraftItemListener.class
 cn\comicalpixel\creeperstarbedwars\Task\GameLobby_Actionbar_Task.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_Countdown_Task$1.class
 cn\comicalpixel\creeperstarbedwars\Entity\ShopNPC\TeamShop_NPC.class

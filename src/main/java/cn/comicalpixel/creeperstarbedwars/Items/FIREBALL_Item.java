@@ -62,7 +62,7 @@ public class FIREBALL_Item implements Listener {
         if (itemInHand.getAmount() > 1) {
             itemInHand.setAmount(itemInHand.getAmount() - 1);
         } else {
-            p.getInventory().remove(itemInHand);
+            p.getInventory().setItemInHand(null);
         }
 
 

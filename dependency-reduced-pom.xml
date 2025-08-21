@@ -4,7 +4,7 @@
   <groupId>cn.comicalpixel</groupId>
   <artifactId>CreeperStarBedwars</artifactId>
   <name>CreeperStarBedwars</name>
-  <version>1.8-SNAPSHOT</version>
+  <version>1.8.3-SNAPSHOT</version>
   <build>
     <resources>
       <resource>
@@ -39,6 +39,7 @@
             <configuration>
               <sourceDirs>
                 <source>src/main/java</source>
+                <source>src/main/kotlin</source>
                 <source>target/generated-sources/annotations</source>
                 <source>src/main/kotlin</source>
               </sourceDirs>

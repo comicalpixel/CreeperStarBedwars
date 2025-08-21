@@ -65,7 +65,7 @@ public class RescuePlatform_Item implements Listener {
         if (itemInHand.getAmount() > 1) {
             itemInHand.setAmount(itemInHand.getAmount() - 1);
         } else {
-            e.getPlayer().getInventory().remove(itemInHand);
+            p.getInventory().setItemInHand(null);
         }
 
 

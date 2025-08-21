@@ -66,7 +66,7 @@ public class DreamGuard_EntityItem implements Listener {
         if (itemInHand.getAmount() > 1) {
             itemInHand.setAmount(itemInHand.getAmount() - 1);
         } else {
-            e.getPlayer().getInventory().remove(itemInHand);
+            p.getInventory().setItemInHand(null);
         }
 
         loc = loc.clone().add(0.5, 1.3, 0.5);

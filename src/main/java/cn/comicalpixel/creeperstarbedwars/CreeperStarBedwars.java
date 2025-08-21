@@ -287,6 +287,8 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new EnderDragonTargetFix(), this);
 
+        getServer().getPluginManager().registerEvents(new CraftItemListener(), this);
+
         if (ConfigData.ItemsInGame_fireball_enabled) {
             getServer().getPluginManager().registerEvents(new FIREBALL_Item(), this);
         }
