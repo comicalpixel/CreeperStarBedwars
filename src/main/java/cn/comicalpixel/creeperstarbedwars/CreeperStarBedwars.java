@@ -6,6 +6,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecListener;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.GUI.TeamSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamChest;
+import cn.comicalpixel.creeperstarbedwars.ArenaWorlds.ArenaWorldsManager;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.*;
 import cn.comicalpixel.creeperstarbedwars.Entity.AntiMobs;
@@ -216,6 +217,10 @@ public final class CreeperStarBedwars extends JavaPlugin {
         if (getServer().getPluginManager().isPluginEnabled("NameTagEdit")) {
             NameTagManager.NameTagManager_Main();
         }
+
+        // Arena Worlds
+        ArenaWorldsManager arenaWorldsManager = new ArenaWorldsManager();
+        arenaWorldsManager.replaceWorldsOnLoad();
 
 
         /**/

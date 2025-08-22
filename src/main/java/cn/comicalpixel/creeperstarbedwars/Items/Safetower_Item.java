@@ -64,6 +64,14 @@ public class Safetower_Item implements Listener {
 
         tower(TeamManager.player_teams.get(p), b.getLocation(), p);
 
+        // Github Issue#1
+        ItemStack itemInHand = p.getItemInHand();
+        if (itemInHand.getAmount() > 1) {
+            itemInHand.setAmount(itemInHand.getAmount() - 1);
+        } else {
+            p.getInventory().setItemInHand(null);
+        }
+
     }
 
     // 祖传代码 (?

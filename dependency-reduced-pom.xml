@@ -4,7 +4,7 @@
   <groupId>cn.comicalpixel</groupId>
   <artifactId>CreeperStarBedwars</artifactId>
   <name>CreeperStarBedwars</name>
-  <version>1.8.3-SNAPSHOT</version>
+  <version>1.9-SNAPSHOT</version>
   <build>
     <resources>
       <resource>
