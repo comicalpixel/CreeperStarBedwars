@@ -2,9 +2,11 @@
 
 这是一个由EnderCreeper(ComicalPixel) Network开发的一款起床战争插件
 
-开发者:
+主要开发成员:
 
 - GodGold_Xiaol789zxc
+
+参与开发成员:
 
 - TheGoodBoys
 
