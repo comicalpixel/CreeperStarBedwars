@@ -37,53 +37,58 @@ Java要求版本在8-11之间或以上, 服务端Spigot/Paper(一般不破坏Buk
 > 
 > 玩家数据支持MongoDB和Config配置文件储存两种模式，感谢TheGoodBoys的付出!
 
-- 特征
-最多支持8种颜色的队伍
-支持自定义每一个队伍的玩家数量
-强大的物品商店, 物品价格都可以支持自定义
-完善的队伍升级商店，支持设置GUI图标内容和位置
-团队选择 GUI
-完全可定制的资源生成器
-支持双资源模式(实体资源、经验资源)
-特殊项目：
-■ 魔力羊毛
-■ 蠹虫
-■ 梦幻守卫
-■ 搭桥蛋
-■ FIREBALL
-■ TNT
-■ 救援普通
-■ 屁眼烟花
-■ 防护墙
-■ 回城卷轴
-■ 追踪指南针
-■ 回春床
-可以配置全局与局部的倒计时标题内容
-支持自定义的游戏开始标题(可动态)
-护甲和工具会在的重生后获得
-工具在每次死亡后降一级，直到最低等级为止
-玩家数据支持Config储存或MongoDB数据库储存
-Features
-Supports up to 8 colored teams
-Allows customization of the number of players per team
-Powerful item shop with fully customizable item prices
-Comprehensive team upgrade shop, supporting GUI icon content and position settings
-Team selection GUI
-Fully customizable resource generators
-Supports dual resource modes (entity resources and experience resources)
-Special Items:
-■ Magic Wool
-■ Silverfish
-■ Dream Guardian
-■ Bridge-Building Egg
-■ Fireball
-■ TNT
-■ Regular Rescue
-■ Asshole Fireworks
-■ Protective Wall
-■ Return Scroll
-■ Tracking Compass
-■ Respawn Bed
+- 最多支持8种颜色的队伍
+- 支持自定义每一个队伍的玩家数量
+- 强大的物品商店, 物品价格都可以支持自定义
+- 完善的队伍升级商店，支持设置GUI图标内容和位置
+- 团队选择 GUI
+- 完全可定制的资源生成器
+- 支持双资源模式(实体资源、经验资源)
+- 特殊项目：
+- - ■ 魔力羊毛
+- - ■ 蠹虫
+- - ■ 梦幻守卫
+- - ■ 搭桥蛋
+- - ■ FIREBALL
+- - ■ TNT
+- - ■ 救援普通
+- - ■ 屁眼烟花
+- - ■ 防护墙
+- - ■ 回城卷轴
+- - ■ 追踪指南针
+- - ■ 回春床
+- 可以配置全局与局部的倒计时标题内容
+- 支持自定义的游戏开始标题(可动态)
+- 护甲和工具会在的重生后获得
+- 工具在每次死亡后降一级，直到最低等级为止
+- 玩家数据支持Config储存或MongoDB数据库储存
+
+- Supports up to 8 colored teams
+- Allows customization of the number of players per team
+- Powerful item shop with fully customizable item prices
+- Comprehensive team upgrade shop, supporting GUI icon content and position settings
+- Team selection GUI
+- Fully customizable resource generators
+- Supports dual resource modes (entity resources and experience resources)
+- Special Items:
+- - ■ Magic Wool
+- - ■ Silverfish
+- - ■ Dream Guardian
+- - ■ Bridge-Building Egg
+- - ■ Fireball
+- - ■ TNT
+- - ■ Regular Rescue
+- - ■ Asshole Fireworks
+- - ■ Protective Wall
+- - ■ Return Scroll
+- - ■ Tracking Compass
+- - ■ Respawn Bed
+- Configurable global and local countdown title content
+- Supports custom game start titles (dynamic available)
+- Armor and tools are granted after respawn
+- Tools downgrade by one level after each death until reaching the minimum level
+- Player data support for Config storage or MongoDB database storage
+
 
 商店定制:
 - 你可以配置 Quick-Shop 默认槽位物品
