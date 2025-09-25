@@ -6,6 +6,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -42,10 +43,12 @@ public class ChestResourcePlacement implements Listener {
 
         Player p = e.getPlayer();
 
-        if (e.getItem().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Fixed set items") ||
-            e.getItem().getType().toString().endsWith("_PICKAXE") || e.getItem().getType().toString().endsWith("_AXE") ||
-            e.getItem().getType() == Material.SHEARS) {
-            return;
+        if (e.getItem().getItemMeta().hasLore()) {
+            if (e.getItem().getItemMeta().getLore().contains(ChatColor.DARK_GRAY + "Fixed set items") ||
+                    e.getItem().getType().toString().endsWith("_PICKAXE") || e.getItem().getType().toString().endsWith("_AXE") ||
+                    e.getItem().getType() == Material.SHEARS) {
+                return;
+            }
         }
 
         /**/
@@ -89,7 +92,17 @@ public class ChestResourcePlacement implements Listener {
                                 e.getItem().setAmount(e.getItem().getAmount() - placedAmount);
                             }
                             e.setCancelled(true);
-                            p.playSound(p.getLocation(), Sound.CHEST_CLOSE, 10, 1);
+//                            p.playSound(p.getLocation(), Sound.CHEST_CLOSE, 10, 1);
+                            // Sound
+                            ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.chest-fast-placement-team");
+                            // message
+                            String type_name = null;
+                            if (e.getItem().getItemMeta() != null && e.getItem().getItemMeta().hasDisplayName()) {
+                                type_name = e.getItem().getItemMeta().getDisplayName();
+                            } else {
+                                type_name = e.getItem().getType().toString();
+                            }
+                            p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.chest-fast-placement-team-message").replace("{type}", type_name).replace("{amount}", e.getItem().getAmount()+""));
                         }
                     }
                 }
@@ -137,7 +150,17 @@ public class ChestResourcePlacement implements Listener {
                                 e.getItem().setAmount(e.getItem().getAmount() - placedAmount);
                             }
                             e.setCancelled(true);
-                            p.playSound(p.getLocation(), Sound.CHEST_CLOSE, 10, 1);
+//                            p.playSound(p.getLocation(), Sound.CHEST_CLOSE, 10, 1);
+                            // Sound
+                            ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.chest-fast-placement-ender");
+                            // message
+                            String type_name = null;
+                            if (e.getItem().getItemMeta() != null && e.getItem().getItemMeta().hasDisplayName()) {
+                                type_name = e.getItem().getItemMeta().getDisplayName();
+                            } else {
+                                type_name = e.getItem().getType().toString();
+                            }
+                            p.sendMessage(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.chest-fast-placement-ender-message").replace("{type}", type_name).replace("{amount}", e.getItem().getAmount()+""));
                         }
                     }
                 }

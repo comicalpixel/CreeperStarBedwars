@@ -175,7 +175,7 @@ public class GameStart {
                     scheduler.shutdown();
                     return;
                 }
-                NMSTitleUntils.Title.send(p, ConfigUtils.getString(config, "start-title.action."+actions.get(finalI)+".title"), ConfigUtils.getString(config,"start-title.action."+actions.get(finalI)+".subtitle"), 1, 40, 10);
+                NMSTitleUntils.Title.send(p, ConfigUtils.getString(config, "start-title.action."+actions.get(finalI)+".title"), ConfigUtils.getString(config,"start-title.action."+actions.get(finalI)+".subtitle"), 0, 40, 10);
             }, i * ConfigUtils.getInt(config, "start-title.timer-ms") + 1L, TimeUnit.MILLISECONDS);
         }
 

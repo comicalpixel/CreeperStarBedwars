@@ -5,7 +5,7 @@
 author: Xiaol789zxc
 
 # 配置文件版本号, 不要修改此项!!
-config-version: 2
+config-version: 3
 
 # Bungeecord设置
 # lobby-server 大厅服务器子服
@@ -1214,6 +1214,9 @@ language:
   spectator-first-person-enter-subtitle: "§c使用潜行退出旁观者模式!"
   spectator-first-person-quit-title: "§e已退出旁观者模式!"
   spectator-first-person-quit-subtitle: "§r "
+  # 箱子快速放置物品
+  chest-fast-placement-team-message: "§a你已将§e{type}§fx{amount}§a放入§6队伍箱子§a中! "
+  chest-fast-placement-ender-message: "§a你已将§e{type}§fx{amount}§a放入§5末影箱§a中! "
 
 
 # 音效设置
@@ -1364,3 +1367,12 @@ sound:
     type: NOTE_PLING
     volume: 10
     pitch: 2
+  # 箱子物品快速放置
+  chest-fast-placement-team:
+    type: CHEST_CLOSE
+    volume: 7
+    pitch: 1
+  chest-fast-placement-ender:
+    type: CHEST_CLOSE
+    volume: 7
+    pitch: 1

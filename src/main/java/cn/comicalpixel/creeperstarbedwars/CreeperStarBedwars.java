@@ -65,7 +65,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
     public static CreeperStarBedwars getInstance() {return Instance;}
     public static CreeperStarBedwars getPlugin() {return Instance;}
 
-    private static final int CONFIG_VERSION = 2;
+    private static final int CONFIG_VERSION = 3;
 
     private GameConfig gameConfig;
     public GameConfig getGameConfig() {return gameConfig;}
