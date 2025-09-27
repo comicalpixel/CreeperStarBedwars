@@ -5,6 +5,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerBlocks;
+import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -38,7 +39,8 @@ public class RescuePlatform_Item implements Listener {
 
         if (e.getItem() == null) return;
 
-        if (e.getItem().getType() != Material.BLAZE_ROD) return;
+//        if (e.getItem().getType() != Material.BLAZE_ROD) return;
+        if (!e.getItem().getType().toString().equalsIgnoreCase(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "items.rescue-platform.item-type"))) return;
 
         if (e.getAction() != Action.RIGHT_CLICK_AIR && e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 

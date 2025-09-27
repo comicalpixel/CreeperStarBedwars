@@ -1,12 +1,16 @@
 name: CreeperStarBedwars
-version: '1.9-SNAPSHOT'
+version: '2.0-SNAPSHOT'
 main: cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars
 load: STARTUP
 author: Xiaol789zxc
 
 api-version: 1.8
 
-softdepend: [ProtocolLib, My_Worlds, BKCommonLib, NameTagEdit, PlaceholderAPI]
+softdepend:
+  - ProtocolLib
+  - My_Worlds
+  - BKCommonLib
+  - PlaceholderAPI
 folia-supported: false
 
 commands:

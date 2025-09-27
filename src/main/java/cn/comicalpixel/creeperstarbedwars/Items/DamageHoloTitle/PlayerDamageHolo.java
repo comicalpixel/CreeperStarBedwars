@@ -18,7 +18,13 @@ public class PlayerDamageHolo implements Listener {
 
         if (GameStats.get() != 2 && GameStats.get() != 3) {return;}
 
-        if (!(e.getEntity() instanceof Player) && !(e.getDamager() instanceof Player)) {return;}
+//        if (!(e.getEntity() instanceof Player) && !(e.getDamager() instanceof Player)) {return;}
+        if (!(e.getEntity() instanceof Player)) {
+            return;
+        }
+        if (!(e.getDamager() instanceof Player)) {
+            return;
+        }
 
         if (e.isCancelled()) {return;}
 

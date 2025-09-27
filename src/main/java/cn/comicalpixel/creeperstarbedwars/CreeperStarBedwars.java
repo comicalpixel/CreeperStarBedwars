@@ -65,7 +65,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
     public static CreeperStarBedwars getInstance() {return Instance;}
     public static CreeperStarBedwars getPlugin() {return Instance;}
 
-    private static final int CONFIG_VERSION = 3;
+    private static final int CONFIG_VERSION = 5;
 
     private GameConfig gameConfig;
     public GameConfig getGameConfig() {return gameConfig;}
@@ -213,10 +213,11 @@ public final class CreeperStarBedwars extends JavaPlugin {
         JoinPluginCheck.check();
         getServer().getPluginManager().registerEvents(new JoinPluginCheck(), this);
 
-        // NameTag
-        if (getServer().getPluginManager().isPluginEnabled("NameTagEdit")) {
-            NameTagManager.NameTagManager_Main();
-        }
+        // NameTagdit 不再使用
+//        if (getServer().getPluginManager().isPluginEnabled("NameTagEdit")) {
+//            NameTagManager.NameTagManager_Main();
+//        }
+        NameTagManager.NameTagManager_Main();
 
         // Arena Worlds
         ArenaWorldsManager arenaWorldsManager = new ArenaWorldsManager();
@@ -329,6 +330,15 @@ public final class CreeperStarBedwars extends JavaPlugin {
         }
         if (ConfigUtils.getBoolean(getConfig(), "items.rush-wool.enable")) {
             getServer().getPluginManager().registerEvents(new RuchWool_Item(), this);
+        }
+        if (ConfigUtils.getBoolean(getConfig(), "items.skeleton-spawn.enable")) {
+            getServer().getPluginManager().registerEvents(new Skeleton_spawn_Item(), this);
+        }
+        if (ConfigUtils.getBoolean(getConfig(), "items.skeleton-plus-spawn.enable")) {
+            getServer().getPluginManager().registerEvents(new SkeletonPlus_spawn_Item(), this);
+        }
+        if (ConfigUtils.getBoolean(getConfig(), "items.tnt-zombie.enable")) {
+            getServer().getPluginManager().registerEvents(new TNTZombie_spawn_Item(), this);
         }
 
         getServer().getPluginManager().registerEvents(new BedDangeTitle(), this);

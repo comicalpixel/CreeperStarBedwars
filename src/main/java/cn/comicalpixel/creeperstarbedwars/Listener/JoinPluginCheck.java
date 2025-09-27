@@ -35,12 +35,6 @@ public class JoinPluginCheck implements Listener {
             plugins.add("BKCommonLib");
         }
 
-        // 不再是强制的依赖项，不过如果没有就不加载NameTagEdit了
-//        Plugin pl_NameTagEdit = Bukkit.getPluginManager().getPlugin("NameTagEdit");
-//        if (pl_NameTagEdit == null) {
-//            plugins.add("NameTagEdit");
-//        }
-
     }
 
     @EventHandler

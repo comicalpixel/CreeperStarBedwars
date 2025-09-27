@@ -9,10 +9,8 @@ import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerDamage;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
+import cn.comicalpixel.creeperstarbedwars.Utils.NameTagUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
-import com.nametagedit.plugin.NametagEdit;
-import com.nametagedit.plugin.api.NametagAPI;
-import com.nametagedit.plugin.api.data.Nametag;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -31,7 +29,7 @@ public class NameTagManager {
                 if (GameStats.get() == 1) {
                     if (CreeperStarBedwars.getPlugin().getConfig().getBoolean("nametag.lobby-nick")) {
                         for (Player p : Bukkit.getOnlinePlayers()) {
-                            NametagEdit.getApi().setPrefix(p, "§k");
+                            NameTagUtils.setPrefix(p, "§k");
                         }
                     }
                 }
@@ -46,20 +44,21 @@ public class NameTagManager {
                             prefix = prefix.replace("{team_color}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p))).replace("{team_name}", TeamManager.getTeamName(TeamManager.player_teams.get(p)));
                             suffix = suffix.replace("{team_color}", TeamManager.getTeamChatColor(TeamManager.player_teams.get(p))).replace("{team_name}", TeamManager.getTeamName(TeamManager.player_teams.get(p)));
 
-                            NametagEdit.getApi().setPrefix(p, prefix);
-                            NametagEdit.getApi().setSuffix(p, suffix);
+                            if (Bukkit.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+                                prefix = PlaceholderAPI.setPlaceholders(p, prefix);
+                                suffix = PlaceholderAPI.setPlaceholders(p, suffix);
+                            }
+
+                            NameTagUtils.setPrefix(p, prefix);
+                            NameTagUtils.setSuffix(p, suffix);
 
                         }
 
                     }
                     for (Player p_spec : GamePlayers.specs) {
-                        NametagEdit.getApi().setPrefix(p_spec, MessageVariableUtils.toPAPI(ConfigData.nametag_spec_prefix, p_spec));
-                        NametagEdit.getApi().setSuffix(p_spec, MessageVariableUtils.toPAPI(ConfigData.nametag_spec_suffix, p_spec));
+                        NameTagUtils.setPrefix(p_spec, MessageVariableUtils.toPAPI(ConfigData.nametag_spec_prefix, p_spec));
+                        NameTagUtils.setSuffix(p_spec, MessageVariableUtils.toPAPI(ConfigData.nametag_spec_suffix, p_spec));
                     }
-                }
-
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    NametagEdit.getApi().applyTagToPlayer(p, true);
                 }
 
             }

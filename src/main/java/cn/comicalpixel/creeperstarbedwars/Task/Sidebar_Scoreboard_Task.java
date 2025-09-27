@@ -9,19 +9,21 @@ import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Listener.BwimResItemManager;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
+import cn.comicalpixel.creeperstarbedwars.Utils.NameTagUtils;
+import com.google.common.collect.Lists;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Sidebar_Scoreboard_Task {
+
+    public HashMap<Player, Objective> p_scoreboard_last_objective_CacheMap = new HashMap<>();
 
     public Sidebar_Scoreboard_Task() {
         task_main();
@@ -51,8 +53,9 @@ public class Sidebar_Scoreboard_Task {
 
     public void send_Inlobby(Player p) {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+
         Objective objective = null;
-      List<String> message_list = new ArrayList<>();
+        List<String> message_list = new ArrayList<>();
         if (Game_Countdown_Task.countdown_running) {
             message_list.addAll(ConfigData.language_sidebarboard_list_lobby_countdown);
             objective = scoreboard.registerNewObjective(ConfigData.language_sidebarboard_list_lobby_countdown.get(0)+" ", "dummy");
@@ -83,6 +86,8 @@ public class Sidebar_Scoreboard_Task {
             slot++;
         }
 
+        NameTagUtils.updateAllNameTags();
+
         p.setScoreboard(scoreboard);
 
     }
@@ -90,6 +95,7 @@ public class Sidebar_Scoreboard_Task {
 
     public void send_InGame(Player p) {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+
         Objective objective = null;
         List<String> message_list = new ArrayList<>();
         if (GamePlayers.players.contains(p)) {
@@ -105,6 +111,7 @@ public class Sidebar_Scoreboard_Task {
 
         int slot = 0;
         message_list.remove(0);
+
         for (String s : message_list) {
             s = s.replace("{date}", MessageVariableUtils.getDate());
             s = MessageVariableUtils.gameMapInformation_p_s(s);
@@ -138,8 +145,10 @@ public class Sidebar_Scoreboard_Task {
                 s = s.substring(0, 40);
             }
 
+
             Score score = objective.getScore(s);
             score.setScore(message_list.size() - slot);
+
             slot++;
         }
 
@@ -155,7 +164,10 @@ public class Sidebar_Scoreboard_Task {
             }
         }
 
+        NameTagUtils.updateAllNameTags();
+
         p.setScoreboard(scoreboard);
+
     }
 
 

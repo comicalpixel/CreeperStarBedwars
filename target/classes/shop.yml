@@ -225,6 +225,9 @@ GUI:
       - h014
       - h015
       - h016
+      - h017
+      - h018
+      - h019
 
 # 工具物品
 # 除了GUI物品描述及价格, 其余不支持自定义:(
@@ -2427,4 +2430,136 @@ Items:
           ==: ItemMeta
           meta-type: UNSPECIFIC
           display-name: '§e回春床§7(右键单击)'
+  h017:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: INK_SACK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3普通骷髅'
+            lore:
+              - '§7物品:'
+              - '§8● 普通骷髅召唤粉'
+              - ' '
+              - '§7花费:§3 15金'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: INK_SACK
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3普通骷髅'
+            lore:
+              - '§7物品:'
+              - '§8● 普通骷髅召唤粉'
+              - ' '
+              - '§7花费:§3 150级'
+    cost:
+      type: GOLD_INGOT
+      amount: 15
+      xp_level: 150
+    name: '普通骷髅'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: INK_SACK
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§e召唤普通骷髅召唤'
+  h018:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: BONE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3加特林骷髅召唤棒'
+            lore:
+              - '§7物品:'
+              - '§8● 加特林骷髅召唤棒'
+              - ' '
+              - '§7花费:§3 2绿宝石'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: BONE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3加特林骷髅召唤棒'
+            lore:
+              - '§7物品:'
+              - '§8● 加特林骷髅召唤棒'
+              - ' '
+              - '§7花费:§3 200级'
+    cost:
+      type: EMERALD
+      amount: 2
+      xp_level: 200
+    name: '加特林骷髅召唤棒'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: BONE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§d加特林骷髅召唤棒'
+  h019:
+    gui-item:
+      i:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FIREWORK_CHARGE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3自爆小僵尸'
+            lore:
+              - '§7物品:'
+              - '§8● 自爆小僵尸'
+              - ' '
+              - '§7花费:§3 120铁'
+      xp:
+        - ==: org.bukkit.inventory.ItemStack
+          type: FIREWORK_CHARGE
+          damage: 0
+          amount: 1
+          meta:
+            ==: ItemMeta
+            meta-type: UNSPECIFIC
+            display-name: '§3自爆小僵尸'
+            lore:
+              - '§7物品:'
+              - '§8● 自爆小僵尸'
+              - ' '
+              - '§7花费:§3 150级'
+    cost:
+      type: IRON_INGOT
+      amount: 120
+      xp_level: 150
+    name: '自爆小僵尸'
+    buy-item:
+      - ==: org.bukkit.inventory.ItemStack
+        type: FIREWORK_CHARGE
+        damage: 0
+        amount: 1
+        meta:
+          ==: ItemMeta
+          meta-type: UNSPECIFIC
+          display-name: '§c生成自爆小僵尸'
 

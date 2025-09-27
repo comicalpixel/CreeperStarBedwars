@@ -63,7 +63,6 @@ public class TeamShop_TrapListener implements Listener {
 
 
 
-
         if (team.equalsIgnoreCase("NONE")) {
             return;
         }
@@ -71,6 +70,9 @@ public class TeamShop_TrapListener implements Listener {
             return;
         }
         if (TeamShop_GUI.team_Traps.get(team).isEmpty()) {
+            return;
+        }
+        if (TeamManager.getTeamPlayerSize(team) <= 0) {
             return;
         }
         switch (TeamShop_GUI.team_Traps.get(team).get(0)) {

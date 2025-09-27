@@ -85,7 +85,7 @@ public class PlayerChat implements Listener {
                 String message = ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.chat-playing-spec");
                 message = message.replace("{player}", p.getName()).replace("{message}", e.getMessage());
 
-                if (CreeperStarBedwars.getPlugin().getConfig().getBoolean("game-players-chat.enable")) {
+                if (CreeperStarBedwars.getPlugin().getConfig().getBoolean("game-players-chat.spec-all")) {
 
                     for (Player online_p : Bukkit.getOnlinePlayers()) {
                         online_p.sendMessage(message);

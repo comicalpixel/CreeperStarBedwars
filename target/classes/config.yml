@@ -5,7 +5,7 @@
 author: Xiaol789zxc
 
 # 配置文件版本号, 不要修改此项!!
-config-version: 3
+config-version: 5
 
 # Bungeecord设置
 # lobby-server 大厅服务器子服
@@ -81,6 +81,7 @@ command-whitelist:
   - '/bw'
   - '/lobby'
   - '/hub'
+  - '/bw start'
 
 # 队伍选择器
 # 暂不支持深度自定义(如: GUI布局、是否启用离开队伍物品、物品类型等..)
@@ -793,6 +794,8 @@ items:
   safewall:
     # 是否启用
     enable: true
+    # 物品
+    item-type: BRICK
     # 冷却s
     cooldown: 10
     # 语言部分
@@ -801,6 +804,8 @@ items:
   rescue-platform:
     # 是否启用
     enable: true
+    # 物品
+    item-type: BLAZE_ROD
     # 冷却s
     cooldown: 10
     # 消失时间s
@@ -831,6 +836,45 @@ items:
     cooldown-chat: "§c道具冷却中... "
     # 延伸多少格
     blocks: 5
+
+  # 普通骷髅
+  skeleton-spawn:
+    # 是否启用
+    enable: true
+    # 物品
+    item-type: INK_SACK
+    # 冷却s
+    cooldown: 3
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+    # 存活时间s
+    entity-survival-time: 100
+  # 加特林骷髅
+  skeleton-plus-spawn:
+    # 是否启用
+    enable: true
+    # 物品
+    item-type: BONE
+    # 冷却s
+    cooldown: 7
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+    # 存活时间s
+    entity-survival-time: 30
+  # 自爆小僵尸
+  tnt-zombie:
+    # 是否启用
+    enable: true
+    # 物品
+    item-type: FIREWORK_CHARGE
+    # 冷却s
+    cooldown: 7
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+    # 爆炸时间s
+    FuseTicks: 5
+    # 爆炸伤害
+    damage: 12
 
 # 队友床危险警告
 # 触发方式: 抬头90°且潜行一下
@@ -1033,6 +1077,8 @@ language:
   bed-respawn-all-subtitle: '§f该队伍玩家死亡后将可以重生!'
   # 队伍团灭提示
   team-annihilation-chat: "§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n \n §f§l团灭 > {TeamChatColor}{TeamName} §c凉了！ \n \n§f§l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+  team-annihilation-title: '{TeamChatColor}{TeamName}队'
+  team-annihilation-subtitle: '§c该队伍已被淘汰!'
   # 睡你麻痹起来嗨
   bed-sleep: "§c睡你麻痹起来嗨! "
   # 倒计时标题
@@ -1183,6 +1229,9 @@ language:
   # 蠹虫/梦幻守卫 NameTag
   entity-silverfish-nametag: '{team_color}{team_name} 蠹虫 §7- §e{timer_sec}s'
   entity-dreamguard-nametag: '{team_color}{team_name} 梦幻守卫 §e{timer_sec}s'
+  entity-skeleton-nametag: '{team_color}{team_name} 普通骷髅 §e{timer_sec}s'
+  entity-skeleton-plus-nametag: '{team_color}{team_name} 加特林骷髅 §e{timer_sec}s'
+  entity-tnt-zombie-nametag: '{team_color}{team_name} 自爆小僵尸?!快跑 §e{timer_sec}s'
   # 指令部分
   command-notin-whitelist: "§c在游戏中你不能执行该指令! "
   command-bwstart-done: "§e你已缩短游戏倒计时, 祝君游戏愉快!"

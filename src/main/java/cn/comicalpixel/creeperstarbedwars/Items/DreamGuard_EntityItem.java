@@ -11,12 +11,15 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftIronGolem;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSilverfish;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSkeleton;
 import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Skeleton;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -148,6 +151,30 @@ public class DreamGuard_EntityItem implements Listener {
                 e.setCancelled(true);
             }
         }
+    }
+
+    @EventHandler
+    public void onEntityDeath(EntityDeathEvent e) {
+
+        if (GameStats.get() != 2 && GameStats.get() != 3) return;
+
+        if (e.getEntity() instanceof Player) {
+            return;
+        }
+
+        if (!(e.getEntity() instanceof IronGolem)) {
+            return;
+        }
+
+        CraftIronGolem entity = (CraftIronGolem) e.getEntity();
+
+        if (!EntityTeam.containsKey(entity)) {
+            return;
+        }
+
+        e.setDroppedExp(0);
+        e.getDrops().clear();
+
     }
 
 }

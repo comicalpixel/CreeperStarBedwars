@@ -11,10 +11,7 @@ import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Fireball;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -78,7 +75,7 @@ public class FIREBALL_Item implements Listener {
 
     }
 
-    public static HashMap<Fireball, Player> fireball_isWho = new HashMap<>();
+    public static HashMap<Entity, Player> fireball_isWho = new HashMap<>();
 
 
     @EventHandler
@@ -93,7 +90,7 @@ public class FIREBALL_Item implements Listener {
         if (e.getEntity() instanceof Fireball) {
             e.setCancelled(true);
 
-            Fireball fireball = (Fireball) e.getEntity();
+            Entity fireball = e.getEntity();
 
             // 防爆玻璃 不好的算法:(
             Location explosionLoc = e.getLocation();
@@ -163,22 +160,50 @@ public class FIREBALL_Item implements Listener {
 
 
             // KB & DAMAGE
-            for (Player p : GamePlayers.players) {
-                if (p.getLocation().distance(e.getLocation()) < ConfigData.ItemsInGame_fireball_radius && Objects.equals(p.getLocation().getWorld().getName(), e.getLocation().getWorld().getName())) {
-                    if (GameStats.get() == 2) {
-                        PlayerDamage.Playerkillers.put(p, fireball_isWho.get(fireball));
-                        // 格挡
-                        if (p.isBlocking()) {
-                            p.damage(ConfigData.ItemsInGame_fireball_damage * 0.5);
-                        } else {
-                            p.damage(ConfigData.ItemsInGame_fireball_damage);
+            for (Entity entity : explosionLoc.getWorld().getEntities()) {
+                if (entity.getLocation().distance(e.getLocation()) < ConfigData.ItemsInGame_fireball_radius && Objects.equals(entity.getLocation().getWorld().getName(), e.getLocation().getWorld().getName())) {
+                    if (entity instanceof Player) {
+                        Player p = (Player) entity;
+                        if (GamePlayers.players.contains(p) && p.getGameMode() != GameMode.SPECTATOR) {
+                            if (GameStats.get() == 2) {
+                                PlayerDamage.Playerkillers.put(p, fireball_isWho.get(fireball));
+                                // 格挡
+                                if (p.isBlocking()) {
+                                    p.damage(ConfigData.ItemsInGame_fireball_damage * 0.5);
+                                } else {
+                                    p.damage(ConfigData.ItemsInGame_fireball_damage);
+                                }
+                                p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.ENTITY_EXPLOSION, ConfigData.ItemsInGame_fireball_damage));
+                            }
+                            Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), 0.9).multiply(ConfigData.ItemsInGame_fireball_vlocity_multiply);
+                            p.setVelocity(v.setY(ConfigData.ItemsInGame_fireball_vlocity_y));
                         }
-                        p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.ENTITY_EXPLOSION, ConfigData.ItemsInGame_fireball_damage));
+                    } else {
+                        if (!(entity instanceof ArmorStand) && !(entity instanceof Villager) && !(entity instanceof Fireball) && !(entity instanceof TNTPrimed) && !(entity instanceof Firework)) {
+                            Damageable damageable = (Damageable) entity;
+                            damageable.damage(ConfigData.ItemsInGame_fireball_damage * 0.8);
+                            Vector v = LocationUtil.getPosition(damageable.getLocation(), e.getLocation(), 0.9).multiply(ConfigData.ItemsInGame_fireball_vlocity_multiply);
+                            damageable.setVelocity(v.setY(ConfigData.ItemsInGame_fireball_vlocity_y));
+                        }
                     }
-                    Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), 0.9).multiply(ConfigData.ItemsInGame_fireball_vlocity_multiply);
-                    p.setVelocity(v.setY(ConfigData.ItemsInGame_fireball_vlocity_y));
                 }
             }
+//            for (Player p : GamePlayers.players) {
+//                if (p.getLocation().distance(e.getLocation()) < ConfigData.ItemsInGame_fireball_radius && Objects.equals(p.getLocation().getWorld().getName(), e.getLocation().getWorld().getName())) {
+//                    if (GameStats.get() == 2) {
+//                        PlayerDamage.Playerkillers.put(p, fireball_isWho.get(fireball));
+//                        // 格挡
+//                        if (p.isBlocking()) {
+//                            p.damage(ConfigData.ItemsInGame_fireball_damage * 0.5);
+//                        } else {
+//                            p.damage(ConfigData.ItemsInGame_fireball_damage);
+//                        }
+//                        p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.ENTITY_EXPLOSION, ConfigData.ItemsInGame_fireball_damage));
+//                    }
+//                    Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), 0.9).multiply(ConfigData.ItemsInGame_fireball_vlocity_multiply);
+//                    p.setVelocity(v.setY(ConfigData.ItemsInGame_fireball_vlocity_y));
+//                }
+//            }
 
 
 

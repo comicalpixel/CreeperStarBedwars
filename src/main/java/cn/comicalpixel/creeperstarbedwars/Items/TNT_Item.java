@@ -7,14 +7,10 @@ import cn.comicalpixel.creeperstarbedwars.Listener.PlayerBlocks;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerDamage;
 import cn.comicalpixel.creeperstarbedwars.Utils.LocationUtil;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.Effect;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Fireball;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.TNTPrimed;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -137,23 +133,50 @@ public class TNT_Item implements Listener {
             }
         }
 
-
-        for (Player p : GamePlayers.players) {
-            if (p.getLocation().distance(e.getLocation()) < ConfigData.ItemsInGame_tnt_radius && Objects.equals(p.getLocation().getWorld().getName(), e.getLocation().getWorld().getName())) {
-                if (GameStats.get() == 2) {
-                    PlayerDamage.Playerkillers.put(p, tnt_isWho.get(tnt));
-                    // 格挡
-                    if (p.isBlocking()) {
-                        p.damage(ConfigData.ItemsInGame_tnt_damage * 0.5);
-                    } else {
-                        p.damage(ConfigData.ItemsInGame_tnt_damage);
+        for (Entity entity : explosionLoc.getWorld().getEntities()) {
+            if (entity.getLocation().distance(e.getLocation()) < ConfigData.ItemsInGame_tnt_radius && Objects.equals(entity.getLocation().getWorld().getName(), e.getLocation().getWorld().getName())) {
+                if (entity instanceof Player) {
+                    Player p = (Player) entity;
+                    if (GamePlayers.players.contains(p) && p.getGameMode() != GameMode.SPECTATOR) {
+                        if (GameStats.get() == 2) {
+                            PlayerDamage.Playerkillers.put(p, tnt_isWho.get(tnt));
+                            // 格挡
+                            if (p.isBlocking()) {
+                                p.damage(ConfigData.ItemsInGame_tnt_damage * 0.5);
+                            } else {
+                                p.damage(ConfigData.ItemsInGame_tnt_damage);
+                            }
+                            p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.BLOCK_EXPLOSION, ConfigData.ItemsInGame_tnt_damage));
+                        }
+                        Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), ConfigData.ItemsInGame_tnt_vlocity_y).multiply(ConfigData.ItemsInGame_tnt_vlocity_multiply);
+                        p.setVelocity(v.setY(ConfigData.ItemsInGame_tnt_vlocity_y));
                     }
-                    p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.BLOCK_EXPLOSION, ConfigData.ItemsInGame_tnt_damage));
+                } else {
+                    if (!(entity instanceof ArmorStand) && !(entity instanceof Villager) && !(entity instanceof Fireball) && !(entity instanceof TNTPrimed) && !(entity instanceof Firework)) {
+                        Damageable damageable = (Damageable) entity;
+                        damageable.damage(ConfigData.ItemsInGame_tnt_damage * 0.9);
+                        Vector v = LocationUtil.getPosition(damageable.getLocation(), e.getLocation(), ConfigData.ItemsInGame_tnt_vlocity_y * 0.7).multiply(ConfigData.ItemsInGame_tnt_vlocity_multiply * 0.7);
+                        damageable.setVelocity(v.setY(ConfigData.ItemsInGame_tnt_vlocity_y * 0.7));
+                    }
                 }
-                Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), ConfigData.ItemsInGame_tnt_vlocity_y).multiply(ConfigData.ItemsInGame_tnt_vlocity_multiply);
-                p.setVelocity(v.setY(ConfigData.ItemsInGame_tnt_vlocity_y));
             }
         }
+//        for (Player p : GamePlayers.players) {
+//            if (p.getLocation().distance(e.getLocation()) < ConfigData.ItemsInGame_tnt_radius && Objects.equals(p.getLocation().getWorld().getName(), e.getLocation().getWorld().getName())) {
+//                if (GameStats.get() == 2) {
+//                    PlayerDamage.Playerkillers.put(p, tnt_isWho.get(tnt));
+//                    // 格挡
+//                    if (p.isBlocking()) {
+//                        p.damage(ConfigData.ItemsInGame_tnt_damage * 0.5);
+//                    } else {
+//                        p.damage(ConfigData.ItemsInGame_tnt_damage);
+//                    }
+//                    p.setLastDamageCause(new EntityDamageEvent(p, EntityDamageEvent.DamageCause.BLOCK_EXPLOSION, ConfigData.ItemsInGame_tnt_damage));
+//                }
+//                Vector v = LocationUtil.getPosition(p.getLocation(), e.getLocation(), ConfigData.ItemsInGame_tnt_vlocity_y).multiply(ConfigData.ItemsInGame_tnt_vlocity_multiply);
+//                p.setVelocity(v.setY(ConfigData.ItemsInGame_tnt_vlocity_y));
+//            }
+//        }
 
 
         // 播放粒子效果

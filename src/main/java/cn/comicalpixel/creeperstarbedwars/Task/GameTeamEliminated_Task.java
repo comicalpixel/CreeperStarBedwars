@@ -8,6 +8,7 @@ import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Utils.ActionBarUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
+import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -70,55 +71,74 @@ public class GameTeamEliminated_Task {
             public void run() {
                 if (GameStats.get() == 2) {
 
-                    String s = ConfigData.language_team_annihilation_chat;
+                    String title = ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.team-annihilation-title");
+                    String subtitle = ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "language.team-annihilation-subtitle");
+                    String message = ConfigData.language_team_annihilation_chat;
 
                     int ns = 0;
 
                     if (TeamManager.teams.contains("RED") && TeamManager.getTeamPlayerSize("RED") <= 0 && !red) {
                         red = true;
-                        s = s.replace("{TeamChatColor}", TeamManager.getTeamChatColor("RED")).replace("{TeamName}", TeamManager.getTeamName("RED"));
+                        message = message.replace("{TeamChatColor}", TeamManager.getTeamChatColor("RED")).replace("{TeamName}", TeamManager.getTeamName("RED"));
+                        title = title.replace("{TeamChatColor}", TeamManager.getTeamChatColor("RED")).replace("{TeamName}", TeamManager.getTeamName("RED"));
+                        subtitle = subtitle.replace("{TeamChatColor}", TeamManager.getTeamChatColor("RED")).replace("{TeamName}", TeamManager.getTeamName("RED"));
                         ns++;
                     }
                     if (TeamManager.teams.contains("BLUE") && TeamManager.getTeamPlayerSize("BLUE") <= 0 && !blue) {
                         blue = true;
-                        s = s.replace("{TeamChatColor}", TeamManager.getTeamChatColor("BLUE")).replace("{TeamName}", TeamManager.getTeamName("BLUE"));
+                        message = message.replace("{TeamChatColor}", TeamManager.getTeamChatColor("BLUE")).replace("{TeamName}", TeamManager.getTeamName("BLUE"));
+                        title = title.replace("{TeamChatColor}", TeamManager.getTeamChatColor("BLUE")).replace("{TeamName}", TeamManager.getTeamName("BLUE"));
+                        subtitle = subtitle.replace("{TeamChatColor}", TeamManager.getTeamChatColor("BLUE")).replace("{TeamName}", TeamManager.getTeamName("BLUE"));
                         ns++;
                     }
                     if (TeamManager.teams.contains("YELLOW") && TeamManager.getTeamPlayerSize("YELLOW") <= 0 && !yellow) {
                         yellow = true;
-                        s = s.replace("{TeamChatColor}", TeamManager.getTeamChatColor("YELLOW")).replace("{TeamName}", TeamManager.getTeamName("YELLOW"));
+                        message = message.replace("{TeamChatColor}", TeamManager.getTeamChatColor("YELLOW")).replace("{TeamName}", TeamManager.getTeamName("YELLOW"));
+                        title = title.replace("{TeamChatColor}", TeamManager.getTeamChatColor("YELLOW")).replace("{TeamName}", TeamManager.getTeamName("YELLOW"));
+                        subtitle = subtitle.replace("{TeamChatColor}", TeamManager.getTeamChatColor("YELLOW")).replace("{TeamName}", TeamManager.getTeamName("YELLOW"));
                         ns++;
                     }
                     if (TeamManager.teams.contains("GREEN") && TeamManager.getTeamPlayerSize("GREEN") <= 0 && !green) {
                         green = true;
-                        s = s.replace("{TeamChatColor}", TeamManager.getTeamChatColor("GREEN")).replace("{TeamName}", TeamManager.getTeamName("GREEN"));
+                        message = message.replace("{TeamChatColor}", TeamManager.getTeamChatColor("GREEN")).replace("{TeamName}", TeamManager.getTeamName("GREEN"));
+                        title = title.replace("{TeamChatColor}", TeamManager.getTeamChatColor("GREEN")).replace("{TeamName}", TeamManager.getTeamName("GREEN"));
+                        subtitle = subtitle.replace("{TeamChatColor}", TeamManager.getTeamChatColor("GREEN")).replace("{TeamName}", TeamManager.getTeamName("GREEN"));
                         ns++;
                     }
                     if (TeamManager.teams.contains("PINK") && TeamManager.getTeamPlayerSize("PINK") <= 0 && !pink) {
                         pink = true;
-                        s = s.replace("{TeamChatColor}", TeamManager.getTeamChatColor("PINK")).replace("{TeamName}", TeamManager.getTeamName("PINK"));
+                        message = message.replace("{TeamChatColor}", TeamManager.getTeamChatColor("PINK")).replace("{TeamName}", TeamManager.getTeamName("PINK"));
+                        title = title.replace("{TeamChatColor}", TeamManager.getTeamChatColor("PINK")).replace("{TeamName}", TeamManager.getTeamName("PINK"));
+                        subtitle = subtitle.replace("{TeamChatColor}", TeamManager.getTeamChatColor("PINK")).replace("{TeamName}", TeamManager.getTeamName("PINK"));
                         ns++;
                     }
                     if (TeamManager.teams.contains("AQUA") && TeamManager.getTeamPlayerSize("AQUA") <= 0 && !aqua) {
                         aqua = true;
-                        s = s.replace("{TeamChatColor}", TeamManager.getTeamChatColor("AQUA")).replace("{TeamName}", TeamManager.getTeamName("AQUA"));
+                        message = message.replace("{TeamChatColor}", TeamManager.getTeamChatColor("AQUA")).replace("{TeamName}", TeamManager.getTeamName("AQUA"));
+                        title = title.replace("{TeamChatColor}", TeamManager.getTeamChatColor("AQUA")).replace("{TeamName}", TeamManager.getTeamName("AQUA"));
+                        subtitle = subtitle.replace("{TeamChatColor}", TeamManager.getTeamChatColor("AQUA")).replace("{TeamName}", TeamManager.getTeamName("AQUA"));
                         ns++;
                     }
                     if (TeamManager.teams.contains("GRAY") && TeamManager.getTeamPlayerSize("GRAY") <= 0 && !gray) {
                         gray = true;
-                        s = s.replace("{TeamChatColor}", TeamManager.getTeamChatColor("GRAY")).replace("{TeamName}", TeamManager.getTeamName("GRAY"));
+                        message = message.replace("{TeamChatColor}", TeamManager.getTeamChatColor("GRAY")).replace("{TeamName}", TeamManager.getTeamName("GRAY"));
+                        title = title.replace("{TeamChatColor}", TeamManager.getTeamChatColor("GRAY")).replace("{TeamName}", TeamManager.getTeamName("GRAY"));
+                        subtitle = subtitle.replace("{TeamChatColor}", TeamManager.getTeamChatColor("GRAY")).replace("{TeamName}", TeamManager.getTeamName("GRAY"));
                         ns++;
                     }
                     if (TeamManager.teams.contains("WHITE") && TeamManager.getTeamPlayerSize("WHITE") <= 0 && !white) {
                         white = true;
-                        s = s.replace("{TeamChatColor}", TeamManager.getTeamChatColor("WHITE")).replace("{TeamName}", TeamManager.getTeamName("WHITE"));
+                        message = message.replace("{TeamChatColor}", TeamManager.getTeamChatColor("WHITE")).replace("{TeamName}", TeamManager.getTeamName("WHITE"));
+                        title = title.replace("{TeamChatColor}", TeamManager.getTeamChatColor("WHITE")).replace("{TeamName}", TeamManager.getTeamName("WHITE"));
+                        subtitle = subtitle.replace("{TeamChatColor}", TeamManager.getTeamChatColor("WHITE")).replace("{TeamName}", TeamManager.getTeamName("WHITE"));
                         ns++;
                     }
 
 
                     if (enableSendMessage && ns != 0) {
                         for (Player p : Bukkit.getOnlinePlayers()) {
-                            p.sendMessage(s);
+                            p.sendMessage(message);
+                            NMSTitleUntils.Title.send(p, title, subtitle, 10, 40, 10);
                             ConfigUtils.playSound(p, CreeperStarBedwars.getPlugin().getConfig(), "sound.team-annihilation");
                         }
                     }

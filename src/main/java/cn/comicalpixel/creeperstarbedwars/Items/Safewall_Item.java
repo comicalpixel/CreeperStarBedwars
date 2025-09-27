@@ -3,7 +3,9 @@ package cn.comicalpixel.creeperstarbedwars.Items;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
+import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerBlocks;
+import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -41,7 +43,8 @@ public class Safewall_Item implements Listener {
 
         if (e.getBlockPlaced() == null) return;
 
-        if (e.getBlockPlaced().getType() != Material.BRICK) return;
+//        if (e.getBlockPlaced().getType() != Material.BARRIER) return;
+        if (!e.getBlockPlaced().getType().toString().equalsIgnoreCase(ConfigUtils.getString(CreeperStarBedwars.getPlugin().getConfig(), "items.safewall.item-type"))) return;
 
         Player p = e.getPlayer();
 
