@@ -56,7 +56,7 @@ public class GameStart {
             if (CreeperStarBedwars.getPlugin().getConfig().getString("data.type").equalsIgnoreCase("mongodb")) {
                 GamePlayer gamePlayer = GamePlayer.Companion.get(p.getUniqueId());
                 if (gamePlayer == null) return;
-                gamePlayer.setPlays(gamePlayer.getPlays() + 20);
+                gamePlayer.setPlays(gamePlayer.getPlays() + 1);
             } else {
                 CreeperStarBedwars.getPlugin().getPlayerDataConfig().set(p.getName() + ".plays",  CreeperStarBedwars.getPlugin().getPlayerDataConfig().getInt(p.getName() + ".plays") + 1);
                 CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();

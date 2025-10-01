@@ -65,7 +65,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
     public static CreeperStarBedwars getInstance() {return Instance;}
     public static CreeperStarBedwars getPlugin() {return Instance;}
 
-    private static final int CONFIG_VERSION = 5;
+    private static final int CONFIG_VERSION = 7;
 
     private GameConfig gameConfig;
     public GameConfig getGameConfig() {return gameConfig;}
@@ -340,6 +340,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
         if (ConfigUtils.getBoolean(getConfig(), "items.tnt-zombie.enable")) {
             getServer().getPluginManager().registerEvents(new TNTZombie_spawn_Item(), this);
         }
+        if (ConfigUtils.getBoolean(getConfig(), "items.enderpearl-sit.enable")) {
+            getServer().getPluginManager().registerEvents(new EnderPearl_Sit_Item(), this);
+        }
 
         getServer().getPluginManager().registerEvents(new BedDangeTitle(), this);
 
@@ -361,6 +364,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
     }
 
+    /*
+        检查配置版本
+     */
     private void backupAndUpdateConfig() {
         File configFile = new File(getDataFolder(), "config.yml");
         FileConfiguration config = getConfig();
@@ -398,12 +404,19 @@ public final class CreeperStarBedwars extends JavaPlugin {
                 config.set("config-version", CONFIG_VERSION);
                 saveConfig();
 
+                for (Map.Entry<String, Object> entry : oldValues.entrySet()) {
+                    config.set(entry.getKey(), entry.getValue());
+                }
+                saveConfig();
+
                 getLogger().info("配置文件已更新至最新版本: " + CONFIG_VERSION);
             } catch (IOException e) {
                 getLogger().warning("更新配置文件失败: " + e.getMessage());
             }
         }
     }
+
+
 
     public void startGameCfgRead() {
         GameStats.set(-1);
@@ -435,6 +448,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
             this.getPluginLoader().disablePlugin(this);
         }
 
+        // 老代码自己都看不顺眼了
+        // 我tm干嘛用ConfigUtils存一遍到变量
+        // 直接在功能那里用ConfigUtils读取不就行了吗???!!
         CompletableFuture.supplyAsync(() -> {
 
             ConfigData.bungeecord_lobby = ConfigUtils.getString(config, "bungeecord.lobby-server");
@@ -452,26 +468,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 
             ConfigData.fast_respawn_enabled = ConfigUtils.getBoolean(config, "fast-respawn");
 
-            // 放弃
-//            ConfigData.timer_command_enabled = ConfigUtils.getBoolean(config, "timer-command.enable");
-//            ConfigData.timer_command_start = ConfigUtils.getStringList(config, "timer-command.game-start");
-//            ConfigData.timer_command_end = ConfigUtils.getStringList(config, "timer-command.game-end");
-//
-//            if (config.get("timer-command.game-timer-bh") != null) {
-//                for (String cmds : ConfigUtils.getStringList(config, "timer-command.game-timer-bh")) {
-//                    ConfigData.timer_command_cmds.put(ConfigUtils.getInt(config, "timer-command.game-timer."+cmds+".gametime") , ConfigUtils.getStringList(config, "timer-command.game-timer."+cmds+".commands"));
-//                }
-//                // JoinPluginCheck.plugins.add(ConfigData.timer_command_cmds.toString()); 仅用于测试请勿恢复这行代码!!
-//            }
-//
-//            ConfigData.event_command_enabled = ConfigUtils.getBoolean(config, "event-command.enable");
-//            ConfigData.event_command_game_start = ConfigUtils.getStringList(config, "event-command.game-start");
-//            ConfigData.event_command_game_start = ConfigUtils.getStringList(config, "event-command.game-end");
-//            ConfigData.event_command_player_death = ConfigUtils.getStringList(config, "event-command.player-death");
-//            ConfigData.event_command_player_kill = ConfigUtils.getStringList(config, "event-command.player-kill");
-//            ConfigData.event_command_player_win = ConfigUtils.getStringList(config, "event-command.player-win");
-//            ConfigData.event_command_player_lost = ConfigUtils.getStringList(config, "event-command.player-lost");
-//            ConfigData.event_command_player_dbed = ConfigUtils.getStringList(config, "event-command.player-bed");
+
 
             ConfigData.whitelist_cmds = ConfigUtils.getStringList(config, "command-whitelist");
 

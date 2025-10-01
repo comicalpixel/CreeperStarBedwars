@@ -5,7 +5,7 @@
 author: Xiaol789zxc
 
 # 配置文件版本号, 不要修改此项!!
-config-version: 5
+config-version: 7
 
 # Bungeecord设置
 # lobby-server 大厅服务器子服
@@ -875,6 +875,15 @@ items:
     FuseTicks: 5
     # 爆炸伤害
     damage: 12
+  # 骑行末影珍珠
+  enderpearl-sit:
+    # 是否启用
+    enable: false
+    # 冷却s
+    cooldown: 5
+    # 语言部分
+    cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
+
 
 # 队友床危险警告
 # 触发方式: 抬头90°且潜行一下

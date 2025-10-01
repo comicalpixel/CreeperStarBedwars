@@ -29,7 +29,6 @@ public class JoinPluginCheck implements Listener {
             plugins.add("My_Worlds");
         }
 
-
         Plugin pl_BKCommonLib = Bukkit.getPluginManager().getPlugin("BKCommonLib");
         if (pl_BKCommonLib == null) {
             plugins.add("BKCommonLib");

@@ -55,7 +55,7 @@ class MongoDBManager {
             database.runCommand(org.bson.Document("ping", 1))
             Bukkit.getLogger().info("f[&5Ender&2Creeper&f]&7[&2Creeper&eStar&fBedwars&7] &eMongoDB连接成功 :D！")
         } catch (e: Exception) {
-            Bukkit.getLogger().info("f[&5Ender&2Creeper&f]&7[&2Creeper&eStar&fBedwars&7] &cMongoDB无法连接 :(！${e}")
+            Bukkit.getLogger().info("f[&5Ender&2Creeper&f]&7[&2Creeper&eStar&fBedwars&7] &cMongoDB连接失败 :(！${e}")
             Thread.sleep(10 * 1000)
             exitProcess(0)
         }

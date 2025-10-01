@@ -1,5 +1,5 @@
 name: CreeperStarBedwars
-version: '2.0-SNAPSHOT'
+version: '2.1-SNAPSHOT'
 main: cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars
 load: STARTUP
 author: Xiaol789zxc
