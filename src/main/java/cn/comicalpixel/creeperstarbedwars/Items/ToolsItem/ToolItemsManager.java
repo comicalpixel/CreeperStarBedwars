@@ -1,12 +1,15 @@
 package cn.comicalpixel.creeperstarbedwars.Items.ToolsItem;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ToolItemsManager {
 
@@ -100,6 +103,7 @@ public class ToolItemsManager {
 
     }
 
+    private static List<String> FixedItemsLore = new ArrayList<String>();
 
     public static void buy_regive_01(Player p) {
         p.getInventory().remove(Material.SHEARS);
@@ -107,6 +111,8 @@ public class ToolItemsManager {
         ItemStack item = new ItemStack(Material.SHEARS);
         ItemMeta meta = item.getItemMeta();
         meta.spigot().setUnbreakable(true);
+        FixedItemsLore.add(ChatColor.DARK_GRAY + "Fixed set items");
+        meta.setLore(FixedItemsLore);
         item.setItemMeta(meta);
 
         if (players_toolLevel_剪刀.get(p) == 1) {
@@ -118,6 +124,8 @@ public class ToolItemsManager {
 
         ItemStack item_pickaxe = new ItemStack(Material.WOOD_PICKAXE);
         ItemMeta meta_pickaxe = item_pickaxe.getItemMeta();
+        FixedItemsLore.add(ChatColor.DARK_GRAY + "Fixed set items");
+        meta_pickaxe.setLore(FixedItemsLore);
         meta_pickaxe.spigot().setUnbreakable(true);
         switch (players_toolLevel_稿子.get(p)) {
             case 1:
@@ -158,6 +166,8 @@ public class ToolItemsManager {
 
         ItemStack axe_item = new ItemStack(Material.WOOD_AXE);
         ItemMeta meta_axe = axe_item.getItemMeta();
+        FixedItemsLore.add(ChatColor.DARK_GRAY + "Fixed set items");
+        meta_axe.setLore(FixedItemsLore);
         meta_axe.spigot().setUnbreakable(true);
         switch (players_toolLevel_斧头.get(p)) {
             case 1:

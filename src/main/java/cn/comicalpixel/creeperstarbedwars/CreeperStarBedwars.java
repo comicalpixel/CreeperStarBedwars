@@ -125,10 +125,12 @@ public final class CreeperStarBedwars extends JavaPlugin {
                 "\n " +
                 "\n " +
                 "CreeperStarBedwars Plugin.\n" +
-                " Author: Xiaol789zxc    -- EnderCreeper(ComicalPixel) Network \n" +
+                " Author: Xiaol789zxc TheGoodBoys   -- EnderCreeper(ComicalPixel) Network \n" +
                 " Version: " + this.getDescription().getVersion() + "\n" +
                 "\n " +
                 "Minecraft Version: " + Bukkit.getVersion() + "\n " +
+                "\n " +
+                "(ZH_CN) Thank you for using it! If this is your first time, welcome to experience this server: mc.enderklp.top" + "\n " +
                 "\n " );
         // 检查是否非folia
         if (Bukkit.getVersion().contains("folia")) {
@@ -136,9 +138,9 @@ public final class CreeperStarBedwars extends JavaPlugin {
             this.getPluginLoader().disablePlugin(this);
         }
         // 检查是否为Linux 如果是就会有警告
-        if (!System.getProperty("os.name").toLowerCase().contains("linux")) {
-            Bukkit.getLogger().warning("[CreeperStarBedwars] Non-Linux environments detected, some features may be limited or abnormally unavailable! ");
-        }
+//        if (!System.getProperty("os.name").toLowerCase().contains("linux")) {
+//            Bukkit.getLogger().warning("[CreeperStarBedwars] Non-Linux environments detected, some features may be limited or abnormally unavailable! ");
+//        }
 
 
 
@@ -213,10 +215,6 @@ public final class CreeperStarBedwars extends JavaPlugin {
         JoinPluginCheck.check();
         getServer().getPluginManager().registerEvents(new JoinPluginCheck(), this);
 
-        // NameTagdit 不再使用
-//        if (getServer().getPluginManager().isPluginEnabled("NameTagEdit")) {
-//            NameTagManager.NameTagManager_Main();
-//        }
         NameTagManager.NameTagManager_Main();
 
         // Arena Worlds

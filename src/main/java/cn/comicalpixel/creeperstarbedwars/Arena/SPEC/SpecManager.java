@@ -66,6 +66,36 @@ public class SpecManager {
 
     }
 
+    public static void setRespawnSpec_true(Player p) {
+
+        PlayerUtils.clear_effects(p);
+
+        p.setGameMode(GameMode.ADVENTURE);
+        GamePlayers.specs.add(p);
+        PlayerUtils.setCollidesWithEntities(p, false);
+        PlayerUtils.hidePlayer(p);
+        p.setAllowFlight(true);
+        p.setFlying(true);
+
+        p.setFlySpeed(0.2f);
+
+    }
+    public static void setRespawnSpec_false(Player p) {
+
+        PlayerUtils.clear_effects(p);
+
+        p.setGameMode(GameMode.SURVIVAL);
+        GamePlayers.specs.remove(p);
+        PlayerUtils.setCollidesWithEntities(p, true);
+        PlayerUtils.showPlayer(p);
+        p.setFlying(false);
+        p.setAllowFlight(false);
+
+
+
+
+    }
+
 
 
     public static void open_tplist_gui(Player p) {

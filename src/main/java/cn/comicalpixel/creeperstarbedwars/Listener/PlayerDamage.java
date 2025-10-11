@@ -2,10 +2,14 @@ package cn.comicalpixel.creeperstarbedwars.Listener;
 
 import cn.comicalpixel.creeperstarbedwars.Arena.GameData_cfg;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
+import cn.comicalpixel.creeperstarbedwars.Arena.SPEC.SpecManager;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamManager;
+import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamSpawn;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
 import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
+import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
+import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Arrow;
@@ -16,6 +20,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,11 +75,21 @@ public class PlayerDamage implements Listener {
     }
 
     public static List<Player> noDamagePlayers = new ArrayList<>();
+    public static HashMap<Player, Integer> noDamagePlayers_timerMap = new HashMap<>();
     public static void noDamageMode(Player p) {
         noDamagePlayers.add(p);
-        Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
-            noDamagePlayers.remove(p);
-        },50);
+        new BukkitRunnable() {
+            int i = 0;
+            @Override
+            public void run() {
+                if (i >= 5) {
+                    noDamagePlayers.remove(p);
+                    cancel();
+                }
+                noDamagePlayers_timerMap.put(p, i);
+                i++;
+            }
+        }.runTaskTimer(CreeperStarBedwars.getPlugin(), 0,20);
     }
     @EventHandler
     public void PlayerHitplayer_cancelNoDamge(EntityDamageByEntityEvent e) {
@@ -83,7 +98,10 @@ public class PlayerDamage implements Listener {
         }
         if (e.getEntity() instanceof Player && e.getDamager() instanceof Player) {
             Player p = (Player) e.getDamager();
-            noDamagePlayers.remove(p);
+            if (noDamagePlayers_timerMap.containsKey(p) && noDamagePlayers_timerMap.get(p) >= 3) {
+                noDamagePlayers.remove(p);
+                noDamagePlayers_timerMap.remove(p);
+            }
         }
     }
     @EventHandler

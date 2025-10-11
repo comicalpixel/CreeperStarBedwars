@@ -41,6 +41,10 @@ public class ChestResourcePlacement implements Listener {
             }
         }
 
+        if (e.getItem().getType().toString().endsWith("_SWORD")) {
+            return;
+        }
+
         Player p = e.getPlayer();
 
         if (e.getItem().getItemMeta().hasLore()) {

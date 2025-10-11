@@ -192,9 +192,8 @@ public class DeathMove implements Listener {
         },1);
 
         if (!TeamManager.getbed(TeamManager.player_teams.get(p))) {
-            p.setGameMode(GameMode.SPECTATOR);
-            // API
-//            Bukkit.getPluginManager().callEvent(new cn.comicalpixel.creeperstarbedwars.api.Events.PlayerDeathEvent(p));
+            // p.setGameMode(GameMode.SPECTATOR);
+            SpecManager.setRespawnSpec_true(p);
             new BukkitRunnable() {
                 int resapwn = 5;
                 @Override
@@ -213,9 +212,8 @@ public class DeathMove implements Listener {
                         p.setLevel(0);
                         p.setExp(0);
                         PlayerDamage.noDamageMode(p);
+                        SpecManager.setRespawnSpec_false(p);
                         cancel();
-                        // API
-                        // Bukkit.getPluginManager().callEvent(new PlayerRespawnEvent(p));
                     }
                     resapwn--;
                 }
