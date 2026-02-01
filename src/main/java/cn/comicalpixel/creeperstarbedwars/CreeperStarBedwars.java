@@ -8,6 +8,7 @@ import cn.comicalpixel.creeperstarbedwars.Arena.Teams.GUI.TeamSel_GUI;
 import cn.comicalpixel.creeperstarbedwars.Arena.Teams.TeamChest;
 import cn.comicalpixel.creeperstarbedwars.ArenaWorlds.ArenaWorldsManager;
 import cn.comicalpixel.creeperstarbedwars.Command.MainCommand;
+import cn.comicalpixel.creeperstarbedwars.Command.TeskCommand;
 import cn.comicalpixel.creeperstarbedwars.Config.*;
 import cn.comicalpixel.creeperstarbedwars.Entity.AntiMobs;
 import cn.comicalpixel.creeperstarbedwars.Entity.ShopNPC.ItemShop_NPC;
@@ -111,7 +112,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         Instance = this;
-
+        new TeskCommand().register();
         // bstat();
 
         Bukkit.getLogger().info(" ");
@@ -125,7 +126,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
                 "\n " +
                 "\n " +
                 "CreeperStarBedwars Plugin.\n" +
-                " Author: Xiaol789zxc TheGoodBoys   -- EnderCreeper(ComicalPixel) Network \n" +
+                " Author: Xiaol789zxc♥TheGoodBoys(Love)   -- EnderCreeper(ComicalPixel) Network \n" +
                 " Version: " + this.getDescription().getVersion() + "\n" +
                 "\n " +
                 "Minecraft Version: " + Bukkit.getVersion() + "\n " +
@@ -142,7 +143,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
 //            Bukkit.getLogger().warning("[CreeperStarBedwars] Non-Linux environments detected, some features may be limited or abnormally unavailable! ");
 //        }
 
-
+        
 
 
         // Bungeecord频道
@@ -208,7 +209,6 @@ public final class CreeperStarBedwars extends JavaPlugin {
         getCommand("bedwars2025").setExecutor(new MainCommand());
         getCommand("klpbw").setExecutor(new MainCommand());
         /**/
-
 
         // 检查必要的前置是否齐全
         // 不齐全会阻止加入且提示缺失哪些必要前置(仅op提示插件详情)

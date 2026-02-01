@@ -35,6 +35,7 @@ cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_BL
 cn\comicalpixel\creeperstarbedwars\api\Events\BedwarsGameStartEvent.class
 cn\comicalpixel\creeperstarbedwars\Task\Game_WinCheck_Task.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Game\Holo\Diamondholographic$1.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GREEN$3.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamManager.class
 cn\comicalpixel\creeperstarbedwars\Arena\Teams\TeamChest.class
 cn\comicalpixel\creeperstarbedwars\Listener\BedBlockListener.class
@@ -100,6 +101,7 @@ cn\comicalpixel\creeperstarbedwars\Task\WorldTimer_Task.class
 cn\comicalpixel\creeperstarbedwars\Items\BedDamagerTitle\BedDangeTitle$1.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_PINK$3.class
 cn\comicalpixel\creeperstarbedwars\Items\WarpPowder_Item.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GREEN$1.class
 cn\comicalpixel\creeperstarbedwars\api\Events\PlayerEliminatedEvent.class
 cn\comicalpixel\creeperstarbedwars\Utils\FireballUtil.class
 cn\comicalpixel\creeperstarbedwars\Arena\GamePlayers.class
@@ -111,6 +113,8 @@ cn\comicalpixel\creeperstarbedwars\Items\Safewall_Item.class
 cn\comicalpixel\creeperstarbedwars\GUI\BwimSel_GUI.class
 cn\comicalpixel\creeperstarbedwars\Utils\NMSTitleUntils$ActionBar.class
 cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GRAY$1.class
+cn\comicalpixel\creeperstarbedwars\Items\FIREBALL_Item$1.class
+cn\comicalpixel\creeperstarbedwars\Arena\Generator\Team\Manager\TeamGenerator_GREEN$2.class
 cn\comicalpixel\creeperstarbedwars\Shop\Item\ItemShop_GUI.class
 cn\comicalpixel\creeperstarbedwars\Listener\PlayerDamage.class
 cn\comicalpixel\creeperstarbedwars\Items\RescuePlatform_Item$1.class

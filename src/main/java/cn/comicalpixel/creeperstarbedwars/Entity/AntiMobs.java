@@ -21,13 +21,13 @@ public class AntiMobs implements Listener {
             e.getEntity() instanceof Ghast ||
             e.getEntity() instanceof Witch ||
             e.getEntity() instanceof Slime) {
-            Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
-                Entity entity = e.getEntity();
-                if (!entity.hasMetadata("game") && !entity.hasMetadata("bw") &&
-                        !entity.hasMetadata("bedwars") && !entity.hasMetadata("CreeperStarBedwars")){
-                    e.setCancelled(true);
-                }
-            },1);
+                Bukkit.getScheduler().runTaskLater(CreeperStarBedwars.getPlugin(),()->{
+                    Entity entity = e.getEntity();
+                    if (!entity.hasMetadata("game") && !entity.hasMetadata("bw") &&
+                            !entity.hasMetadata("bedwars") && !entity.hasMetadata("CreeperStarBedwars")){
+                        e.setCancelled(true);
+                    }
+                },1);
         }
     }
 

@@ -3,13 +3,20 @@ package cn.comicalpixel.creeperstarbedwars.Items;
 import cn.comicalpixel.creeperstarbedwars.Arena.GamePlayers;
 import cn.comicalpixel.creeperstarbedwars.Arena.Stats.GameStats;
 import cn.comicalpixel.creeperstarbedwars.Config.ConfigData;
+import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerBlocks;
 import cn.comicalpixel.creeperstarbedwars.Listener.PlayerDamage;
 import cn.comicalpixel.creeperstarbedwars.Utils.FireballUtil;
 import cn.comicalpixel.creeperstarbedwars.Utils.LocationUtil;
 import cn.comicalpixel.creeperstarbedwars.Utils.MessageVariableUtils;
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.wrappers.EnumWrappers;
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftFireball;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -21,6 +28,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.*;
@@ -70,8 +78,39 @@ public class FIREBALL_Item implements Listener {
         f.setIsIncendiary(false);
         f.setShooter(p);
         f.setYield(ConfigData.ItemsInGame_fireball_radius);
+        FireballUtil.removeFireballFire(f);
 
         fireball_isWho.put(f, p);
+
+        ProtocolManager protocolManager = ProtocolLibrary.getProtocolManager();
+        PacketContainer packet = protocolManager.createPacket(PacketType.Play.Server.WORLD_PARTICLES);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (f.isDead()) {
+                    cancel();
+                    return;
+                }
+                packet.getParticles().write(0, EnumWrappers.Particle.CRIT);
+                packet.getFloat().write(0, (float) f.getLocation().clone().getX());
+                packet.getFloat().write(1, (float) f.getLocation().clone().getY());
+                packet.getFloat().write(2, (float) f.getLocation().clone().getZ());
+                packet.getFloat().write(3, 0f);  // x偏移
+                packet.getFloat().write(4, 0f);  // y偏移
+                packet.getFloat().write(5, 0f);  // z偏移
+                packet.getFloat().write(6, 0f); // 粒子速度
+                packet.getIntegers().write(0, 10);
+                for (Player online_p_s : Bukkit.getOnlinePlayers()) {
+                    try {
+                        protocolManager.sendServerPacket(online_p_s, packet);
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                        System.out.println("[CreeperStarBedwars] FireBall Packet Play Error!");
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }.runTaskTimer(CreeperStarBedwars.getPlugin(), 0,2);
 
     }
 

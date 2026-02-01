@@ -14,6 +14,7 @@ public class FireballUtil extends JavaPlugin implements Listener {
     private static Field fieldFireballDirY;
     private static Field fieldFireballDirZ;
     private static Method craftFireballHandle;
+//    private static Field fieldFireTicks;
 
     static {
         String version = Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3] + ".";
@@ -30,6 +31,8 @@ public class FireballUtil extends JavaPlugin implements Listener {
             fieldFireballDirY.setAccessible(true);
             fieldFireballDirZ.setAccessible(true);
             craftFireballHandle.setAccessible(true);
+//            fieldFireTicks = fireballClass.getDeclaredField("fireTicks");
+//            fieldFireTicks.setAccessible(true);
         } catch (ClassNotFoundException | NoSuchMethodException | NoSuchFieldException e) {
             e.printStackTrace();
             Bukkit.shutdown();
@@ -46,4 +49,27 @@ public class FireballUtil extends JavaPlugin implements Listener {
             e.printStackTrace();
         }
     }
+
+    // 一用就出事 :(
+//    public static void setFireballOnFire(Fireball fireball, int ticks) {
+//        try {
+//            Object handle = craftFireballHandle.invoke(fireball);
+//            fieldFireTicks.set(handle, ticks);
+//        } catch (Exception e) {
+//            // 备用方案
+//            fireball.setFireTicks(ticks);
+//            e.printStackTrace();
+//        }
+//    }
+    public static void removeFireballFire(Fireball fireball) {
+        try {
+            Object handle = craftFireballHandle.invoke(fireball);
+            Field fireTicks = handle.getClass().getSuperclass().getDeclaredField("fireTicks");
+            fireTicks.setAccessible(true);
+            fireTicks.set(handle, 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

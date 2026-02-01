@@ -723,6 +723,10 @@ items:
     # 击退
     vlocity-multiply: 1.5
     vlocity-y: 0.9
+    # 是否扔出去玩家有短暂的缓慢效果
+    player-1s-slow-effect: false
+    # 爆炸是否有火焰?
+    has-fire: false
     # 语言部分
     cooldown-chat: "§c冷却中...请在§e{cooldown}§c后使用! "
   # TNT
