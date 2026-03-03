@@ -185,7 +185,10 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // PAPI
         if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             new PlayerDataPAPI().register();
+        } else {
+            new PlayerDataPAPI().register();
         }
+
 
         // 检查是否为大厅模式，如果是后面的都不执行
         if (getConfig().getBoolean("lobby-mode")) {

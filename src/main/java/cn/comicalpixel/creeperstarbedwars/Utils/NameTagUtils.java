@@ -3,7 +3,9 @@ package cn.comicalpixel.creeperstarbedwars.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.NameTagVisibility;
 import org.bukkit.scoreboard.Team;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
 
@@ -25,6 +27,7 @@ public class NameTagUtils {
     public static void updateNameTagForAllViewers(Player target) {
         String prefix = playerPrefixes.getOrDefault(target.getUniqueId(), "");
         String suffix = playerSuffixes.getOrDefault(target.getUniqueId(), "");
+        boolean isInvisible = target.hasPotionEffect(PotionEffectType.INVISIBILITY);
 
         for (Player viewer : Bukkit.getOnlinePlayers()) {
             Scoreboard viewerScoreboard = viewer.getScoreboard();
@@ -37,18 +40,18 @@ public class NameTagUtils {
 
             team.setPrefix(prefix);
             team.setSuffix(suffix);
+            team.setNameTagVisibility(isInvisible ? NameTagVisibility.NEVER : NameTagVisibility.ALWAYS);
             team.addEntry(target.getName());
         }
     }
 
     public static void updateAllNameTags() {
-        // 获取所有在线玩家
         Collection<? extends Player> onlinePlayers = Bukkit.getOnlinePlayers();
 
-        // 为每个玩家更新所有其他玩家的名称标签
         for (Player target : onlinePlayers) {
             String prefix = playerPrefixes.getOrDefault(target.getUniqueId(), "");
             String suffix = playerSuffixes.getOrDefault(target.getUniqueId(), "");
+            boolean isInvisible = target.hasPotionEffect(PotionEffectType.INVISIBILITY);
 
             if (Bukkit.getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
                 prefix = MessageVariableUtils.toPAPI(prefix, target);
@@ -66,8 +69,49 @@ public class NameTagUtils {
 
                 team.setPrefix(prefix);
                 team.setSuffix(suffix);
+                team.setNameTagVisibility(isInvisible ? NameTagVisibility.NEVER : NameTagVisibility.ALWAYS);
                 team.addEntry(target.getName());
             }
+        }
+    }
+
+    public static void hidePlayerNameTag(Player player) {
+        String prefix = playerPrefixes.getOrDefault(player.getUniqueId(), "");
+        String suffix = playerSuffixes.getOrDefault(player.getUniqueId(), "");
+        
+        for (Player viewer : Bukkit.getOnlinePlayers()) {
+            Scoreboard viewerScoreboard = viewer.getScoreboard();
+            String teamName = "vnt-" + player.getUniqueId().toString().substring(0, 10);
+
+            Team team = viewerScoreboard.getTeam(teamName);
+            if (team == null) {
+                team = viewerScoreboard.registerNewTeam(teamName);
+            }
+
+            team.setPrefix(prefix);
+            team.setSuffix(suffix);
+            team.setNameTagVisibility(NameTagVisibility.NEVER);
+            team.addEntry(player.getName());
+        }
+    }
+
+    public static void showPlayerNameTag(Player player) {
+        String prefix = playerPrefixes.getOrDefault(player.getUniqueId(), "");
+        String suffix = playerSuffixes.getOrDefault(player.getUniqueId(), "");
+        
+        for (Player viewer : Bukkit.getOnlinePlayers()) {
+            Scoreboard viewerScoreboard = viewer.getScoreboard();
+            String teamName = "vnt-" + player.getUniqueId().toString().substring(0, 10);
+
+            Team team = viewerScoreboard.getTeam(teamName);
+            if (team == null) {
+                team = viewerScoreboard.registerNewTeam(teamName);
+            }
+
+            team.setPrefix(prefix);
+            team.setSuffix(suffix);
+            team.setNameTagVisibility(NameTagVisibility.ALWAYS);
+            team.addEntry(player.getName());
         }
     }
 

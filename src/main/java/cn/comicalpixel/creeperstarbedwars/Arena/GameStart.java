@@ -20,7 +20,6 @@ import cn.comicalpixel.creeperstarbedwars.Task.GameTeamEliminated_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.Game_Actionbar_Task;
 import cn.comicalpixel.creeperstarbedwars.Task.InvisibleUtil_Task;
 import cn.comicalpixel.creeperstarbedwars.Utils.*;
-import cn.comicalpixel.creeperstarbedwars.api.Events.BedwarsGameStartEvent;
 import cn.comicalpixel.creeperstarbedwars.data.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
