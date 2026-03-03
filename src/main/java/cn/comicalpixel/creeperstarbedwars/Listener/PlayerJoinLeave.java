@@ -9,8 +9,8 @@ import cn.comicalpixel.creeperstarbedwars.CreeperStarBedwars;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
-import cn.comicalpixel.creeperstarbedwars.api.Events.BedwarsGameStartEvent;
-import cn.comicalpixel.creeperstarbedwars.api.Events.PlayerJoinBedwarsEvent;
+import cn.comicalpixel.creeperstarbedwars.api.Events.player.PlayerJoinBedwarsEvent;
+import cn.comicalpixel.creeperstarbedwars.api.Events.player.PlayerLeaveBedwarsEvent;
 import cn.comicalpixel.creeperstarbedwars.data.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -42,6 +42,8 @@ public class PlayerJoinLeave implements Listener {
         }
 
         Player p = e.getPlayer();
+
+        // Bukkit.getPluginManager().callEvent(new PlayerJoinBedwarsEvent(p));
 
         if (GameStats.get() == 1) {
             GamePlayers.players.add(p);
@@ -247,6 +249,8 @@ public class PlayerJoinLeave implements Listener {
 
         Player p = e.getPlayer();
         e.setQuitMessage(null);
+
+       //  Bukkit.getPluginManager().callEvent(new PlayerLeaveBedwarsEvent(p));
 
         PlayerUtils.leave_game(p);
 

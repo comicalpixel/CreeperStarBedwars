@@ -138,6 +138,7 @@ public final class CreeperStarBedwars extends JavaPlugin {
             Bukkit.getLogger().warning("CreeperStarBedwars does not support folia, please use version 1.8.8 of CraftBukkit or Spigot or Paper server kernel!");
             this.getPluginLoader().disablePlugin(this);
         }
+
         // 检查是否为Linux 如果是就会有警告
 //        if (!System.getProperty("os.name").toLowerCase().contains("linux")) {
 //            Bukkit.getLogger().warning("[CreeperStarBedwars] Non-Linux environments detected, some features may be limited or abnormally unavailable! ");
@@ -185,7 +186,10 @@ public final class CreeperStarBedwars extends JavaPlugin {
         // PAPI
         if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             new PlayerDataPAPI().register();
+        } else {
+            new PlayerDataPAPI().register();
         }
+
 
         // 检查是否为大厅模式，如果是后面的都不执行
         if (getConfig().getBoolean("lobby-mode")) {

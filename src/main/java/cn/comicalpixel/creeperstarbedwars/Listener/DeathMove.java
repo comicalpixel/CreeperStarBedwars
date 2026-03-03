@@ -13,18 +13,18 @@ import cn.comicalpixel.creeperstarbedwars.PlayerInGameData;
 import cn.comicalpixel.creeperstarbedwars.Utils.ConfigUtils;
 import cn.comicalpixel.creeperstarbedwars.Utils.NMSTitleUntils;
 import cn.comicalpixel.creeperstarbedwars.Utils.PlayerUtils;
-import cn.comicalpixel.creeperstarbedwars.api.Events.BedwarsGameStartEvent;
-import cn.comicalpixel.creeperstarbedwars.api.Events.PlayerEliminatedEvent;
-import cn.comicalpixel.creeperstarbedwars.api.Events.PlayerRespawnEvent;
 import cn.comicalpixel.creeperstarbedwars.data.GamePlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
@@ -151,7 +151,6 @@ public class DeathMove implements Listener {
             CreeperStarBedwars.getPlugin().getPlayerDataConfig().save();
         }
 
-
         // 是否开启快速重生
         if (ConfigData.fast_respawn_enabled) {
             p.setHealth(p.getMaxHealth());
@@ -164,9 +163,98 @@ public class DeathMove implements Listener {
 
     }
 
+    public static void dropItemsOnTeamGenerator(Player p) {
+        String team = TeamManager.player_teams.get(p);
+        if (team == null) return;
+
+        Location dropLoc = getTeamGeneratorLocation(team);
+        if (dropLoc == null) return;
+
+        // 获取队伍中所有玩家，用于判断装备
+        List<Player> teamPlayers = new ArrayList<>();
+        for (Player online : Bukkit.getOnlinePlayers()) {
+            if (team.equals(TeamManager.player_teams.get(online))) {
+                teamPlayers.add(online);
+            }
+        }
+
+        for (ItemStack item : p.getInventory().getContents()) {
+            if (item == null || item.getType() == Material.AIR) continue;
+            if (isSword(item) || isArmor(item)) continue;
+            dropLoc.getWorld().dropItemNaturally(dropLoc, item);
+        }
+
+        for (ItemStack item : p.getEnderChest().getContents()) {
+            if (item == null || item.getType() == Material.AIR) continue;
+            dropLoc.getWorld().dropItemNaturally(dropLoc, item);
+        }
+
+//        p.getInventory().clear();
+//        p.getEnderChest().clear();
+    }
+
+    private static Location getTeamGeneratorLocation(String team) {
+        Location loc = null;
+        switch (team) {
+            case "RED":
+                loc = GameData_cfg.team_red_generator;
+                break;
+            case "BLUE":
+                loc = GameData_cfg.team_blue_generator;
+                break;
+            case "GREEN":
+                loc = GameData_cfg.team_green_generator;
+                break;
+            case "YELLOW":
+                loc = GameData_cfg.team_yellow_generator;
+                break;
+            case "PINK":
+                loc = GameData_cfg.team_pink_generator;
+                break;
+            case "AQUA":
+                loc = GameData_cfg.team_aqua_generator;
+                break;
+            case "GRAY":
+                loc = GameData_cfg.team_gray_generator;
+                break;
+            case "WHITE":
+                loc = GameData_cfg.team_white_generator;
+                break;
+        }
+        if (loc != null) {
+            loc = loc.clone().add(0, 1, 0);
+        }
+        return loc;
+    }
+
+    private static boolean isSword(ItemStack item) {
+        if (item == null) return false;
+        Material type = item.getType();
+        return type == Material.WOOD_SWORD || 
+               type == Material.STONE_SWORD || 
+               type == Material.IRON_SWORD || 
+               type == Material.GOLD_SWORD || 
+               type == Material.DIAMOND_SWORD;
+    }
+
+    private static boolean isArmor(ItemStack item) {
+        if (item == null) return false;
+        Material type = item.getType();
+        String name = type.toString();
+        return name.endsWith("_HELMET") || 
+               name.endsWith("_CHESTPLATE") || 
+               name.endsWith("_LEGGINGS") || 
+               name.endsWith("_BOOTS");
+    }
+
     public static void respawn(Player p) {
         p.spigot().respawn();
         p.spigot().respawn();
+
+        if (TeamManager.getbed(TeamManager.player_teams.get(p))) {
+            dropItemsOnTeamGenerator(p);
+        }
+
         PlayerUtils.reset(p);
         PlayerUtils.clear_effects(p);
 

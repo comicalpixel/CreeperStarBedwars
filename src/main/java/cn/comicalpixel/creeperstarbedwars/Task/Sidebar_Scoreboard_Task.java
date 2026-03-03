@@ -153,7 +153,7 @@ public class Sidebar_Scoreboard_Task {
         }
 
         if (ConfigData.nametag_health_enabled) {
-            Objective hp = scoreboard.registerNewObjective("NAME_HEALTH", "health");
+            Objective hp = scoreboard.registerNewObjective("NAME_HEALTH", "playerHealth");
             hp.setDisplaySlot(DisplaySlot.BELOW_NAME);
             hp.setDisplayName(ChatColor.RED + "❤");
             for (Player sb_health_allp : Bukkit.getOnlinePlayers()) {
