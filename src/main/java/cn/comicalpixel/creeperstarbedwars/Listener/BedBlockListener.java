@@ -50,6 +50,8 @@ public class BedBlockListener implements Listener {
         // 阻止挖掘(清除方块另外写)
         e.setCancelled(true);
 
+        // 20260512 修复了点东西
+
         /*
             床无敌
          */
