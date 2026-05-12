@@ -4,7 +4,11 @@
   <groupId>cn.comicalpixel</groupId>
   <artifactId>CreeperStarBedwars</artifactId>
   <name>CreeperStarBedwars</name>
+<<<<<<< HEAD
   <version>2.3.6-SNAPSHOT</version>
+=======
+  <version>2.3.5-SNAPSHOT</version>
+>>>>>>> 9cfd254f820ad618afae0732ecfa524988cff08d
   <build>
     <resources>
       <resource>
