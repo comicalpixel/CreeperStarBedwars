@@ -89,6 +89,12 @@ Java要求版本在8-11之间或以上, 服务端Spigot/Paper(一般不破坏Buk
 - Tools downgrade by one level after each death until reaching the minimum level
 - Player data support for Config storage or MongoDB database storage
 
+## 前置插件 (Required Dependencies Plugins)
+- My_World Plugin
+- ProtocolLib
+- BKCommonLib
+- PlaceholderAPI (softdepend)
+- BKCommonLib
 
 其他:
 - 这个起床不仅可以制作普通起床战争(不推荐)，还可以用于制作超级起床战争
